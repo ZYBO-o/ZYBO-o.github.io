@@ -107,12 +107,12 @@
 <meta property="og:site_name" content="zybTree&#39;s Blogs">
 <meta property="og:description" content="简介与背景面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。 面向过程的程序设计把计算机程序视为一系列的命令集合，即一组函数的顺序执行。为了简化程序设计，面向过程把函数继续切分为子函数，即把大块函数通过切割成小块函数来降低系统的复杂度。 而面向对象的程序设计把计算机程序视为一组">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zybtree.github.io/.io//zhangyongbin/Desktop/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/1.png">
+<meta property="og:image" content="https://zybtree.github.io/Users/zhangyongbin/Desktop/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/1.png">
 <meta property="og:updated_time" content="2019-10-18T05:24:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python面向对象1">
 <meta name="twitter:description" content="简介与背景面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。 面向过程的程序设计把计算机程序视为一系列的命令集合，即一组函数的顺序执行。为了简化程序设计，面向过程把函数继续切分为子函数，即把大块函数通过切割成小块函数来降低系统的复杂度。 而面向对象的程序设计把计算机程序视为一组">
-<meta name="twitter:image" content="https://zybtree.github.io/.io//zhangyongbin/Desktop/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/1.png">
+<meta name="twitter:image" content="https://zybtree.github.io/Users/zhangyongbin/Desktop/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/1.png">
 
 
 
@@ -437,7 +437,7 @@
 <br>
 
 <h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p>简单的说，类是对象的蓝图和模板，而对象是类的实例。这个解释虽然有点像用概念在解释概念，但是从这句话我们至少可以看出，类是抽象的概念，而对象是具体的东西。在面向对象编程的世界中，一切皆为对象，对象都有属性和行为，每个对象都是独一无二的，而且对象一定属于某个类（型）。当我们把一大堆拥有共同特征的对象的静态特征（属性）和动态特征（行为）都抽取出来后，就可以定义出一个叫做“类”的东西。</p>
-<p><img src="/.io//zhangyongbin/Desktop/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/1.png" alt></p>
+<p><img src="/Users/zhangyongbin/Desktop/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/1.png" alt></p>
 <h3 id="1-定义类"><a href="#1-定义类" class="headerlink" title="1.定义类"></a>1.定义类</h3><p>在Python中可以使用<code>class</code>关键字定义类，然后在类中通过之前学习过的函数来定义方法，这样就可以将对象的动态特征描述出来，代码如下所示。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># __init__是一个特殊方法用于在创建对象时进行初始化操作</span></span><br><span class="line">    <span class="comment"># 通过这个方法我们可以为学生对象绑定name和age两个属性</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">study</span><span class="params">(self, course_name)</span>:</span></span><br><span class="line">        print(<span class="string">'%s正在学习%s.'</span> % (self.name, course_name))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># PEP 8要求标识符的名字用全小写多个单词用下划线连接</span></span><br><span class="line">    <span class="comment"># 但是部分程序员和公司更倾向于使用驼峰命名法(驼峰标识)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">watch_movie</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.age &lt; <span class="number">18</span>:</span><br><span class="line">            print(<span class="string">'%s只能观看《熊出没》.'</span> % self.name)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'%s正在观看岛国爱情大电影.'</span> % self.name)</span><br></pre></td></tr></table></figure>
 
