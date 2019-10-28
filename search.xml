@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>无线信道的密钥生成方法</title>
+    <url>/2019/10/28/%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93%E7%9A%84%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>论文学习</category>
+      </categories>
+      <tags>
+        <tag>论文积累与想法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>无线通信物理层安全方法综述</title>
     <url>/2019/10/25/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8%E6%96%B9%E6%B3%95%E7%BB%BC%E8%BF%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="一-传统安全方案的局限性"><a href="#一-传统安全方案的局限性" class="headerlink" title="一.传统安全方案的局限性"></a>一.传统安全方案的局限性</h2><p>1.传统安全方案是在网络层通过公私密钥对数据进行加密，往往以牺牲复杂度换取安全性。然而在目前正在推广使用的 ＬＴＥ／４Ｇ 甚至在正在完善的５Ｇ 标准中，高的数据传输速率对加解密实时性、复杂度和延时等提出了更加严格的要求。</p>
@@ -35,17 +46,7 @@
 <p>通过增大合法接收者和窃听者的信道条件差异来优化信道安全容量。</p>
 <br>
 
-
-
-
-
-
-
-
-
-
-
-]]></content>
+<h2 id="二-无线密钥共享方案下的密钥"><a href="#二-无线密钥共享方案下的密钥" class="headerlink" title="二.无线密钥共享方案下的密钥"></a>二.无线密钥共享方案下的密钥</h2>]]></content>
       <categories>
         <category>论文学习</category>
       </categories>
