@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zybtree.github.io/"/>
-  <updated>2019-10-28T02:59:44.309Z</updated>
+  <updated>2019-10-28T03:12:34.038Z</updated>
   <id>https://zybtree.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2019年生活费分布情况</title>
+    <link href="https://zybtree.github.io/2019/10/28/2019%E5%B9%B4%E7%94%9F%E6%B4%BB%E8%B4%B9%E5%88%86%E5%B8%83%E6%83%85%E5%86%B5/"/>
+    <id>https://zybtree.github.io/2019/10/28/2019年生活费分布情况/</id>
+    <published>2019-10-28T02:58:48.000Z</published>
+    <updated>2019-10-28T03:12:34.038Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>#2019年11月分生活费使用情况</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="生活油盐" scheme="https://zybtree.github.io/categories/%E7%94%9F%E6%B4%BB%E6%B2%B9%E7%9B%90/"/>
+    
+    
+      <category term="生活的毒打" scheme="https://zybtree.github.io/tags/%E7%94%9F%E6%B4%BB%E7%9A%84%E6%AF%92%E6%89%93/"/>
+    
+  </entry>
   
   <entry>
     <title>无线信道的密钥生成方法</title>
