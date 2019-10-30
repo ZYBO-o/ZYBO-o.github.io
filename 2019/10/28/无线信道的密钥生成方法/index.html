@@ -99,15 +99,22 @@
 
 
 
+<meta name="description" content="摘要与引言 本文回顾了近二十年来物理层安全领域的发展, 着重追踪了基于密钥的物理层安全机制的演变过程.无线信道密钥生成方法的核心：在于合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥. 本文结构：  首先从互易性验证、误差补偿、信道特征及去相关四个方面对信道的测量, 结合真实的应用场景作了详细的分析.  在测量值量化、信息调和以及保密增强环节, 分别讨论了该领域已有文献在这些环节">
 <meta name="keywords" content="论文积累与想法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无线信道的密钥生成方法">
 <meta property="og:url" content="https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/index.html">
 <meta property="og:site_name" content="zybTree&#39;s Blogs">
+<meta property="og:description" content="摘要与引言 本文回顾了近二十年来物理层安全领域的发展, 着重追踪了基于密钥的物理层安全机制的演变过程.无线信道密钥生成方法的核心：在于合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥. 本文结构：  首先从互易性验证、误差补偿、信道特征及去相关四个方面对信道的测量, 结合真实的应用场景作了详细的分析.  在测量值量化、信息调和以及保密增强环节, 分别讨论了该领域已有文献在这些环节">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-28T03:29:36.845Z">
+<meta property="og:image" content="https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/1.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/2.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/3.png">
+<meta property="og:updated_time" content="2019-10-30T03:02:10.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无线信道的密钥生成方法">
+<meta name="twitter:description" content="摘要与引言 本文回顾了近二十年来物理层安全领域的发展, 着重追踪了基于密钥的物理层安全机制的演变过程.无线信道密钥生成方法的核心：在于合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥. 本文结构：  首先从互易性验证、误差补偿、信道特征及去相关四个方面对信道的测量, 结合真实的应用场景作了详细的分析.  在测量值量化、信息调和以及保密增强环节, 分别讨论了该领域已有文献在这些环节">
+<meta name="twitter:image" content="https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/1.png">
 
 
 
@@ -395,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1k
                 </span>
               
 
@@ -420,7 +427,31 @@
       
 
       
-        
+        <h1 id="摘要与引言"><a href="#摘要与引言" class="headerlink" title="摘要与引言"></a>摘要与引言</h1><blockquote>
+<p>本文回顾了近二十年来物理层安全领域的发展, <strong>着重追踪了基于密钥的物理层安全机制的演变过程</strong>.无线信道密钥生成方法的<strong>核心</strong>：<font color="red">在于合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥</font>.</p>
+<p>本文结构：</p>
+<ul>
+<li>首先从<strong>互易性验证</strong>、<strong>误差补偿</strong>、<strong>信道特征</strong>及<strong>去相关</strong>四个方面对信道的测量, 结合真实的应用场景作了详细的分析. </li>
+<li>在<strong>测量值量化</strong>、<strong>信息调和</strong>以及<strong>保密增强</strong>环节, 分别讨论了该领域已有文献在这些环节提出的方法的理论依据并对比了基于各种不同方法的密钥的生成算法的优劣.</li>
+<li>归纳了在第五代移动通信方式下该领域潜在的研究方向和可能面临的难题.</li>
+</ul>
+</blockquote>
+<p>基于信息论安全的物理层安全的研究发展为两条主线: 由<strong>Wyner引导的无密钥安全</strong>和由<strong>Shannon和Maurer引导的基于密钥的安全机制</strong>.</p>
+<p><strong>Shannon在《 Communication theory of secrecy systems》中建立的物理层安全模型</strong>是基于信息论的严格意义上的绝对安全,  要求窃听者接收到加密后消息的后验概率等于消息的先验概率, 从而保证窃听者无法从窃听信号中获得任何信息.(<em>然而该结论是一种悲观的结果因为只有密钥的熵不小于源信号的信息, 也就是至少达到“一次 一密”时才能够达到绝对安全.</em>)</p>
+<p><strong>Wyner在《The wire-tap channel》引入了窃听信道的模型</strong>:在窃听者的信道是合法接收者的退化信道的假设下, 可以在保证不泄露给窃听者任何信息的条件下, 最大化发送者到合法接收者的传输速率. </p>
+<p>Maurer认为Wyner 的退化窃听信道未必现实, 并在《 Secret key agreement by public discussion from common information》最先提出了一种当窃听者的信道优于合法接收者时仍可以进行安全通信的方法. 该方法的核心在于<strong>让合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥</strong>.</p>
+<h1 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h1><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/1.png" alt></p>
+<p>图 1 描述的是一个无噪的密钥生成模型, Alice、Bob 和 Eve 分别表示发送者、合法接收者和窃听者, <em>X</em> 为 Alice 的发送信号, <em>Y</em> 为 Bob 的接收信号, 而 <em>Z</em> 是 Eve 的接收信号, <em>P**XYZ</em> , , 为 <em>X</em>、<em>Y</em> 和 <em>Z</em> 的联合分布函数.  d为系统中的相干距离, 超出相干距离之外的窃听者获得的信道观测值可以看作和合法双方的信道观测值之间是统计独立的. </p>
+<p>在该模型下 Alice 和 Bob 可以从无噪公共信道中获得的最大安全速率可以描述为S(XY||Z)* , 该速率的上界和下界可以表述为：</p>
+<p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/2.png" alt></p>
+<p>国内该领域的研究刚刚开始, 主要集中于对量化和信息调和方法的改进, 并在仿真系统中进行验证, 但还尚未出现实际的系统验证.  </p>
+<p>目前文献中获取共享密钥的典型流程如图 2 所示, 主要包括以下四个步骤: </p>
+<p>(1) <strong>信道测量</strong>: Alice 和 Bob 通过发送导频到对端再测量信道的某些特征来获取两者之间的无线信道随着时间的变化值.  </p>
+<p>(2) <strong>量化</strong>: 将测量值用不同的量化方法转换成为一串密钥比特.  </p>
+<p>(3) <strong>信息调和</strong>: 应用一种信息调和协议丢弃或者纠正两端生成的密钥比特的差异.  </p>
+<p>(4) <strong>保密增强</strong>: 丢弃部分一致的比特或者执行某种比特转换来强化密钥, 增大密钥的熵并且模糊窃听者在上一个信息调和步骤中可能获取的局部信息. </p>
+<p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/3.png" alt></p>
+
       
     </div>
     
@@ -514,8 +545,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -623,6 +663,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要与引言"><span class="nav-number">1.</span> <span class="nav-text">摘要与引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统模型"><span class="nav-number">2.</span> <span class="nav-text">系统模型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -650,7 +706,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">3.6k</span>
+    <span title="Site words total count">4.6k</span>
   
 </div>
 
