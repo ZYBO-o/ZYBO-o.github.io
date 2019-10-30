@@ -110,7 +110,8 @@
 <meta property="og:image" content="https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/1.png">
 <meta property="og:image" content="https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/2.png">
 <meta property="og:image" content="https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/3.png">
-<meta property="og:updated_time" content="2019-10-30T03:02:10.810Z">
+<meta property="og:image" content="https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/4.png">
+<meta property="og:updated_time" content="2019-10-30T07:52:51.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无线信道的密钥生成方法">
 <meta name="twitter:description" content="摘要与引言 本文回顾了近二十年来物理层安全领域的发展, 着重追踪了基于密钥的物理层安全机制的演变过程.无线信道密钥生成方法的核心：在于合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥. 本文结构：  首先从互易性验证、误差补偿、信道特征及去相关四个方面对信道的测量, 结合真实的应用场景作了详细的分析.  在测量值量化、信息调和以及保密增强环节, 分别讨论了该领域已有文献在这些环节">
@@ -402,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  1.5k
                 </span>
               
 
@@ -440,6 +441,11 @@
 <p><strong>Shannon在《 Communication theory of secrecy systems》中建立的物理层安全模型</strong>是基于信息论的严格意义上的绝对安全,  要求窃听者接收到加密后消息的后验概率等于消息的先验概率, 从而保证窃听者无法从窃听信号中获得任何信息.(<em>然而该结论是一种悲观的结果因为只有密钥的熵不小于源信号的信息, 也就是至少达到“一次 一密”时才能够达到绝对安全.</em>)</p>
 <p><strong>Wyner在《The wire-tap channel》引入了窃听信道的模型</strong>:在窃听者的信道是合法接收者的退化信道的假设下, 可以在保证不泄露给窃听者任何信息的条件下, 最大化发送者到合法接收者的传输速率. </p>
 <p>Maurer认为Wyner 的退化窃听信道未必现实, 并在《 Secret key agreement by public discussion from common information》最先提出了一种当窃听者的信道优于合法接收者时仍可以进行安全通信的方法. 该方法的核心在于<strong>让合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥</strong>.</p>
+<br>
+
+<hr>
+<br>
+
 <h1 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h1><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/1.png" alt></p>
 <p>图 1 描述的是一个无噪的密钥生成模型, Alice、Bob 和 Eve 分别表示发送者、合法接收者和窃听者, <em>X</em> 为 Alice 的发送信号, <em>Y</em> 为 Bob 的接收信号, 而 <em>Z</em> 是 Eve 的接收信号, <em>P**XYZ</em> , , 为 <em>X</em>、<em>Y</em> 和 <em>Z</em> 的联合分布函数.  d为系统中的相干距离, 超出相干距离之外的窃听者获得的信道观测值可以看作和合法双方的信道观测值之间是统计独立的. </p>
 <p>在该模型下 Alice 和 Bob 可以从无噪公共信道中获得的最大安全速率可以描述为S(XY||Z)* , 该速率的上界和下界可以表述为：</p>
@@ -451,7 +457,19 @@
 <p>(3) <strong>信息调和</strong>: 应用一种信息调和协议丢弃或者纠正两端生成的密钥比特的差异.  </p>
 <p>(4) <strong>保密增强</strong>: 丢弃部分一致的比特或者执行某种比特转换来强化密钥, 增大密钥的熵并且模糊窃听者在上一个信息调和步骤中可能获取的局部信息. </p>
 <p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/3.png" alt></p>
+<br>
 
+<hr>
+<br>
+
+<h1 id="信道测量"><a href="#信道测量" class="headerlink" title="信道测量"></a>信道测量</h1><h2 id="一-互易性验证"><a href="#一-互易性验证" class="headerlink" title="一.互易性验证"></a>一.互易性验证</h2><blockquote>
+<p> 移动无线信道的主要特征就是多径传播, 其具有更加丰富的多径衰落, 多径衰落的主要参数体现在时延扩展和相关带宽、多普勒扩展与相干时间. </p>
+<p><strong>时分双工</strong>的上下行采用同一频率, 具有很高的频谱利用率, 同时上下行传输由于采用了同一频率, 上下行信号在无线信道中经历了相似的环境, 具有<strong>短时互易性</strong>. 此外, 无线多径信道还具有<strong>空间唯一性</strong>、<strong>快速时变性</strong>、<strong>不可预测性</strong>. </p>
+<p>无线信道的空间唯一性表现为<strong>不同空间的无线信道特征是唯一的</strong>, <strong>当窃听者离合法接收者的距离超过波长的数量级时, 无线信道特征将不再相关</strong>. 同时, 在移动通信中, 信道中物体的移动将引起信道的特征快速的变化, 而由于多径效应, 每条径上的衰落各不相同, 这种无线信道的特征的变化是随机的、不可预测的. </p>
+</blockquote>
+<p>Maurer在《Secret key agreement by public discussion from common information》最先提出通过提取通信双方公共信道的共有信息生成加密密钥. 根据信道的短时互易性, 通信双方同一时刻测得的信道特征相同, 可以作为生成密钥的随机源. 由于信道随着时间变化, 密钥自动更新, 并且这种更新对窃听者而言, 是无法预测的. 目前, TDD 系统中信道的互易模型如图 3 所示.</p>
+<p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/4.png" alt></p>
+<h2 id="二-误差修正"><a href="#二-误差修正" class="headerlink" title="二.误差修正"></a>二.误差修正</h2>
       
     </div>
     
@@ -672,7 +690,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要与引言"><span class="nav-number">1.</span> <span class="nav-text">摘要与引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统模型"><span class="nav-number">2.</span> <span class="nav-text">系统模型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要与引言"><span class="nav-number">1.</span> <span class="nav-text">摘要与引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统模型"><span class="nav-number">2.</span> <span class="nav-text">系统模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信道测量"><span class="nav-number">3.</span> <span class="nav-text">信道测量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-互易性验证"><span class="nav-number">3.1.</span> <span class="nav-text">一.互易性验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-误差修正"><span class="nav-number">3.2.</span> <span class="nav-text">二.误差修正</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -706,7 +724,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">4.6k</span>
+    <span title="Site words total count">5k</span>
   
 </div>
 
