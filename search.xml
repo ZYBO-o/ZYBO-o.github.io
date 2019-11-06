@@ -3,7 +3,24 @@
   <entry>
     <title>大话无线通信——快速理解无线通信</title>
     <url>/2019/11/06/%E5%A4%A7%E8%AF%9D%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E7%90%86%E8%A7%A3%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="有线与无线的类比"><a href="#有线与无线的类比" class="headerlink" title="有线与无线的类比"></a>有线与无线的类比</h1><blockquote>
+<p>通过简单的有线通信来和无线通信作类比，能够快速对无线通信系统和运作方式有一个整体的初步认识。</p>
+</blockquote>
+<p>无线通信和有线通信的区别，说复杂的话会有很多很多，但是说简单一点，只有两点：<strong><font color="red">接口</font></strong>和<strong><font color="red">信道</font></strong>。</p>
+<ul>
+<li><strong>接口：</strong>有限通信即固定电话的接口是钉在墙上，插一根电话线就可以使用，通过电话接口可以和固网进行联系。 但是，手机和基站通信的接口是看不见，摸不着的。</li>
+<li><strong>信道：</strong>固定电话的信号是通过电话线进行传递的，称为”有线信道”；手机的信号是通过电磁波在空中传送的，看不见，摸不着，称为”无线信道”。</li>
+</ul>
+<h1 id="无线通信需要解决的主要问题"><a href="#无线通信需要解决的主要问题" class="headerlink" title="无线通信需要解决的主要问题"></a>无线通信需要解决的主要问题</h1><h2 id="一-基站如何区分手机"><a href="#一-基站如何区分手机" class="headerlink" title="一.基站如何区分手机"></a>一.基站如何区分手机</h2><blockquote>
+<p>在固定电话时代，要识别一路话音信号来自哪台电话是一件很简单的事情，看看它来自墙上的那个接口，通过哪根电话线送到电话交接箱就可以了，交接箱上的标签写得很清楚。</p>
+<p>​    而无线通信时代，空中接口并没有一个实实在在的插口，就是一面天线在接收电磁波，而且有很多手机向着天线发射电磁波。所以基站搞清哪个手机发比较困难。</p>
+</blockquote>
+<p>1.手机的滤波器对频率有很强的区分能力，所以可以让手机工作在不同的频率上来区分它们。</p>
+<p>2.无线通信系统都有着自己的时间体系，让手机工作在不同的时间里，也可以区分他们。（比如GSM，在中心交换机里面用晶振产生时间，然后一级一级让下传送时钟，已形成全网时间的统一）</p>
+<h2 id="二-手机如何找到基站"><a href="#二-手机如何找到基站" class="headerlink" title="二.手机如何找到基站"></a>二.手机如何找到基站</h2><blockquote>
+<p>对于固定电话而言，想要找到通信网络是非常简单的，只要把电话线往墙上的接口一插就搞定了。但是对于手机而言，想要找到移动通信网络要多复杂很多，因为手机并不知道要建立联系的基站在哪里，这就需要建立一个机制来让手机找到基站。</p>
+</blockquote>
+<h3 id="1-发现基站"><a href="#1-发现基站" class="headerlink" title="1.发现基站"></a>1.发现基站</h3>]]></content>
       <categories>
         <category>通信知识积累</category>
       </categories>
