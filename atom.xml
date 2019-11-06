@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zybtree.github.io/"/>
-  <updated>2019-11-01T07:02:26.882Z</updated>
+  <updated>2019-11-06T08:01:51.509Z</updated>
   <id>https://zybtree.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>大话无线通信——快速理解无线通信</title>
+    <link href="https://zybtree.github.io/2019/11/06/%E5%A4%A7%E8%AF%9D%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E7%90%86%E8%A7%A3%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/"/>
+    <id>https://zybtree.github.io/2019/11/06/大话无线通信——快速理解无线通信/</id>
+    <published>2019-11-06T08:00:40.000Z</published>
+    <updated>2019-11-06T08:01:51.509Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="通信知识积累" scheme="https://zybtree.github.io/categories/%E9%80%9A%E4%BF%A1%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/"/>
+    
+    
+      <category term="大话无线通信" scheme="https://zybtree.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>TR-069学习</title>
@@ -43,32 +69,6 @@
   </entry>
   
   <entry>
-    <title>2019年生活费记录</title>
-    <link href="https://zybtree.github.io/2019/10/28/2019%E5%B9%B4%E7%94%9F%E6%B4%BB%E8%B4%B9%E5%88%86%E5%B8%83%E6%83%85%E5%86%B5/"/>
-    <id>https://zybtree.github.io/2019/10/28/2019年生活费分布情况/</id>
-    <published>2019-10-28T02:58:48.000Z</published>
-    <updated>2019-11-02T02:26:21.844Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="2019年11月分生活费使用情况"><a href="#2019年11月分生活费使用情况" class="headerlink" title="2019年11月分生活费使用情况"></a>2019年11月分生活费使用情况</h1><h2 id="收入情况"><a href="#收入情况" class="headerlink" title="收入情况"></a>收入情况</h2><ul><li>父母施舍：900</li><li>国家补贴：600</li><li>实验室工资：（计划2000）</li><li>奖学金：（计划4000）</li></ul><p>——总共：7500</p><h2 id="计划消费"><a href="#计划消费" class="headerlink" title="计划消费"></a>计划消费</h2><ul><li>面膜60份：174</li><li>唇膏一只：34</li><li>简单书架：29</li><li>皮带一根：40</li><li>遇见香氛洗面奶一套：148</li><li>//资生堂补水一套：540</li><li>薇诺娜面霜一只：88</li><li>枕头一只：49</li><li>花呗：1000</li><li>健身卡：720</li><li>吃饭+水果：800</li><li>请客：600</li></ul><p>——总共：3922</p><h2 id="从家里带的物品"><a href="#从家里带的物品" class="headerlink" title="从家里带的物品"></a>从家里带的物品</h2><ul><li>洗衣液</li><li>衣架</li><li>衣服（运动衫）</li><li>磨砂洗面</li><li>护发素</li><li>牙膏</li><li>指甲刀</li><li>口罩</li><li>草稿纸</li><li>梳子</li></ul><p><strong>剩余：</strong>3778</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="生活柴米油盐" scheme="https://zybtree.github.io/categories/%E7%94%9F%E6%B4%BB%E6%9F%B4%E7%B1%B3%E6%B2%B9%E7%9B%90/"/>
-    
-    
-      <category term="生活的毒打" scheme="https://zybtree.github.io/tags/%E7%94%9F%E6%B4%BB%E7%9A%84%E6%AF%92%E6%89%93/"/>
-    
-  </entry>
-  
-  <entry>
     <title>无线信道的密钥生成方法</title>
     <link href="https://zybtree.github.io/2019/10/28/%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93%E7%9A%84%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95/"/>
     <id>https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/</id>
@@ -91,6 +91,32 @@
     
     
       <category term="论文积累与想法" scheme="https://zybtree.github.io/tags/%E8%AE%BA%E6%96%87%E7%A7%AF%E7%B4%AF%E4%B8%8E%E6%83%B3%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2019年生活费记录</title>
+    <link href="https://zybtree.github.io/2019/10/28/2019%E5%B9%B4%E7%94%9F%E6%B4%BB%E8%B4%B9%E5%88%86%E5%B8%83%E6%83%85%E5%86%B5/"/>
+    <id>https://zybtree.github.io/2019/10/28/2019年生活费分布情况/</id>
+    <published>2019-10-28T02:58:48.000Z</published>
+    <updated>2019-11-02T02:26:21.844Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="2019年11月分生活费使用情况"><a href="#2019年11月分生活费使用情况" class="headerlink" title="2019年11月分生活费使用情况"></a>2019年11月分生活费使用情况</h1><h2 id="收入情况"><a href="#收入情况" class="headerlink" title="收入情况"></a>收入情况</h2><ul><li>父母施舍：900</li><li>国家补贴：600</li><li>实验室工资：（计划2000）</li><li>奖学金：（计划4000）</li></ul><p>——总共：7500</p><h2 id="计划消费"><a href="#计划消费" class="headerlink" title="计划消费"></a>计划消费</h2><ul><li>面膜60份：174</li><li>唇膏一只：34</li><li>简单书架：29</li><li>皮带一根：40</li><li>遇见香氛洗面奶一套：148</li><li>//资生堂补水一套：540</li><li>薇诺娜面霜一只：88</li><li>枕头一只：49</li><li>花呗：1000</li><li>健身卡：720</li><li>吃饭+水果：800</li><li>请客：600</li></ul><p>——总共：3922</p><h2 id="从家里带的物品"><a href="#从家里带的物品" class="headerlink" title="从家里带的物品"></a>从家里带的物品</h2><ul><li>洗衣液</li><li>衣架</li><li>衣服（运动衫）</li><li>磨砂洗面</li><li>护发素</li><li>牙膏</li><li>指甲刀</li><li>口罩</li><li>草稿纸</li><li>梳子</li></ul><p><strong>剩余：</strong>3778</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="生活柴米油盐" scheme="https://zybtree.github.io/categories/%E7%94%9F%E6%B4%BB%E6%9F%B4%E7%B1%B3%E6%B2%B9%E7%9B%90/"/>
+    
+    
+      <category term="生活的毒打" scheme="https://zybtree.github.io/tags/%E7%94%9F%E6%B4%BB%E7%9A%84%E6%AF%92%E6%89%93/"/>
     
   </entry>
   
@@ -125,7 +151,7 @@
     <link href="https://zybtree.github.io/2019/10/24/one-min-speech/"/>
     <id>https://zybtree.github.io/2019/10/24/one-min-speech/</id>
     <published>2019-10-24T06:05:00.000Z</published>
-    <updated>2019-11-04T06:50:21.262Z</updated>
+    <updated>2019-11-04T06:58:38.936Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Hello,everyone.Today l want to introduce a famous Japanese director  makoto shinkai who is my favoriate anime director.</p><p><img src="//zybtree.github.io/2019/10/24/one-min-speech/1.jpeg" alt></p><p>This is 5 Centimeter Per Second which is released in 2007。</p><p><img src="//zybtree.github.io/2019/10/24/one-min-speech/2.jpeg" alt></p><p>This is The Garden of Words，this is my favoriate one.</p><p><img src="//zybtree.github.io/2019/10/24/one-min-speech/3.jpeg" alt></p><p>This is Your name ,this is  his most famous movie</p><p><img src="//zybtree.github.io/2019/10/24/one-min-speech/4.jpg" alt></p><p>This is Weathering With You，this moive has released on November 1st.</p><p>Shinkai is good at shooting  beautiful and spectacular scenery.Missing and distance are the same themes in his animations.</p><p>shinkai’s work is like a vibrato in a piece of music which echoes in the our heart for a long time and cannot be calmed down.He firmly grasped the emotions of this era which can always hit people’s hearts</p>]]></content>
     
