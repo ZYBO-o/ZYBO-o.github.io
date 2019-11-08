@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>基于无线信道特征的物理层安全编码技术研究</title>
+    <url>/2019/11/08/%E5%9F%BA%E4%BA%8E%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93%E7%89%B9%E5%BE%81%E7%9A%84%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>论文学习</category>
+      </categories>
+      <tags>
+        <tag>论文积累与想法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>大话无线通信——快速理解无线通信</title>
     <url>/2019/11/06/%E5%A4%A7%E8%AF%9D%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E7%90%86%E8%A7%A3%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="有线与无线的类比"><a href="#有线与无线的类比" class="headerlink" title="有线与无线的类比"></a>有线与无线的类比</h1><blockquote>
@@ -17,10 +28,15 @@
 </blockquote>
 <p>1.手机的滤波器对频率有很强的区分能力，所以可以让手机工作在不同的频率上来区分它们。</p>
 <p>2.无线通信系统都有着自己的时间体系，让手机工作在不同的时间里，也可以区分他们。（比如GSM，在中心交换机里面用晶振产生时间，然后一级一级让下传送时钟，已形成全网时间的统一）</p>
+<br>
+
+<hr>
+<br>
+
 <h2 id="二-手机如何找到基站"><a href="#二-手机如何找到基站" class="headerlink" title="二.手机如何找到基站"></a>二.手机如何找到基站</h2><blockquote>
 <p>对于固定电话而言，想要找到通信网络是非常简单的，只要把电话线往墙上的接口一插就搞定了。但是对于手机而言，想要找到移动通信网络要多复杂很多，因为手机并不知道要建立联系的基站在哪里，这就需要建立一个机制来让手机找到基站。</p>
 </blockquote>
-<h3 id="1-发现基站"><a href="#1-发现基站" class="headerlink" title="1.发现基站"></a>1.发现基站</h3>]]></content>
+<h3 id="发现基站"><a href="#发现基站" class="headerlink" title="发现基站"></a>发现基站</h3>]]></content>
       <categories>
         <category>通信知识积累</category>
       </categories>
@@ -97,7 +113,8 @@
 <hr>
 <br>
 
-<h1 id="量化策略"><a href="#量化策略" class="headerlink" title="量化策略"></a>量化策略</h1>]]></content>
+<h1 id="量化策略"><a href="#量化策略" class="headerlink" title="量化策略"></a>量化策略</h1><p>了解到单门限，自适应量化门限，多比特量化等方法， 每种量化方法都有各自的优缺点, 量化阶数越高, 密钥的生成速率越高, 但是噪声对其影响导致错误的概率也就越大; 量化阶数越低, 密钥生成速率低, 但是密钥的一致性就更高。一个好的量化方法还应当可以适应场景的切换, 根据静止和运动场景调整量化的方法, 达到最优的量化效果。</p>
+]]></content>
       <categories>
         <category>论文学习</category>
       </categories>
