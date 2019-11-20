@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>雅思口语积累</title>
+    <url>/2019/11/20/%E9%9B%85%E6%80%9D%E5%8F%A3%E8%AF%AD%E7%A7%AF%E7%B4%AF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>英语学习与积累</category>
+      </categories>
+      <tags>
+        <tag>口语练习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>研一上学期复习计划</title>
     <url>/2019/11/18/%E7%A0%94%E4%B8%80%E4%B8%8A%E5%AD%A6%E6%9C%9F%E5%A4%8D%E4%B9%A0%E8%AE%A1%E5%88%92/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="研一上学期复习计划"><a href="#研一上学期复习计划" class="headerlink" title="研一上学期复习计划"></a>研一上学期复习计划</h1><h2 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h2><p>不出意外基本就是14周考试，剩余两周时间复习，复习计划：</p>
@@ -218,7 +229,7 @@
 <p>CPE的WAN配置管理协议的出现解决了这样的服务难题，它提供了家庭网络设备进行管理配置的通用框架和协议，从网络侧(WAN)对家庭网络中的网关、路由器、机项盒等设备进行远程集中管理。它主要包括两类逻辑设备:客户端设备(CPE)和自动配置服务器(ACS)。在家庭网络环境下，从网络侧通过自动配置服务器，对用户设备进行配置和管理，同时所有与用户设备相关的其他操作，诊断、升级等均可由自动配置服务器来完成。 </p>
 ]]></content>
       <categories>
-        <category>协议学习</category>
+        <category>通信知识积累</category>
       </categories>
       <tags>
         <tag>TR-069</tag>

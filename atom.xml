@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zybtree.github.io/"/>
-  <updated>2019-11-18T11:40:52.753Z</updated>
+  <updated>2019-11-20T08:32:10.320Z</updated>
   <id>https://zybtree.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>雅思口语积累</title>
+    <link href="https://zybtree.github.io/2019/11/20/%E9%9B%85%E6%80%9D%E5%8F%A3%E8%AF%AD%E7%A7%AF%E7%B4%AF/"/>
+    <id>https://zybtree.github.io/2019/11/20/雅思口语积累/</id>
+    <published>2019-11-20T08:30:59.000Z</published>
+    <updated>2019-11-20T08:32:10.320Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="英语学习与积累" scheme="https://zybtree.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%A7%AF%E7%B4%AF/"/>
+    
+    
+      <category term="口语练习" scheme="https://zybtree.github.io/tags/%E5%8F%A3%E8%AF%AD%E7%BB%83%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>研一上学期复习计划</title>
@@ -125,7 +151,7 @@
     <link href="https://zybtree.github.io/2019/11/01/TR-069%E5%AD%A6%E4%B9%A0/"/>
     <id>https://zybtree.github.io/2019/11/01/TR-069学习/</id>
     <published>2019-11-01T03:06:58.000Z</published>
-    <updated>2019-11-01T07:02:26.882Z</updated>
+    <updated>2019-11-20T08:28:17.496Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><strong>名词解释：</strong></p><ul><li><strong>CPE：</strong>Customer Premise Equipment，客户前置设备,实际是一种接收移动信号并以无线WIFI信号转发出来的的移动信号接入设备，它也是一种将高速4G或者5G信号转换成WiFi信号的设备，可支持同时上网的移动终端数量也较多。CPE可大量应用于农村，城镇，医院，单位，工厂，小区等无线网络接入，能节省铺设有线网络的费用。——摘自百度百科</li><li><strong>ACS：</strong>Auto-Configuration Server，自动配置服务器，在TR-069协议网络架构中负责对终端设备CPE进行管理。ACS与CPE间的接口为南向接口，ACS与管理系统间的接口为北向接口。——摘自百度百科</li></ul></blockquote><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>现阶段的家庭网络设备大都只提供了在局域网侧(LAN)的管理配置接口和界面，因此运营商的维护人员需要上门进行安装或调试设备，这样的人工服务方式显然运行效率不高，而且需要花费大量的人力。随着运营商家庭网络业务的开展，将会有大量的设备需要安置在用户家中，采用过去人工方式对这些设备进行维护和管理将会成为一个巨大的负担。 </p><p>CPE的WAN配置管理协议的出现解决了这样的服务难题，它提供了家庭网络设备进行管理配置的通用框架和协议，从网络侧(WAN)对家庭网络中的网关、路由器、机项盒等设备进行远程集中管理。它主要包括两类逻辑设备:客户端设备(CPE)和自动配置服务器(ACS)。在家庭网络环境下，从网络侧通过自动配置服务器，对用户设备进行配置和管理，同时所有与用户设备相关的其他操作，诊断、升级等均可由自动配置服务器来完成。 </p>]]></content>
     
@@ -139,7 +165,7 @@
     </summary>
     
     
-      <category term="协议学习" scheme="https://zybtree.github.io/categories/%E5%8D%8F%E8%AE%AE%E5%AD%A6%E4%B9%A0/"/>
+      <category term="通信知识积累" scheme="https://zybtree.github.io/categories/%E9%80%9A%E4%BF%A1%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/"/>
     
     
       <category term="TR-069" scheme="https://zybtree.github.io/tags/TR-069/"/>
