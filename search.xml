@@ -3,7 +3,34 @@
   <entry>
     <title>Wireless physical layer security</title>
     <url>/2019/11/22/Wireless-physical-layer-security/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Wireless-physical-layer-security"><a href="#Wireless-physical-layer-security" class="headerlink" title="Wireless physical layer security"></a><strong>Wireless physical layer security</strong></h1>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Wireless-physical-layer-security"><a href="#Wireless-physical-layer-security" class="headerlink" title="Wireless physical layer security"></a><strong>Wireless physical layer security</strong></h1><blockquote>
+<p>论文回顾了这些发展，首先简要介绍了使用信息论来更普遍地描述保密性的历史历史，然后讨论了现代无线网络中主要的信道模型的主要结果。</p>
+</blockquote>
+<h2 id="Shannon’s-Cipher-System"><a href="#Shannon’s-Cipher-System" class="headerlink" title="Shannon’s Cipher System"></a>Shannon’s Cipher System</h2><p><strong>策略</strong>：</p>
+<p>提出无噪声密码系统(下图所示)。发送方(Alice)希望将消息M传递给合法的接收方(Bob)，同时保持其对窃听者(Eve)的机密，该窃听者可以拦截传输。Alice和Bob分享了一个Eve不知道的公共密钥K。为了建立消息的保密性，Alice使用此密钥将消息M加密为代码字X，然后将其传输。</p>
+<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/Wireless-physical-layer-security/1.png" style="zoom:50%;">
+
+<p><strong>缺陷：</strong></p>
+<p>Alice和Bob必须共享与他们要交换的消息具有相同长度的秘密密钥，这是一大缺陷。但这主要源于以下事实：通信通道被假定为无噪声的，因此Eve观察到的声音与Bob完全一样。但是，物理层（尤其是在无线通信系统中）几乎没有噪音。下面的模型中有通过物理方式明确利用通信通道的这一缺陷来建立保密性。</p>
+<hr>
+<h2 id="Wyner’s-Wiretap-Channel"><a href="#Wyner’s-Wiretap-Channel" class="headerlink" title="Wyner’s Wiretap Channel"></a>Wyner’s Wiretap Channel</h2><p><strong>策略：</strong></p>
+<p>它的通信过程类似于Shannon的密码系统：Alice希望向Bob传输机密消息，同时保持对Eve的秘密。窃听通道通过考虑如图2所示的嘈杂的通信通道来概括先前的情况。但是，没有密钥可供合法用户使用。</p>
+<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/Wireless-physical-layer-security/2.png" style="zoom:50%;">
+
+<p>现在的目标是双重的：Alice必须将消息M编码为长度为n的码字X^n，以便已收到Y^n的鲍勃能够可靠地恢复消息。</p>
+<blockquote>
+<p>注意，长度为n的代码字使用信道n次;即X^n =（X1，…，Xn），其中Xi表示该信道的使用。类似地，Y^n=Y1，…，Yn）和Z^n =（Z1 ，……，Zn)分别描述了合法接收者和窃听者处的相应通道输出。</p>
+</blockquote>
+<p>接下来讨论如何在此设置中指定保密性.</p>
+<h3 id="Secrecy-Criterion"><a href="#Secrecy-Criterion" class="headerlink" title="Secrecy Criterion"></a>Secrecy Criterion</h3><blockquote>
+<p>香农的密码系统考虑了完全保密的标准。这是一个非常严格的标准，因为它要求消息M和Eve的通道输出Z^n之间严格的统计独立性。特别是在通信信道嘈杂时，这很难实现，并且通过仅在块长n中渐近地要求统计独立性来放宽准则是合理的。</p>
+</blockquote>
+<p>Wyner 要求条件熵n1 H(M|Zn) ≈ n1 H(M) ，这样通道输出Z^n的信号不会降低消息M的不确定度；也就是说，它不提供有关M的任何信息。此标准被称为弱保密性，通常在相互信息方面等效地写为 </p>
+<p> $\frac{1}{n}(M;Zn)\lim_{n\rightarrow+\infty} 0$</p>
+<p>最近，通过考虑语义安全性进一步加强了该标准。在此，Eve不仅无法解码所传输的消息，而且根本无法获得任何有关它的信息。</p>
+<h3 id="Secrecy-Capacity"><a href="#Secrecy-Capacity" class="headerlink" title="Secrecy Capacity"></a>Secrecy Capacity</h3><p>对于离散的无记忆通道，在给定通道输入的情况下，每个独立通道使用的发送输入和接收输出符号之间的关系可以通过通道输出的有条件概率分布来描述，Wyner在文献The wire-tap channel中提出了机密容量的概念。对于降级通道（即，其中X-Y-Z形成马尔可夫链的通道）的情况，结果如图2所示，这意味着X和Z在统计上独立于Y。</p>
+<p>实现保密能力的关键思想如下：与其使用所有可用资源进行消息传输，不如通过添加Bob和Eve未知的“虚拟”消息，将其中的一部分用于随机化。具体来说，对于Alice想要发送的每个机密消息，有多个有效码字，并且随机编码器随机地均匀地选择其中一个。关键思想是，每个机密消息的随机率大致选择为I(V; Z)，取决于Eve的信道质量。因此，Eve将充满虚拟变量携带的无用信息，而没有剩余资源来解码机密消息本身。</p>
+]]></content>
       <categories>
         <category>物理层安全</category>
       </categories>
@@ -185,7 +212,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>论文学习</category>
+        <category>研究生学习</category>
       </categories>
       <tags>
         <tag>论文积累与想法</tag>
