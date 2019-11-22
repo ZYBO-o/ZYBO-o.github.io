@@ -8,14 +8,16 @@
 </blockquote>
 <h2 id="Shannon’s-Cipher-System"><a href="#Shannon’s-Cipher-System" class="headerlink" title="Shannon’s Cipher System"></a>Shannon’s Cipher System</h2><p><strong>策略</strong>：</p>
 <p>提出无噪声密码系统(下图所示)。发送方(Alice)希望将消息M传递给合法的接收方(Bob)，同时保持其对窃听者(Eve)的机密，该窃听者可以拦截传输。Alice和Bob分享了一个Eve不知道的公共密钥K。为了建立消息的保密性，Alice使用此密钥将消息M加密为代码字X，然后将其传输。</p>
-<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/Wireless-physical-layer-security/1.png" style="zoom:50%;">
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/1.png" style="zoom:50%;">
 
 <p><strong>缺陷：</strong></p>
 <p>Alice和Bob必须共享与他们要交换的消息具有相同长度的秘密密钥，这是一大缺陷。但这主要源于以下事实：通信通道被假定为无噪声的，因此Eve观察到的声音与Bob完全一样。但是，物理层（尤其是在无线通信系统中）几乎没有噪音。下面的模型中有通过物理方式明确利用通信通道的这一缺陷来建立保密性。</p>
 <hr>
+<br>
+
 <h2 id="Wyner’s-Wiretap-Channel"><a href="#Wyner’s-Wiretap-Channel" class="headerlink" title="Wyner’s Wiretap Channel"></a>Wyner’s Wiretap Channel</h2><p><strong>策略：</strong></p>
 <p>它的通信过程类似于Shannon的密码系统：Alice希望向Bob传输机密消息，同时保持对Eve的秘密。窃听通道通过考虑如图2所示的嘈杂的通信通道来概括先前的情况。但是，没有密钥可供合法用户使用。</p>
-<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/Wireless-physical-layer-security/2.png" style="zoom:50%;">
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/2.png" style="zoom:50%;">
 
 <p>现在的目标是双重的：Alice必须将消息M编码为长度为n的码字X^n，以便已收到Y^n的鲍勃能够可靠地恢复消息。</p>
 <blockquote>
@@ -30,6 +32,13 @@
 <p>最近，通过考虑语义安全性进一步加强了该标准。在此，Eve不仅无法解码所传输的消息，而且根本无法获得任何有关它的信息。</p>
 <h3 id="Secrecy-Capacity"><a href="#Secrecy-Capacity" class="headerlink" title="Secrecy Capacity"></a>Secrecy Capacity</h3><p>对于离散的无记忆通道，在给定通道输入的情况下，每个独立通道使用的发送输入和接收输出符号之间的关系可以通过通道输出的有条件概率分布来描述，Wyner在文献The wire-tap channel中提出了机密容量的概念。对于降级通道（即，其中X-Y-Z形成马尔可夫链的通道）的情况，结果如图2所示，这意味着X和Z在统计上独立于Y。</p>
 <p>实现保密能力的关键思想如下：与其使用所有可用资源进行消息传输，不如通过添加Bob和Eve未知的“虚拟”消息，将其中的一部分用于随机化。具体来说，对于Alice想要发送的每个机密消息，有多个有效码字，并且随机编码器随机地均匀地选择其中一个。关键思想是，每个机密消息的随机率大致选择为I(V; Z)，取决于Eve的信道质量。因此，Eve将充满虚拟变量携带的无用信息，而没有剩余资源来解码机密消息本身。</p>
+<hr>
+<br>
+
+<h2 id="Secure-Communication-over-Wireless-Channels"><a href="#Secure-Communication-over-Wireless-Channels" class="headerlink" title="Secure Communication over Wireless Channels"></a>Secure Communication over Wireless Channels</h2><blockquote>
+<p>在本节中，以上讨论的用于离散无记忆通道的安全性的信息理论方法被扩展到物理无线通道的模型。无线物理层安全性是这些概念的关键应用之一，因为在无线介质上进行信号广播是它不仅被其预期的接收者接收，而且还容易被非合法的接收者窃听。如上所述，无线介质的不完善将通过利用嘈杂的信道来帮助建立安全性。</p>
+</blockquote>
+<h3 id="Gaussian-Wiretap-Channels"><a href="#Gaussian-Wiretap-Channels" class="headerlink" title="Gaussian Wiretap Channels."></a>Gaussian Wiretap Channels.</h3><p>高斯窃听信道是无线信道的最基本模型，其线性时不变乘法链路受到加性高斯白噪声的破坏。</p>
 ]]></content>
       <categories>
         <category>物理层安全</category>
@@ -284,52 +293,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2019年生活费记录</title>
-    <url>/2019/10/28/2019%E5%B9%B4%E7%94%9F%E6%B4%BB%E8%B4%B9%E5%88%86%E5%B8%83%E6%83%85%E5%86%B5/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="2019年11月分生活费使用情况"><a href="#2019年11月分生活费使用情况" class="headerlink" title="2019年11月分生活费使用情况"></a>2019年11月分生活费使用情况</h1><h2 id="收入情况"><a href="#收入情况" class="headerlink" title="收入情况"></a>收入情况</h2><ul>
-<li>父母施舍：900</li>
-<li>国家补贴：600</li>
-<li>实验室工资：（计划2000）</li>
-<li>奖学金：（计划4000）</li>
-</ul>
-<p>——总共：7500</p>
-<h2 id="计划消费"><a href="#计划消费" class="headerlink" title="计划消费"></a>计划消费</h2><ul>
-<li>面膜60份：174</li>
-<li>唇膏一只：34</li>
-<li>简单书架：29</li>
-<li>皮带一根：40</li>
-<li>遇见香氛洗面奶一套：148</li>
-<li>//资生堂补水一套：540</li>
-<li>薇诺娜面霜一只：88</li>
-<li>枕头一只：49</li>
-<li>花呗：1000</li>
-<li>健身卡：720</li>
-<li>吃饭+水果：800</li>
-<li>请客：600</li>
-</ul>
-<p>——总共：3922</p>
-<h2 id="从家里带的物品"><a href="#从家里带的物品" class="headerlink" title="从家里带的物品"></a>从家里带的物品</h2><ul>
-<li>洗衣液</li>
-<li>衣架</li>
-<li>衣服（运动衫）</li>
-<li>磨砂洗面</li>
-<li>护发素</li>
-<li>牙膏</li>
-<li>指甲刀</li>
-<li>口罩</li>
-<li>草稿纸</li>
-<li>梳子</li>
-</ul>
-<p><strong>剩余：</strong>3778</p>
-]]></content>
-      <categories>
-        <category>生活柴米油盐</category>
-      </categories>
-      <tags>
-        <tag>生活的毒打</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>无线信道的密钥生成方法</title>
     <url>/2019/10/28/%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93%E7%9A%84%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="摘要与引言"><a href="#摘要与引言" class="headerlink" title="摘要与引言"></a>摘要与引言</h1><blockquote>
@@ -385,6 +348,52 @@
       </categories>
       <tags>
         <tag>论文积累与想法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2019年生活费记录</title>
+    <url>/2019/10/28/2019%E5%B9%B4%E7%94%9F%E6%B4%BB%E8%B4%B9%E5%88%86%E5%B8%83%E6%83%85%E5%86%B5/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="2019年11月分生活费使用情况"><a href="#2019年11月分生活费使用情况" class="headerlink" title="2019年11月分生活费使用情况"></a>2019年11月分生活费使用情况</h1><h2 id="收入情况"><a href="#收入情况" class="headerlink" title="收入情况"></a>收入情况</h2><ul>
+<li>父母施舍：900</li>
+<li>国家补贴：600</li>
+<li>实验室工资：（计划2000）</li>
+<li>奖学金：（计划4000）</li>
+</ul>
+<p>——总共：7500</p>
+<h2 id="计划消费"><a href="#计划消费" class="headerlink" title="计划消费"></a>计划消费</h2><ul>
+<li>面膜60份：174</li>
+<li>唇膏一只：34</li>
+<li>简单书架：29</li>
+<li>皮带一根：40</li>
+<li>遇见香氛洗面奶一套：148</li>
+<li>//资生堂补水一套：540</li>
+<li>薇诺娜面霜一只：88</li>
+<li>枕头一只：49</li>
+<li>花呗：1000</li>
+<li>健身卡：720</li>
+<li>吃饭+水果：800</li>
+<li>请客：600</li>
+</ul>
+<p>——总共：3922</p>
+<h2 id="从家里带的物品"><a href="#从家里带的物品" class="headerlink" title="从家里带的物品"></a>从家里带的物品</h2><ul>
+<li>洗衣液</li>
+<li>衣架</li>
+<li>衣服（运动衫）</li>
+<li>磨砂洗面</li>
+<li>护发素</li>
+<li>牙膏</li>
+<li>指甲刀</li>
+<li>口罩</li>
+<li>草稿纸</li>
+<li>梳子</li>
+</ul>
+<p><strong>剩余：</strong>3778</p>
+]]></content>
+      <categories>
+        <category>生活柴米油盐</category>
+      </categories>
+      <tags>
+        <tag>生活的毒打</tag>
       </tags>
   </entry>
   <entry>
