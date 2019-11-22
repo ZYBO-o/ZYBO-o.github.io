@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Wireless physical layer security</title>
+    <url>/2019/11/22/Wireless-physical-layer-security/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Wireless-physical-layer-security"><a href="#Wireless-physical-layer-security" class="headerlink" title="Wireless physical layer security"></a><strong>Wireless physical layer security</strong></h1>]]></content>
+      <categories>
+        <category>物理层安全</category>
+      </categories>
+      <tags>
+        <tag>论文积累与想法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>雅思口语积累</title>
     <url>/2019/11/20/%E9%9B%85%E6%80%9D%E5%8F%A3%E8%AF%AD%E7%A7%AF%E7%B4%AF/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="基本话题"><a href="#基本话题" class="headerlink" title="基本话题"></a>基本话题</h1><h2 id="Name"><a href="#Name" class="headerlink" title="Name"></a>Name</h2><p><strong>What is your name?</strong></p>
@@ -186,7 +197,7 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="基础学习"><a href="#基础学习" class="headerlink" title="基础学习"></a>基础学习</h1><p>解决的问题：解决物理层电磁信号泄露带来的安全问题。</p>
 ]]></content>
       <categories>
-        <category>论文学习</category>
+        <category>物理层安全</category>
       </categories>
       <tags>
         <tag>论文积累与想法</tag>
@@ -219,7 +230,7 @@
 </blockquote>
 <h3 id="发现基站"><a href="#发现基站" class="headerlink" title="发现基站"></a>发现基站</h3>]]></content>
       <categories>
-        <category>通信知识积累</category>
+        <category>物理层安全</category>
       </categories>
       <tags>
         <tag>大话无线通信</tag>
@@ -239,7 +250,7 @@
 <p>CPE的WAN配置管理协议的出现解决了这样的服务难题，它提供了家庭网络设备进行管理配置的通用框架和协议，从网络侧(WAN)对家庭网络中的网关、路由器、机项盒等设备进行远程集中管理。它主要包括两类逻辑设备:客户端设备(CPE)和自动配置服务器(ACS)。在家庭网络环境下，从网络侧通过自动配置服务器，对用户设备进行配置和管理，同时所有与用户设备相关的其他操作，诊断、升级等均可由自动配置服务器来完成。 </p>
 ]]></content>
       <categories>
-        <category>通信知识积累</category>
+        <category>物理层安全</category>
       </categories>
       <tags>
         <tag>TR-069</tag>
@@ -297,7 +308,7 @@
 <h1 id="量化策略"><a href="#量化策略" class="headerlink" title="量化策略"></a>量化策略</h1><p>了解到单门限，自适应量化门限，多比特量化等方法， 每种量化方法都有各自的优缺点, 量化阶数越高, 密钥的生成速率越高, 但是噪声对其影响导致错误的概率也就越大; 量化阶数越低, 密钥生成速率低, 但是密钥的一致性就更高。一个好的量化方法还应当可以适应场景的切换, 根据静止和运动场景调整量化的方法, 达到最优的量化效果。</p>
 ]]></content>
       <categories>
-        <category>论文学习</category>
+        <category>物理层安全</category>
       </categories>
       <tags>
         <tag>论文积累与想法</tag>
@@ -386,7 +397,7 @@
 
 <h2 id="二-无线密钥共享方案下的密钥"><a href="#二-无线密钥共享方案下的密钥" class="headerlink" title="二.无线密钥共享方案下的密钥"></a>二.无线密钥共享方案下的密钥</h2>]]></content>
       <categories>
-        <category>论文学习</category>
+        <category>物理层安全</category>
       </categories>
       <tags>
         <tag>论文积累与想法</tag>
