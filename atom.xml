@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zybtree.github.io/"/>
-  <updated>2019-11-22T02:56:56.620Z</updated>
+  <updated>2019-11-22T02:58:18.252Z</updated>
   <id>https://zybtree.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/"/>
     <id>https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/</id>
     <published>2019-11-22T02:10:47.000Z</published>
-    <updated>2019-11-22T02:56:56.620Z</updated>
+    <updated>2019-11-22T02:58:18.252Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Wireless-physical-layer-security"><a href="#Wireless-physical-layer-security" class="headerlink" title="Wireless physical layer security"></a><strong>Wireless physical layer security</strong></h1><blockquote><p>论文回顾了这些发展，首先简要介绍了使用信息论来更普遍地描述保密性的历史历史，然后讨论了现代无线网络中主要的信道模型的主要结果。</p></blockquote><h2 id="Shannon’s-Cipher-System"><a href="#Shannon’s-Cipher-System" class="headerlink" title="Shannon’s Cipher System"></a>Shannon’s Cipher System</h2><p><strong>策略</strong>：</p><p>提出无噪声密码系统(下图所示)。发送方(Alice)希望将消息M传递给合法的接收方(Bob)，同时保持其对窃听者(Eve)的机密，该窃听者可以拦截传输。Alice和Bob分享了一个Eve不知道的公共密钥K。为了建立消息的保密性，Alice使用此密钥将消息M加密为代码字X，然后将其传输。</p><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/Wireless-physical-layer-security/1.png" style="zoom:50%;"><p><strong>缺陷：</strong></p><p>Alice和Bob必须共享与他们要交换的消息具有相同长度的秘密密钥，这是一大缺陷。但这主要源于以下事实：通信通道被假定为无噪声的，因此Eve观察到的声音与Bob完全一样。但是，物理层（尤其是在无线通信系统中）几乎没有噪音。下面的模型中有通过物理方式明确利用通信通道的这一缺陷来建立保密性。</p><hr><h2 id="Wyner’s-Wiretap-Channel"><a href="#Wyner’s-Wiretap-Channel" class="headerlink" title="Wyner’s Wiretap Channel"></a>Wyner’s Wiretap Channel</h2><p><strong>策略：</strong></p><p>它的通信过程类似于Shannon的密码系统：Alice希望向Bob传输机密消息，同时保持对Eve的秘密。窃听通道通过考虑如图2所示的嘈杂的通信通道来概括先前的情况。但是，没有密钥可供合法用户使用。</p><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/Wireless-physical-layer-security/2.png" style="zoom:50%;"><p>现在的目标是双重的：Alice必须将消息M编码为长度为n的码字X^n，以便已收到Y^n的鲍勃能够可靠地恢复消息。</p><blockquote><p>注意，长度为n的代码字使用信道n次;即X^n =（X1，…，Xn），其中Xi表示该信道的使用。类似地，Y^n=Y1，…，Yn）和Z^n =（Z1 ，……，Zn)分别描述了合法接收者和窃听者处的相应通道输出。</p></blockquote><p>接下来讨论如何在此设置中指定保密性.</p><h3 id="Secrecy-Criterion"><a href="#Secrecy-Criterion" class="headerlink" title="Secrecy Criterion"></a>Secrecy Criterion</h3><blockquote><p>香农的密码系统考虑了完全保密的标准。这是一个非常严格的标准，因为它要求消息M和Eve的通道输出Z^n之间严格的统计独立性。特别是在通信信道嘈杂时，这很难实现，并且通过仅在块长n中渐近地要求统计独立性来放宽准则是合理的。</p></blockquote><p>Wyner 要求条件熵n1 H(M|Zn) ≈ n1 H(M) ，这样通道输出Z^n的信号不会降低消息M的不确定度；也就是说，它不提供有关M的任何信息。此标准被称为弱保密性，通常在相互信息方面等效地写为 </p><p> $\frac{1}{n}(M;Zn)\lim_{n\rightarrow+\infty} 0$</p><p>最近，通过考虑语义安全性进一步加强了该标准。在此，Eve不仅无法解码所传输的消息，而且根本无法获得任何有关它的信息。</p><h3 id="Secrecy-Capacity"><a href="#Secrecy-Capacity" class="headerlink" title="Secrecy Capacity"></a>Secrecy Capacity</h3><p>对于离散的无记忆通道，在给定通道输入的情况下，每个独立通道使用的发送输入和接收输出符号之间的关系可以通过通道输出的有条件概率分布来描述，Wyner在文献The wire-tap channel中提出了机密容量的概念。对于降级通道（即，其中X-Y-Z形成马尔可夫链的通道）的情况，结果如图2所示，这意味着X和Z在统计上独立于Y。</p><p>实现保密能力的关键思想如下：与其使用所有可用资源进行消息传输，不如通过添加Bob和Eve未知的“虚拟”消息，将其中的一部分用于随机化。具体来说，对于Alice想要发送的每个机密消息，有多个有效码字，并且随机编码器随机地均匀地选择其中一个。关键思想是，每个机密消息的随机率大致选择为I(V; Z)，取决于Eve的信道质量。因此，Eve将充满虚拟变量携带的无用信息，而没有剩余资源来解码机密消息本身。</p>]]></content>
     
@@ -199,32 +199,6 @@
   </entry>
   
   <entry>
-    <title>无线信道的密钥生成方法</title>
-    <link href="https://zybtree.github.io/2019/10/28/%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93%E7%9A%84%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95/"/>
-    <id>https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/</id>
-    <published>2019-10-28T02:58:48.000Z</published>
-    <updated>2019-11-22T02:13:34.672Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="摘要与引言"><a href="#摘要与引言" class="headerlink" title="摘要与引言"></a>摘要与引言</h1><blockquote><p>本文回顾了近二十年来物理层安全领域的发展, <strong>着重追踪了基于密钥的物理层安全机制的演变过程</strong>.无线信道密钥生成方法的<strong>核心</strong>：<font color="red">在于合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥</font>.</p><p>本文结构：</p><ul><li>首先从<strong>互易性验证</strong>、<strong>误差补偿</strong>、<strong>信道特征</strong>及<strong>去相关</strong>四个方面对信道的测量, 结合真实的应用场景作了详细的分析. </li><li>在<strong>测量值量化</strong>、<strong>信息调和</strong>以及<strong>保密增强</strong>环节, 分别讨论了该领域已有文献在这些环节提出的方法的理论依据并对比了基于各种不同方法的密钥的生成算法的优劣.</li><li>归纳了在第五代移动通信方式下该领域潜在的研究方向和可能面临的难题.</li></ul></blockquote><p>基于信息论安全的物理层安全的研究发展为两条主线: 由<strong>Wyner引导的无密钥安全</strong>和由<strong>Shannon和Maurer引导的基于密钥的安全机制</strong>.</p><p><strong>Shannon在《 Communication theory of secrecy systems》中建立的物理层安全模型</strong>是基于信息论的严格意义上的绝对安全,  要求窃听者接收到加密后消息的后验概率等于消息的先验概率, 从而保证窃听者无法从窃听信号中获得任何信息.(<em>然而该结论是一种悲观的结果因为只有密钥的熵不小于源信号的信息, 也就是至少达到“一次 一密”时才能够达到绝对安全.</em>)</p><p><strong>Wyner在《The wire-tap channel》引入了窃听信道的模型</strong>:在窃听者的信道是合法接收者的退化信道的假设下, 可以在保证不泄露给窃听者任何信息的条件下, 最大化发送者到合法接收者的传输速率. </p><p>Maurer认为Wyner 的退化窃听信道未必现实, 并在《 Secret key agreement by public discussion from common information》最先提出了一种当窃听者的信道优于合法接收者时仍可以进行安全通信的方法. 该方法的核心在于<strong>让合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥</strong>.</p><br><hr><br><h1 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h1><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/1.png" alt></p><p>图 1 描述的是一个无噪的密钥生成模型, Alice、Bob 和 Eve 分别表示发送者、合法接收者和窃听者, <em>X</em> 为 Alice 的发送信号, <em>Y</em> 为 Bob 的接收信号, 而 <em>Z</em> 是 Eve 的接收信号, <em>P**XYZ</em> , , 为 <em>X</em>、<em>Y</em> 和 <em>Z</em> 的联合分布函数.  d为系统中的相干距离, 超出相干距离之外的窃听者获得的信道观测值可以看作和合法双方的信道观测值之间是统计独立的. </p><p>在该模型下 Alice 和 Bob 可以从无噪公共信道中获得的最大安全速率可以描述为S(XY||Z)* , 该速率的上界和下界可以表述为：</p><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/2.png" alt></p><p>国内该领域的研究刚刚开始, 主要集中于对量化和信息调和方法的改进, 并在仿真系统中进行验证, 但还尚未出现实际的系统验证.  </p><p>目前文献中获取共享密钥的典型流程如图 2 所示, 主要包括以下四个步骤: </p><p>(1) <strong>信道测量</strong>: Alice 和 Bob 通过发送导频到对端再测量信道的某些特征来获取两者之间的无线信道随着时间的变化值.  </p><p>(2) <strong>量化</strong>: 将测量值用不同的量化方法转换成为一串密钥比特.  </p><p>(3) <strong>信息调和</strong>: 应用一种信息调和协议丢弃或者纠正两端生成的密钥比特的差异.  </p><p>(4) <strong>保密增强</strong>: 丢弃部分一致的比特或者执行某种比特转换来强化密钥, 增大密钥的熵并且模糊窃听者在上一个信息调和步骤中可能获取的局部信息. </p><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/3.png" alt></p><br><hr><br><h1 id="信道测量"><a href="#信道测量" class="headerlink" title="信道测量"></a>信道测量</h1><h2 id="一-互易性验证"><a href="#一-互易性验证" class="headerlink" title="一.互易性验证"></a>一.互易性验证</h2><blockquote><p> 移动无线信道的主要特征就是多径传播, 其具有更加丰富的多径衰落, 多径衰落的主要参数体现在时延扩展和相关带宽、多普勒扩展与相干时间. </p><p><strong>时分双工</strong>的上下行采用同一频率, 具有很高的频谱利用率, 同时上下行传输由于采用了同一频率, 上下行信号在无线信道中经历了相似的环境, 具有<strong>短时互易性</strong>. 此外, 无线多径信道还具有<strong>空间唯一性</strong>、<strong>快速时变性</strong>、<strong>不可预测性</strong>. </p><p>无线信道的空间唯一性表现为<strong>不同空间的无线信道特征是唯一的</strong>, <strong>当窃听者离合法接收者的距离超过波长的数量级时, 无线信道特征将不再相关</strong>. 同时, 在移动通信中, 信道中物体的移动将引起信道的特征快速的变化, 而由于多径效应, 每条径上的衰落各不相同, 这种无线信道的特征的变化是随机的、不可预测的. </p></blockquote><p>Maurer在《Secret key agreement by public discussion from common information》最先提出通过提取通信双方公共信道的共有信息生成加密密钥. 根据信道的短时互易性, 通信双方同一时刻测得的信道特征相同, 可以作为生成密钥的随机源. 由于信道随着时间变化, 密钥自动更新, 并且这种更新对窃听者而言, 是无法预测的. 目前, TDD 系统中信道的互易模型如图 3 所示.</p><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/4.png" alt></p><h2 id="二-误差修正"><a href="#二-误差修正" class="headerlink" title="二.误差修正"></a>二.误差修正</h2><h2 id="三-信道特征"><a href="#三-信道特征" class="headerlink" title="三.信道特征"></a>三.信道特征</h2><h2 id="四-测试值去相关"><a href="#四-测试值去相关" class="headerlink" title="四.测试值去相关"></a>四.测试值去相关</h2><br><hr><br><h1 id="量化策略"><a href="#量化策略" class="headerlink" title="量化策略"></a>量化策略</h1><p>了解到单门限，自适应量化门限，多比特量化等方法， 每种量化方法都有各自的优缺点, 量化阶数越高, 密钥的生成速率越高, 但是噪声对其影响导致错误的概率也就越大; 量化阶数越低, 密钥生成速率低, 但是密钥的一致性就更高。一个好的量化方法还应当可以适应场景的切换, 根据静止和运动场景调整量化的方法, 达到最优的量化效果。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="物理层安全" scheme="https://zybtree.github.io/categories/%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="论文积累与想法" scheme="https://zybtree.github.io/tags/%E8%AE%BA%E6%96%87%E7%A7%AF%E7%B4%AF%E4%B8%8E%E6%83%B3%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>2019年生活费记录</title>
     <link href="https://zybtree.github.io/2019/10/28/2019%E5%B9%B4%E7%94%9F%E6%B4%BB%E8%B4%B9%E5%88%86%E5%B8%83%E6%83%85%E5%86%B5/"/>
     <id>https://zybtree.github.io/2019/10/28/2019年生活费分布情况/</id>
@@ -247,6 +221,32 @@
     
     
       <category term="生活的毒打" scheme="https://zybtree.github.io/tags/%E7%94%9F%E6%B4%BB%E7%9A%84%E6%AF%92%E6%89%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无线信道的密钥生成方法</title>
+    <link href="https://zybtree.github.io/2019/10/28/%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93%E7%9A%84%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95/"/>
+    <id>https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/</id>
+    <published>2019-10-28T02:58:48.000Z</published>
+    <updated>2019-11-22T02:13:34.672Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="摘要与引言"><a href="#摘要与引言" class="headerlink" title="摘要与引言"></a>摘要与引言</h1><blockquote><p>本文回顾了近二十年来物理层安全领域的发展, <strong>着重追踪了基于密钥的物理层安全机制的演变过程</strong>.无线信道密钥生成方法的<strong>核心</strong>：<font color="red">在于合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥</font>.</p><p>本文结构：</p><ul><li>首先从<strong>互易性验证</strong>、<strong>误差补偿</strong>、<strong>信道特征</strong>及<strong>去相关</strong>四个方面对信道的测量, 结合真实的应用场景作了详细的分析. </li><li>在<strong>测量值量化</strong>、<strong>信息调和</strong>以及<strong>保密增强</strong>环节, 分别讨论了该领域已有文献在这些环节提出的方法的理论依据并对比了基于各种不同方法的密钥的生成算法的优劣.</li><li>归纳了在第五代移动通信方式下该领域潜在的研究方向和可能面临的难题.</li></ul></blockquote><p>基于信息论安全的物理层安全的研究发展为两条主线: 由<strong>Wyner引导的无密钥安全</strong>和由<strong>Shannon和Maurer引导的基于密钥的安全机制</strong>.</p><p><strong>Shannon在《 Communication theory of secrecy systems》中建立的物理层安全模型</strong>是基于信息论的严格意义上的绝对安全,  要求窃听者接收到加密后消息的后验概率等于消息的先验概率, 从而保证窃听者无法从窃听信号中获得任何信息.(<em>然而该结论是一种悲观的结果因为只有密钥的熵不小于源信号的信息, 也就是至少达到“一次 一密”时才能够达到绝对安全.</em>)</p><p><strong>Wyner在《The wire-tap channel》引入了窃听信道的模型</strong>:在窃听者的信道是合法接收者的退化信道的假设下, 可以在保证不泄露给窃听者任何信息的条件下, 最大化发送者到合法接收者的传输速率. </p><p>Maurer认为Wyner 的退化窃听信道未必现实, 并在《 Secret key agreement by public discussion from common information》最先提出了一种当窃听者的信道优于合法接收者时仍可以进行安全通信的方法. 该方法的核心在于<strong>让合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥</strong>.</p><br><hr><br><h1 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h1><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/1.png" alt></p><p>图 1 描述的是一个无噪的密钥生成模型, Alice、Bob 和 Eve 分别表示发送者、合法接收者和窃听者, <em>X</em> 为 Alice 的发送信号, <em>Y</em> 为 Bob 的接收信号, 而 <em>Z</em> 是 Eve 的接收信号, <em>P**XYZ</em> , , 为 <em>X</em>、<em>Y</em> 和 <em>Z</em> 的联合分布函数.  d为系统中的相干距离, 超出相干距离之外的窃听者获得的信道观测值可以看作和合法双方的信道观测值之间是统计独立的. </p><p>在该模型下 Alice 和 Bob 可以从无噪公共信道中获得的最大安全速率可以描述为S(XY||Z)* , 该速率的上界和下界可以表述为：</p><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/2.png" alt></p><p>国内该领域的研究刚刚开始, 主要集中于对量化和信息调和方法的改进, 并在仿真系统中进行验证, 但还尚未出现实际的系统验证.  </p><p>目前文献中获取共享密钥的典型流程如图 2 所示, 主要包括以下四个步骤: </p><p>(1) <strong>信道测量</strong>: Alice 和 Bob 通过发送导频到对端再测量信道的某些特征来获取两者之间的无线信道随着时间的变化值.  </p><p>(2) <strong>量化</strong>: 将测量值用不同的量化方法转换成为一串密钥比特.  </p><p>(3) <strong>信息调和</strong>: 应用一种信息调和协议丢弃或者纠正两端生成的密钥比特的差异.  </p><p>(4) <strong>保密增强</strong>: 丢弃部分一致的比特或者执行某种比特转换来强化密钥, 增大密钥的熵并且模糊窃听者在上一个信息调和步骤中可能获取的局部信息. </p><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/3.png" alt></p><br><hr><br><h1 id="信道测量"><a href="#信道测量" class="headerlink" title="信道测量"></a>信道测量</h1><h2 id="一-互易性验证"><a href="#一-互易性验证" class="headerlink" title="一.互易性验证"></a>一.互易性验证</h2><blockquote><p> 移动无线信道的主要特征就是多径传播, 其具有更加丰富的多径衰落, 多径衰落的主要参数体现在时延扩展和相关带宽、多普勒扩展与相干时间. </p><p><strong>时分双工</strong>的上下行采用同一频率, 具有很高的频谱利用率, 同时上下行传输由于采用了同一频率, 上下行信号在无线信道中经历了相似的环境, 具有<strong>短时互易性</strong>. 此外, 无线多径信道还具有<strong>空间唯一性</strong>、<strong>快速时变性</strong>、<strong>不可预测性</strong>. </p><p>无线信道的空间唯一性表现为<strong>不同空间的无线信道特征是唯一的</strong>, <strong>当窃听者离合法接收者的距离超过波长的数量级时, 无线信道特征将不再相关</strong>. 同时, 在移动通信中, 信道中物体的移动将引起信道的特征快速的变化, 而由于多径效应, 每条径上的衰落各不相同, 这种无线信道的特征的变化是随机的、不可预测的. </p></blockquote><p>Maurer在《Secret key agreement by public discussion from common information》最先提出通过提取通信双方公共信道的共有信息生成加密密钥. 根据信道的短时互易性, 通信双方同一时刻测得的信道特征相同, 可以作为生成密钥的随机源. 由于信道随着时间变化, 密钥自动更新, 并且这种更新对窃听者而言, 是无法预测的. 目前, TDD 系统中信道的互易模型如图 3 所示.</p><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/4.png" alt></p><h2 id="二-误差修正"><a href="#二-误差修正" class="headerlink" title="二.误差修正"></a>二.误差修正</h2><h2 id="三-信道特征"><a href="#三-信道特征" class="headerlink" title="三.信道特征"></a>三.信道特征</h2><h2 id="四-测试值去相关"><a href="#四-测试值去相关" class="headerlink" title="四.测试值去相关"></a>四.测试值去相关</h2><br><hr><br><h1 id="量化策略"><a href="#量化策略" class="headerlink" title="量化策略"></a>量化策略</h1><p>了解到单门限，自适应量化门限，多比特量化等方法， 每种量化方法都有各自的优缺点, 量化阶数越高, 密钥的生成速率越高, 但是噪声对其影响导致错误的概率也就越大; 量化阶数越低, 密钥生成速率低, 但是密钥的一致性就更高。一个好的量化方法还应当可以适应场景的切换, 根据静止和运动场景调整量化的方法, 达到最优的量化效果。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="物理层安全" scheme="https://zybtree.github.io/categories/%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="论文积累与想法" scheme="https://zybtree.github.io/tags/%E8%AE%BA%E6%96%87%E7%A7%AF%E7%B4%AF%E4%B8%8E%E6%83%B3%E6%B3%95/"/>
     
   </entry>
   
