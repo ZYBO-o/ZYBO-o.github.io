@@ -99,20 +99,32 @@
 
 
 
-<meta name="description" content="Wireless physical layer security 论文回顾了这些发展，首先简要介绍了使用信息论来更普遍地描述保密性的历史历史，然后讨论了现代无线网络中主要的信道模型的主要结果。  Shannon’s Cipher System策略： 提出无噪声密码系统(下图所示)。发送方(Alice)希望将消息M传递给合法的接收方(Bob)，同时保持其对窃听者(Eve)的机密，该窃听者可以拦截传输">
+<meta name="description" content="Wireless physical layer security 论文回顾了这些发展，首先简要介绍了使用信息论来更普遍地描述保密性的历史历史，然后讨论了现代无线网络中主要的信道模型的主要结果。  $1.Shannon’s Cipher System策略： 提出无噪声密码系统(下图所示)。发送方(Alice)希望将消息M传递给合法的接收方(Bob)，同时保持其对窃听者(Eve)的机密，该窃听者可以拦">
 <meta name="keywords" content="论文积累与想法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Wireless physical layer security">
 <meta property="og:url" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/index.html">
 <meta property="og:site_name" content="zybTree&#39;s Blogs">
-<meta property="og:description" content="Wireless physical layer security 论文回顾了这些发展，首先简要介绍了使用信息论来更普遍地描述保密性的历史历史，然后讨论了现代无线网络中主要的信道模型的主要结果。  Shannon’s Cipher System策略： 提出无噪声密码系统(下图所示)。发送方(Alice)希望将消息M传递给合法的接收方(Bob)，同时保持其对窃听者(Eve)的机密，该窃听者可以拦截传输">
+<meta property="og:description" content="Wireless physical layer security 论文回顾了这些发展，首先简要介绍了使用信息论来更普遍地描述保密性的历史历史，然后讨论了现代无线网络中主要的信道模型的主要结果。  $1.Shannon’s Cipher System策略： 提出无噪声密码系统(下图所示)。发送方(Alice)希望将消息M传递给合法的接收方(Bob)，同时保持其对窃听者(Eve)的机密，该窃听者可以拦">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/1.png">
 <meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/2.png">
-<meta property="og:updated_time" content="2019-11-22T03:05:26.190Z">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/3.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/4.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/5.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/6.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/7.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/8.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/9.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/10.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/11.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/12.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/13.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/14.png">
+<meta property="og:updated_time" content="2019-11-29T02:38:51.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Wireless physical layer security">
-<meta name="twitter:description" content="Wireless physical layer security 论文回顾了这些发展，首先简要介绍了使用信息论来更普遍地描述保密性的历史历史，然后讨论了现代无线网络中主要的信道模型的主要结果。  Shannon’s Cipher System策略： 提出无噪声密码系统(下图所示)。发送方(Alice)希望将消息M传递给合法的接收方(Bob)，同时保持其对窃听者(Eve)的机密，该窃听者可以拦截传输">
+<meta name="twitter:description" content="Wireless physical layer security 论文回顾了这些发展，首先简要介绍了使用信息论来更普遍地描述保密性的历史历史，然后讨论了现代无线网络中主要的信道模型的主要结果。  $1.Shannon’s Cipher System策略： 提出无噪声密码系统(下图所示)。发送方(Alice)希望将消息M传递给合法的接收方(Bob)，同时保持其对窃听者(Eve)的机密，该窃听者可以拦">
 <meta name="twitter:image" content="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/1.png">
 
 
@@ -401,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  4.2k
                 </span>
               
 
@@ -429,7 +441,7 @@
         <h1 id="Wireless-physical-layer-security"><a href="#Wireless-physical-layer-security" class="headerlink" title="Wireless physical layer security"></a><strong>Wireless physical layer security</strong></h1><blockquote>
 <p>论文回顾了这些发展，首先简要介绍了使用信息论来更普遍地描述保密性的历史历史，然后讨论了现代无线网络中主要的信道模型的主要结果。</p>
 </blockquote>
-<h2 id="Shannon’s-Cipher-System"><a href="#Shannon’s-Cipher-System" class="headerlink" title="Shannon’s Cipher System"></a>Shannon’s Cipher System</h2><p><strong>策略</strong>：</p>
+<h2 id="1-Shannon’s-Cipher-System"><a href="#1-Shannon’s-Cipher-System" class="headerlink" title="$1.Shannon’s Cipher System"></a>$1.Shannon’s Cipher System</h2><p><strong>策略</strong>：</p>
 <p>提出无噪声密码系统(下图所示)。发送方(Alice)希望将消息M传递给合法的接收方(Bob)，同时保持其对窃听者(Eve)的机密，该窃听者可以拦截传输。Alice和Bob分享了一个Eve不知道的公共密钥K。为了建立消息的保密性，Alice使用此密钥将消息M加密为代码字X，然后将其传输。</p>
 <img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/1.png" style="zoom:50%;">
 
@@ -438,7 +450,7 @@
 <hr>
 <br>
 
-<h2 id="Wyner’s-Wiretap-Channel"><a href="#Wyner’s-Wiretap-Channel" class="headerlink" title="Wyner’s Wiretap Channel"></a>Wyner’s Wiretap Channel</h2><p><strong>策略：</strong></p>
+<h2 id="2-Wyner’s-Wiretap-Channel"><a href="#2-Wyner’s-Wiretap-Channel" class="headerlink" title="$2.Wyner’s Wiretap Channel"></a>$2.Wyner’s Wiretap Channel</h2><p><strong>策略：</strong></p>
 <p>它的通信过程类似于Shannon的密码系统：Alice希望向Bob传输机密消息，同时保持对Eve的秘密。窃听通道通过考虑如图2所示的嘈杂的通信通道来概括先前的情况。但是，没有密钥可供合法用户使用。</p>
 <img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/2.png" style="zoom:50%;">
 
@@ -454,14 +466,82 @@
 <p> $\frac{1}{n}(M;Zn)\lim_{n\rightarrow+\infty} 0$</p>
 <p>最近，通过考虑语义安全性进一步加强了该标准。在此，Eve不仅无法解码所传输的消息，而且根本无法获得任何有关它的信息。</p>
 <h3 id="Secrecy-Capacity"><a href="#Secrecy-Capacity" class="headerlink" title="Secrecy Capacity"></a>Secrecy Capacity</h3><p>对于离散的无记忆通道，在给定通道输入的情况下，每个独立通道使用的发送输入和接收输出符号之间的关系可以通过通道输出的有条件概率分布来描述，Wyner在文献The wire-tap channel中提出了机密容量的概念。对于降级通道（即，其中X-Y-Z形成马尔可夫链的通道）的情况，结果如图2所示，这意味着X和Z在统计上独立于Y。</p>
-<p>实现保密能力的关键思想如下：与其使用所有可用资源进行消息传输，不如通过添加Bob和Eve未知的“虚拟”消息，将其中的一部分用于随机化。具体来说，对于Alice想要发送的每个机密消息，有多个有效码字，并且随机编码器随机地均匀地选择其中一个。关键思想是，每个机密消息的随机率大致选择为I(V; Z)，取决于Eve的信道质量。因此，Eve将充满虚拟变量携带的无用信息，而没有剩余资源来解码机密消息本身。</p>
+<p>分立式无记忆窃听通道的保密能力由下式给出：</p>
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/3.png" style="zoom:30%;">
+
+<p>最大化所有随机变量V和X，从而满足马尔可夫链关系 V−X−(Y,Z)。</p>
+<blockquote>
+<p>直观上，互信息项 I(V;Y) 表示合法链路的信道质量，并描述了Alice可以可靠地传输给Bob的速率.  项 I(V; Z) 代表窃听链路的信道质量，最大传输速率因此精确地受到惩罚.</p>
+<p>另一个重要的观察结果是，要拥有很强的保密能力，通往鲍勃的通道必须比通往夏娃的通道“噪音小”。即对于某些V， I(V; Y) &gt; I(V; Z).</p>
+</blockquote>
+<p><strong><font color="red">实现保密能力的关键思想如下</font></strong>：与其使用所有可用资源进行消息传输，不如通过添加Bob和Eve未知的“虚拟”消息，将其中的一部分用于随机化。具体来说，对于Alice想要发送的每个机密消息，有多个有效码字，并且随机地均匀地选择其中一个随机编码器。</p>
+<p><font color="red">关键思想是:</font>Eve的信道质量,每个机密消息的随机率大致选择为 I(V; Z)。因此，Eve将充满虚拟变量携带的无用信息，而没有剩余资源来解码机密消息本身。因为到Bob的信道质量大致以速率 I(V; Y) 支持可靠的传输,可用于机密消息安全传输的剩余速率为 I(V; Y) - I(V; Z)，因为Bob通常必须对机密消息和伪变量进行解码才能恢复正确的消息。</p>
 <hr>
 <br>
 
-<h2 id="Secure-Communication-over-Wireless-Channels"><a href="#Secure-Communication-over-Wireless-Channels" class="headerlink" title="Secure Communication over Wireless Channels"></a>Secure Communication over Wireless Channels</h2><blockquote>
-<p>在本节中，以上讨论的用于离散无记忆通道的安全性的信息理论方法被扩展到物理无线通道的模型。无线物理层安全性是这些概念的关键应用之一，因为在无线介质上进行信号广播是它不仅被其预期的接收者接收，而且还容易被非合法的接收者窃听。如上所述，无线介质的不完善将通过利用嘈杂的信道来帮助建立安全性。</p>
+<h2 id="3-Secure-Communication-over-Wireless-Channels"><a href="#3-Secure-Communication-over-Wireless-Channels" class="headerlink" title="$3.Secure Communication over Wireless Channels"></a>$3.Secure Communication over Wireless Channels</h2><blockquote>
+<p>在本节中，被讨论的用于离散无记忆通道的安全性的信息理论方法被扩展到物理无线通道的模型。无线物理层安全性是这些概念的关键应用之一，因为在无线介质上进行信号广播是它不仅被其预期的接收者接收，而且还容易被非合法的接收者窃听。如上所述，无线介质的不完善将通过利用嘈杂的信道来帮助建立安全性。</p>
 </blockquote>
-<h3 id="Gaussian-Wiretap-Channels"><a href="#Gaussian-Wiretap-Channels" class="headerlink" title="Gaussian Wiretap Channels."></a>Gaussian Wiretap Channels.</h3><p>高斯窃听信道是无线信道的最基本模型，其线性时不变乘法链路受到加性高斯白噪声的破坏。</p>
+<h3 id="Gaussian-Wiretap-Channels"><a href="#Gaussian-Wiretap-Channels" class="headerlink" title="Gaussian Wiretap Channels."></a>Gaussian Wiretap Channels.</h3><p>高斯窃听信道是无线信道的最基本模型，其线性时不变乘法链路受到加性高斯白噪声的破坏。白噪声是指与信道使用无关的随机过程。</p>
+<p>实现保密能力的策略是充分传输功率P和根据高斯分布选择输入信号。</p>
+<h3 id="Multiantenna-Wiretap-Channels"><a href="#Multiantenna-Wiretap-Channels" class="headerlink" title="Multiantenna Wiretap Channels"></a>Multiantenna Wiretap Channels</h3><p>具有多个发射和接收天线的系统，即所谓的多输入多输出（MIMO）系统，可以显着提高无线传输的性能，因此可成大多数现代大容量无线系统的基础。注意，多天线窃听器也可以解释为协作的多个单天线窃听器。</p>
+<p>当Alice发送矢量值信号Xi时，Bob接收到的矢量值信号YB，i 和 Eve接收的YE，i可表示为</p>
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/4.png" style="zoom:40%;">
+
+<blockquote>
+<p>其中HB和HE是包含乘法通道增益的矩阵，而NB，i和NE，i是彼此独立的（对于i的不同值），在Bob和Eve具有零均值和恒等方差矩阵的独立加性高斯噪声矢量。传输受到平均传输功率 tr(Q)≤P 的约束，其中Q=E[Xi XiT]是传输信号的协方差矩阵。</p>
+</blockquote>
+<h3 id="Fading-Wiretap-Channels"><a href="#Fading-Wiretap-Channels" class="headerlink" title="Fading Wiretap Channels."></a>Fading Wiretap Channels.</h3><p>在以上讨论中，信道被认为在整个传输期间是固定的。特别是，对于先前讨论的高斯窃听通道，Multiantenna Wiretap Channels 中的乘法通道 hB 和 hE 是恒定的。对于无线信道，这种情况很少出现，<font color="red">因为多径传播和干扰通常会导致通信条件的改变，尤其是对于移动网络。<strong>这种现象称为衰落</strong></font>。在这样的环境中，通道的输入输出关系通常被建模为</p>
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/5.png" style="zoom:35%;">
+
+<p>其中所有hB，i，hE，i，NB，i和NE，i相互独立。在此，hB，i和hE，i是衰减系数，表示信道使用i时的通信条件。如前所述，输入信号受到平均功率约束<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/6.png" style="zoom:40%;">的影响，并且这些噪声过程与通道使用之间的相关性分别为零高斯和方差σB2和σE2。</p>
+<p>对于遍历衰落信道，衰落系数是独立的，并且分布相同，并且允许从信道使用更改为信道使用。因此，对于每次使用通道，Alice,Bob和Eve都可能会经历不同的衰落状态。</p>
+<hr>
+<br>
+
+<h2 id="4-Physical-Layer-Security-in-Wireless-Networks"><a href="#4-Physical-Layer-Security-in-Wireless-Networks" class="headerlink" title="$4.Physical Layer Security in Wireless Networks"></a>$4.Physical Layer Security in Wireless Networks</h2><p>在将窃听通道的概念和结果扩展和推广到更复杂的多用户方案方面，已经付出了巨大的努力。 下面讨论广播信道，多路访问信道，干扰信道和中继信道的实用模型。这些通道可以洞察更复杂的网络的属性。</p>
+<h3 id="Broadcast-Channel"><a href="#Broadcast-Channel" class="headerlink" title="Broadcast Channel"></a>Broadcast Channel</h3><p>广播信道描述了一种通信情况，在这种情况下，一个发送方将信息发送给多个接收方。例如，该信道描述了蜂窝通信系统的下行链路阶段，在该阶段中，基站将数据发送给多个移动用户。</p>
+<p>带有机密消息的广播信道对通信场景进行了建模，在这种情况下，一个发送方Alice向两个接收方 Bob 1 和 Bob 2 发送一个公用消息M0，向一个接收方Bob 1发送一个机密消息M1，必须对接收方保密。因此，Bob2是公用消息M0的合法接收者，同时也是机密消息M1的窃听者。例如，此方案对以下情况进行建模：某些内容是多播的，而其他内容是单播的。它是由Csisźar和Ko nerner提出的，下图所示。</p>
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/7.png" style="zoom:40%;">
+
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/8.png" style="zoom:40%;">
+
+<p>已经建立了保密容量区域，并由满足以下条件的所有速率对（R0，R1）给出</p>
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/9.png" style="zoom:40%;">
+
+<p>实现该速率区域的基本编码思想是基于叠加编码和窃听编码的组合。首先为两个接收器指定的公共消息M0进行编码，并由辅助随机变量U表示。由于必须在两个接收器处都对M0进行解码，因此对应的速率受Bob 1（即I（U; Y1））和Bob 2（即I（U; Y2））的信道质量的弱化所限制。然后，叠加在其上，根据与上述窃听通道相同的原理，将机密消息M1编码为V。因此，机密率受到两个信道质量的相似差异的限制，但由于在两个接收器处都知道公共消息，所以机密率受U限制。</p>
+<h3 id="Multiple-AccessChannel"><a href="#Multiple-AccessChannel" class="headerlink" title="Multiple-AccessChannel"></a>Multiple-AccessChannel</h3><p>多个访问信道与广播信道相对应：多个发送器将信息发送到单个接收器。发生这种情况的一个示例是在蜂窝系统的上行链路阶段，其中几个移动用户将数据发送到基站。</p>
+<p>在具有机密消息的多路访问信道中，两个发送方Alice 1和Alice 2将机密消息M1和M2发送到单个接收方Bob。每个发送器都会监听另一个发送器的传输，因此Alice 1和Alice 2必须发送其机密消息，以便Bob可以解码它们，但不会将信息泄漏给另一个发送器。</p>
+<p>多路访问窃听通道给出的设置略有不同，在该设置中两个发送器都是可信任的，但必须通过外部窃听者确保其通信。</p>
+<h3 id="Interference-Channel"><a href="#Interference-Channel" class="headerlink" title="Interference Channel"></a>Interference Channel</h3><p>干扰信道描述了通信场景，在该场景中，多个收发器对相互干扰。每个发送者仅对将信息发送到其指定的接收者感兴趣。然而，由于无线介质的开放性，所发送的信号不仅被预期的接收器接收，而且还被其他用户接收。</p>
+<p>具有机密消息的干扰信道考虑了两个发射机Alice 1和Alice 2，它们希望将其机密消息M1和M2传输到各自的接收机Bob 1和Bob 2。因为两种传输都相互干扰，所以每个发送器都必须以使其与对方接收器保持安全的方式编码和发送其消息。如下图所示。此通道的保密容量区域的内部和外部边界已确定。</p>
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/10.png" style="zoom:40%;">
+
+<p>认知干扰信道给出了一种不同的通信场景，其中包含一个公共消息和一个机密消息。在此，公共消息对于两个发送器都是已知的，并且必须被传送到两个接收器，而机密消息仅在一个发送器处是已知的，并且必须被传送到其相应的接收器，而使另一个接收器不知道它。与其他干扰方案不同，这种情况下的保密容量区域是已知的。</p>
+<h3 id="Relay-Channe"><a href="#Relay-Channe" class="headerlink" title="Relay Channe"></a>Relay Channe</h3><p>具有机密消息的中继通道考虑了发送方Alice希望将机密消息发送给接收方Bob的情况。传输由不受信任的中继支持，因此Alice必须以某种方式编码和传输消息，以便中继能够帮助进行通信，但不获取有关消息的任何信息。</p>
+<p>具有外部窃听器的中继通道与以前的方案有所不同，它具有受信任的中继器，但是必须确保机密传输不受外部窃听器的影响。</p>
+<hr>
+<br>
+
+<h2 id="5-Secret-Key-Generation"><a href="#5-Secret-Key-Generation" class="headerlink" title="$5.Secret-Key Generation"></a>$5.Secret-Key Generation</h2><p>在前面的讨论中，看到了如何使用信息理论方法来确保通过无线信道传输机密消息的安全。下面讨论如何基于公开讨论以及随后借助无线信道将这些信息理论方法用于生成密钥。</p>
+<h3 id="Public-Discussion"><a href="#Public-Discussion" class="headerlink" title="Public Discussion"></a>Public Discussion</h3><p>在这种设置下，两个终端Alice和Bob观察到一个公共随机源的相关版本YA^n和YB^n。基于这些观察，两个终端都希望就相同的秘密密钥达成共识；<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/11.png" style="zoom:30%;">其中KA和KB分别是由Alice和Bob生成的秘密密钥。为此，他们被允许通过无噪音的公共渠道交换无限的信息（多次迭代）。但是，此通道已被窃听，因此通过公共讨论交换的任何信息都不得泄露有关密钥本身的任何信息。通过采用强保密标准，可以对这种情况进行模拟，使其类似于窃听通道</p>
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/12.png" style="zoom:30%;">
+
+<p>其中Φ表示通过公共渠道进行的公共讨论。换句话说，密钥必须独立于公开讨论。这种情况如下图所示。</p>
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/13.png" style="zoom:30%;">
+
+<p>现在的目的是确定私钥容量，该容量表征了可以生成私钥的最大速率。而且，已经表明该速率可以通过从Alice到Bob的单向通信来实现。</p>
+<h3 id="Wireless-Channels"><a href="#Wireless-Channels" class="headerlink" title="Wireless Channels"></a>Wireless Channels</h3><p>下面把基于公开讨论的有关密钥生成的先前讨论扩展到无线信道的实际相关情况。我们将看到无线信道本身可以用作常见随机性的来源，从而使先前的概念。</p>
+<p>情况是相同的：两个终端Alice和Bob想要生成一个秘密密钥，使窃听者Eve处于黑暗中。两个终端都可以通过无线衰落信道进行传输，并且可以进一步使用无噪声的公共信道进行公共讨论。Eve偷听了无线信道上的传输，也偷听了公众的讨论。<font color="red"><strong>关键思想</strong>是利用无线信道的互易性来获得公共衰落信道的相关观测结果。然后可以如上所述生成密钥。</font></p>
+<p>当Alice通过无线信道发送信号 XA 时，Bob处的信号 YB 和Eve处的 YE 是</p>
+<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/14.png" style="zoom:40%;">
+
+<p>通过hAB和hAE，分别在Alice和Bob和Eve之间获得信道增益。NA和NB是具有零均值和方差σ的加性高斯噪声项.</p>
+<p>如果两个传输都发生在相同的频带内并且在信道的相干时间内，则可以合理地假设Alice和Bob之间的信道是对等的；即 hAB = hBA。即使该通道不是完全正确的，也足以获取对后续密钥生成过程有用的相关版本。此外，由于假定Eve的位置与Alice和Bob的位置不同，因此发射信号会经历不同的传输条件，从而导致在Eve的信道观测值 hAE 和 hBE 与 hAB 和 hBA 无关。</p>
+<hr>
+<br>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>在这篇论文中，学习了无线物理层安全领域的最新研究，该领域利用无线电信道的物理特性（尤其是扩散和叠加）来提供无线数据传输的安全性。通过使用信息理论形式主义，我们已经看到，在无线网络的所有主要信道模型中，物理层原则上都可以在现实条件下以完美的保密性支持可靠的数据传输。值得注意的是，这些结果的共同主题是对准确通道建模的依赖。尽管这是通信系统设计和分析中的一种常用方法，但是它意味着对所用模型的鲁棒性是在实践中需要考虑的因素。我们已经在信道状态信息的背景下讨论了这个问题，但是它通常是进一步研究的重要问题。</p>
 
       
     </div>
@@ -683,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Wireless-physical-layer-security"><span class="nav-number">1.</span> <span class="nav-text">Wireless physical layer security</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shannon’s-Cipher-System"><span class="nav-number">1.1.</span> <span class="nav-text">Shannon’s Cipher System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wyner’s-Wiretap-Channel"><span class="nav-number">1.2.</span> <span class="nav-text">Wyner’s Wiretap Channel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Secrecy-Criterion"><span class="nav-number">1.2.1.</span> <span class="nav-text">Secrecy Criterion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Secrecy-Capacity"><span class="nav-number">1.2.2.</span> <span class="nav-text">Secrecy Capacity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Secure-Communication-over-Wireless-Channels"><span class="nav-number">1.3.</span> <span class="nav-text">Secure Communication over Wireless Channels</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gaussian-Wiretap-Channels"><span class="nav-number">1.3.1.</span> <span class="nav-text">Gaussian Wiretap Channels.</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Wireless-physical-layer-security"><span class="nav-number">1.</span> <span class="nav-text">Wireless physical layer security</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Shannon’s-Cipher-System"><span class="nav-number">1.1.</span> <span class="nav-text">$1.Shannon’s Cipher System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Wyner’s-Wiretap-Channel"><span class="nav-number">1.2.</span> <span class="nav-text">$2.Wyner’s Wiretap Channel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Secrecy-Criterion"><span class="nav-number">1.2.1.</span> <span class="nav-text">Secrecy Criterion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Secrecy-Capacity"><span class="nav-number">1.2.2.</span> <span class="nav-text">Secrecy Capacity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Secure-Communication-over-Wireless-Channels"><span class="nav-number">1.3.</span> <span class="nav-text">$3.Secure Communication over Wireless Channels</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gaussian-Wiretap-Channels"><span class="nav-number">1.3.1.</span> <span class="nav-text">Gaussian Wiretap Channels.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiantenna-Wiretap-Channels"><span class="nav-number">1.3.2.</span> <span class="nav-text">Multiantenna Wiretap Channels</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fading-Wiretap-Channels"><span class="nav-number">1.3.3.</span> <span class="nav-text">Fading Wiretap Channels.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Physical-Layer-Security-in-Wireless-Networks"><span class="nav-number">1.4.</span> <span class="nav-text">$4.Physical Layer Security in Wireless Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Broadcast-Channel"><span class="nav-number">1.4.1.</span> <span class="nav-text">Broadcast Channel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-AccessChannel"><span class="nav-number">1.4.2.</span> <span class="nav-text">Multiple-AccessChannel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interference-Channel"><span class="nav-number">1.4.3.</span> <span class="nav-text">Interference Channel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relay-Channe"><span class="nav-number">1.4.4.</span> <span class="nav-text">Relay Channe</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Secret-Key-Generation"><span class="nav-number">1.5.</span> <span class="nav-text">$5.Secret-Key Generation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Public-Discussion"><span class="nav-number">1.5.1.</span> <span class="nav-text">Public Discussion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wireless-Channels"><span class="nav-number">1.5.2.</span> <span class="nav-text">Wireless Channels</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">1.6.</span> <span class="nav-text">Conclusion</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -717,7 +797,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">15.2k</span>
+    <span title="Site words total count">18.2k</span>
   
 </div>
 
