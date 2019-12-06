@@ -99,18 +99,21 @@
 
 
 
-<meta name="description" content="Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks">
+<meta name="description" content="Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks 本文讨论了MaMIMO系统中物理层安全集成的机遇和挑战。1.显示MaMIMO本身对被动监听攻击具有鲁棒性 2.我们回顾一种主动污染信道的方案，该方案会主动攻击信道估计过程。  3.概述了我们认为将来最重要的">
 <meta name="keywords" content="论文积累与想法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks">
 <meta property="og:url" content="https://zybtree.github.io/2019/12/06/Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks/index.html">
 <meta property="og:site_name" content="zybTree&#39;s Blogs">
-<meta property="og:description" content="Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks">
+<meta property="og:description" content="Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks 本文讨论了MaMIMO系统中物理层安全集成的机遇和挑战。1.显示MaMIMO本身对被动监听攻击具有鲁棒性 2.我们回顾一种主动污染信道的方案，该方案会主动攻击信道估计过程。  3.概述了我们认为将来最重要的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-06T00:57:10.222Z">
+<meta property="og:image" content="https://zybtree.github.io/2019/12/06/Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks/1.png">
+<meta property="og:image" content="https://zybtree.github.io/2019/12/06/Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks/2.png">
+<meta property="og:updated_time" content="2019-12-06T06:35:41.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks">
-<meta name="twitter:description" content="Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks">
+<meta name="twitter:description" content="Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks 本文讨论了MaMIMO系统中物理层安全集成的机遇和挑战。1.显示MaMIMO本身对被动监听攻击具有鲁棒性 2.我们回顾一种主动污染信道的方案，该方案会主动攻击信道估计过程。  3.概述了我们认为将来最重要的">
+<meta name="twitter:image" content="https://zybtree.github.io/2019/12/06/Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks/1.png">
 
 
 
@@ -398,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  14
+                  1.8k
                 </span>
               
 
@@ -423,7 +426,43 @@
       
 
       
-        <h1 id="Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks"><a href="#Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks" class="headerlink" title="Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks"></a>Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks</h1>
+        <h1 id="Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks"><a href="#Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks" class="headerlink" title="Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks"></a>Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks</h1><blockquote>
+<p>本文讨论了MaMIMO系统中物理层安全集成的机遇和挑战。<br>1.显示MaMIMO本身对被动监听攻击具有鲁棒性</p>
+<p>2.我们回顾一种主动污染信道的方案，该方案会主动攻击信道估计过程。 </p>
+<p>3.概述了我们认为将来最重要的开放研究问题，并提出了一些有希望的研究方向来解决这些问题。</p>
+</blockquote>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="$1.Introduction"></a>$1.Introduction</h2><p>近来，MaMIMO系统领域迅速发展成为最有前途的技术之一，可以增强新兴和未来通信系统的系统吞吐量。 在MaMIMO中，愿景是为基站配备包括100多个天线元件和大量独立收发器链的天线阵列。 MaMIMO的优点是多方面的：</p>
+<ul>
+<li>对应于基站天线元件数量的阵列增益。</li>
+<li>渠道强化效应，为用户提供稳定且可预测的渠道条件。</li>
+<li>从基站到用户几乎是正交的信道。</li>
+<li>在基站和用户处的简单信号处理。</li>
+<li>针对无源窃听攻击的物理层安全性的潜力已大大提高.(尚未得到广泛认可)</li>
+</ul>
+<p><strong>物理层安全基于以下结果：</strong></p>
+<p>考虑一个高斯窃听通道，BS在被动窃听者（ED）的情况下与合法用户（LU）通信。假设从BS到LU和ED的香农容量分别是CLU和CED。然后，BS和LU之间的保密容量为CSC = max {CLU – CED，0}。无需使用任何正式的加密系统，就可以可靠，安全地传输该速率。在传统的MIMO系统中，CLU和CED这两个容量具有相似的数量级，因此提供了相当小的保密容量。通过MaMIMO和无源窃听，情况发生了巨大变化。对于标准时分双工（TDD）模式MaMIMO操作，由于上述1和2，LU处的接收信号功率比ED处的接收信号功率大几个数量级。这就产生了一种情况，其中保密容量几乎是LU的全部容量，即CSC和CLU 。总而言之，MaMIMO无需任何额外的工作即可实现出色的PLS。</p>
+<p>被动窃听者可以采取对策。 首先，它可以使自己在物理上靠近LU，从而使LU和ED的通道高度相关。 在这种情况下，优点3不再成立，并且保密能力可能会受到损害。</p>
+<p> ED也可以采用的另一种有效策略是利用MaMIMO中信道估计阶段的弱点。 通过从被动模式切换到主动模式，ED可以伪装成LU并发送自己的导频序列； 这就是所谓的导频污染攻击。 然后，BS将束形信号功率到ED而不是LU。 由于MaMIMO系统中已经存在正常数量的导频污染，因此检测这种隐身攻击具有挑战性。</p>
+<blockquote>
+<p>尽管MaMIMO受到了广泛的关注，但有关物理层安全和MaMIMO组合的现有文献很少。 本文将探讨MaMIMO可能为实现物理层安全带来的机遇，并讨论将来必须解决的问题。 </p>
+</blockquote>
+<p><strong>文章结构：</strong></p>
+<p>本文首先讨论在无源ED的情况下MaMIMO带给物理层安全的好处。 然后，我们强调指出，MaMIMO更可能发生主动攻击。 然后简要回顾了应对主动攻击的三种检测方法。 然后，我们概述了重要的未解决问题。 本文的结尾是对未来研究的一些有希望的方向的讨论。 </p>
+<hr>
+<br>
+
+<h2 id="2-Passtive-and-active-eavesdropping-attacks"><a href="#2-Passtive-and-active-eavesdropping-attacks" class="headerlink" title="$2.Passtive and active eavesdropping attacks"></a>$2.Passtive and active eavesdropping attacks</h2><p>为了简化概念，假设一个带有M天线BS，一个单天线LU和一个单天线ED的小区。 从LU和ED到BS的上行链路信道分别表示为gLU和gED。 我们假设一个TDD系统在其中保持信道互易性，并且对应的下行链路信道是gTLU和gTED，其中（·）T表示转置操作。 </p>
+<p>标准TDD MaMIMO涉及两个阶段：LU在上行链路中向BS发送训练符号；以及 并依赖于信道互易性，BS使用适当的缩放比例使用上行链路信道估计来对信道进行波束估计，并将信号波束成形到下行链路中的LU。</p>
+<p>ED的目的是监听从BS到LU的通信，同时不会被发现。 为此，ED可以发起被动攻击或主动攻击，下面将对其进行概述。</p>
+<h3 id="Passtive-eavesdropping-attack"><a href="#Passtive-eavesdropping-attack" class="headerlink" title="Passtive eavesdropping attack"></a>Passtive eavesdropping attack</h3><img src="//zybtree.github.io/2019/12/06/Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks/1.png" style="zoom:50%;">
+
+<p>现在让我们讨论如图1所示的MaMIMO上下文中的被动攻击。这里的主要观察结果是，被动ED的存在根本不影响BS处的波束形成，并且对保密能力的影响可以忽略不计。直观地讲，这是因为MaMIMO能够将传输能量集中在LU的方向上。这意味着ED处的接收信号强度远小于LU处的信号强度。在图1中，示出的遍历容量CLU和CED是具有完美信道估计的BS天线M的数量的函数。假设gLU和gED是独立的并且具有相等平均功率的均匀分布（i.d.d）复高斯矢量，并且BS发射功率被归一化为0 dB。<br>从图1可以看出，ED的容量与M的增加保持相同。之所以如此，是因为BS不在ED的方向上进行波束成形。但是，对于较大的M值，LU的容量会大大增加。换句话说，保密容量大约是常规MIMO（M a 2 – 8）的LU容量的一半，而它占CLU的85％以上已经达到了M =100。从这个简单的例子中，我们可以看到MaMIMO对于集成物理层安全具有极好的潜力。</p>
+<h3 id="An-active-attack-on-channel-estimation"><a href="#An-active-attack-on-channel-estimation" class="headerlink" title="An active attack on channel estimation"></a>An active attack on channel estimation</h3><p>MaMIMO抵御被动攻击的弹性是基于这样的假设，即上行链路信道估计^gLU独立于ED的信道gED。 这促使ED设计对信道估计过程的主动攻击，以影响BS的波束成形设计。 </p>
+<img src="//zybtree.github.io/2019/12/06/Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks/2.png" style="zoom:50%;">
+
+<p>如图2所示，在上行链路信道估计期间，LU将导频符号发送到BS。 同时，ED通过发送另一个飞行员符号来发起攻击。 在最坏的情况下，ED与合法传输同步，这可以通过监听BS和LU之间的信令交换来实现。</p>
+<p>如果不加察觉，这种攻击的后果就是失去了MaMIMO的有希望的物理层安全的优势。与被动攻击的区别在于，信道估计^ gLU与ED的信道gED相关，因此，ED的等效信道也随着M的增加而提高。更糟糕的是，如果ED使用更高的训练能力，它将在训练阶段占据主导地位，保密能力可能会变为零。<br>对于与图1相同的设置，我们在图2中绘制了遍历信道容量和遍历保密容量。ED发送的信号比LU发送的训练信号弱10 dB。可以看出，ED和LU的信道容量都随着M的增加而增加；但是，对于M&gt; 50，保密容量保持不变。<br>尽管这种情况类似于多小区系统中众所周知的导频污染问题，但显着的区别在于ED失控，因此无法采用现有的用于减少MaMIMO中的导频污染的方案。</p>
+
       
     </div>
     
@@ -644,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks"><span class="nav-number">1.</span> <span class="nav-text">Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks"><span class="nav-number">1.</span> <span class="nav-text">Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">$1.Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Passtive-and-active-eavesdropping-attacks"><span class="nav-number">1.2.</span> <span class="nav-text">$2.Passtive and active eavesdropping attacks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Passtive-eavesdropping-attack"><span class="nav-number">1.2.1.</span> <span class="nav-text">Passtive eavesdropping attack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#An-active-attack-on-channel-estimation"><span class="nav-number">1.2.2.</span> <span class="nav-text">An active attack on channel estimation</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -678,7 +717,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">17.9k</span>
+    <span title="Site words total count">19.8k</span>
   
 </div>
 
