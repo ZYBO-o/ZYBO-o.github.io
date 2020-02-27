@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zybtree.github.io/"/>
-  <updated>2019-12-06T06:35:41.346Z</updated>
+  <updated>2019-11-20T09:13:54.801Z</updated>
   <id>https://zybtree.github.io/</id>
   
   <author>
@@ -15,58 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks</title>
-    <link href="https://zybtree.github.io/2019/12/06/Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks/"/>
-    <id>https://zybtree.github.io/2019/12/06/Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks/</id>
-    <published>2019-12-06T00:54:17.000Z</published>
-    <updated>2019-12-06T06:35:41.346Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks"><a href="#Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks" class="headerlink" title="Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks"></a>Physical Layer Security for Massive MIMO an overview on passive eavesdropping and active attacks</h1><blockquote><p>本文讨论了MaMIMO系统中物理层安全集成的机遇和挑战。<br>1.显示MaMIMO本身对被动监听攻击具有鲁棒性</p><p>2.我们回顾一种主动污染信道的方案，该方案会主动攻击信道估计过程。 </p><p>3.概述了我们认为将来最重要的开放研究问题，并提出了一些有希望的研究方向来解决这些问题。</p></blockquote><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="$1.Introduction"></a>$1.Introduction</h2><p>近来，MaMIMO系统领域迅速发展成为最有前途的技术之一，可以增强新兴和未来通信系统的系统吞吐量。 在MaMIMO中，愿景是为基站配备包括100多个天线元件和大量独立收发器链的天线阵列。 MaMIMO的优点是多方面的：</p><ul><li>对应于基站天线元件数量的阵列增益。</li><li>渠道强化效应，为用户提供稳定且可预测的渠道条件。</li><li>从基站到用户几乎是正交的信道。</li><li>在基站和用户处的简单信号处理。</li><li>针对无源窃听攻击的物理层安全性的潜力已大大提高.(尚未得到广泛认可)</li></ul><p><strong>物理层安全基于以下结果：</strong></p><p>考虑一个高斯窃听通道，BS在被动窃听者（ED）的情况下与合法用户（LU）通信。假设从BS到LU和ED的香农容量分别是CLU和CED。然后，BS和LU之间的保密容量为CSC = max {CLU – CED，0}。无需使用任何正式的加密系统，就可以可靠，安全地传输该速率。在传统的MIMO系统中，CLU和CED这两个容量具有相似的数量级，因此提供了相当小的保密容量。通过MaMIMO和无源窃听，情况发生了巨大变化。对于标准时分双工（TDD）模式MaMIMO操作，由于上述1和2，LU处的接收信号功率比ED处的接收信号功率大几个数量级。这就产生了一种情况，其中保密容量几乎是LU的全部容量，即CSC和CLU 。总而言之，MaMIMO无需任何额外的工作即可实现出色的PLS。</p><p>被动窃听者可以采取对策。 首先，它可以使自己在物理上靠近LU，从而使LU和ED的通道高度相关。 在这种情况下，优点3不再成立，并且保密能力可能会受到损害。</p><p> ED也可以采用的另一种有效策略是利用MaMIMO中信道估计阶段的弱点。 通过从被动模式切换到主动模式，ED可以伪装成LU并发送自己的导频序列； 这就是所谓的导频污染攻击。 然后，BS将束形信号功率到ED而不是LU。 由于MaMIMO系统中已经存在正常数量的导频污染，因此检测这种隐身攻击具有挑战性。</p><blockquote><p>尽管MaMIMO受到了广泛的关注，但有关物理层安全和MaMIMO组合的现有文献很少。 本文将探讨MaMIMO可能为实现物理层安全带来的机遇，并讨论将来必须解决的问题。 </p></blockquote><p><strong>文章结构：</strong></p><p>本文首先讨论在无源ED的情况下MaMIMO带给物理层安全的好处。 然后，我们强调指出，MaMIMO更可能发生主动攻击。 然后简要回顾了应对主动攻击的三种检测方法。 然后，我们概述了重要的未解决问题。 本文的结尾是对未来研究的一些有希望的方向的讨论。 </p><hr><br><h2 id="2-Passtive-and-active-eavesdropping-attacks"><a href="#2-Passtive-and-active-eavesdropping-attacks" class="headerlink" title="$2.Passtive and active eavesdropping attacks"></a>$2.Passtive and active eavesdropping attacks</h2><p>为了简化概念，假设一个带有M天线BS，一个单天线LU和一个单天线ED的小区。 从LU和ED到BS的上行链路信道分别表示为gLU和gED。 我们假设一个TDD系统在其中保持信道互易性，并且对应的下行链路信道是gTLU和gTED，其中（·）T表示转置操作。 </p><p>标准TDD MaMIMO涉及两个阶段：LU在上行链路中向BS发送训练符号；以及 并依赖于信道互易性，BS使用适当的缩放比例使用上行链路信道估计来对信道进行波束估计，并将信号波束成形到下行链路中的LU。</p><p>ED的目的是监听从BS到LU的通信，同时不会被发现。 为此，ED可以发起被动攻击或主动攻击，下面将对其进行概述。</p><h3 id="Passtive-eavesdropping-attack"><a href="#Passtive-eavesdropping-attack" class="headerlink" title="Passtive eavesdropping attack"></a>Passtive eavesdropping attack</h3><img src="//zybtree.github.io/2019/12/06/Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks/1.png" style="zoom:50%;"><p>现在让我们讨论如图1所示的MaMIMO上下文中的被动攻击。这里的主要观察结果是，被动ED的存在根本不影响BS处的波束形成，并且对保密能力的影响可以忽略不计。直观地讲，这是因为MaMIMO能够将传输能量集中在LU的方向上。这意味着ED处的接收信号强度远小于LU处的信号强度。在图1中，示出的遍历容量CLU和CED是具有完美信道估计的BS天线M的数量的函数。假设gLU和gED是独立的并且具有相等平均功率的均匀分布（i.d.d）复高斯矢量，并且BS发射功率被归一化为0 dB。<br>从图1可以看出，ED的容量与M的增加保持相同。之所以如此，是因为BS不在ED的方向上进行波束成形。但是，对于较大的M值，LU的容量会大大增加。换句话说，保密容量大约是常规MIMO（M a 2 – 8）的LU容量的一半，而它占CLU的85％以上已经达到了M =100。从这个简单的例子中，我们可以看到MaMIMO对于集成物理层安全具有极好的潜力。</p><h3 id="An-active-attack-on-channel-estimation"><a href="#An-active-attack-on-channel-estimation" class="headerlink" title="An active attack on channel estimation"></a>An active attack on channel estimation</h3><p>MaMIMO抵御被动攻击的弹性是基于这样的假设，即上行链路信道估计^gLU独立于ED的信道gED。 这促使ED设计对信道估计过程的主动攻击，以影响BS的波束成形设计。 </p><img src="//zybtree.github.io/2019/12/06/Physical-Layer-Security-for-Massive-MIMO-an-overview-on-passive-eavesdropping-and-active-attacks/2.png" style="zoom:50%;"><p>如图2所示，在上行链路信道估计期间，LU将导频符号发送到BS。 同时，ED通过发送另一个飞行员符号来发起攻击。 在最坏的情况下，ED与合法传输同步，这可以通过监听BS和LU之间的信令交换来实现。</p><p>如果不加察觉，这种攻击的后果就是失去了MaMIMO的有希望的物理层安全的优势。与被动攻击的区别在于，信道估计^ gLU与ED的信道gED相关，因此，ED的等效信道也随着M的增加而提高。更糟糕的是，如果ED使用更高的训练能力，它将在训练阶段占据主导地位，保密能力可能会变为零。<br>对于与图1相同的设置，我们在图2中绘制了遍历信道容量和遍历保密容量。ED发送的信号比LU发送的训练信号弱10 dB。可以看出，ED和LU的信道容量都随着M的增加而增加；但是，对于M&gt; 50，保密容量保持不变。<br>尽管这种情况类似于多小区系统中众所周知的导频污染问题，但显着的区别在于ED失控，因此无法采用现有的用于减少MaMIMO中的导频污染的方案。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="物理层安全" scheme="https://zybtree.github.io/categories/%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="论文积累与想法" scheme="https://zybtree.github.io/tags/%E8%AE%BA%E6%96%87%E7%A7%AF%E7%B4%AF%E4%B8%8E%E6%83%B3%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Wireless physical layer security</title>
-    <link href="https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/"/>
-    <id>https://zybtree.github.io/2019/11/22/Wireless-physical-layer-security/</id>
-    <published>2019-11-22T02:10:47.000Z</published>
-    <updated>2019-11-29T02:38:51.332Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Wireless-physical-layer-security"><a href="#Wireless-physical-layer-security" class="headerlink" title="Wireless physical layer security"></a><strong>Wireless physical layer security</strong></h1><blockquote><p>论文回顾了这些发展，首先简要介绍了使用信息论来更普遍地描述保密性的历史历史，然后讨论了现代无线网络中主要的信道模型的主要结果。</p></blockquote><h2 id="1-Shannon’s-Cipher-System"><a href="#1-Shannon’s-Cipher-System" class="headerlink" title="$1.Shannon’s Cipher System"></a>$1.Shannon’s Cipher System</h2><p><strong>策略</strong>：</p><p>提出无噪声密码系统(下图所示)。发送方(Alice)希望将消息M传递给合法的接收方(Bob)，同时保持其对窃听者(Eve)的机密，该窃听者可以拦截传输。Alice和Bob分享了一个Eve不知道的公共密钥K。为了建立消息的保密性，Alice使用此密钥将消息M加密为代码字X，然后将其传输。</p><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/1.png" style="zoom:50%;"><p><strong>缺陷：</strong></p><p>Alice和Bob必须共享与他们要交换的消息具有相同长度的秘密密钥，这是一大缺陷。但这主要源于以下事实：通信通道被假定为无噪声的，因此Eve观察到的声音与Bob完全一样。但是，物理层（尤其是在无线通信系统中）几乎没有噪音。下面的模型中有通过物理方式明确利用通信通道的这一缺陷来建立保密性。</p><hr><br><h2 id="2-Wyner’s-Wiretap-Channel"><a href="#2-Wyner’s-Wiretap-Channel" class="headerlink" title="$2.Wyner’s Wiretap Channel"></a>$2.Wyner’s Wiretap Channel</h2><p><strong>策略：</strong></p><p>它的通信过程类似于Shannon的密码系统：Alice希望向Bob传输机密消息，同时保持对Eve的秘密。窃听通道通过考虑如图2所示的嘈杂的通信通道来概括先前的情况。但是，没有密钥可供合法用户使用。</p><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/2.png" style="zoom:50%;"><p>现在的目标是双重的：Alice必须将消息M编码为长度为n的码字X^n，以便已收到Y^n的鲍勃能够可靠地恢复消息。</p><blockquote><p>注意，长度为n的代码字使用信道n次;即X^n =（X1，…，Xn），其中Xi表示该信道的使用。类似地，Y^n=Y1，…，Yn）和Z^n =（Z1 ，……，Zn)分别描述了合法接收者和窃听者处的相应通道输出。</p></blockquote><p>接下来讨论如何在此设置中指定保密性.</p><h3 id="Secrecy-Criterion"><a href="#Secrecy-Criterion" class="headerlink" title="Secrecy Criterion"></a>Secrecy Criterion</h3><blockquote><p>香农的密码系统考虑了完全保密的标准。这是一个非常严格的标准，因为它要求消息M和Eve的通道输出Z^n之间严格的统计独立性。特别是在通信信道嘈杂时，这很难实现，并且通过仅在块长n中渐近地要求统计独立性来放宽准则是合理的。</p></blockquote><p>Wyner 要求条件熵n1 H(M|Zn) ≈ n1 H(M) ，这样通道输出Z^n的信号不会降低消息M的不确定度；也就是说，它不提供有关M的任何信息。此标准被称为弱保密性，通常在相互信息方面等效地写为 </p><p> $\frac{1}{n}(M;Zn)\lim_{n\rightarrow+\infty} 0$</p><p>最近，通过考虑语义安全性进一步加强了该标准。在此，Eve不仅无法解码所传输的消息，而且根本无法获得任何有关它的信息。</p><h3 id="Secrecy-Capacity"><a href="#Secrecy-Capacity" class="headerlink" title="Secrecy Capacity"></a>Secrecy Capacity</h3><p>对于离散的无记忆通道，在给定通道输入的情况下，每个独立通道使用的发送输入和接收输出符号之间的关系可以通过通道输出的有条件概率分布来描述，Wyner在文献The wire-tap channel中提出了机密容量的概念。对于降级通道（即，其中X-Y-Z形成马尔可夫链的通道）的情况，结果如图2所示，这意味着X和Z在统计上独立于Y。</p><p>分立式无记忆窃听通道的保密能力由下式给出：</p><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/3.png" style="zoom:30%;"><p>最大化所有随机变量V和X，从而满足马尔可夫链关系 V−X−(Y,Z)。</p><blockquote><p>直观上，互信息项 I(V;Y) 表示合法链路的信道质量，并描述了Alice可以可靠地传输给Bob的速率.  项 I(V; Z) 代表窃听链路的信道质量，最大传输速率因此精确地受到惩罚.</p><p>另一个重要的观察结果是，要拥有很强的保密能力，通往鲍勃的通道必须比通往夏娃的通道“噪音小”。即对于某些V， I(V; Y) &gt; I(V; Z).</p></blockquote><p><strong><font color="red">实现保密能力的关键思想如下</font></strong>：与其使用所有可用资源进行消息传输，不如通过添加Bob和Eve未知的“虚拟”消息，将其中的一部分用于随机化。具体来说，对于Alice想要发送的每个机密消息，有多个有效码字，并且随机地均匀地选择其中一个随机编码器。</p><p><font color="red">关键思想是:</font>Eve的信道质量,每个机密消息的随机率大致选择为 I(V; Z)。因此，Eve将充满虚拟变量携带的无用信息，而没有剩余资源来解码机密消息本身。因为到Bob的信道质量大致以速率 I(V; Y) 支持可靠的传输,可用于机密消息安全传输的剩余速率为 I(V; Y) - I(V; Z)，因为Bob通常必须对机密消息和伪变量进行解码才能恢复正确的消息。</p><hr><br><h2 id="3-Secure-Communication-over-Wireless-Channels"><a href="#3-Secure-Communication-over-Wireless-Channels" class="headerlink" title="$3.Secure Communication over Wireless Channels"></a>$3.Secure Communication over Wireless Channels</h2><blockquote><p>在本节中，被讨论的用于离散无记忆通道的安全性的信息理论方法被扩展到物理无线通道的模型。无线物理层安全性是这些概念的关键应用之一，因为在无线介质上进行信号广播是它不仅被其预期的接收者接收，而且还容易被非合法的接收者窃听。如上所述，无线介质的不完善将通过利用嘈杂的信道来帮助建立安全性。</p></blockquote><h3 id="Gaussian-Wiretap-Channels"><a href="#Gaussian-Wiretap-Channels" class="headerlink" title="Gaussian Wiretap Channels."></a>Gaussian Wiretap Channels.</h3><p>高斯窃听信道是无线信道的最基本模型，其线性时不变乘法链路受到加性高斯白噪声的破坏。白噪声是指与信道使用无关的随机过程。</p><p>实现保密能力的策略是充分传输功率P和根据高斯分布选择输入信号。</p><h3 id="Multiantenna-Wiretap-Channels"><a href="#Multiantenna-Wiretap-Channels" class="headerlink" title="Multiantenna Wiretap Channels"></a>Multiantenna Wiretap Channels</h3><p>具有多个发射和接收天线的系统，即所谓的多输入多输出（MIMO）系统，可以显着提高无线传输的性能，因此可成大多数现代大容量无线系统的基础。注意，多天线窃听器也可以解释为协作的多个单天线窃听器。</p><p>当Alice发送矢量值信号Xi时，Bob接收到的矢量值信号YB，i 和 Eve接收的YE，i可表示为</p><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/4.png" style="zoom:40%;"><blockquote><p>其中HB和HE是包含乘法通道增益的矩阵，而NB，i和NE，i是彼此独立的（对于i的不同值），在Bob和Eve具有零均值和恒等方差矩阵的独立加性高斯噪声矢量。传输受到平均传输功率 tr(Q)≤P 的约束，其中Q=E[Xi XiT]是传输信号的协方差矩阵。</p></blockquote><h3 id="Fading-Wiretap-Channels"><a href="#Fading-Wiretap-Channels" class="headerlink" title="Fading Wiretap Channels."></a>Fading Wiretap Channels.</h3><p>在以上讨论中，信道被认为在整个传输期间是固定的。特别是，对于先前讨论的高斯窃听通道，Multiantenna Wiretap Channels 中的乘法通道 hB 和 hE 是恒定的。对于无线信道，这种情况很少出现，<font color="red">因为多径传播和干扰通常会导致通信条件的改变，尤其是对于移动网络。<strong>这种现象称为衰落</strong></font>。在这样的环境中，通道的输入输出关系通常被建模为</p><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/5.png" style="zoom:35%;"><p>其中所有hB，i，hE，i，NB，i和NE，i相互独立。在此，hB，i和hE，i是衰减系数，表示信道使用i时的通信条件。如前所述，输入信号受到平均功率约束<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/6.png" style="zoom:40%;">的影响，并且这些噪声过程与通道使用之间的相关性分别为零高斯和方差σB2和σE2。</p><p>对于遍历衰落信道，衰落系数是独立的，并且分布相同，并且允许从信道使用更改为信道使用。因此，对于每次使用通道，Alice,Bob和Eve都可能会经历不同的衰落状态。</p><hr><br><h2 id="4-Physical-Layer-Security-in-Wireless-Networks"><a href="#4-Physical-Layer-Security-in-Wireless-Networks" class="headerlink" title="$4.Physical Layer Security in Wireless Networks"></a>$4.Physical Layer Security in Wireless Networks</h2><p>在将窃听通道的概念和结果扩展和推广到更复杂的多用户方案方面，已经付出了巨大的努力。 下面讨论广播信道，多路访问信道，干扰信道和中继信道的实用模型。这些通道可以洞察更复杂的网络的属性。</p><h3 id="Broadcast-Channel"><a href="#Broadcast-Channel" class="headerlink" title="Broadcast Channel"></a>Broadcast Channel</h3><p>广播信道描述了一种通信情况，在这种情况下，一个发送方将信息发送给多个接收方。例如，该信道描述了蜂窝通信系统的下行链路阶段，在该阶段中，基站将数据发送给多个移动用户。</p><p>带有机密消息的广播信道对通信场景进行了建模，在这种情况下，一个发送方Alice向两个接收方 Bob 1 和 Bob 2 发送一个公用消息M0，向一个接收方Bob 1发送一个机密消息M1，必须对接收方保密。因此，Bob2是公用消息M0的合法接收者，同时也是机密消息M1的窃听者。例如，此方案对以下情况进行建模：某些内容是多播的，而其他内容是单播的。它是由Csisźar和Ko nerner提出的，下图所示。</p><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/7.png" style="zoom:40%;"><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/8.png" style="zoom:40%;"><p>已经建立了保密容量区域，并由满足以下条件的所有速率对（R0，R1）给出</p><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/9.png" style="zoom:40%;"><p>实现该速率区域的基本编码思想是基于叠加编码和窃听编码的组合。首先为两个接收器指定的公共消息M0进行编码，并由辅助随机变量U表示。由于必须在两个接收器处都对M0进行解码，因此对应的速率受Bob 1（即I（U; Y1））和Bob 2（即I（U; Y2））的信道质量的弱化所限制。然后，叠加在其上，根据与上述窃听通道相同的原理，将机密消息M1编码为V。因此，机密率受到两个信道质量的相似差异的限制，但由于在两个接收器处都知道公共消息，所以机密率受U限制。</p><h3 id="Multiple-AccessChannel"><a href="#Multiple-AccessChannel" class="headerlink" title="Multiple-AccessChannel"></a>Multiple-AccessChannel</h3><p>多个访问信道与广播信道相对应：多个发送器将信息发送到单个接收器。发生这种情况的一个示例是在蜂窝系统的上行链路阶段，其中几个移动用户将数据发送到基站。</p><p>在具有机密消息的多路访问信道中，两个发送方Alice 1和Alice 2将机密消息M1和M2发送到单个接收方Bob。每个发送器都会监听另一个发送器的传输，因此Alice 1和Alice 2必须发送其机密消息，以便Bob可以解码它们，但不会将信息泄漏给另一个发送器。</p><p>多路访问窃听通道给出的设置略有不同，在该设置中两个发送器都是可信任的，但必须通过外部窃听者确保其通信。</p><h3 id="Interference-Channel"><a href="#Interference-Channel" class="headerlink" title="Interference Channel"></a>Interference Channel</h3><p>干扰信道描述了通信场景，在该场景中，多个收发器对相互干扰。每个发送者仅对将信息发送到其指定的接收者感兴趣。然而，由于无线介质的开放性，所发送的信号不仅被预期的接收器接收，而且还被其他用户接收。</p><p>具有机密消息的干扰信道考虑了两个发射机Alice 1和Alice 2，它们希望将其机密消息M1和M2传输到各自的接收机Bob 1和Bob 2。因为两种传输都相互干扰，所以每个发送器都必须以使其与对方接收器保持安全的方式编码和发送其消息。如下图所示。此通道的保密容量区域的内部和外部边界已确定。</p><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/10.png" style="zoom:40%;"><p>认知干扰信道给出了一种不同的通信场景，其中包含一个公共消息和一个机密消息。在此，公共消息对于两个发送器都是已知的，并且必须被传送到两个接收器，而机密消息仅在一个发送器处是已知的，并且必须被传送到其相应的接收器，而使另一个接收器不知道它。与其他干扰方案不同，这种情况下的保密容量区域是已知的。</p><h3 id="Relay-Channe"><a href="#Relay-Channe" class="headerlink" title="Relay Channe"></a>Relay Channe</h3><p>具有机密消息的中继通道考虑了发送方Alice希望将机密消息发送给接收方Bob的情况。传输由不受信任的中继支持，因此Alice必须以某种方式编码和传输消息，以便中继能够帮助进行通信，但不获取有关消息的任何信息。</p><p>具有外部窃听器的中继通道与以前的方案有所不同，它具有受信任的中继器，但是必须确保机密传输不受外部窃听器的影响。</p><hr><br><h2 id="5-Secret-Key-Generation"><a href="#5-Secret-Key-Generation" class="headerlink" title="$5.Secret-Key Generation"></a>$5.Secret-Key Generation</h2><p>在前面的讨论中，看到了如何使用信息理论方法来确保通过无线信道传输机密消息的安全。下面讨论如何基于公开讨论以及随后借助无线信道将这些信息理论方法用于生成密钥。</p><h3 id="Public-Discussion"><a href="#Public-Discussion" class="headerlink" title="Public Discussion"></a>Public Discussion</h3><p>在这种设置下，两个终端Alice和Bob观察到一个公共随机源的相关版本YA^n和YB^n。基于这些观察，两个终端都希望就相同的秘密密钥达成共识；<img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/11.png" style="zoom:30%;">其中KA和KB分别是由Alice和Bob生成的秘密密钥。为此，他们被允许通过无噪音的公共渠道交换无限的信息（多次迭代）。但是，此通道已被窃听，因此通过公共讨论交换的任何信息都不得泄露有关密钥本身的任何信息。通过采用强保密标准，可以对这种情况进行模拟，使其类似于窃听通道</p><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/12.png" style="zoom:30%;"><p>其中Φ表示通过公共渠道进行的公共讨论。换句话说，密钥必须独立于公开讨论。这种情况如下图所示。</p><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/13.png" style="zoom:30%;"><p>现在的目的是确定私钥容量，该容量表征了可以生成私钥的最大速率。而且，已经表明该速率可以通过从Alice到Bob的单向通信来实现。</p><h3 id="Wireless-Channels"><a href="#Wireless-Channels" class="headerlink" title="Wireless Channels"></a>Wireless Channels</h3><p>下面把基于公开讨论的有关密钥生成的先前讨论扩展到无线信道的实际相关情况。我们将看到无线信道本身可以用作常见随机性的来源，从而使先前的概念。</p><p>情况是相同的：两个终端Alice和Bob想要生成一个秘密密钥，使窃听者Eve处于黑暗中。两个终端都可以通过无线衰落信道进行传输，并且可以进一步使用无噪声的公共信道进行公共讨论。Eve偷听了无线信道上的传输，也偷听了公众的讨论。<font color="red"><strong>关键思想</strong>是利用无线信道的互易性来获得公共衰落信道的相关观测结果。然后可以如上所述生成密钥。</font></p><p>当Alice通过无线信道发送信号 XA 时，Bob处的信号 YB 和Eve处的 YE 是</p><img src="//zybtree.github.io/2019/11/22/Wireless-physical-layer-security/14.png" style="zoom:40%;"><p>通过hAB和hAE，分别在Alice和Bob和Eve之间获得信道增益。NA和NB是具有零均值和方差σ的加性高斯噪声项.</p><p>如果两个传输都发生在相同的频带内并且在信道的相干时间内，则可以合理地假设Alice和Bob之间的信道是对等的；即 hAB = hBA。即使该通道不是完全正确的，也足以获取对后续密钥生成过程有用的相关版本。此外，由于假定Eve的位置与Alice和Bob的位置不同，因此发射信号会经历不同的传输条件，从而导致在Eve的信道观测值 hAE 和 hBE 与 hAB 和 hBA 无关。</p><hr><br><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>在这篇论文中，学习了无线物理层安全领域的最新研究，该领域利用无线电信道的物理特性（尤其是扩散和叠加）来提供无线数据传输的安全性。通过使用信息理论形式主义，我们已经看到，在无线网络的所有主要信道模型中，物理层原则上都可以在现实条件下以完美的保密性支持可靠的数据传输。值得注意的是，这些结果的共同主题是对准确通道建模的依赖。尽管这是通信系统设计和分析中的一种常用方法，但是它意味着对所用模型的鲁棒性是在实践中需要考虑的因素。我们已经在信道状态信息的背景下讨论了这个问题，但是它通常是进一步研究的重要问题。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="物理层安全" scheme="https://zybtree.github.io/categories/%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="论文积累与想法" scheme="https://zybtree.github.io/tags/%E8%AE%BA%E6%96%87%E7%A7%AF%E7%B4%AF%E4%B8%8E%E6%83%B3%E6%B3%95/"/>
-    
-  </entry>
   
   <entry>
     <title>雅思口语积累</title>
@@ -95,32 +43,6 @@
   </entry>
   
   <entry>
-    <title>研一上学期复习计划</title>
-    <link href="https://zybtree.github.io/2019/11/18/%E7%A0%94%E4%B8%80%E4%B8%8A%E5%AD%A6%E6%9C%9F%E5%A4%8D%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
-    <id>https://zybtree.github.io/2019/11/18/研一上学期复习计划/</id>
-    <published>2019-11-18T11:39:31.000Z</published>
-    <updated>2019-11-18T11:40:52.753Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="研一上学期复习计划"><a href="#研一上学期复习计划" class="headerlink" title="研一上学期复习计划"></a>研一上学期复习计划</h1><h2 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h2><p>不出意外基本就是14周考试，剩余两周时间复习，复习计划：</p><ul><li>带着问题看PPT，把PPT最后的题目与学长整理的重点打印，然后按照这个来复习PPT</li><li>仔细分析历年考题，把学长发的往年试卷做一下，然后把题目的相关知识点整理出来</li></ul><p>时间安排：</p><p>周一周二，周三周四，两天一个章节，后面周五周六周日每天一章节。</p><h2 id="随机过程"><a href="#随机过程" class="headerlink" title="随机过程"></a>随机过程</h2><p>一周复习两个章节，复习计划与时间安排：</p><p>上课时看一个章节的资料，把基本概念完全掌握，书后作业分析清除。往年期末试卷好好分析出题规律。</p><p>时间安排：周一到周四复习一个章节，周五到周日复习一个章节。</p><h2 id="学术英语"><a href="#学术英语" class="headerlink" title="学术英语"></a>学术英语</h2><h3 id="雅思口语课程"><a href="#雅思口语课程" class="headerlink" title="雅思口语课程"></a>雅思口语课程</h3><p>一周准备三个口语题目，准备+分析+背诵，积累在IPad上面，为了下学期的雅思考试做准备。</p><h3 id="学术英语笔试"><a href="#学术英语笔试" class="headerlink" title="学术英语笔试"></a>学术英语笔试</h3><ul><li>积累词根词汇在IPad上</li><li>把课堂的各种练习好好分析清楚</li><li>把MOOC上的课程与练习完成</li></ul><h2 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h2><p>等计算机网络体系结构考完再准备</p><h2 id="自然辩证法与中特"><a href="#自然辩证法与中特" class="headerlink" title="自然辩证法与中特"></a>自然辩证法与中特</h2><p>以后再说把。。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="研究生学习" scheme="https://zybtree.github.io/categories/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="学习计划与总结" scheme="https://zybtree.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E4%B8%8E%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
     <title>台湾清华彭明辉教授的研究生手册收获</title>
     <link href="https://zybtree.github.io/2019/11/11/%E5%8F%B0%E6%B9%BE%E6%B8%85%E5%8D%8E%E5%BD%AD%E6%98%8E%E8%BE%89%E6%95%99%E6%8E%88%E7%9A%84%E7%A0%94%E7%A9%B6%E7%94%9F%E6%89%8B%E5%86%8C%E6%94%B6%E8%8E%B7/"/>
     <id>https://zybtree.github.io/2019/11/11/台湾清华彭明辉教授的研究生手册收获/</id>
@@ -143,162 +65,6 @@
     
     
       <category term="论文积累与想法" scheme="https://zybtree.github.io/tags/%E8%AE%BA%E6%96%87%E7%A7%AF%E7%B4%AF%E4%B8%8E%E6%83%B3%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于无线信道特征的物理层安全编码技术研究</title>
-    <link href="https://zybtree.github.io/2019/11/08/%E5%9F%BA%E4%BA%8E%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93%E7%89%B9%E5%BE%81%E7%9A%84%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/"/>
-    <id>https://zybtree.github.io/2019/11/08/基于无线信道特征的物理层安全编码技术研究/</id>
-    <published>2019-11-08T01:37:19.000Z</published>
-    <updated>2019-11-22T02:13:32.180Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="基础学习"><a href="#基础学习" class="headerlink" title="基础学习"></a>基础学习</h1><p>解决的问题：解决物理层电磁信号泄露带来的安全问题。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="物理层安全" scheme="https://zybtree.github.io/categories/%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="论文积累与想法" scheme="https://zybtree.github.io/tags/%E8%AE%BA%E6%96%87%E7%A7%AF%E7%B4%AF%E4%B8%8E%E6%83%B3%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>大话无线通信——快速理解无线通信</title>
-    <link href="https://zybtree.github.io/2019/11/06/%E5%A4%A7%E8%AF%9D%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E7%90%86%E8%A7%A3%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/"/>
-    <id>https://zybtree.github.io/2019/11/06/大话无线通信——快速理解无线通信/</id>
-    <published>2019-11-06T08:00:40.000Z</published>
-    <updated>2019-11-22T02:13:33.379Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="有线与无线的类比"><a href="#有线与无线的类比" class="headerlink" title="有线与无线的类比"></a>有线与无线的类比</h1><blockquote><p>通过简单的有线通信来和无线通信作类比，能够快速对无线通信系统和运作方式有一个整体的初步认识。</p></blockquote><p>无线通信和有线通信的区别，说复杂的话会有很多很多，但是说简单一点，只有两点：<strong><font color="red">接口</font></strong>和<strong><font color="red">信道</font></strong>。</p><ul><li><strong>接口：</strong>有限通信即固定电话的接口是钉在墙上，插一根电话线就可以使用，通过电话接口可以和固网进行联系。 但是，手机和基站通信的接口是看不见，摸不着的。</li><li><strong>信道：</strong>固定电话的信号是通过电话线进行传递的，称为”有线信道”；手机的信号是通过电磁波在空中传送的，看不见，摸不着，称为”无线信道”。</li></ul><h1 id="无线通信需要解决的主要问题"><a href="#无线通信需要解决的主要问题" class="headerlink" title="无线通信需要解决的主要问题"></a>无线通信需要解决的主要问题</h1><h2 id="一-基站如何区分手机"><a href="#一-基站如何区分手机" class="headerlink" title="一.基站如何区分手机"></a>一.基站如何区分手机</h2><blockquote><p>在固定电话时代，要识别一路话音信号来自哪台电话是一件很简单的事情，看看它来自墙上的那个接口，通过哪根电话线送到电话交接箱就可以了，交接箱上的标签写得很清楚。</p><p>​    而无线通信时代，空中接口并没有一个实实在在的插口，就是一面天线在接收电磁波，而且有很多手机向着天线发射电磁波。所以基站搞清哪个手机发比较困难。</p></blockquote><p>1.手机的滤波器对频率有很强的区分能力，所以可以让手机工作在不同的频率上来区分它们。</p><p>2.无线通信系统都有着自己的时间体系，让手机工作在不同的时间里，也可以区分他们。（比如GSM，在中心交换机里面用晶振产生时间，然后一级一级让下传送时钟，已形成全网时间的统一）</p><br><hr><br><h2 id="二-手机如何找到基站"><a href="#二-手机如何找到基站" class="headerlink" title="二.手机如何找到基站"></a>二.手机如何找到基站</h2><blockquote><p>对于固定电话而言，想要找到通信网络是非常简单的，只要把电话线往墙上的接口一插就搞定了。但是对于手机而言，想要找到移动通信网络要多复杂很多，因为手机并不知道要建立联系的基站在哪里，这就需要建立一个机制来让手机找到基站。</p></blockquote><h3 id="发现基站"><a href="#发现基站" class="headerlink" title="发现基站"></a>发现基站</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="物理层安全" scheme="https://zybtree.github.io/categories/%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="大话无线通信" scheme="https://zybtree.github.io/tags/%E5%A4%A7%E8%AF%9D%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TR-069学习</title>
-    <link href="https://zybtree.github.io/2019/11/01/TR-069%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://zybtree.github.io/2019/11/01/TR-069学习/</id>
-    <published>2019-11-01T03:06:58.000Z</published>
-    <updated>2019-11-22T02:12:58.800Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><strong>名词解释：</strong></p><ul><li><strong>CPE：</strong>Customer Premise Equipment，客户前置设备,实际是一种接收移动信号并以无线WIFI信号转发出来的的移动信号接入设备，它也是一种将高速4G或者5G信号转换成WiFi信号的设备，可支持同时上网的移动终端数量也较多。CPE可大量应用于农村，城镇，医院，单位，工厂，小区等无线网络接入，能节省铺设有线网络的费用。——摘自百度百科</li><li><strong>ACS：</strong>Auto-Configuration Server，自动配置服务器，在TR-069协议网络架构中负责对终端设备CPE进行管理。ACS与CPE间的接口为南向接口，ACS与管理系统间的接口为北向接口。——摘自百度百科</li></ul></blockquote><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>现阶段的家庭网络设备大都只提供了在局域网侧(LAN)的管理配置接口和界面，因此运营商的维护人员需要上门进行安装或调试设备，这样的人工服务方式显然运行效率不高，而且需要花费大量的人力。随着运营商家庭网络业务的开展，将会有大量的设备需要安置在用户家中，采用过去人工方式对这些设备进行维护和管理将会成为一个巨大的负担。 </p><p>CPE的WAN配置管理协议的出现解决了这样的服务难题，它提供了家庭网络设备进行管理配置的通用框架和协议，从网络侧(WAN)对家庭网络中的网关、路由器、机项盒等设备进行远程集中管理。它主要包括两类逻辑设备:客户端设备(CPE)和自动配置服务器(ACS)。在家庭网络环境下，从网络侧通过自动配置服务器，对用户设备进行配置和管理，同时所有与用户设备相关的其他操作，诊断、升级等均可由自动配置服务器来完成。 </p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="物理层安全" scheme="https://zybtree.github.io/categories/%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="TR-069" scheme="https://zybtree.github.io/tags/TR-069/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>无线信道的密钥生成方法</title>
-    <link href="https://zybtree.github.io/2019/10/28/%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93%E7%9A%84%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95/"/>
-    <id>https://zybtree.github.io/2019/10/28/无线信道的密钥生成方法/</id>
-    <published>2019-10-28T02:58:48.000Z</published>
-    <updated>2019-11-22T02:13:34.672Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="摘要与引言"><a href="#摘要与引言" class="headerlink" title="摘要与引言"></a>摘要与引言</h1><blockquote><p>本文回顾了近二十年来物理层安全领域的发展, <strong>着重追踪了基于密钥的物理层安全机制的演变过程</strong>.无线信道密钥生成方法的<strong>核心</strong>：<font color="red">在于合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥</font>.</p><p>本文结构：</p><ul><li>首先从<strong>互易性验证</strong>、<strong>误差补偿</strong>、<strong>信道特征</strong>及<strong>去相关</strong>四个方面对信道的测量, 结合真实的应用场景作了详细的分析. </li><li>在<strong>测量值量化</strong>、<strong>信息调和</strong>以及<strong>保密增强</strong>环节, 分别讨论了该领域已有文献在这些环节提出的方法的理论依据并对比了基于各种不同方法的密钥的生成算法的优劣.</li><li>归纳了在第五代移动通信方式下该领域潜在的研究方向和可能面临的难题.</li></ul></blockquote><p>基于信息论安全的物理层安全的研究发展为两条主线: 由<strong>Wyner引导的无密钥安全</strong>和由<strong>Shannon和Maurer引导的基于密钥的安全机制</strong>.</p><p><strong>Shannon在《 Communication theory of secrecy systems》中建立的物理层安全模型</strong>是基于信息论的严格意义上的绝对安全,  要求窃听者接收到加密后消息的后验概率等于消息的先验概率, 从而保证窃听者无法从窃听信号中获得任何信息.(<em>然而该结论是一种悲观的结果因为只有密钥的熵不小于源信号的信息, 也就是至少达到“一次 一密”时才能够达到绝对安全.</em>)</p><p><strong>Wyner在《The wire-tap channel》引入了窃听信道的模型</strong>:在窃听者的信道是合法接收者的退化信道的假设下, 可以在保证不泄露给窃听者任何信息的条件下, 最大化发送者到合法接收者的传输速率. </p><p>Maurer认为Wyner 的退化窃听信道未必现实, 并在《 Secret key agreement by public discussion from common information》最先提出了一种当窃听者的信道优于合法接收者时仍可以进行安全通信的方法. 该方法的核心在于<strong>让合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥</strong>.</p><br><hr><br><h1 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h1><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/1.png" alt></p><p>图 1 描述的是一个无噪的密钥生成模型, Alice、Bob 和 Eve 分别表示发送者、合法接收者和窃听者, <em>X</em> 为 Alice 的发送信号, <em>Y</em> 为 Bob 的接收信号, 而 <em>Z</em> 是 Eve 的接收信号, <em>P**XYZ</em> , , 为 <em>X</em>、<em>Y</em> 和 <em>Z</em> 的联合分布函数.  d为系统中的相干距离, 超出相干距离之外的窃听者获得的信道观测值可以看作和合法双方的信道观测值之间是统计独立的. </p><p>在该模型下 Alice 和 Bob 可以从无噪公共信道中获得的最大安全速率可以描述为S(XY||Z)* , 该速率的上界和下界可以表述为：</p><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/2.png" alt></p><p>国内该领域的研究刚刚开始, 主要集中于对量化和信息调和方法的改进, 并在仿真系统中进行验证, 但还尚未出现实际的系统验证.  </p><p>目前文献中获取共享密钥的典型流程如图 2 所示, 主要包括以下四个步骤: </p><p>(1) <strong>信道测量</strong>: Alice 和 Bob 通过发送导频到对端再测量信道的某些特征来获取两者之间的无线信道随着时间的变化值.  </p><p>(2) <strong>量化</strong>: 将测量值用不同的量化方法转换成为一串密钥比特.  </p><p>(3) <strong>信息调和</strong>: 应用一种信息调和协议丢弃或者纠正两端生成的密钥比特的差异.  </p><p>(4) <strong>保密增强</strong>: 丢弃部分一致的比特或者执行某种比特转换来强化密钥, 增大密钥的熵并且模糊窃听者在上一个信息调和步骤中可能获取的局部信息. </p><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/3.png" alt></p><br><hr><br><h1 id="信道测量"><a href="#信道测量" class="headerlink" title="信道测量"></a>信道测量</h1><h2 id="一-互易性验证"><a href="#一-互易性验证" class="headerlink" title="一.互易性验证"></a>一.互易性验证</h2><blockquote><p> 移动无线信道的主要特征就是多径传播, 其具有更加丰富的多径衰落, 多径衰落的主要参数体现在时延扩展和相关带宽、多普勒扩展与相干时间. </p><p><strong>时分双工</strong>的上下行采用同一频率, 具有很高的频谱利用率, 同时上下行传输由于采用了同一频率, 上下行信号在无线信道中经历了相似的环境, 具有<strong>短时互易性</strong>. 此外, 无线多径信道还具有<strong>空间唯一性</strong>、<strong>快速时变性</strong>、<strong>不可预测性</strong>. </p><p>无线信道的空间唯一性表现为<strong>不同空间的无线信道特征是唯一的</strong>, <strong>当窃听者离合法接收者的距离超过波长的数量级时, 无线信道特征将不再相关</strong>. 同时, 在移动通信中, 信道中物体的移动将引起信道的特征快速的变化, 而由于多径效应, 每条径上的衰落各不相同, 这种无线信道的特征的变化是随机的、不可预测的. </p></blockquote><p>Maurer在《Secret key agreement by public discussion from common information》最先提出通过提取通信双方公共信道的共有信息生成加密密钥. 根据信道的短时互易性, 通信双方同一时刻测得的信道特征相同, 可以作为生成密钥的随机源. 由于信道随着时间变化, 密钥自动更新, 并且这种更新对窃听者而言, 是无法预测的. 目前, TDD 系统中信道的互易模型如图 3 所示.</p><p><img src="//zybtree.github.io/2019/10/28/无线信道的密钥生成方法/4.png" alt></p><h2 id="二-误差修正"><a href="#二-误差修正" class="headerlink" title="二.误差修正"></a>二.误差修正</h2><h2 id="三-信道特征"><a href="#三-信道特征" class="headerlink" title="三.信道特征"></a>三.信道特征</h2><h2 id="四-测试值去相关"><a href="#四-测试值去相关" class="headerlink" title="四.测试值去相关"></a>四.测试值去相关</h2><br><hr><br><h1 id="量化策略"><a href="#量化策略" class="headerlink" title="量化策略"></a>量化策略</h1><p>了解到单门限，自适应量化门限，多比特量化等方法， 每种量化方法都有各自的优缺点, 量化阶数越高, 密钥的生成速率越高, 但是噪声对其影响导致错误的概率也就越大; 量化阶数越低, 密钥生成速率低, 但是密钥的一致性就更高。一个好的量化方法还应当可以适应场景的切换, 根据静止和运动场景调整量化的方法, 达到最优的量化效果。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="物理层安全" scheme="https://zybtree.github.io/categories/%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="论文积累与想法" scheme="https://zybtree.github.io/tags/%E8%AE%BA%E6%96%87%E7%A7%AF%E7%B4%AF%E4%B8%8E%E6%83%B3%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>无线通信物理层安全方法综述</title>
-    <link href="https://zybtree.github.io/2019/10/25/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8%E6%96%B9%E6%B3%95%E7%BB%BC%E8%BF%B0/"/>
-    <id>https://zybtree.github.io/2019/10/25/无线通信物理层安全方法综述/</id>
-    <published>2019-10-25T01:17:57.000Z</published>
-    <updated>2019-11-22T02:13:31.059Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="一-传统安全方案的局限性"><a href="#一-传统安全方案的局限性" class="headerlink" title="一.传统安全方案的局限性"></a>一.传统安全方案的局限性</h2><p>1.传统安全方案是在网络层通过公私密钥对数据进行加密，往往以牺牲复杂度换取安全性。然而在目前正在推广使用的 ＬＴＥ／４Ｇ 甚至在正在完善的５Ｇ 标准中，高的数据传输速率对加解密实时性、复杂度和延时等提出了更加严格的要求。</p><p>2.无线传感器网络（Ｗireless sensor network,WSN）及 无 线 自 组 织网络(Mobile Ad hoc networks,MANET）等新型网络目前在军事和民用中都得到了广泛的使 用。然而这些新型网络中的各个节点通常以电池供电，无法负担传统的加解密算法的功率与成本的开销。</p><p>3.传统的加密算法大多基于现有的计算机无法在短时间内对其进行破解。随着拥有迅速执行巨<br>量复杂的因数分解能力的量子计算机的出现，很多传统的加密方法将不再可靠。</p><br><h2 id="二-物理层安全基础"><a href="#二-物理层安全基础" class="headerlink" title="二.物理层安全基础"></a>二.物理层安全基础</h2><p><strong>1.替换方式：</strong>作为上层加密方法的一种补充或代替，物理层安全利用信道的多径、互易性、空间唯一性等特征在底层提高无线通信系统的安全性。</p><p><strong>2.理论基础：</strong>Shannon建立的物理层安全模型。</p><p><strong>3..本质：</strong>在于利用信道的噪声和多径特性的不确定性来加密发送信息，使得窃听者获得发送信号的信息量趋向于零。</p><br><h2 id="三-物理层安全发展的两条主线"><a href="#三-物理层安全发展的两条主线" class="headerlink" title="三.物理层安全发展的两条主线"></a>三.物理层安全发展的两条主线</h2><blockquote><p><strong>背景:</strong></p><p>1.Ｗyner引入了窃听信道的模型，表 明 当 窃听者的信道是合法接收者的退化信道时，存在某种方法在保证不泄露给窃听者任何信息的条件下，最大化发送者到合法接收者的传输速率。</p><p>在 Ｗyner模型的启发下，很多文献提出在先验的信道状态信息（channel state information,CSI）的帮助下设计预编码矩阵的无密钥安全方案。其出发点是利用无线信道以及噪声内在的随机性使得合法接收者的信道优于窃听者来限制非法接收者获得的信息量。</p><p>2.Ｍaurer认 为 Ｗyner的 退化窃听信道假设未必合理，并最先提出了一种当窃听者的信道优于合法接收者时仍可以进行安全通信的方法。该方法的核心在于让合法通信双方通过公共信道和无差错的反馈信道通信共同产生一组安全密钥。</p></blockquote><p>基于信息论安全的物理层安全的研究发展为两条主线：1.由Wyner引导的无密钥安全；2.Shannon和Maurer引导的无线密钥安全机制。</p><br><hr><br><h1 id="安全容量"><a href="#安全容量" class="headerlink" title="安全容量"></a>安全容量</h1><blockquote><p>无线信道安全容量的分析是物理层安全的研究基础。物理层安全的安全容量决定了合法接收端可以正确接收而窃听者却无法获取的信息的最大可达通信速率，以及通信网络能提供的服务质量的高低。</p></blockquote><h2 id="一-无密钥安全系统下的容量"><a href="#一-无密钥安全系统下的容量" class="headerlink" title="一.无密钥安全系统下的容量"></a>一.无密钥安全系统下的容量</h2><p>无密钥安全方案的出发点是合法接收者的信道条件优于窃听者的信道。该模型下的安全容量可以描述为：</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cs ＝Cm －Ce</span><br></pre></td></tr></table></figure><p>式中，Cm和Ce分别为合法接收者和窃听者的信道容量。</p><p>通过增大合法接收者和窃听者的信道条件差异来优化信道安全容量。</p><br><h2 id="二-无线密钥共享方案下的密钥"><a href="#二-无线密钥共享方案下的密钥" class="headerlink" title="二.无线密钥共享方案下的密钥"></a>二.无线密钥共享方案下的密钥</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="物理层安全" scheme="https://zybtree.github.io/categories/%E7%89%A9%E7%90%86%E5%B1%82%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="论文积累与想法" scheme="https://zybtree.github.io/tags/%E8%AE%BA%E6%96%87%E7%A7%AF%E7%B4%AF%E4%B8%8E%E6%83%B3%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>one min speech</title>
-    <link href="https://zybtree.github.io/2019/10/24/one-min-speech/"/>
-    <id>https://zybtree.github.io/2019/10/24/one-min-speech/</id>
-    <published>2019-10-24T06:05:00.000Z</published>
-    <updated>2019-11-04T06:58:38.936Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Hello,everyone.Today l want to introduce a famous Japanese director  makoto shinkai who is my favoriate anime director.</p><p><img src="//zybtree.github.io/2019/10/24/one-min-speech/1.jpeg" alt></p><p>This is 5 Centimeter Per Second which is released in 2007。</p><p><img src="//zybtree.github.io/2019/10/24/one-min-speech/2.jpeg" alt></p><p>This is The Garden of Words，this is my favoriate one.</p><p><img src="//zybtree.github.io/2019/10/24/one-min-speech/3.jpeg" alt></p><p>This is Your name ,this is  his most famous movie</p><p><img src="//zybtree.github.io/2019/10/24/one-min-speech/4.jpg" alt></p><p>This is Weathering With You，this moive has released on November 1st.</p><p>Shinkai is good at shooting  beautiful and spectacular scenery.Missing and distance are the same themes in his animations.</p><p>shinkai’s work is like a vibrato in a piece of music which echoes in the our heart for a long time and cannot be calmed down.He firmly grasped the emotions of this era which can always hit people’s hearts</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="英语学习与积累" scheme="https://zybtree.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%A7%AF%E7%B4%AF/"/>
-    
-    
-      <category term="口语练习" scheme="https://zybtree.github.io/tags/%E5%8F%A3%E8%AF%AD%E7%BB%83%E4%B9%A0/"/>
     
   </entry>
   
@@ -351,32 +117,6 @@
     
     
       <category term="感悟与反思" scheme="https://zybtree.github.io/tags/%E6%84%9F%E6%82%9F%E4%B8%8E%E5%8F%8D%E6%80%9D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>研一上学期计划</title>
-    <link href="https://zybtree.github.io/2019/09/30/%E7%A0%94%E4%B8%80%E4%B8%8A%E5%AD%A6%E6%9C%9F%E8%AE%A1%E5%88%92/"/>
-    <id>https://zybtree.github.io/2019/09/30/研一上学期计划/</id>
-    <published>2019-09-30T05:39:34.000Z</published>
-    <updated>2019-10-23T10:23:03.154Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><h2 id="一-物理层安全"><a href="#一-物理层安全" class="headerlink" title="一.物理层安全"></a>一.物理层安全</h2><blockquote><p>第一学期打好基础，把硕士和博士毕业论文都精读分析完。</p></blockquote><p><strong>需要看完的书籍：</strong></p><ul><li>信号与系统</li><li>通信原理基础</li><li>信息论与编码</li><li>密码学重点</li><li>随机过程</li><li>计算机网络</li></ul><h2 id="二-机器学习"><a href="#二-机器学习" class="headerlink" title="二.机器学习"></a>二.机器学习</h2><blockquote><p>在这个学期做到入门机器学习，做出一个小成品</p></blockquote><p><strong>需要看完的书籍：</strong></p><ul><li>机器学习(西瓜书)</li><li>机器学习实战</li></ul><h2 id="三-英语雅思"><a href="#三-英语雅思" class="headerlink" title="三.英语雅思"></a>三.英语雅思</h2><p><strong>目前的准备：</strong></p><ul><li>归纳完成词根词缀</li><li>背完雅思词汇</li><li>背完新概念三前三十篇</li><li>完成近几年的雅思真题</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="研究生学习" scheme="https://zybtree.github.io/categories/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="学习计划与总结" scheme="https://zybtree.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E4%B8%8E%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
