@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C语言链接&预处理&Makefile</title>
+    <url>/2020/03/12/C%E8%AF%AD%E8%A8%80%E9%93%BE%E6%8E%A5-%E9%A2%84%E5%A4%84%E7%90%86-Makefile/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="链接详解"><a href="#链接详解" class="headerlink" title="链接详解"></a>链接详解</h2><h2 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h2><h2 id="Makefile基础"><a href="#Makefile基础" class="headerlink" title="Makefile基础"></a>Makefile基础</h2>]]></content>
+      <categories>
+        <category>Linux C</category>
+      </categories>
+      <tags>
+        <tag>Makefile</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git提速代理</title>
     <url>/2020/03/11/Git%E6%8F%90%E9%80%9F%E4%BB%A3%E7%90%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -42,7 +53,7 @@
 <p>​            </p>
 ]]></content>
       <categories>
-        <category>C</category>
+        <category>Linux C</category>
       </categories>
       <tags>
         <tag>Mysql</tag>
@@ -105,7 +116,7 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>规划与学习</category>
+        <category>研究生学习</category>
       </categories>
       <tags>
         <tag>规划</tag>

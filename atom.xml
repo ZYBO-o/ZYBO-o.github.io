@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zybtree.github.io/"/>
-  <updated>2020-03-11T10:37:12.472Z</updated>
+  <updated>2020-03-12T13:18:12.303Z</updated>
   <id>https://zybtree.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C语言链接&amp;预处理&amp;Makefile</title>
+    <link href="https://zybtree.github.io/2020/03/12/C%E8%AF%AD%E8%A8%80%E9%93%BE%E6%8E%A5-%E9%A2%84%E5%A4%84%E7%90%86-Makefile/"/>
+    <id>https://zybtree.github.io/2020/03/12/C语言链接-预处理-Makefile/</id>
+    <published>2020-03-12T13:10:13.000Z</published>
+    <updated>2020-03-12T13:18:12.303Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="链接详解"><a href="#链接详解" class="headerlink" title="链接详解"></a>链接详解</h2><h2 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h2><h2 id="Makefile基础"><a href="#Makefile基础" class="headerlink" title="Makefile基础"></a>Makefile基础</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="Linux C" scheme="https://zybtree.github.io/categories/Linux-C/"/>
+    
+    
+      <category term="Makefile" scheme="https://zybtree.github.io/tags/Makefile/"/>
+    
+  </entry>
   
   <entry>
     <title>Git提速代理</title>
@@ -47,7 +73,7 @@
     <link href="https://zybtree.github.io/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     <id>https://zybtree.github.io/2020/03/02/Linux下C链接数据库/</id>
     <published>2020-03-02T13:25:54.000Z</published>
-    <updated>2020-03-12T00:34:35.783Z</updated>
+    <updated>2020-03-12T13:12:40.530Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-安装数据库"><a href="#1-安装数据库" class="headerlink" title="1.安装数据库"></a>1.安装数据库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqld-dev</span><br></pre></td></tr></table></figure><h2 id="2-查看安装包"><a href="#2-查看安装包" class="headerlink" title="2.查看安装包"></a>2.查看安装包</h2><p>2.查看本地有没有安装mysql的开发包。命令是  ‘mysql_config –cflags –libs’如果有安装就会有一串编译选项和连接库。如果没有就自行安装 mysql-devel-*****的rpm包后面是版本号。mysql开发包提供了基本操作接口。安装后头文件在/usr/include/mysql 而动态库在 /usr/lib/mysql 上。</p><p><img src="//zybtree.github.io/2020/03/02/Linux下C链接数据库/1.png" alt></p><h2 id="3-编写C程序链接数据库"><a href="#3-编写C程序链接数据库" class="headerlink" title="3.编写C程序链接数据库"></a>3.编写C程序链接数据库</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mysql.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MYSQL *conn;</span><br><span class="line">    MYSQL_RES *res;</span><br><span class="line">    MYSQL_ROW row;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">char</span> *server = <span class="string">"localhost"</span>;</span><br><span class="line">   <span class="keyword">char</span> *user = <span class="string">"root"</span>;</span><br><span class="line">   <span class="keyword">char</span> *password = <span class="string">"ZYB110929"</span>; <span class="comment">/* 此处改成你的密码 */</span></span><br><span class="line">   <span class="keyword">char</span> *database = <span class="string">"mysql"</span>;</span><br><span class="line"></span><br><span class="line">    conn = mysql_init(<span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* Connect to database */</span></span><br><span class="line">   <span class="keyword">if</span> (!mysql_real_connect(conn, server,</span><br><span class="line">          user, password, database, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>)) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"%s\n"</span>, mysql_error(conn));</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* send SQL query */</span></span><br><span class="line">   <span class="keyword">if</span> (mysql_query(conn, <span class="string">"show tables"</span>)) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"%s\n"</span>, mysql_error(conn));</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">    res = mysql_use_result(conn);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* output table name */</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"MySQL Tables in mysql database:\n"</span>);</span><br><span class="line">   <span class="keyword">while</span> ((row = mysql_fetch_row(res)) != <span class="literal">NULL</span>)</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"%s \n"</span>, row[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* close connection */</span></span><br><span class="line">    mysql_free_result(res);</span><br><span class="line">    mysql_close(conn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>编译：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.c -o test $(mysql_config --cflags) $(mysql_config --libs)</span><br></pre></td></tr></table></figure><p><img src="//zybtree.github.io/2020/03/02/Linux下C链接数据库/2.png" alt></p><p>实践成功。</p><p>​            </p>]]></content>
     
@@ -61,7 +87,7 @@
     </summary>
     
     
-      <category term="C" scheme="https://zybtree.github.io/categories/C/"/>
+      <category term="Linux C" scheme="https://zybtree.github.io/categories/Linux-C/"/>
     
     
       <category term="Mysql" scheme="https://zybtree.github.io/tags/Mysql/"/>
@@ -73,7 +99,7 @@
     <link href="https://zybtree.github.io/2020/03/02/%E7%96%AB%E6%83%85%E4%B8%8B%E7%9A%84%E8%87%AA%E5%AD%A6%E8%AE%A1%E5%88%92/"/>
     <id>https://zybtree.github.io/2020/03/02/疫情下的自学计划/</id>
     <published>2020-03-02T12:41:55.000Z</published>
-    <updated>2020-03-12T00:34:53.029Z</updated>
+    <updated>2020-03-12T13:19:06.916Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>这个情况谁也想不到，谁也没办法，而自己能做的也只有改变心态，坚持奋斗，继续减肥。</p></blockquote><h2 id="学校课程计划"><a href="#学校课程计划" class="headerlink" title="学校课程计划"></a>学校课程计划</h2><h3 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h3><ul><li><p>信息论</p><p>​    每周两章，GoodNotes做笔记。</p></li><li><p>云计算</p><p>​    每周三网上网课认真听，为了以后学习Docker打好基础，也许之后走这条路也说不定。</p></li><li><p>算法</p><p>​    第三周上网课，重中之重，争取一年把算法导论这本书看完，并用C++实践。学术英语</p></li><li><p>学术英语 </p><p>​    每周四上午的网课。上完课第二天把PPT笔记精华部分写入GoodNotes，为期末考试做准备。</p></li></ul><h3 id="时间安排"><a href="#时间安排" class="headerlink" title="时间安排"></a>时间安排</h3><p>​    每天上午8:00 - 11:30进行学校课程的学习。中间每隔一个小时跳绳 1000下，上午累计3k</p><br><h2 id="网络安全计划"><a href="#网络安全计划" class="headerlink" title="网络安全计划"></a>网络安全计划</h2><h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>协议栈侧OAM代码学习和文档整理。</p><p>要求能掌握代码及TR196协议，并熟悉对接网关侧OAM，阶段性输出相应文档。</p><h3 id="工作细分"><a href="#工作细分" class="headerlink" title="工作细分"></a>工作细分</h3><p>（一）OAM的代码分析和流程整理<br>1、OAM接口文档学习</p><p>2、CU OAM代码学习及文档整理</p><p>​    2.1 OAM任务启动流程</p><p>​    2.2 OAM与L3的交互</p><p>​    2.3 OAM与RRM的交互</p><p>​    2.4 OAM与IPRelay的接口</p><p>​    2.5 OAM与PDCP的接口</p><p>​    2.6 OAM与网关侧的接口（TBD参考项目需求）</p><p>3、DU OAM代码学习及文档整理</p><p>​    3.1 OAM任务启动流程</p><p>​    3.2 OAM与DUMGR的交互</p><p>​    3.3 OAM与RLC的交互</p><p>​    3.4 OAM与MAC的接口</p><p>​    3.5 OAM与IPRelay的接口</p><p>​    3.6 OAM与网关侧的接口（TBD参考项目需求）</p><h3 id="时间安排-1"><a href="#时间安排-1" class="headerlink" title="时间安排"></a>时间安排</h3><h4 id="1、CU-OAM模块学习"><a href="#1、CU-OAM模块学习" class="headerlink" title="1、CU-OAM模块学习"></a>1、<strong>CU-OAM模块学习</strong></h4><p>2020.2.24 – 3.8 CU-OAM接口文档学习，熟悉CU-OAM与周围模块L3、RRM、IPRelay、PDCP等的接口流程和参数内容，并结合代码对照分析</p><p>3.9 – 3.15 CU-OAM任务启动流程，代码研读并总结文档</p><p>3.16 – 3.22 CU-OAM内部数据模型和消息结构处理流程，代码研读并总结文档 </p><h4 id="2、-DU-OAM模块学习"><a href="#2、-DU-OAM模块学习" class="headerlink" title="2、 DU-OAM模块学习"></a><strong>2、</strong> <strong>DU-OAM模块学习</strong></h4><p>3.23 – 4.5 DU-OAM接口文档学习，熟悉DU-OAM与周围模块DU-MGR、RLC、MAC、IPRelay等的接口流程和参数内容，并结合代码对照分析</p><p>4.6 – 4.12 DU-OAM任务启动流程，代码研读并总结文档</p><p>4.13 – 4.19 DU-OAM内部数据模型和消息结构处理流程，代码研读并总结文档</p><p>下午1:30-5:00进行协议学习，每天都要看，在GoodNotes上做好笔记。每1小时跳绳一千，累计3k.</p><br><h2 id="C-自学计划"><a href="#C-自学计划" class="headerlink" title="C++自学计划"></a>C++自学计划</h2><h4 id="C计划"><a href="#C计划" class="headerlink" title="C计划"></a>C计划</h4><p>15天把《C Primer Plus》这本书的重点部分看完，书上代码实现一遍，重点知识点写入博客。</p><h3 id="C-计划"><a href="#C-计划" class="headerlink" title="C++计划"></a>C++计划</h3><p>20天把《How to program C++》这本书看完，书上代码实现一遍，重点知识点写入博客，看完还是不是很清楚的部分回头看《C++ Primer Plus》这本书对应的知识点。</p><hr><blockquote><p>没完成对应的部分，用红色字体写下感想，弯路和规划。</p></blockquote>]]></content>
     
@@ -87,7 +113,7 @@
     </summary>
     
     
-      <category term="规划与学习" scheme="https://zybtree.github.io/categories/%E8%A7%84%E5%88%92%E4%B8%8E%E5%AD%A6%E4%B9%A0/"/>
+      <category term="研究生学习" scheme="https://zybtree.github.io/categories/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%B9%A0/"/>
     
     
       <category term="规划" scheme="https://zybtree.github.io/tags/%E8%A7%84%E5%88%92/"/>
