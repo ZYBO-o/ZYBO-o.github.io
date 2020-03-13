@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zybtree.github.io/"/>
-  <updated>2020-03-12T13:32:51.073Z</updated>
+  <updated>2020-03-13T00:04:52.718Z</updated>
   <id>https://zybtree.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://zybtree.github.io/2020/03/12/Docker%E5%AD%A6%E4%B9%A0/"/>
     <id>https://zybtree.github.io/2020/03/12/Docker学习/</id>
     <published>2020-03-12T13:27:42.000Z</published>
-    <updated>2020-03-12T13:32:51.073Z</updated>
+    <updated>2020-03-13T00:04:52.718Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="//zybtree.github.io/2020/03/12/Docker学习/1.png" alt></p><hr><h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h2><p><strong>Docker</strong>是一个开源的应用容器引擎，它是由 <a href="https://golang.org/" target="_blank" rel="noopener">Go 语言</a> 开发实现的轻量级容器技术，它是基于 <code>Linux</code> 内核的 <a href="https://zh.wikipedia.org/wiki/Cgroups" target="_blank" rel="noopener">cgroup</a>，<a href="https://en.wikipedia.org/wiki/Linux_namespaces" target="_blank" rel="noopener">namespace</a>，以及 <a href="https://en.wikipedia.org/wiki/Aufs" target="_blank" rel="noopener">AUFS</a> 类的 <a href="https://en.wikipedia.org/wiki/Union_mount" target="_blank" rel="noopener">Union FS</a> 等技术，对进程进行封装隔离，属于 <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization" target="_blank" rel="noopener">操作系统层面的虚拟化技术</a>。由于隔离的进程独立于宿主和其它隔离的进程，因此也称其为容器。</p><img src="//zybtree.github.io/2020/03/12/Docker学习/2.png" style="zoom:50%;">]]></content>
     
     <summary type="html">
     
