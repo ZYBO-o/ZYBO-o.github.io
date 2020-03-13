@@ -178,6 +178,7 @@
 <p>地址：<a href="https://cr.console.aliyun.com/cn-shenzhen/instances/mirrors" target="_blank" rel="noopener">https://cr.console.aliyun.com/cn-shenzhen/instances/mirrors</a></p>
 </blockquote>
 <p><img src="//zybtree.github.io/2020/03/12/Docker学习/9.png" alt></p>
+<hr>
 <h2 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h2><p><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a></p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>检索	(去https://hub.docker.com上查看镜像的详细信息。eg：docker search redis)</span><br><span class="line"><span class="meta">$</span> docker  search 镜像关键字</span><br><span class="line"><span class="meta">#</span>拉取	(name是镜像名，:tag是可选的，tag表示标签，多为软件的版本，默认是latest)</span><br><span class="line"><span class="meta">$</span> docker pull name[:tag]</span><br><span class="line"><span class="meta">#</span>列出	(查看所有本地镜像)</span><br><span class="line"><span class="meta">$</span> docker images</span><br><span class="line"><span class="meta">#</span>删除	(删除指定的本地镜像,image-id是镜像id)</span><br><span class="line"><span class="meta">$</span> docker rmi image-id</span><br></pre></td></tr></table></figure>
 

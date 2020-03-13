@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/6.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/9.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/8.png">
-<meta property="og:updated_time" content="2020-03-13T00:52:02.840Z">
+<meta property="og:updated_time" content="2020-03-13T00:54:39.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker学习">
 <meta name="twitter:description" content="一.简介Docker是一个开源的应用容器引擎，它是由 Go 语言 开发实现的轻量级容器技术，它是基于 Linux 内核的 cgroup，namespace，以及 AUFS 类的 Union FS 等技术，对进程进行封装隔离，属于 操作系统层面的虚拟化技术。由于隔离的进程独立于宿主和其它隔离的进程，因此也称其为容器。    二.概念概要理解Docker支持安装各种软件并做好配置后编译成镜像，最终">
@@ -618,6 +618,7 @@
 <p>地址：<a href="https://cr.console.aliyun.com/cn-shenzhen/instances/mirrors" target="_blank" rel="noopener">https://cr.console.aliyun.com/cn-shenzhen/instances/mirrors</a></p>
 </blockquote>
 <p><img src="//zybtree.github.io/2020/03/12/Docker学习/9.png" alt></p>
+<hr>
 <h2 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h2><p><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>检索	(去https://hub.docker.com上查看镜像的详细信息。eg：docker search redis)</span><br><span class="line"><span class="meta">$</span> docker  search 镜像关键字</span><br><span class="line"><span class="meta">#</span>拉取	(name是镜像名，:tag是可选的，tag表示标签，多为软件的版本，默认是latest)</span><br><span class="line"><span class="meta">$</span> docker pull name[:tag]</span><br><span class="line"><span class="meta">#</span>列出	(查看所有本地镜像)</span><br><span class="line"><span class="meta">$</span> docker images</span><br><span class="line"><span class="meta">#</span>删除	(删除指定的本地镜像,image-id是镜像id)</span><br><span class="line"><span class="meta">$</span> docker rmi image-id</span><br></pre></td></tr></table></figure>
 
