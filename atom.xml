@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>zybTree&#39;s Blogs</title>
+  <title>ZYBO_o&#39;s Blogs</title>
   
   <subtitle>Follow Excellence</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>https://zybtree.github.io/</id>
   
   <author>
-    <name>zybTree</name>
+    <name>ZYBO_o</name>
     
   </author>
   
