@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>给考完研的我与正在考研的你</title>
+    <url>/2020/03/29/%E7%BB%99%E8%80%83%E5%AE%8C%E7%A0%94%E7%9A%84%E6%88%91%E4%B8%8E%E6%AD%A3%E5%9C%A8%E8%80%83%E7%A0%94%E7%9A%84%E4%BD%A0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>感悟与反思</category>
+      </categories>
+      <tags>
+        <tag>信</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gdb学习</title>
     <url>/2020/03/26/gdb%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-GDB-的基本介绍"><a href="#1-GDB-的基本介绍" class="headerlink" title="1.GDB 的基本介绍"></a>1.GDB 的基本介绍</h1><p>GDB, 是 <code>The GNU Project Debugger</code> 的缩写, 是 Linux 下功能全面的调试工具。GDB 支持断点、单步执行、打印变量、观察变量、查看寄存器、查看堆栈等调试手段。在 Linux 环境软件开发中，GDB 是主要的调试工具，用来调试 C 和 C++ 程序。</p>
