@@ -109,16 +109,16 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://zybtree.github.io/2020/03/26/gdb学习/1.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/03/26/gdb学习/2.png">
-<meta property="og:image" content="https://zybtree.github.io/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/3.png">
-<meta property="og:image" content="https://zybtree.github.io/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/4.png">
-<meta property="og:image" content="https://zybtree.github.io/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/5.png">
-<meta property="og:image" content="https://zybtree.github.io/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/6.png">
-<meta property="og:image" content="https://zybtree.github.io/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb%E5%AD%A6%E4%B9%A0/7.png">
-<meta property="og:image" content="https://zybtree.github.io/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb%E5%AD%A6%E4%B9%A0/8.png">
-<meta property="og:image" content="https://zybtree.github.io/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/9.png">
-<meta property="og:image" content="https://zybtree.github.io/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/10.png">
-<meta property="og:image" content="https://zybtree.github.io/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/11.png">
-<meta property="og:updated_time" content="2020-04-05T11:16:24.564Z">
+<meta property="og:image" content="https://zybtree.github.io/2020/03/26/gdb学习/3.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/03/26/gdb学习/4.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/03/26/gdb学习/5.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/03/26/gdb学习/6.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/03/26/gdb学习/7.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/03/26/gdb学习/8.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/03/26/gdb学习/9.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/03/26/gdb学习/10.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/03/26/gdb学习/11.png">
+<meta property="og:updated_time" content="2020-04-05T11:19:13.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gdb学习">
 <meta name="twitter:description" content="1.GDB 的基本介绍GDB, 是 The GNU Project Debugger 的缩写, 是 Linux 下功能全面的调试工具。GDB 支持断点、单步执行、打印变量、观察变量、查看寄存器、查看堆栈等调试手段。在 Linux 环境软件开发中，GDB 是主要的调试工具，用来调试 C 和 C++ 程序。 在终端输入以下命令安装 GDB： 1$ sudo apt-get install gdb  1">
@@ -571,12 +571,12 @@
 <ul>
 <li>list 行号，显示某一行附近的代码：</li>
 </ul>
-<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/3.png" style="zoom:50%;">
+<img src="//zybtree.github.io/2020/03/26/gdb学习/3.png" style="zoom:50%;">
 
 <ul>
 <li>list 函数名，显示某个函数附近的代码：</li>
 </ul>
-<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/4.png" style="zoom:50%;">
+<img src="//zybtree.github.io/2020/03/26/gdb学习/4.png" style="zoom:50%;">
 
 <ul>
 <li>list 文件名 : 函数名，显示某一个文件某个函数附近的代码，用于多个源文件的情况。</li>
@@ -585,7 +585,7 @@
 <ul>
 <li>break 行号，断点设置在该行开始处，<strong>注意：该行代码未被执行</strong>：</li>
 </ul>
-<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/5.png" style="zoom:50%;">
+<img src="//zybtree.github.io/2020/03/26/gdb学习/5.png" style="zoom:50%;">
 
 <ul>
 <li>break 文件名 : 行号，适用于有多个源文件的情况。</li>
@@ -593,13 +593,14 @@
 <ul>
 <li>break 函数名，断点设置在该函数的开始处，<strong>断点所在行未被执行</strong>：</li>
 </ul>
-<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/6.png" style="zoom:50%;">
+<img src="//zybtree.github.io/2020/03/26/gdb学习/6.png" style="zoom:50%;">
 
 <ul>
 <li>break 文件名 : 函数名，适用于有多个源文件的情况。</li>
 </ul>
 <h4 id="2-查看断点信息"><a href="#2-查看断点信息" class="headerlink" title="2.查看断点信息"></a>2.查看断点信息</h4><p><code>info breakpoints</code> 命令用于显示当前断点信息。</p>
-<p><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb%E5%AD%A6%E4%B9%A0/7.png" alt></p>
+<img src="//zybtree.github.io/2020/03/26/gdb学习/7.png" style="zoom:50%;">
+
 <p>其中每一项的信息：</p>
 <blockquote>
 <ul>
@@ -615,7 +616,8 @@
 <ul>
 <li>delete Num，删除指定断点，断点编号可通过 info breakpoints 获得：</li>
 </ul>
-<p><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb%E5%AD%A6%E4%B9%A0/8.png" alt></p>
+<img src="//zybtree.github.io/2020/03/26/gdb学习/8.png" style="zoom:50%;">
+
 <ul>
 <li>delete，不带任何参数，默认删除所有断点：</li>
 </ul>
@@ -627,7 +629,7 @@
 <ul>
 <li>disable Num，关闭指定断点，断点编号可通过 info breakpoints 获得：</li>
 </ul>
-<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/9.png" style="zoom:50%;">
+<img src="//zybtree.github.io/2020/03/26/gdb学习/9.png" style="zoom:50%;">
 
 <ul>
 <li><p>disable，不带任何参数，默认关闭所有断点。</p>
@@ -635,7 +637,7 @@
 <li><p>enable Num，启用指定断点，断点编号可通过 info breakpoints 获得。</p>
 </li>
 </ul>
-<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/10.png" style="zoom:50%;">
+<img src="//zybtree.github.io/2020/03/26/gdb学习/10.png" style="zoom:50%;">
 
 <ul>
 <li>enable，不带任何参数，默认启用所有断点。</li>
@@ -646,7 +648,7 @@
 <li>enable once Num，断点 hit 一次之后关闭该断点</li>
 <li>enable delete Num，断点 hit 一次之后删除该断点</li>
 </ul>
-<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/gdb学习/11.png" style="zoom:50%;">
+<img src="//zybtree.github.io/2020/03/26/gdb学习/11.png" style="zoom:50%;">
 
 <p><strong>这两个命令影响的是 info breakpoints 的 Disp 列，表示该断点被命中之后的行为。</strong></p>
 <h3 id="6-断点调试的一些命令"><a href="#6-断点调试的一些命令" class="headerlink" title="6. 断点调试的一些命令"></a>6. 断点调试的一些命令</h3><ol>
