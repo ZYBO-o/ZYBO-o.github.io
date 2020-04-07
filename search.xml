@@ -18,6 +18,9 @@
 </blockquote>
 <p><strong><code>scanf()</code>函数将该换行符留在输入队列中，与<code>scanf()</code>不同，<code>getchar()</code> 并不跳过换行符。</strong>所以在循环的下一周期，再有机会输入任何其他内容之前，这一换行符由<code>getchar()</code>读出，然后将其赋值为ch，而ch为换行符才是结束循环的条件。</p>
 ]]></content>
+      <categories>
+        <category>Linux C</category>
+      </categories>
       <tags>
         <tag>C</tag>
       </tags>
