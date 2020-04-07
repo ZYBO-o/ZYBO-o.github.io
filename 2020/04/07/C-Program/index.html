@@ -109,7 +109,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://zybtree.github.io/2020/04/07/C-Program/1.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/04/07/C-Program/2.png">
-<meta property="og:updated_time" content="2020-04-07T12:20:09.205Z">
+<meta property="og:updated_time" content="2020-04-07T12:24:38.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C Program">
 <meta name="twitter:description" content="字符输入\ 输入和输入确定1.单字符I/O : getchar() 和 putchar() getchar() 和 putchar ()每次只能输入和输出一个字符。  ANSI C 将 stdio.h 头文件与getchar() 和 putchar()相关联，这就是为什么程序中将该文件包含在内的原因。而且，getchar() 和 putchar() 不是真正的函数，而是定义为预处理器宏。 1.ge">
@@ -468,8 +468,7 @@
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">42</span><br></pre></td></tr></table></figure></div>
 
 <p>如果在<code>scanf()</code>函数中使用%c转换说明，它只会读取字符4并将其储存在char类型的变量中。如果使用%s转换说明，“它会读取字符4和字符2这两个字符，并将其储存在字符数组中。如果使用%d转换说明，<code>scanf()</code>同样会读取两个字符，但是随后会计算出它们对应的整数值：4×10+2，即42，然后将表示该整数的二进制数储存在 int 类型的变量中。如果使用%f 转换说明，<code>scanf()</code>也会读取两个字符，计算出它们对应的数值42.0，用内部的浮点表示法表示该值，并将结果储存在float类型的变量中。<br><strong>简而言之，输入由字符组成，但是<code>scanf()</code>可以把输入转换成整数值或浮点数值。使用转换说明（如%d或%f）限制了可接受输入的字符类型，而<code>getchar()</code>和使用%c的<code>scanf()</code>接受所有的字符。</strong></p>
-<hr>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><blockquote>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><blockquote>
 <p><strong>什么是函数？</strong>函数（function）是完成特定任务的独立程序代码单元。</p>
 <p><strong>为什么要使用函数？</strong>首先，使用函数可以省去编写重复代码，提高效率。其次，让程序更加模块化，从而提高了程序代码的可读性，更方便后期修改、完善。如果不是自己编写函数，根本不用关心黑盒的内部行为；以这种方式看待函数有助于把注意力集中在程序的整体设计，而不是函数的实现细节上</p>
 </blockquote>
@@ -478,14 +477,14 @@
 
 <p>程序在3处使用了<code>show_n_char()</code>标识符：<strong>函数原型(function prototype)</strong>告诉编译器函数<code>show_n_char()</code>的类型；<strong>函数调用(function call)</strong>表明在此处执行函数；<strong>函数定义(function definition)</strong>明确地指定了函数要做什么。</p>
 <p><strong>函数和变量一样，有多种类型。任何程序在使用函数之前都要声明该函数的类型。</strong>因此，在main()函数定义的前面</p>
-<h3 id="1-对于函数声明"><a href="#1-对于函数声明" class="headerlink" title="1.对于函数声明"></a>1.对于函数声明</h3><p>出现了下面的ANSI C风格的函数原型：</p>
+<h2 id="1-对于函数声明"><a href="#1-对于函数声明" class="headerlink" title="1.对于函数声明"></a>1.对于函数声明</h2><p>出现了下面的ANSI C风格的函数原型：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_n_char</span><span class="params">(<span class="keyword">char</span> ch, <span class="keyword">int</span> num)</span></span>;</span><br></pre></td></tr></table></figure></div>
 
 <p>圆括号表明<code>show_n_char()</code>是一个函数名。第1个<code>void</code>是函数类型，<code>void</code>类型表明函数没有返回值。后面的<code>char</code>,<code>int</code>（在圆括号中）表明该函数带有两个参数，一个为<code>char</code>类型，一个为<code>int</code>类型。分号表明这是在声明函数，不是定义函数。<font color="red">函数原型指明了函数的返回值类型和函数接受的参数类型。这些信息称为该函数的签名（signature）。</font></p>
 <blockquote>
 <p>程序把 <code>show_n_char()</code>原型置于<code>main()</code>的前面。当然，也可以放在 <code>main()</code>里面的声明变量处。放在哪个位置都可以。</p>
 </blockquote>
-<h3 id="2-对于函数参数"><a href="#2-对于函数参数" class="headerlink" title="2.对于函数参数"></a>2.对于函数参数</h3><p>还是以这个有ANSI C风格的函数头为例：</p>
+<h2 id="2-对于函数参数"><a href="#2-对于函数参数" class="headerlink" title="2.对于函数参数"></a>2.对于函数参数</h2><p>还是以这个有ANSI C风格的函数头为例：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_n_char</span><span class="params">(<span class="keyword">char</span> ch, <span class="keyword">int</span> num)</span></span></span><br></pre></td></tr></table></figure></div>
 
 <p>该行告知编译器<code>show_n_char()</code>使用两个参数ch和num，ch是<code>char</code>类型，num是<code>int</code>类型。这两个变量被称为<strong>形式参数（formal argument，但是最近的标准推荐使用formal parameter）</strong>，简称<strong>形参</strong>。和定义在函数中变量一样，形式参数也是局部变量，属该函数私有。</p>
@@ -502,7 +501,7 @@
 <blockquote>
 <p>注意 实际参数和形式参数：<strong>实际参数是出现在函数调用圆括号中的表达式。形式参数是函数定义的函数头中声明的变量。</strong></p>
 </blockquote>
-<h3 id="3-关于return从函数中返回值"><a href="#3-关于return从函数中返回值" class="headerlink" title="3.关于return从函数中返回值"></a>3.关于return从函数中返回值</h3><p>函数的返回值可以把信息从被调函数传回主调函数。关键字<code>return</code>后面的表达式的值就是函数的返回值。</p>
+<h2 id="3-关于return从函数中返回值"><a href="#3-关于return从函数中返回值" class="headerlink" title="3.关于return从函数中返回值"></a>3.关于return从函数中返回值</h2><p>函数的返回值可以把信息从被调函数传回主调函数。关键字<code>return</code>后面的表达式的值就是函数的返回值。</p>
 <p>问题：如果函数返回值的类型与函数声明的类型不匹配会怎样？</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>　<span class="title">what_if</span><span class="params">(<span class="keyword">int</span>　n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		<span class="keyword">double</span>　z　=　<span class="number">100.0</span>　/　(<span class="keyword">double</span>)　n;</span><br><span class="line">		<span class="keyword">return</span> z; <span class="comment">// 会发生什么？</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
@@ -731,7 +730,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符输入-输入和输入确定"><span class="nav-text">字符输入\ 输入和输入确定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-单字符I-O-getchar-和-putchar"><span class="nav-text">1.单字符I/O : getchar() 和 putchar()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-getchar-与-scanf-的区分与混用"><span class="nav-text">1.getchar() 与 scanf() 的区分与混用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-输入流和数字"><span class="nav-text">2.输入流和数字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-对于函数声明"><span class="nav-text">1.对于函数声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-对于函数参数"><span class="nav-text">2.对于函数参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-关于return从函数中返回值"><span class="nav-text">3.关于return从函数中返回值</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符输入-输入和输入确定"><span class="nav-text">字符输入\ 输入和输入确定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-单字符I-O-getchar-和-putchar"><span class="nav-text">1.单字符I/O : getchar() 和 putchar()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-getchar-与-scanf-的区分与混用"><span class="nav-text">1.getchar() 与 scanf() 的区分与混用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-输入流和数字"><span class="nav-text">2.输入流和数字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-对于函数声明"><span class="nav-text">1.对于函数声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-对于函数参数"><span class="nav-text">2.对于函数参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-关于return从函数中返回值"><span class="nav-text">3.关于return从函数中返回值</span></a></li></ol></li></ol></div>
             
 
           </div>
