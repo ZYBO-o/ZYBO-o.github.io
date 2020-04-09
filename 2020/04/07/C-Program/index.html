@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://zybtree.github.io/2020/04/07/C-Program/4.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/04/07/C-Program/6.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/04/07/C-Program/7.png">
-<meta property="og:updated_time" content="2020-04-09T08:11:41.191Z">
+<meta property="og:updated_time" content="2020-04-09T11:09:10.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C Program">
 <meta name="twitter:description" content="字符输入\ 输入和输入确定1.单字符I/O : getchar() 和 putchar() getchar() 和 putchar ()每次只能输入和输出一个字符。  ANSI C 将 stdio.h 头文件与getchar() 和 putchar()相关联，这就是为什么程序中将该文件包含在内的原因。而且，getchar() 和 putchar() 不是真正的函数，而是定义为预处理器宏。 1.ge">
@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.5k
+                  3.6k
                 </span>
               
 
@@ -472,6 +472,7 @@
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">42</span><br></pre></td></tr></table></figure></div>
 
 <p>如果在<code>scanf()</code>函数中使用%c转换说明，它只会读取字符4并将其储存在char类型的变量中。如果使用%s转换说明，“它会读取字符4和字符2这两个字符，并将其储存在字符数组中。如果使用%d转换说明，<code>scanf()</code>同样会读取两个字符，但是随后会计算出它们对应的整数值：4×10+2，即42，然后将表示该整数的二进制数储存在 int 类型的变量中。如果使用%f 转换说明，<code>scanf()</code>也会读取两个字符，计算出它们对应的数值42.0，用内部的浮点表示法表示该值，并将结果储存在float类型的变量中。<br><strong>简而言之，输入由字符组成，但是<code>scanf()</code>可以把输入转换成整数值或浮点数值。使用转换说明（如%d或%f）限制了可接受输入的字符类型，而<code>getchar()</code>和使用%c的<code>scanf()</code>接受所有的字符。</strong></p>
+<hr>
 <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><blockquote>
 <p><strong>什么是函数？</strong>函数（function）是完成特定任务的独立程序代码单元。</p>
 <p><strong>为什么要使用函数？</strong>首先，使用函数可以省去编写重复代码，提高效率。其次，让程序更加模块化，从而提高了程序代码的可读性，更方便后期修改、完善。如果不是自己编写函数，根本不用关心黑盒的内部行为；以这种方式看待函数有助于把注意力集中在程序的整体设计，而不是函数的实现细节上</p>
@@ -543,7 +544,7 @@
 </blockquote>
 <p>在<code>interchange(int *u, int *v</code>)函数中 <code>* u = x, * v = y</code>;即 <code>u = &amp;x, v = &amp;y</code>;</p>
 <p><code>*u = *v</code>;——&gt;把 v 的地址赋值给 u; <code>*v = temp</code>;——&gt;把temp的地址赋值给v。</p>
-<p>u 和 v 互换了地址。</p>
+<p><code>u</code>和 <code>v</code> 互换了地址。</p>
 <p><strong>猜想：如果直接int * temp;是否也能改变值？</strong></p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">interchange</span><span class="params">(<span class="keyword">int</span> *u, <span class="keyword">int</span> *v)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">5</span>, y = <span class="number">10</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In main Originally x = %d and y = %d.\n"</span>, x , y);</span><br><span class="line">    interchange(&amp;x, &amp;y);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In main Now x = %d and y = %d.\n"</span>, x, y);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">interchange</span><span class="params">(<span class="keyword">int</span> * u, <span class="keyword">int</span> * v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *temp;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In interchange Originally u = %d and v = %d.\n"</span>, *u , *v);</span><br><span class="line">    temp = u;</span><br><span class="line">    u = v;</span><br><span class="line">    v = temp;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In interchangeo Now u = %d and v = %d.\n"</span>, *u, *v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
@@ -558,7 +559,8 @@
 <blockquote>
 <p>为什么temp的地址与* v的地址不一样呢，因为temp是新定义的变量，编译时给temp新分配了一个地址。</p>
 </blockquote>
-
+<hr>
+<h1 id="数组与指针"><a href="#数组与指针" class="headerlink" title="数组与指针"></a>数组与指针</h1>
       
     </div>
     
@@ -779,7 +781,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符输入-输入和输入确定"><span class="nav-text">字符输入\ 输入和输入确定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-单字符I-O-getchar-和-putchar"><span class="nav-text">1.单字符I/O : getchar() 和 putchar()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-getchar-与-scanf-的区分与混用"><span class="nav-text">1.getchar() 与 scanf() 的区分与混用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-输入流和数字"><span class="nav-text">2.输入流和数字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-对于函数声明"><span class="nav-text">1.对于函数声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-对于函数参数"><span class="nav-text">2.对于函数参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-关于return从函数中返回值"><span class="nav-text">3.关于return从函数中返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-查找地址：-amp-运算符"><span class="nav-text">4.查找地址：&amp;运算符</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符输入-输入和输入确定"><span class="nav-text">字符输入\ 输入和输入确定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-单字符I-O-getchar-和-putchar"><span class="nav-text">1.单字符I/O : getchar() 和 putchar()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-getchar-与-scanf-的区分与混用"><span class="nav-text">1.getchar() 与 scanf() 的区分与混用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-输入流和数字"><span class="nav-text">2.输入流和数字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-对于函数声明"><span class="nav-text">1.对于函数声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-对于函数参数"><span class="nav-text">2.对于函数参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-关于return从函数中返回值"><span class="nav-text">3.关于return从函数中返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-查找地址：-amp-运算符"><span class="nav-text">4.查找地址：&amp;运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组与指针"><span class="nav-text">数组与指针</span></a></li></ol></div>
             
 
           </div>
