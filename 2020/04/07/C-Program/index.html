@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://zybtree.github.io/2020/04/07/C-Program/4.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/04/07/C-Program/6.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/04/07/C-Program/7.png">
-<meta property="og:updated_time" content="2020-04-09T12:07:41.297Z">
+<meta property="og:updated_time" content="2020-04-10T02:26:31.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C Program">
 <meta name="twitter:description" content="字符输入\ 输入和输入确定1.单字符I/O : getchar() 和 putchar() getchar() 和 putchar ()每次只能输入和输出一个字符。  ANSI C 将 stdio.h 头文件与getchar() 和 putchar()相关联，这就是为什么程序中将该文件包含在内的原因。而且，getchar() 和 putchar() 不是真正的函数，而是定义为预处理器宏。 1.ge">
@@ -526,8 +526,7 @@
 <blockquote>
 <p>首先，两个pooh的地址不同，两个bah的地址也不同。因此，和前面介绍的一样，计算机把它们看成4个独立的变量。其次，函数调用mikado(pooh)把实际参数（main()中的pooh）的值 2 传递给形式参数（mikado()中的bah）。<strong>注意，这种传递只传递了值。涉及的两个变量（main()中的pooh和mikado()中的bah）并未改变。</strong></p>
 </blockquote>
-<p>##5.使用指针在函数间通信</p>
-<p>指针？什么是指针？从根本上看，指针（pointer）是一个值为内存地址的变量（或数据对象）。正如char类型变量的值是字符，int类型变量的值是整数，指针变量的值是地址。</p>
+<h2 id="5-使用指针在函数间通信"><a href="#5-使用指针在函数间通信" class="headerlink" title="5.使用指针在函数间通信"></a>5.使用指针在函数间通信</h2><p>指针？什么是指针？从根本上看，指针（pointer）是一个值为内存地址的变量（或数据对象）。正如char类型变量的值是字符，int类型变量的值是整数，指针变量的值是地址。</p>
 <p>声明指针变量时必须指定指针所指向变量的类型，因为不同的变量类型占用不同的存储空间，一些指针操作要求知道操作对象的大小。另外，程序必须知道储存在指定地址上的数据类型。<code>long</code>和<code>float</code>可能占用相同的存储空间，但是它们储存数字却大相径庭。</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * pi;　　 <span class="comment">// pi是指向int类型变量的指针</span></span><br><span class="line"><span class="keyword">char</span> * pc;　　　　<span class="comment">// pc是指向char类型变量的指针</span></span><br><span class="line"><span class="keyword">float</span> * pf, * pg; <span class="comment">// pf、pg都是指向float类型变量的指针</span></span><br></pre></td></tr></table></figure></div>
 
@@ -597,6 +596,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/10/C-Program-Ⅰ-字符/" rel="prev" title="C Program Ⅰ 字符">
+                C Program Ⅰ 字符 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -675,7 +678,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -779,7 +782,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符输入-输入和输入确定"><span class="nav-text">字符输入\ 输入和输入确定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-单字符I-O-getchar-和-putchar"><span class="nav-text">1.单字符I/O : getchar() 和 putchar()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-getchar-与-scanf-的区分与混用"><span class="nav-text">1.getchar() 与 scanf() 的区分与混用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-输入流和数字"><span class="nav-text">2.输入流和数字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-对于函数声明"><span class="nav-text">1.对于函数声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-对于函数参数"><span class="nav-text">2.对于函数参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-关于return从函数中返回值"><span class="nav-text">3.关于return从函数中返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-查找地址：-amp-运算符"><span class="nav-text">4.查找地址：&amp;运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组与指针"><span class="nav-text">数组与指针</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符输入-输入和输入确定"><span class="nav-text">字符输入\ 输入和输入确定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-单字符I-O-getchar-和-putchar"><span class="nav-text">1.单字符I/O : getchar() 和 putchar()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-getchar-与-scanf-的区分与混用"><span class="nav-text">1.getchar() 与 scanf() 的区分与混用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-输入流和数字"><span class="nav-text">2.输入流和数字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-对于函数声明"><span class="nav-text">1.对于函数声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-对于函数参数"><span class="nav-text">2.对于函数参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-关于return从函数中返回值"><span class="nav-text">3.关于return从函数中返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-查找地址：-amp-运算符"><span class="nav-text">4.查找地址：&amp;运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-使用指针在函数间通信"><span class="nav-text">5.使用指针在函数间通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组与指针"><span class="nav-text">数组与指针</span></a></li></ol></div>
             
 
           </div>
