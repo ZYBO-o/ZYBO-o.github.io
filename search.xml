@@ -102,10 +102,8 @@
 <p>运行结果：</p>
 <img src="//zybtree.github.io/2020/04/07/C-Program/4.png" style="zoom:50%;">
 
-<blockquote>
-<p>该函数传递的不是x和y的值，而是它们的地址。这意味着出现在interchange()原型和定义中的形式参数u和v将把地址作为它们的值。因此，应把它们声明为指针。</p>
-</blockquote>
-<p>在<code>interchange(int *u, int *v</code>)函数中 <code>* u = x, * v = y</code>;即 <code>u = &amp;x, v = &amp;y</code>;</p>
+<p>  该函数传递的不是x和y的值，而是它们的地址。这意味着出现在interchange()原型和定义中的形式参数u和v将把           地址作为它们的值。因此，应把它们声明为指针。</p>
+<p>在<code>interchange(int *u, int *v)</code>函数中 <code>* u = x, * v = y</code>;即 <code>u = &amp;x, v = &amp;y</code>;</p>
 <p><code>*u = *v</code>;——&gt;把 v 的地址赋值给 u; <code>*v = temp</code>;——&gt;把temp的地址赋值给v。</p>
 <p><code>u</code>和 <code>v</code> 互换了地址。</p>
 <p><strong>猜想：如果直接int * temp;是否也能改变值？</strong></p>
@@ -725,7 +723,7 @@
         <category>Linux C</category>
       </categories>
       <tags>
-        <tag>C预处理</tag>
+        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -773,6 +771,7 @@
         <category>Linux C</category>
       </categories>
       <tags>
+        <tag>C</tag>
         <tag>Mysql</tag>
       </tags>
   </entry>

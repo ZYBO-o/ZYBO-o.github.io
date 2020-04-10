@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://zybtree.github.io/2020/04/07/C-Program/4.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/04/07/C-Program/6.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/04/07/C-Program/7.png">
-<meta property="og:updated_time" content="2020-04-09T11:09:10.219Z">
+<meta property="og:updated_time" content="2020-04-09T12:07:41.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C Program">
 <meta name="twitter:description" content="字符输入\ 输入和输入确定1.单字符I/O : getchar() 和 putchar() getchar() 和 putchar ()每次只能输入和输出一个字符。  ANSI C 将 stdio.h 头文件与getchar() 和 putchar()相关联，这就是为什么程序中将该文件包含在内的原因。而且，getchar() 和 putchar() 不是真正的函数，而是定义为预处理器宏。 1.ge">
@@ -539,10 +539,8 @@
 <p>运行结果：</p>
 <img src="//zybtree.github.io/2020/04/07/C-Program/4.png" style="zoom:50%;">
 
-<blockquote>
-<p>该函数传递的不是x和y的值，而是它们的地址。这意味着出现在interchange()原型和定义中的形式参数u和v将把地址作为它们的值。因此，应把它们声明为指针。</p>
-</blockquote>
-<p>在<code>interchange(int *u, int *v</code>)函数中 <code>* u = x, * v = y</code>;即 <code>u = &amp;x, v = &amp;y</code>;</p>
+<p>  该函数传递的不是x和y的值，而是它们的地址。这意味着出现在interchange()原型和定义中的形式参数u和v将把           地址作为它们的值。因此，应把它们声明为指针。</p>
+<p>在<code>interchange(int *u, int *v)</code>函数中 <code>* u = x, * v = y</code>;即 <code>u = &amp;x, v = &amp;y</code>;</p>
 <p><code>*u = *v</code>;——&gt;把 v 的地址赋值给 u; <code>*v = temp</code>;——&gt;把temp的地址赋值给v。</p>
 <p><code>u</code>和 <code>v</code> 互换了地址。</p>
 <p><strong>猜想：如果直接int * temp;是否也能改变值？</strong></p>
@@ -699,7 +697,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
