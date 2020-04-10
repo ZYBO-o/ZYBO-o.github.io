@@ -446,6 +446,7 @@
         <category>Linux C</category>
       </categories>
       <tags>
+        <tag>C</tag>
         <tag>gdb</tag>
       </tags>
   </entry>
@@ -457,6 +458,7 @@
         <category>Linux C</category>
       </categories>
       <tags>
+        <tag>C</tag>
         <tag>Makefile</tag>
       </tags>
   </entry>
@@ -773,6 +775,7 @@
       <tags>
         <tag>C</tag>
         <tag>Mysql</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
