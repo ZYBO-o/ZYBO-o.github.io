@@ -107,6 +107,23 @@
 
 
 
+<h2 id="二-逻辑与物理结构"><a href="#二-逻辑与物理结构" class="headerlink" title="(二).逻辑与物理结构"></a>(二).逻辑与物理结构</h2><h3 id="1-逻辑结构"><a href="#1-逻辑结构" class="headerlink" title="1.逻辑结构"></a>1.逻辑结构</h3><blockquote>
+<p>逻辑结构：是指数据对象中数据元素之间的相互关系。其实这也是我们今后最需要关注的问题。逻辑结构分为以下四种。</p>
+</blockquote>
+<img src="//zybtree.github.io/2020/04/12/数据结构Ⅰ绪论/2.png" style="zoom:50%;">
+
+<h3 id="2-物理结构"><a href="#2-物理结构" class="headerlink" title="2.物理结构"></a>2.物理结构</h3><p><strong>物理结构：</strong>是指数据的逻辑结构在计算机中的<strong>存储形式</strong>。</p>
+<blockquote>
+<p>数据是数据元素的集合，那么根据物理结构的定义，实际上就是如何把数据元素存储到计算机的存储器中。存储器主要是针对内存而言的，像硬盘、软盘、光盘等外部存储器的数据组织通常用文件结构来描述。</p>
+</blockquote>
+<p>数据元素的存储结构形式有两种：<strong>顺序存储</strong>和<strong>链式存储</strong>。</p>
+<h4 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h4><p><strong>顺序存储结构：</strong>是把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的。如下图所示。</p>
+<img src="//zybtree.github.io/2020/04/12/数据结构Ⅰ绪论/3.png" style="zoom:50%;">
+
+
+
+<h4 id="链式存储"><a href="#链式存储" class="headerlink" title="链式存储"></a>链式存储</h4><p><strong>链式存储结构：</strong>是把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。数据元素的存储关系并不能反映其逻辑关系，因此<strong>需要用一个指针存放数据元素的地址</strong>，这样通过地址就可以找到相关联数据元素的位置。如下图所示。</p>
+<img src="//zybtree.github.io/2020/04/12/数据结构Ⅰ绪论/4.png" style="zoom:40%;">
 
 
 
@@ -114,25 +131,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h2 id="三-抽象数据类型"><a href="#三-抽象数据类型" class="headerlink" title="(三).抽象数据类型"></a>(三).抽象数据类型</h2><h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h3><p><strong>数据类型：</strong>是指一组性质相同的值的集合及定义在此集合上的一些操作的总称。</p>
+<blockquote>
+<p>数据类型是按照值的不同进行划分的。在高级语言中，每个变量、常量和表达式都有各自的取值范围。类型就用来说明变量或表达式的取值范围和所能进行的操作。</p>
+</blockquote>
+<p>抽象是指抽取出事物具有的普遍性的本质。它是抽出问题的特征而忽略非本质的细节，是对具体事物的一个概括。抽象是一种思考问题的方式，它隐藏了繁杂的细节，只保留实现目标所必需的信息。</p>
+<h3 id="2-抽象数据类型"><a href="#2-抽象数据类型" class="headerlink" title="2.抽象数据类型"></a>2.抽象数据类型</h3><p><strong>抽象数据类型(Abstract Data Type，ADT)：</strong>是指一个数学模型及定义在该模型上的一组操作。抽象数据类型的定义仅取决于它的一组逻辑特性，而与其在计算机内部如何表示和实现无关。</p>
 <h1 id="二-算法"><a href="#二-算法" class="headerlink" title="二.算法"></a>二.算法</h1>]]></content>
       <categories>
         <category>数据结构与算法设计</category>
