@@ -69,7 +69,64 @@
   <entry>
     <title>数据结构Ⅱ线性表</title>
     <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A1%E7%BA%BF%E6%80%A7%E8%A1%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-线性表"><a href="#一-线性表" class="headerlink" title="一.线性表"></a>一.线性表</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h2><p><strong>线性表（List）：</strong>零个或有限个数据类型相同的数据元素的有限序列。</p>
+<blockquote>
+<p><strong>性质：</strong></p>
+<ul>
+<li>线性表中的数据元素之间是有顺序的。</li>
+<li>线性表中的数据元素个数是有限的。</li>
+<li>线性表中的数据元素的类型必须相同。</li>
+</ul>
+</blockquote>
+<img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/1.png" style="zoom:50%;">
+
+<h2 id="2-线性表的抽象数据类型"><a href="#2-线性表的抽象数据类型" class="headerlink" title="2.线性表的抽象数据类型"></a>2.线性表的抽象数据类型</h2><p><strong>线性表的抽象数据类型定义如下：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line">ADT 线性表(List)</span><br><span class="line">Data</span><br><span class="line">    线性表的数据对象集合为&#123;a1, a2, ......, an&#125;，每个元素的类型均为DataType。</span><br><span class="line">    其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，</span><br><span class="line">    除了最后一个元素an外，每一个元素有且只有一个直接后继元素。</span><br><span class="line">    数据元素之间的关系是一对一的关系。</span><br><span class="line">Operation</span><br><span class="line"><span class="comment">/*该方法用于创建并且返回一个空的线性表*/</span></span><br><span class="line"><span class="function">List* <span class="title">List_Create</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于销毁一个线性表list*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">List_Destroy</span><span class="params">(List* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于将一个线性表list中的所有元素清空,使得线性表回到创建时的初始状态*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">List_Clear</span><span class="params">(List* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于返回一个线性表list中的所有元素个数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">List_Length</span><span class="params">(List* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于向一个线性表list的pos位置处插入新元素node,返回值为1表示插入成功，0表示插入失败*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">List_Insert</span><span class="params">(List* <span class="built_in">list</span>, ListNode* node, <span class="keyword">int</span> pos)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于获取一个线性表list的pos位置处的元素,返回值为pos位置处的元素，NULL表示获取失败*/</span></span><br><span class="line"><span class="function">ListNode* <span class="title">List_Get</span><span class="params">(List* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于删除一个线性表list的pos位置处的元素,返回值为被删除的元素，NULL表示删除失败*/</span></span><br><span class="line"><span class="function">ListNode* <span class="title">List_Delete</span><span class="params">(List* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span>;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="3-线性表的顺序存储结构"><a href="#3-线性表的顺序存储结构" class="headerlink" title="3.线性表的顺序存储结构"></a>3.线性表的顺序存储结构</h2><h3 id="1-结构分析"><a href="#1-结构分析" class="headerlink" title="(1).结构分析"></a>(1).结构分析</h3><p><strong>线性表的顺序存储结构</strong>，指的是用一段地址连续的存储单元依次存储线性表的数据元素。线性表（a1,a2,……,an）的顺序存储示意图如下：</p>
+<img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/2.png" style="zoom:45%;">
+
+<p>摘录来自: 程杰. “大话数据结构。” Apple Books. </p>
+<p><strong>在C中用一维数组来实现顺序存储结构：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">存储空间的起始位置:数组node</span></span><br><span class="line"><span class="comment">线性表的最大容量:数组长度MAXSIZE</span></span><br><span class="line"><span class="comment">线性表的当前长度:length</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 存储空间初始分配量 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 20             </span></span><br><span class="line"><span class="comment">/* ElemType类型根据实际情况而定，这里假设为int */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;          </span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">/* 数组存储数据元素，最大值为MAXSIZE */</span></span><br><span class="line">    ElemType data[MAXSIZE];    </span><br><span class="line">    <span class="comment">/* 线性表当前长度 */</span></span><br><span class="line">    <span class="keyword">int</span> length;                </span><br><span class="line">&#125; SqList;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-重点操作"><a href="#2-重点操作" class="headerlink" title="(2).重点操作"></a>(2).重点操作</h3><h4 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h4><p><strong>操作步骤：</strong></p>
+<ul>
+<li>判断线性表是否合法</li>
+<li>判断位置是否合法</li>
+<li>直接通过数组下标的方式获取元素</li>
+</ul>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">Get</span><span class="params">(List* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ret = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="comment">//1.判断线性表是否合法</span></span><br><span class="line">  	<span class="comment">//2.判断位置是否合法</span></span><br><span class="line">    <span class="keyword">if</span>( (List != <span class="literal">NULL</span>) &amp;&amp; (<span class="number">0</span> &lt;= pos) &amp;&amp; (pos &lt; List-&gt;length) )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//3.获取元素</span></span><br><span class="line">        ret = List-&gt;node[pos];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="插入元素操作"><a href="#插入元素操作" class="headerlink" title="插入元素操作"></a>插入元素操作</h4><p><strong>操作步骤：</strong></p>
+<ul>
+<li>判断线性表是否合法</li>
+<li>判断插入位置是否合法</li>
+<li>把最后一个元素到插入位置的元素后移一个位置</li>
+<li>将新元素插入</li>
+<li>线性表长度加1</li>
+</ul>
+<img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/3.png" style="zoom:50%;">
+
+
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Insert</span><span class="params">(List* <span class="built_in">list</span>, <span class="keyword">char</span> node, <span class="keyword">int</span> pos)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.判断线性表是否合法</span></span><br><span class="line">    <span class="keyword">int</span> ret = (List != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  	<span class="comment">//判断插入位置是否合法</span></span><br><span class="line">    ret = ret &amp;&amp; (List-&gt;length + <span class="number">1</span> &lt;= List-&gt;capacity);</span><br><span class="line">    ret = ret &amp;&amp; (<span class="number">0</span> &lt;= pos);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( ret )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( pos &gt;= List-&gt;length )</span><br><span class="line">        &#123;</span><br><span class="line">            pos = List-&gt;length;</span><br><span class="line">        &#125;</span><br><span class="line">				<span class="comment">//把最后一个元素到插入位置的元素后移一个位置</span></span><br><span class="line">        <span class="keyword">for</span>(i=List-&gt;length; i&gt;pos; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            List-&gt;node[i] = List-&gt;node[i<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">				<span class="comment">//将新元素插入</span></span><br><span class="line">        List-&gt;node[i] = (<span class="keyword">int</span>)node;</span><br><span class="line">				<span class="comment">//线性表长度加1</span></span><br><span class="line">        List-&gt;length++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="删除元素操作"><a href="#删除元素操作" class="headerlink" title="删除元素操作"></a>删除元素操作</h4><p><strong>操作步骤：</strong></p>
+<ul>
+<li>判断线性表是否合法</li>
+<li>判断删除位置是否合法</li>
+<li>将元素取出</li>
+<li>将删除位置后的元素分别向前移动一个位置</li>
+<li>线性表长度减1</li>
+</ul>
+<img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/4.png" style="zoom:50%;">
+
+
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">Delete</span><span class="params">(List* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ret = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  	<span class="comment">//1.判断线性表是否合法</span></span><br><span class="line">  	<span class="comment">//2.判断删除位置是否合法</span></span><br><span class="line">    <span class="keyword">if</span>((<span class="built_in">list</span> != <span class="literal">NULL</span>) &amp;&amp; (<span class="number">0</span> &lt;= pos) &amp;&amp; (pos&lt;= <span class="built_in">list</span>-&gt;length))</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//3.将元素取出</span></span><br><span class="line">      ret = <span class="built_in">list</span>-&gt;node[pos];</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//4.将删除位置后的元素分别向前移动一个位置</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = pos+<span class="number">1</span>; i &lt; <span class="built_in">list</span>-&gt;length; i++)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="built_in">list</span>-&gt;node[i<span class="number">-1</span>] = <span class="built_in">list</span>-&gt;node[i];</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//5.线性表长度减1</span></span><br><span class="line">      <span class="built_in">list</span>-&gt;length--;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-代码具体实现"><a href="#3-代码具体实现" class="headerlink" title="(3).代码具体实现"></a>(3).代码具体实现</h3>]]></content>
       <categories>
         <category>数据结构与算法设计</category>
       </categories>
@@ -137,6 +194,11 @@
 </blockquote>
 <p>抽象是指抽取出事物具有的普遍性的本质。它是抽出问题的特征而忽略非本质的细节，是对具体事物的一个概括。抽象是一种思考问题的方式，它隐藏了繁杂的细节，只保留实现目标所必需的信息。</p>
 <h3 id="2-抽象数据类型"><a href="#2-抽象数据类型" class="headerlink" title="2.抽象数据类型"></a>2.抽象数据类型</h3><p><strong>抽象数据类型(Abstract Data Type，ADT)：</strong>是指一个数学模型及定义在该模型上的一组操作。抽象数据类型的定义仅取决于它的一组逻辑特性，而与其在计算机内部如何表示和实现无关。</p>
+<hr>
+<br>
+
+
+
 <h1 id="二-算法"><a href="#二-算法" class="headerlink" title="二.算法"></a>二.算法</h1>]]></content>
       <categories>
         <category>数据结构与算法设计</category>
