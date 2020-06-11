@@ -304,8 +304,7 @@
 <p>表头结点中，<code>data = 3</code> 表示链表长度为3，<code>next = 1</code> 表示下一个结点的位置是1。</p>
 </blockquote>
 <p><font color="red"><strong>静态链表是在顺序表的基础 静态链表是在顺序表的基础上利用数组实现的单链表。</strong></font></p>
-<p><strong>在C中</strong></p>
-<p><strong>用一维数组来实现顺序存储结构：</strong></p>
+<p><strong>在C中用一维数组来实现顺序存储结构：</strong></p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//节点结构体定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">tag_StaticListNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> date;</span><br><span class="line">  <span class="keyword">int</span> next;</span><br><span class="line">&#125;TStaticListNode;</span><br><span class="line"></span><br><span class="line"><span class="comment">//静态链表结构体定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">tag_StaticList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">int</span> capacity;</span><br><span class="line">  TStaticListNode header;</span><br><span class="line">  TStaticListNode node[];</span><br><span class="line">&#125;TStaticList;</span><br></pre></td></tr></table></figure>
 
 <br>
@@ -373,7 +372,46 @@
 <hr>
 <br>
 
-<h2 id="6-循环链表"><a href="#6-循环链表" class="headerlink" title="6.循环链表"></a>6.循环链表</h2>]]></content>
+<h2 id="6-循环链表"><a href="#6-循环链表" class="headerlink" title="6.循环链表"></a>6.循环链表</h2><h3 id="1-结构分析-3"><a href="#1-结构分析-3" class="headerlink" title="(1).结构分析"></a>(1).结构分析</h3><p><strong>循环链表的定义：</strong>将单链表中最后一个数据元素的next指针指向第一个元素.</p>
+<img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/19.png" style="zoom:50%;">
+
+<br>
+
+<h3 id="2-重点操作-3"><a href="#2-重点操作-3" class="headerlink" title="(2).重点操作"></a>(2).重点操作</h3><p><strong>循环链表拥有单链表的所有操作。</strong></p>
+<ul>
+<li>创建链表</li>
+<li>销毁链表</li>
+<li>获取链表长度</li>
+<li>清空链表</li>
+<li>获取第pos个元素操作</li>
+<li>插入元素到位置pos</li>
+<li>删除位置pos处的元素</li>
+</ul>
+<br>
+
+<h3 id="3-代码具体实现-2"><a href="#3-代码具体实现-2" class="headerlink" title="(3).代码具体实现"></a>(3).代码具体实现</h3><div><div class="fold_hider"><div class="close hider_title">CircleList.h源代码(点击展开)</div></div><div class="fold">
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<br>
+
+<div><div class="fold_hider"><div class="close hider_title">CircleList.c源代码(点击展开)</div></div><div class="fold">
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<br>
+
+<div><div class="fold_hider"><div class="close hider_title">main.c源代码(点击展开)</div></div><div class="fold">
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<hr>
+<br>
+
+<h2 id="7-双向链表"><a href="#7-双向链表" class="headerlink" title="7.双向链表"></a>7.双向链表</h2>]]></content>
       <categories>
         <category>数据结构与算法设计</category>
       </categories>
