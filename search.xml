@@ -11,10 +11,7 @@
 <li>操作系统的架构</li>
 <li>操作系统的分类</li>
 </ul>
-<br>
-
-<p>##1.操作系统做了什么 </p>
-<p>通过下面程序的执行过程来分析操作系统对此程序的执行有哪些支持。</p>
+<h2 id="1-操作系统做了什么"><a href="#1-操作系统做了什么" class="headerlink" title="1.操作系统做了什么"></a>1.操作系统做了什么</h2><p>通过下面程序的执行过程来分析操作系统对此程序的执行有哪些支持。</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  	<span class="built_in">puts</span>(<span class="string">"hello world"</span>);</span><br><span class="line">  	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -44,7 +41,7 @@
 </li>
 </ul>
 <p><strong>从用户程序在执行过程中，不断请求操作系统服务的角度来看程序执行的过程：</strong></p>
-<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/操作系统概述/1.png" style="zoom:25%;">
+<img src="//zybtree.github.io/2020/07/15/操作系统概述/1.png" style="zoom:25%;">
 
 <p>在CPU上执行一个用户程序，这个用户程序会不时地去请求操作系统的服务，因此在CPU上，时而运行的是用户程序。时而运行操作系统程序。</p>
 <blockquote>
@@ -55,7 +52,7 @@
 <p>此时又转向了操作系统去进行系统调用。 </p>
 </blockquote>
 <p><strong>换一个角度看用户程序的执行：</strong></p>
-<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/操作系统概述/2.png" style="zoom:25%;">
+<img src="//zybtree.github.io/2020/07/15/操作系统概述/2.png" style="zoom:25%;">
 
 <blockquote>
 <p> 实际上，是操作系统在执行过程中呢，如果选中了一个程序，那么就去<strong>通过调度</strong>选中这个程序，去执行这个程序</p>
