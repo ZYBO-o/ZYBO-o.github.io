@@ -11,7 +11,7 @@
 <li>操作系统的架构</li>
 <li>操作系统的分类</li>
 </ul>
-<h2 id="1-操作系统做了什么"><a href="#1-操作系统做了什么" class="headerlink" title="1.操作系统做了什么"></a>1.操作系统做了什么</h2><p>通过下面程序的执行过程来分析操作系统对此程序的执行有哪些支持。</p>
+<h2 id="一-操作系统做了什么"><a href="#一-操作系统做了什么" class="headerlink" title="一.操作系统做了什么"></a>一.操作系统做了什么</h2><p>通过下面程序的执行过程来分析操作系统对此程序的执行有哪些支持。</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  	<span class="built_in">puts</span>(<span class="string">"hello world"</span>);</span><br><span class="line">  	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -59,6 +59,106 @@
 <p>程序执行过程中，会不断地去陷入操作系统,  由操作系统完成一些服务.然后再通过调度再选中程序，接着执行.</p>
 </blockquote>
 <p>从上面的介绍过程，看到在一个程序的执行过程中，<strong>操作系统负责了这个程序的启动过程, 负责了这个程序执行的过程, 同时在执行的 过程中，不断地去为用户程序的执行 提供各种各样的支持.</strong></p>
+<hr>
+<h2 id="二-操作系统的定义与作用"><a href="#二-操作系统的定义与作用" class="headerlink" title="二.操作系统的定义与作用"></a>二.操作系统的定义与作用</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1 定义"></a>1 定义</h3><p>操作系统是计算机系统中的一个系统软件，是一 些程序模块的集合，这些模块相互协作，相互配合，来完成以下这些功能：</p>
+<ul>
+<li><p>它们能以尽量<font color="red">有效、合理</font>的方式组织和管理计算机的软硬件资源。</p>
+</li>
+<li><p>合理地组织计算机的工作流程，控制程序的执行并向用户提供各种服务功能。</p>
+</li>
+<li><p>使得用户能够灵活、<font color="red">方便</font>地使用计算机，使整个计算机系统高效率运行。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>有效</strong>：让系统效率，资源利用率得以提高。</p>
+<p><strong>合理</strong>：各种软硬件资源的管理是否公平合理。</p>
+<p><strong>方便使用</strong>：两种角度:<strong>用户界面</strong>与<strong>编程接口</strong>。</p>
+</blockquote>
+<h3 id="2-作用"><a href="#2-作用" class="headerlink" title="2 作用"></a>2 作用</h3><ul>
+<li><p>资源的管理者：<font color="red">有效</font></p>
+</li>
+<li><p>向用户提供的各种服务：<font color="red">方便使用</font></p>
+</li>
+<li><p>对硬件机器的扩展：<font color="red">扩展能力</font></p>
+</li>
+</ul>
+<h4 id="1-对于OS是资源的管理者"><a href="#1-对于OS是资源的管理者" class="headerlink" title="(1)对于OS是资源的管理者"></a>(1)对于OS是资源的管理者</h4><p>自底向上看，OS是资源的管理者。</p>
+<p><strong>硬件资源：</strong>CPU，内存，设备(I/O设备、磁盘、时钟、网 络卡等)。</p>
+<p><strong>软件资源：</strong>磁盘上的文件、各类管理信息等。</p>
+<h4 id="2-怎么管理资源"><a href="#2-怎么管理资源" class="headerlink" title="(2)怎么管理资源"></a>(2)怎么管理资源</h4><ul>
+<li><p>跟踪记录资源的使用状况(通过数据结构与算法)</p>
+<blockquote>
+<p>如:哪些资源空闲，分配给谁使用，允许使用多长时间等</p>
+</blockquote>
+</li>
+<li><p>确定<font color="blue">资源分配策略——算法</font></p>
+<ul>
+<li>静态分配策略(会导致资源的浪费)</li>
+<li>动态分配策略(根据数据结构与资源使用情况来分配，资源的利用率得到了显著的提高)</li>
+</ul>
+</li>
+<li><p>实施资源的分配(根据资源分配策略去决定)和回收</p>
+</li>
+<li><p>提高资源利用率</p>
+</li>
+<li><p>保护资源的使用(一个进程使用资源时，不能被另外的所干扰)</p>
+</li>
+<li><p>协调多个进程对资源请求的冲突</p>
+</li>
+</ul>
+<h4 id="3-从资源管理的角度—五大基本功能"><a href="#3-从资源管理的角度—五大基本功能" class="headerlink" title="(3)从资源管理的角度—五大基本功能"></a>(3)从资源管理的角度—五大基本功能</h4><ul>
+<li><p>进程/线程管理(CPU管理)</p>
+<blockquote>
+<p>进程线程状态、控制、同步互斥、通信、调度、……</p>
+</blockquote>
+</li>
+<li><p>存储管理</p>
+<blockquote>
+<p>分配/回收、地址转换、存储保护、内存扩充、……</p>
+</blockquote>
+</li>
+<li><p>文件管理</p>
+<blockquote>
+<p>文件目录、文件操作、磁盘空间、文件存取控制、……</p>
+</blockquote>
+</li>
+<li><p>设备管理</p>
+<blockquote>
+<p>设备驱动、分配回收、缓冲技术、……</p>
+</blockquote>
+</li>
+<li><p>用户接口</p>
+<blockquote>
+<p>系统命令、编程接口</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="4-操作系统是各种服务的提供者"><a href="#4-操作系统是各种服务的提供者" class="headerlink" title="(4)操作系统是各种服务的提供者"></a>(4)操作系统是各种服务的提供者</h4><ul>
+<li><p><strong>在操作系统之上，从用户角度来看:</strong></p>
+<blockquote>
+<p>操作系统为用户提供了一组功能强大、方便易用的<font color="red">命令</font>或<font color="red">系统调用</font></p>
+</blockquote>
+</li>
+<li><p><strong>典型的服务：</strong></p>
+<blockquote>
+<p>进程的创建、执行;文件和目录的操作;I/O设备 的使用;各类统计信息; ……</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="5-操作系统是硬件之上的第一层软件"><a href="#5-操作系统是硬件之上的第一层软件" class="headerlink" title="(5).操作系统是硬件之上的第一层软件"></a>(5).操作系统是硬件之上的第一层软件</h4><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/操作系统概述/3.png" style="zoom:30%;">
+
+<h4 id="6-操作系统在硬件机器的扩展"><a href="#6-操作系统在硬件机器的扩展" class="headerlink" title="(6).操作系统在硬件机器的扩展"></a>(6).操作系统在硬件机器的扩展</h4><p>操作系统在应用程序与硬件之间建立了一个等价的扩展机器(虚拟机)，对硬件抽象，提高可移植性;比底层硬件更容易 编程。</p>
+<img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/操作系统概述/4.png" style="zoom:30%;">
+
+<hr>
+<h2 id="三-操作系统的特征"><a href="#三-操作系统的特征" class="headerlink" title="三.操作系统的特征"></a>三.操作系统的特征</h2><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/操作系统概述/5.png" style="zoom:25%;">
+
+
+
+<h3 id="1-并发"><a href="#1-并发" class="headerlink" title="1.并发"></a>1.并发</h3><p><strong>并发(concurrency):</strong> 指处理多个同时性活动的能力。</p>
+<blockquote>
+<p>由于并发将会引发很多的问题:  活动切换、保护、相互依赖的活动间的同步.</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>操作系统</category>
