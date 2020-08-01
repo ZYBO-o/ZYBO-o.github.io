@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>操作系统运行环境与运行机制</title>
+    <url>/2020/07/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
     <title>操作系统概述</title>
     <url>/2020/07/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="操作系统概述"><a href="#操作系统概述" class="headerlink" title="操作系统概述"></a>操作系统概述</h1><p><strong>Question:</strong></p>
@@ -1251,7 +1256,93 @@
   <entry>
     <title>Makefile学习</title>
     <url>/2020/03/15/Makefile%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-为什么使用Makefile"><a href="#一-为什么使用Makefile" class="headerlink" title="一.为什么使用Makefile"></a>一.为什么使用Makefile</h1><p>假设有一个如图所示的C工程：</p>
+<p><img src="//zybtree.github.io/2020/03/15/Makefile学习/1.png" alt></p>
+<p>如果要编译出可执行程序project_demo，必须执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> 步骤1：编译主程序模块</span><br><span class="line"><span class="meta">$</span> gcc -o &lt;100个主程序模块的o文件&gt; -c &lt;100个主程序模块的c文件&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 步骤2：编译功能模块a</span><br><span class="line"><span class="meta">$</span> gcc -o &lt;1000个功能模块a的o文件&gt; &lt;1000个功能模块a的c文件&gt;</span><br><span class="line"><span class="meta">$</span> ar rcs liba.a &lt;1000个功能模块a的o文件&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 步骤3：编译功能模块b</span><br><span class="line"><span class="meta">$</span> gcc -o &lt;1000个功能模块b的o文件&gt; &lt;1000个功能模块b的c文件&gt;</span><br><span class="line"><span class="meta">$</span> ar rcs libb.a &lt;1000个功能模块b的o文件&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 步骤4：生成可执行文件demo</span><br><span class="line"><span class="meta">$</span> gcc -o demo &lt;100个主程序模块的o文件&gt; -L. -la -lb</span><br></pre></td></tr></table></figure>
+
+<p><strong>这样就出现了两个问题：</strong></p>
+<blockquote>
+<ul>
+<li>上述4个编译步骤中，几乎每个步骤都有亢长的文件名列表需要输入而且有些还是重复的，这种工作枯燥而又费时，且极易因人为疏忽而出现错误；</li>
+<li>假设demo项目每次编译所需的时间都比较长，那么如果之就前已经成功编译过了demo项目，而此后当我们修改了某些源文件需要更新的demo文件时，理论上我们是不希望也不需要去重新编译整个项目的，我们只需要仅分析其中的依赖关系，仅执行需要重新编译链接的命令，以节省编译时间，但是对于依赖关系非常复杂的工程而言，分析源文件涉及到的依赖关系是个非常复杂且容易出错的过程。</li>
+</ul>
+<p><strong>而make和Makefile的出现就是为了解决这两个问题的：</strong></p>
+</blockquote>
+<blockquote>
+<ul>
+<li>makefile文件帮助我们<strong>记录了整个项目工程的所有需要编译的文件列表</strong>，这样我们在编译时仅需要输入简单的make命令就能编译出我们期望的结果。</li>
+<li>makefile文件<strong>反映了整个项目中各个模块的依赖关系</strong>，这样我们改动了某些源文件后，仅需简单的输入make命令，<strong>make工具就会根据makefile文件里描述的依赖关系帮助我们分析哪些模块需要重新编译</strong>，并执行相应的操作。</li>
+</ul>
+</blockquote>
+<p><strong>在linux/unix开发环境中，makefile文件则是描述了一个特定编译系统所需要的策略，而make工具则是通过解析makefile文件并执行相应的命令来帮助我们构建其编译系统。</strong></p>
+<p>所以主要围绕着下面两个问题来学习Makefile和Make：</p>
+<ol>
+<li><font color="red">makefile如何记录整个项目工程的所有需要编译的文件列表及如何反映整个项目中各个模块的依赖关系?</font></li>
+<li><font color="red">提供了makefile策略描述后，make工具又是是如何解析makefile文件来帮助我们构建其编译系统的？</font></li>
+</ol>
+<hr>
+<h1 id="二-关于Makefile"><a href="#二-关于Makefile" class="headerlink" title="二.关于Makefile"></a>二.关于Makefile</h1><h2 id="1-Makefile简介"><a href="#1-Makefile简介" class="headerlink" title="1.Makefile简介"></a>1.Makefile简介</h2><p>makefile就是一个简单的文本文件，它基本上就是由一条条的<code>规则</code>构成。了解一下makefile里的最基本的语法单元，<strong>规则</strong>。</p>
+<p>一条makefile的规则构成如下:</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">target:prerequisites</span></span><br><span class="line">&lt;tab&gt; command1</span><br><span class="line">&lt;tab&gt; command2</span><br><span class="line">.....</span><br><span class="line">&lt;tab&gt; commandN</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>target：<font color="red">规则的目标</font>，可以简单理解为<strong>这条规则存在的目的是什么</strong>。通常是<strong>程序中间或者最后需要生成的文件名</strong>，也可以不对应具体的文件，而仅仅就是个概念上的规则目标。</li>
+<li>prerequisites：<font color="red">规则的依赖列表</font>，可以简单的理解为<strong>要达到本条规则的目标所需要的先决条件是什么</strong>。可以是文件名，也可以是其他规则的目标；</li>
+<li>command：<font color="red">规则的命令</font>，可以简单的理解为<strong>当目标所需要的先决条件的满足了之后，需要执行什么动作来达成规则的目标</strong>。规则的命令其实就是shell命令。一条规则中可以有多行命令，<strong>特别注意：每行命令都必须以tab键开始！</strong></li>
+</ul>
+<p>实践一个简单的makefile例子：</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 最简单的makefile文件</span></span><br><span class="line"><span class="section">all: </span></span><br><span class="line">    echo <span class="string">"Hello world!"</span>  <span class="comment">#注意：每行命令都必须以tab键开始！</span></span><br></pre></td></tr></table></figure>
+
+<p>这个简单的makefile文件，只有一条规则，规则的目标是all，没有任何依赖(<strong>规则不可以没有目标但是可以没有依赖</strong>)，以及一条命令(其实规则也是可以不需要任何命令的)。</p>
+<p>在终端执行Makefile文件：</p>
+<img src="//zybtree.github.io/2020/03/15/Makefile学习/2.png" style="zoom:50%;">
+
+<h2 id="2-Make的工作原理"><a href="#2-Make的工作原理" class="headerlink" title="2.Make的工作原理"></a>2.Make的工作原理</h2><p>通过回答下面三个问题来解释make的工作原理：</p>
+<blockquote>
+<ol>
+<li>make命令如何使用</li>
+<li>make从哪读取Makefile</li>
+<li>make如何解析执行Makefile文件的规则</li>
+</ol>
+</blockquote>
+<p>make命令的基本使用范式如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">make [ -f makefile ] [ options ] ... [ targets ] ...</span><br></pre></td></tr></table></figure>
+
+<p>使用make命令的最简单的方式主要有如下四种形式:</p>
+<ol>
+<li>简单粗暴，不带任何参数，直接执行make：</li>
+</ol>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>指定makefile文件：</li>
+</ol>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">make -f &lt;makefile_name&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>指定makefile目标：</li>
+</ol>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">make &lt;target&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>指定目录下执行make：</li>
+</ol>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">make -C &lt;subdir&gt; &lt;target&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在执行make的时候，我们可以带上<code>-f &lt;文件名&gt;</code>参数，来指定make命令从哪里读取makefile文件；而如果我们不显式指定，则make就会在当前目录下依次查找名字为<strong>GNUmakefile, makefile,和 Makefile</strong>的文件来作为其makefile文件。</p>
+<p>在读取完makefile的内容后，make工具<strong>并不是逐条去执行makefile里的规则，而是以某条规则为突破口，多米诺骨牌效应式的去执行makefile里的规则。</strong><font color="red">而这条作为突破口的规则的目标，称为<strong>终极目标</strong></font> 。我们可以在执行make时以参数的形式指定终极目标，从而执行作为突破口的规则，如果我们不显式指定终极目标，make一般情况下将选择makefile的第一条规则的目标作为终极目标。</p>
+<p>一般情况下，make执行一条规则的具体过程是这样的：</p>
+<p><img src="//zybtree.github.io/2020/03/15/Makefile学习/3.png" alt></p>
+<p><strong>make解析makefile的流程如下：</strong></p>
+<p>假设有makefile内容如下：</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">终极目标：依赖A  依赖B 依赖C</span><br><span class="line">    终极目标命令</span><br><span class="line"></span><br><span class="line">依赖A：子依赖A1 子依赖A2 </span><br><span class="line">    依赖A命令</span><br><span class="line"></span><br><span class="line">依赖B：子依赖B1 子依赖B2 </span><br><span class="line">    依赖B命令</span><br><span class="line"></span><br><span class="line">依赖C：子依赖C1 子依赖C2 </span><br><span class="line">    依赖C命令</span><br></pre></td></tr></table></figure>
+
+<p><strong>过程一，以终极目标为树根，解析出整颗依赖树：</strong></p>
+<p><img src="//zybtree.github.io/2020/03/15/Makefile学习/4.png" alt></p>
+<p><strong>过程二，对整颗依赖树以从底到上，从左到右的顺序，解析执行每一条规则：</strong></p>
+<p><img src="//zybtree.github.io/2020/03/15/Makefile学习/5.png" alt></p>
+]]></content>
       <categories>
         <category>Linux C</category>
       </categories>

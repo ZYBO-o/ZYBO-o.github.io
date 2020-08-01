@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zybtree.github.io/"/>
-  <updated>2020-07-21T06:49:46.414Z</updated>
+  <updated>2020-07-21T07:50:23.516Z</updated>
   <id>https://zybtree.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统运行环境与运行机制</title>
+    <link href="https://zybtree.github.io/2020/07/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/"/>
+    <id>https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/</id>
+    <published>2020-07-21T07:50:23.000Z</published>
+    <updated>2020-07-21T07:50:23.516Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>操作系统概述</title>
@@ -511,34 +533,6 @@
       <category term="C" scheme="https://zybtree.github.io/tags/C/"/>
     
       <category term="gdb" scheme="https://zybtree.github.io/tags/gdb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Makefile学习</title>
-    <link href="https://zybtree.github.io/2020/03/15/Makefile%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://zybtree.github.io/2020/03/15/Makefile学习/</id>
-    <published>2020-03-15T02:09:41.000Z</published>
-    <updated>2020-04-10T00:24:04.951Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="Linux C" scheme="https://zybtree.github.io/categories/Linux-C/"/>
-    
-    
-      <category term="C" scheme="https://zybtree.github.io/tags/C/"/>
-    
-      <category term="Makefile" scheme="https://zybtree.github.io/tags/Makefile/"/>
     
   </entry>
   
