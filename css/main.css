@@ -1855,7 +1855,7 @@ pre {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #46ffc8;
+  background: #e5ffc7;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2941,16 +2941,6 @@ embed {
   transition-timing-function: ease-in-out;
   transition-duration: 0.2s;
   transition-property: border;
-}
-.hider_title {
-  font-family: "Microsoft Yahei";
-  cursor: pointer;
-}
-.close:after {
-  content: "▼";
-}
-.open:after {
-  content: "▲";
 }
 .highlight-wrap[data-rel] {
   position: relative;
