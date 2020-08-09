@@ -99,20 +99,25 @@
 
 
 
-<meta name="description" content="操作系统运行环境与运行机制一.操作系统的主要工作 程序的执行  启动程序，执行程序以及程序的结束工作   完成体系结构相关的工作(操作系统与其他软件所不同的地方，与硬件打交道)  完成应用程序所需的共性任务(读盘，申请内存，打印文件)  提供各种基本服务   性能，安全，健壮等问题   用下图来明确操作系统的的地位：    从图中我们可以看出操作系统是在硬件基础上的第一层扩展。  它底下是硬件，">
+<meta name="description" content="一.操作系统的主要工作 程序的执行  启动程序，执行程序以及程序的结束工作   完成体系结构相关的工作(操作系统与其他软件所不同的地方，与硬件打交道)  完成应用程序所需的共性任务(读盘，申请内存，打印文件)  提供各种基本服务   性能，安全，健壮等问题   用下图来明确操作系统的的地位：    从图中我们可以看出操作系统是在硬件基础上的第一层扩展。  它底下是硬件， 这个硬件都做了什么工作呢？">
 <meta name="keywords" content="操作系统运行机制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统运行环境与运行机制">
 <meta property="og:url" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/index.html">
 <meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
-<meta property="og:description" content="操作系统运行环境与运行机制一.操作系统的主要工作 程序的执行  启动程序，执行程序以及程序的结束工作   完成体系结构相关的工作(操作系统与其他软件所不同的地方，与硬件打交道)  完成应用程序所需的共性任务(读盘，申请内存，打印文件)  提供各种基本服务   性能，安全，健壮等问题   用下图来明确操作系统的的地位：    从图中我们可以看出操作系统是在硬件基础上的第一层扩展。  它底下是硬件，">
+<meta property="og:description" content="一.操作系统的主要工作 程序的执行  启动程序，执行程序以及程序的结束工作   完成体系结构相关的工作(操作系统与其他软件所不同的地方，与硬件打交道)  完成应用程序所需的共性任务(读盘，申请内存，打印文件)  提供各种基本服务   性能，安全，健壮等问题   用下图来明确操作系统的的地位：    从图中我们可以看出操作系统是在硬件基础上的第一层扩展。  它底下是硬件， 这个硬件都做了什么工作呢？">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/1.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/2.png">
-<meta property="og:updated_time" content="2020-08-05T15:37:01.673Z">
+<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/3.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/4.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/5.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/6.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/7.png">
+<meta property="og:updated_time" content="2020-08-09T13:32:42.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统运行环境与运行机制">
-<meta name="twitter:description" content="操作系统运行环境与运行机制一.操作系统的主要工作 程序的执行  启动程序，执行程序以及程序的结束工作   完成体系结构相关的工作(操作系统与其他软件所不同的地方，与硬件打交道)  完成应用程序所需的共性任务(读盘，申请内存，打印文件)  提供各种基本服务   性能，安全，健壮等问题   用下图来明确操作系统的的地位：    从图中我们可以看出操作系统是在硬件基础上的第一层扩展。  它底下是硬件，">
+<meta name="twitter:description" content="一.操作系统的主要工作 程序的执行  启动程序，执行程序以及程序的结束工作   完成体系结构相关的工作(操作系统与其他软件所不同的地方，与硬件打交道)  完成应用程序所需的共性任务(读盘，申请内存，打印文件)  提供各种基本服务   性能，安全，健壮等问题   用下图来明确操作系统的的地位：    从图中我们可以看出操作系统是在硬件基础上的第一层扩展。  它底下是硬件， 这个硬件都做了什么工作呢？">
 <meta name="twitter:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/1.png">
 
 
@@ -411,7 +416,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k
+                  4.7k
                 </span>
               
 
@@ -436,7 +441,7 @@
       
 
       
-        <h1 id="操作系统运行环境与运行机制"><a href="#操作系统运行环境与运行机制" class="headerlink" title="操作系统运行环境与运行机制"></a>操作系统运行环境与运行机制</h1><h2 id="一-操作系统的主要工作"><a href="#一-操作系统的主要工作" class="headerlink" title="一.操作系统的主要工作"></a>一.操作系统的主要工作</h2><ul>
+        <h2 id="一-操作系统的主要工作"><a href="#一-操作系统的主要工作" class="headerlink" title="一.操作系统的主要工作"></a>一.操作系统的主要工作</h2><ul>
 <li><p>程序的执行</p>
 <blockquote>
 <p>启动程序，执行程序以及程序的结束工作</p>
@@ -460,6 +465,7 @@
 <p>它底下是硬件， 这个硬件都做了什么工作呢？ 怎么样去了解底下的硬件呢？<strong>这就是本讲的一个内容之一：操作系统运行环境。</strong> 和硬件相关的很多的工作实际上是和操作系统的各个功能相结合的，<strong>这里介绍最基本的 CPU 状态： 中断与异常机制。</strong> 其他的像虚拟页式存储管理的机制， 设备等等的，会在后面跟操作系统功能结合起来讲。 </p>
 <p>操作系统完成应用程序当中的一些共性的工作， 向应用程序提供一些基本服务，这是本讲另外一方面的内容：操作系统运行机制,这里重点介绍系统调用机制。</p>
 </blockquote>
+<hr>
 <h2 id="二-处理机的状态"><a href="#二-处理机的状态" class="headerlink" title="二.处理机的状态"></a>二.处理机的状态</h2><p>处理器由<strong>运算器</strong>、<strong>控制器</strong>、一系列的<strong>寄存器</strong>以及<strong>高速缓存</strong>构成。<br>寄存器主要分为两类：</p>
 <ul>
 <li><strong>用户可见寄存器</strong>：高级语言编译器通过优化算法分配并使用之，以减少程序访问内存次数。</li>
@@ -525,6 +531,127 @@
 <p>之所以叫访管指令， 是因为有的时候内核态也被称为一个supervisor mode管理态。 所以在这种情况下，从用户态进入了管理态，相当于访问管理态，所以叫访管指令。 </p>
 <p>而这条特殊的指令在不同的计算机系统当中实际上是用不同的指令的。 比如 int 指令，trap 指令，syscall，sysenter/sysexit。 这些指令都是不同的计算机体系结构提供的这种特殊的指令，用于陷入(用于访管)。所以这是关于CPU状态之间的转换需要的不同的条件。</p>
 </blockquote>
+<hr>
+<h2 id="三-中断与异常机制"><a href="#三-中断与异常机制" class="headerlink" title="三.中断与异常机制"></a>三.中断与异常机制</h2><blockquote>
+<p>操作系统当中的中断和异常机制就好比是汽车中的发动机，或者是飞机引擎。靠它来驱动操作系统的运行。 有的时候是可以这么说，操作系统是由中断驱动/事件驱动的。有了这个机制，操作系统就可以做很多的事情。</p>
+</blockquote>
+<p><strong>主要作用：</strong></p>
+<ul>
+<li>及时处理设备发来的中断请求</li>
+<li>可使OS捕获用户程序提出的服务请求  </li>
+<li>防止用户程序执行过程中的破坏性活动 </li>
+<li>……</li>
+</ul>
+<h3 id="1-中断与异常的概念"><a href="#1-中断与异常的概念" class="headerlink" title="1.中断与异常的概念"></a>1.中断与异常的概念</h3><p>所谓中断与异常，实际上是 CPU 对系统发生的某个事件的一种反应。当这个事件发生的时候，通过对这个事件的处理实际上是改变了一个控制流。我们通常说事件的发生改变了 CPU 的一个控制流。</p>
+<p><strong>过程：</strong></p>
+<ul>
+<li>CPU暂停正在执行的程序，保留现场后自动转去执行相应事件的处理程序</li>
+<li>处理完成后返回断点， 继续执行被打断的程序</li>
+</ul>
+<p><strong>特点：</strong></p>
+<ul>
+<li>是随机发生的</li>
+<li>是自动处理的</li>
+<li>是可恢复的</li>
+</ul>
+<h3 id="2-引入中断与异常的原因"><a href="#2-引入中断与异常的原因" class="headerlink" title="2.引入中断与异常的原因"></a>2.引入中断与异常的原因</h3><h4 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h4><p><strong>原因：中断的引入实际上是为了支持CPU与<font color="red">外部设备</font>的一个并行操作</strong></p>
+<p>早期的计算机系统，如果没有中断机制的话 那么 CPU 要负责对设备的所有工作的管理。但是有了中断机制之后就可以这样来工作了。 </p>
+<blockquote>
+<p>比如：CPU 会去启动 输入输出设备的工作。 启动做完了之后设备本身就可以独立自己进行工作了 。而 CPU 这个时候呢可以转去处理一些和这次输入输出没有关系的事情。当设备完成了它的任务之后，它通过通过了中断向 CPU 报告这次输入输出的结果。让 CPU 来决策下面该做什么事情。 </p>
+</blockquote>
+<h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h4><p><strong>原因：表示CPU执行指令时<font color="red">本身</font>出现的问题</strong></p>
+<blockquote>
+<p>如算术溢出、除零、取数时的奇偶错，访存地址时越界或执行了“陷入指令” 等，这时硬件改变了CPU当前的执行流程，转到相应的错误处理程序或异常处理程序或执行系统调用。</p>
+</blockquote>
+<h3 id="3-事件"><a href="#3-事件" class="headerlink" title="3.事件"></a>3.事件</h3><img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/3.png" style="zoom:30%;">
+
+<blockquote>
+<p>中断是外部事件在CPU 之外产生的事件打断了 CPU 。这些事件是正在运行的程序所不期望的。</p>
+<p>异常是由正在执行的指令而引发的 。</p>
+</blockquote>
+<h3 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h3><img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/4.png" style="zoom:50%;">
+
+
+
+<h2 id="四-中断与异常机制的工作原理"><a href="#四-中断与异常机制的工作原理" class="headerlink" title="四.中断与异常机制的工作原理"></a>四.中断与异常机制的工作原理</h2><p>中断/异常机制实际上是现代计算机系统中的核心机制之一。它的主要工作是硬件和软件相互配合来完成的通过软硬件的配合，来使计算机的能力得到充分地发挥。中断/异常机制的工作原理主要是从硬件与软件两个方面分析。</p>
+<p><strong>硬件：</strong>捕获中断源发出的各种中断/异常的请求 ，以某一种方式来响应，通过把控制权转交给特定的处理程序来完成这个过程，而这个过程就是中断 。异常的响应，响应中断，响应异常这是硬件完成的工作。</p>
+<p><strong>软件：</strong>识别中断， 异常类型完成对应的处理，<strong>实际上就是处理程序</strong>，把它称之为中断/异常处理程序。</p>
+<h3 id="1-中断响应"><a href="#1-中断响应" class="headerlink" title="1.中断响应"></a>1.中断响应</h3><p>中断响应是发现中断、接收中断的过程，这部分由中断硬件部件完成。处理器控制部件中设有<strong>中断寄存器</strong>，其中保存了各种中断信号。</p>
+<p><strong>CPU响应中断过程示意：</strong></p>
+<img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/5.png" style="zoom:50%;">
+
+<blockquote>
+<p>中断向量表是个非常重要的软硬件结合的这么一个数据结构。 每一行呢实际上是一个中断向量 。中断向量表是由若干中断向量组成。</p>
+<p>每一个中断向量其实就是一个<strong>内存单元</strong>。它是存放了中断处理程序的这个入口地址，以及这个程序，在运行的时候所需要的一个处理机的状态字。</p>
+</blockquote>
+<p><strong>中断响应示意：</strong></p>
+<img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/6.png" style="zoom:50%;">
+
+<h3 id="2-中断处理程序"><a href="#2-中断处理程序" class="headerlink" title="2.中断处理程序"></a>2.中断处理程序</h3><p>设计操作系统时，为每一类中断/异常事件编好相 应的处理程序，并设置好中断向量表。系统运行时若响应中断，中断硬件部件将CPU控 制权转给中断处理程序。</p>
+<p><strong>中断处理程序主要做的工作：</strong></p>
+<ul>
+<li>保存相关寄存器信息(硬件部件会保存关键寄存器的信息。其他的一些寄存器的信息还要再做进一步地保存)</li>
+<li>分析中断/异常的具体原因</li>
+<li>执行对应的处理功能</li>
+<li>恢复现场，返回被事件打断的程序</li>
+</ul>
+<h3 id="3-中断异常机制小节"><a href="#3-中断异常机制小节" class="headerlink" title="3.中断异常机制小节"></a>3.中断异常机制小节</h3><p>以设备输入输出中断为例:</p>
+<ul>
+<li>打印机给CPU发中断信号 </li>
+<li>CPU处理完当前指令后检测到中断，判断出中断来源并向相关设备发确认信号</li>
+<li>CPU开始为软件处理中断做准备：<ul>
+<li>处理器状态被切换到内核态</li>
+<li>在系统栈中保存被中断程序的重要上下文环境，主要是程序计数器PC、程 序状态字PSW</li>
+</ul>
+</li>
+<li>CPU根据中断码查中断向量表，获得与该中断相关的处理程序的入口地址，并将PC设置成该地址，新的指令周期开始时，CPU控制转移到中断处理程序</li>
+<li>中断处理程序开始工作：<font color="red">(软件工作)</font><ul>
+<li>在系统栈中保存现场信息</li>
+<li>检查I/O设备的状态信息，操纵I/O设备或者在设备和内存之间传送数据等等</li>
+</ul>
+</li>
+<li>中断处理结束时，CPU检测到中断返回指令，从系统 栈中恢复被中断程序的上下文环境 ，CPU状态恢复成 原来的状态，PSW和PC恢复成中断前的值，CPU开始一个新的指令周期。</li>
+</ul>
+<h2 id="五-系统调用机制"><a href="#五-系统调用机制" class="headerlink" title="五.系统调用机制"></a>五.系统调用机制</h2><h3 id="1-系统调用"><a href="#1-系统调用" class="headerlink" title="1.系统调用"></a>1.系统调用</h3><h4 id="什么是系统调用"><a href="#什么是系统调用" class="headerlink" title="什么是系统调用"></a>什么是系统调用</h4><p>系统调用是用户在编程时可以调用的操作系统功能。系统调用全称应该是操作系统功能调用，简称系统调用 。</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>系统调用是操作系统给编程人员提供的唯一接口。 通过系统调用使得 CPU 的状态从用户态陷入了内核态。</p>
+<h3 id="2-系统调用，库函数，API，内核函数之间的关系"><a href="#2-系统调用，库函数，API，内核函数之间的关系" class="headerlink" title="2.系统调用，库函数，API，内核函数之间的关系"></a>2.系统调用，库函数，API，内核函数之间的关系</h3><img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/7.png" style="zoom:40%;">
+
+<blockquote>
+<ul>
+<li>应用程序可以直接调系统调用。但是通常情况下，应用程序都是通过了 C 函数库或者是 API 的接口来间接地调用系统调用。</li>
+<li>在操作系统内核当中，提供了很多的内核函数。这些内核函数经过了封装把它提供到了 C 函数库，或者是 API 接口 。所以系统调用对于内核而言，内核函数就是这个系统调用的处理程序，而这些处理程序通过封装在 C 函数库或者 API 接口呢提供给用户来使用。</li>
+<li>但是 C 函数库里头或者是 API 接口里头还有一些函数不是系统调用，它们就是一些普通的函数在完成一些功能。</li>
+<li>有一些函数通过系统调用对应到了多个内核函数，也可能是某一个函数通过系统调用对应内核的一个函数。都是不太一样的。 </li>
+<li>内核函数当中 也有一些函数呢是不开放给用户使用的 </li>
+</ul>
+</blockquote>
+<p>应用程序大部分情况下是通过调用函数。 函数执行过程中再去变成系统调用来进入内核来完成。</p>
+<h3 id="3-系统调用机制的设计"><a href="#3-系统调用机制的设计" class="headerlink" title="3.系统调用机制的设计"></a>3.系统调用机制的设计</h3><ol>
+<li><p>首先利用硬件给我们提供的支持(就是中断异常机制)。通过这个机制实现系统调用服务。 </p>
+</li>
+<li><p>然后选择一条特殊的指令即<strong>陷入指令，也称之为访管指令</strong> 通过这条指令的执行引发一个异常完成从用户态到内核态的切换工作。看到只有一条指令。也就是说所有的系统调用，都是通过这条指令来进入内核的。</p>
+<blockquote>
+<p>在中断向量表或中断描述符表当中有一行专门用于系统调用。</p>
+</blockquote>
+</li>
+<li><p>然后操作系统呢要为每一个系统调用事先确定一个编号(系统调用号)，因为要确定是哪一个系统调用。所以要通过编号来区分。而且每个系统调用其实还有不同的参数 ，所以呢我们还要设计相应的参数。这些工作除了操作系统的设计之外，还需要编译器来帮忙，编译器会把这个封装的系统调用把它展开 ，在过程中生成这条特殊的陷入指令，以及这些参数的推送寄存器的这些指令。</p>
+</li>
+<li><p>每一个系统调用其实都有一段内核函数，或者是一段代码来对应。 找到对应的内核函数就需要设计一张系统调用表，这张表就把系统调用的各项服务的入口地址填在这张表里头，那这张表也是在这个初始化的时候设置好了。</p>
+</li>
+</ol>
+<h3 id="4-参数传递过程问题"><a href="#4-参数传递过程问题" class="headerlink" title="4.参数传递过程问题"></a>4.参数传递过程问题</h3><p>实现用户程序的参数传递给内核常用以下3种实现方法:</p>
+<ul>
+<li><font color="red">由陷入指令自带参数</font> : 陷入指令的长度有限，且 还要携带系统调用功能号，只能自带有限的参数</li>
+<li><font color="red">通过通用寄存器传递参数</font> : 这些寄存器是操作系 统和用户程序都能访问的，但寄存器的个数会限制传递参数的数量</li>
+<li><font color="red">在内存中开辟专用堆栈区</font>来传递参数</li>
+</ul>
+<h3 id="5-系统调用的执行过程"><a href="#5-系统调用的执行过程" class="headerlink" title="5.系统调用的执行过程"></a>5.系统调用的执行过程</h3><p>当CPU执行到特殊的陷入指令时:</p>
+<ul>
+<li><font color="red">中断/异常机制 </font>:硬件保护现场;通过查中断向量表把控制权转给系统调用总入口程序</li>
+<li><font color="red">系统调用总入口程序 </font>:保存现场;将参数保存在内核堆 栈里;通过查系统调用表把控制权转给相应的系统调用 处理例程或内核函数</li>
+<li><font color="red">执行系统调用例程</font></li>
+<li><font color="red">恢复现场，返回用户程序</font></li>
+</ul>
 
       
     </div>
@@ -750,7 +877,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#操作系统运行环境与运行机制"><span class="nav-text">操作系统运行环境与运行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-操作系统的主要工作"><span class="nav-text">一.操作系统的主要工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-处理机的状态"><span class="nav-text">二.处理机的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-控制和状态寄存器"><span class="nav-text">1.控制和状态寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-操作系统的需求——保护"><span class="nav-text">2.操作系统的需求——保护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-特权指令和非特权指令"><span class="nav-text">3.特权指令和非特权指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-实例：X86系列处理器"><span class="nav-text">4.实例：X86系列处理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-CPU状态之间的转换"><span class="nav-text">5.CPU状态之间的转换</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-操作系统的主要工作"><span class="nav-text">一.操作系统的主要工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-处理机的状态"><span class="nav-text">二.处理机的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-控制和状态寄存器"><span class="nav-text">1.控制和状态寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-操作系统的需求——保护"><span class="nav-text">2.操作系统的需求——保护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-特权指令和非特权指令"><span class="nav-text">3.特权指令和非特权指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-实例：X86系列处理器"><span class="nav-text">4.实例：X86系列处理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-CPU状态之间的转换"><span class="nav-text">5.CPU状态之间的转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-中断与异常机制"><span class="nav-text">三.中断与异常机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-中断与异常的概念"><span class="nav-text">1.中断与异常的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-引入中断与异常的原因"><span class="nav-text">2.引入中断与异常的原因</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中断"><span class="nav-text">中断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常"><span class="nav-text">异常</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-事件"><span class="nav-text">3.事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-小结"><span class="nav-text">4.小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-中断与异常机制的工作原理"><span class="nav-text">四.中断与异常机制的工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-中断响应"><span class="nav-text">1.中断响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-中断处理程序"><span class="nav-text">2.中断处理程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-中断异常机制小节"><span class="nav-text">3.中断异常机制小节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-系统调用机制"><span class="nav-text">五.系统调用机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-系统调用"><span class="nav-text">1.系统调用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是系统调用"><span class="nav-text">什么是系统调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作用"><span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-系统调用，库函数，API，内核函数之间的关系"><span class="nav-text">2.系统调用，库函数，API，内核函数之间的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-系统调用机制的设计"><span class="nav-text">3.系统调用机制的设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-参数传递过程问题"><span class="nav-text">4.参数传递过程问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-系统调用的执行过程"><span class="nav-text">5.系统调用的执行过程</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -784,7 +911,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">38.6k</span>
+    <span title="Site words total count">41.3k</span>
   
 </div>
 
