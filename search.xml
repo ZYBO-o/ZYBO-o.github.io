@@ -386,6 +386,118 @@
 </blockquote>
 </li>
 </ul>
+<hr>
+<h1 id="八-线程机制的实现"><a href="#八-线程机制的实现" class="headerlink" title="八.线程机制的实现"></a>八.线程机制的实现</h1><blockquote>
+<p>在操作系统中， 如何来支持线程机制的实现? 通常有三种方式：<strong>用户级线程</strong>、 <strong>核心级线程</strong>和<strong>混合方式</strong>。 </p>
+<p>由于在线程的概念提出之前，操作系统已经运行了很多年，进程的概念已经用了很长时间。 因此当有一个新的机制提出来的时候， 不同的操作系统对这个机制的支持是不一样的。</p>
+</blockquote>
+<h2 id="1-用户级线程"><a href="#1-用户级线程" class="headerlink" title="1.用户级线程"></a>1.用户级线程</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="(1).概念"></a>(1).概念</h3><p><strong>用户级线程：</strong>在用户空间建了一个线程库， 这个线程库里提供了一系列的针对线程的操作。 这些线程的管理是通过一个 Run-time System 运行时系统来管理的。 它完成的就是这些线程的创建和线程数据结构的一些管理工作。 如下图所示：</p>
+<img src="//zybtree.github.io/2020/08/10/进程-线程模型/13.png" style="zoom:40%;">
+
+<blockquote>
+<p>有一个Run-time System，它是管理这些线程里的数据结构、 线程表。这是用户级线程的一个实现。 </p>
+</blockquote>
+<p>对于内核而言， 线程的实现是在用户空间，所以<strong>操作系统内核并不知道线程的存在</strong>，也就是说，<font color="red">它的管理还是以进程为单位来管理，它没有感知线程的存在。</font> </p>
+<p>从图中可以看到线程的数据结构是由 Run-time System 来管理的。 内核只看到了进程的数据结构， 因此线程的切换，从一个线程换到另外一个线程不需要操作系统内核的干预，也不需要进入内核来做这件事情， 所以速度比较快。 </p>
+<blockquote>
+<p>UNIX 内的操作系统通常采用这种方式来支持线程。</p>
+</blockquote>
+<h3 id="2-POSIX线程库——PTHREAD"><a href="#2-POSIX线程库——PTHREAD" class="headerlink" title="(2).POSIX线程库——PTHREAD"></a>(2).POSIX线程库——PTHREAD</h3><p>UNIX内的操作系统通常采用这种方式来支持线程。 它支持线程的时候是遵循 POSIX 规范。也就是 POSIX 规范当中确定了多线程的这种编程的接口。 </p>
+<p>那以什么样的方式呈现给用户呢？它对线程库进行了相应的规范。 这个规范就是 PTHREAD 线程库。 这个线程库按照规范要提供若干个函数来支持线程、 创建线程、撤销线程，等待某个线程的结束。 </p>
+<img src="//zybtree.github.io/2020/08/10/进程-线程模型/14.png" style="zoom:33%;">
+
+<blockquote>
+<p>在这堆操作当中，重点介绍一下 yield 函数，<strong>这个函数表示这个线程自愿让出 CPU。</strong> </p>
+<p>我们知道一个进程的若干线程实际上是相互配合来完成一项任务的。 所以这线程之间是可以协商由谁上 CPU，所以一个线程如果占 CPU 时间太长，那么别的线程得不到机会，就需要这个线程<code>高尚</code>一点，让出 CPU，它就调用 yield 让出 CPU。 如果它不让出 CPU，其实其它线程是没法上 CPU 的，<font color="red"><strong>因为对于线程而言，它感知不到时钟中断，因为整个时钟段是对进程而言的。</strong> </font></p>
+</blockquote>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="(3).总结"></a>(3).总结</h3><p><strong>优点:</strong></p>
+<ul>
+<li><p>线程切换快</p>
+</li>
+<li><p>调度算法是应用程序特定的</p>
+</li>
+<li><p>用户级线程可运行在任何操作系统上(只需要实现线程库)</p>
+<p><strong>缺点:</strong></p>
+</li>
+</ul>
+<ul>
+<li><p>内核只将处理器分配给进程，同一进程中的两 个线程不能同时运行于两个处理器上</p>
+</li>
+<li><p>大多数系统调用是阻塞的，因此，由于内核阻塞进程，故进程中所有线程也被阻塞</p>
+<blockquote>
+<p><strong>改变：</strong></p>
+<ul>
+<li>把系统调用，阻塞系统调用改成一个非阻塞的</li>
+<li>用 Jacketing/ wrapper 的这种技术在系统调用之外封装一层。 在调用系统调用之前，先判断一下调用这个系统调用会不会导致线程阻塞，如果导致线程阻塞，那么就赶紧地换其它线程，这样的话，就不会因为某个线程调用了一个阻塞的系统调用使得整个进程被阻塞。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="2-核心级线程"><a href="#2-核心级线程" class="headerlink" title="2.核心级线程"></a>2.核心级线程</h2><p>第二类实现线程机制的方法是核心级线程。这个方案就是彻底地改造了操作系统。 </p>
+<ul>
+<li><p>内核管理所有的线程。 通过 API 的接口向用户提供一些 API 的函数，由用户可以创建线程。 </p>
+</li>
+<li><p>所以内核既维护了进程的数据结构，也维护了进程里头的各个线程的数据结构。</p>
+<blockquote>
+<p>从下图中可以看到内核里头既管了线程表， 也管了进程表。 </p>
+</blockquote>
+</li>
+</ul>
+<img src="//zybtree.github.io/2020/08/10/进程-线程模型/15.png" style="zoom:35%;">
+
+<ul>
+<li>线程的切换需要内核干预，因此要进入内核来完成切换的过程。 调度也是以线程为单位来进行的。 </li>
+</ul>
+<blockquote>
+<p>实现核心级线程机制的典型的操作系统就是 Windows。 </p>
+</blockquote>
+<h2 id="3-混合模型"><a href="#3-混合模型" class="headerlink" title="3.混合模型"></a>3.混合模型</h2><p>混合模型就是<strong>线程的创建是在用户空间用线程库来完成的。</strong> 但是内核也要管理线程，也就是说<strong>调度是由内核来完成的。</strong> </p>
+<blockquote>
+<p>这个采用这种混合模型实现线程机制的是 Solaris 操作系统。 </p>
+</blockquote>
+<p><strong>用户空间的线程和内核的这个关系是什么？</strong></p>
+<p>用户线程通过了一个多路复用来复用多个内核级线程，也就是核外的用户空间的线程通过一个机制和核内的一个内核线程对应起来。调度内核这个线程上 CPU 其实就是调度这个核外的这个线程上 CPU。这是 Solaris 的一种实现。 </p>
+<hr>
+<h1 id="九-总结"><a href="#九-总结" class="headerlink" title="九.总结"></a>九.总结</h1><h2 id="1-进程"><a href="#1-进程" class="headerlink" title="1.进程"></a>1.进程</h2><ul>
+<li><p><strong>并发性：</strong>任何进程都可以与其他进程一起向前推进</p>
+</li>
+<li><p><strong>动态性：</strong>进程是正在执行程序的实例</p>
+<ul>
+<li>进程是动态产生，动态消亡的</li>
+<li>进程在其生命周期内，在三种基本状态之间转换</li>
+</ul>
+</li>
+<li><p><strong>独立性：</strong>进程是<font color="red">资源分配</font>的一个独立单位 </p>
+<blockquote>
+<p>例如:各进程的<font color="red">地址空间相互独立</font></p>
+</blockquote>
+</li>
+<li><p><strong>交互性：</strong>指进程在执行过程中可能与其他进程产生直 接或间接的关系</p>
+</li>
+<li><p><strong>异步性：</strong>每个进程都以其相对独立的、不可预知的速 度向前推进</p>
+</li>
+<li><p><strong>进程映像：</strong>程序 + 数据 + 栈(用户栈、内核栈) + PCB</p>
+</li>
+</ul>
+<h2 id="2-线程"><a href="#2-线程" class="headerlink" title="2.线程"></a>2.线程</h2><ul>
+<li><p><strong>多线程应用场景</strong></p>
+<blockquote>
+<p>知道什么情况下去应用多线程</p>
+</blockquote>
+</li>
+<li><p><strong>线程基本概念、属性</strong></p>
+<blockquote>
+<p>程作为一个进程中运行的一个实体，有哪些是属于它自己的信息？有哪些是共享同一个进程的其他的一些资源？</p>
+</blockquote>
+</li>
+<li><p><strong>线程实现机制</strong></p>
+<blockquote>
+<p>操作系统中如何来实现线程？如何来支持线程？</p>
+</blockquote>
+</li>
+</ul>
+<p>看一个非常重要的概念：可再入程序(可重入程序）。 </p>
+<p>所谓<strong>可再入程序指的是可以被多个进程同时调用的程序</strong>，因此对这个程序有限制。 也就是它必须<strong>具有的性质是它是纯代码的， 在执行过程中这个代码不会改变。</strong> 如果有改变，就需要调用它的进程提供不同的数据区。 这些改变可以放在数据区，因为代码部分是不再改变的。 实际上是大部分进程和线程都必须是可再入程序才能去运行。 </p>
 ]]></content>
       <categories>
         <category>操作系统</category>
