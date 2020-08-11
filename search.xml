@@ -78,7 +78,7 @@
 <p>第二个是进程的地址空间 p_as，进程地址空间放了很多内容，每一项内容都放在一段里头，通过段来把进程地址空间描述清楚，把这些段按照地址大小的顺序，把它建立成一个 AVL 树，便于以后的查找。 </p>
 <p>第三个是文件表，通过这张表可以把所有打开的文件都能找到。</p>
 <hr>
-<h1 id="二-进程状态及状态转换"><a href="#二-进程状态及状态转换" class="headerlink" title="二.进程状态及状态转换"></a>二.进程状态及状态转换</h1><h3 id="1-进程的三种状态及状态的转换"><a href="#1-进程的三种状态及状态的转换" class="headerlink" title="1.进程的三种状态及状态的转换"></a>1.进程的三种状态及状态的转换</h3><h4 id="1-进程的三种基本状态"><a href="#1-进程的三种基本状态" class="headerlink" title="(1).进程的三种基本状态"></a>(1).进程的三种基本状态</h4><p><strong>运行态(Running)</strong> </p>
+<h1 id="二-进程状态及状态转换"><a href="#二-进程状态及状态转换" class="headerlink" title="二.进程状态及状态转换"></a>二.进程状态及状态转换</h1><h2 id="1-进程的三种状态及状态的转换"><a href="#1-进程的三种状态及状态的转换" class="headerlink" title="1.进程的三种状态及状态的转换"></a>1.进程的三种状态及状态的转换</h2><h3 id="1-进程的三种基本状态"><a href="#1-进程的三种基本状态" class="headerlink" title="(1).进程的三种基本状态"></a>(1).进程的三种基本状态</h3><p><strong>运行态(Running)</strong> </p>
 <p>进程占有CPU，并在CPU上运行。</p>
 <p><strong>就绪态(Ready)</strong> </p>
 <p>进程已经具备运行条件，但由于没有空闲CPU，而暂时不能运行。</p>
@@ -87,7 +87,7 @@
 <p>也称阻塞态、封锁态、睡眠态 </p>
 </blockquote>
 <p>进程因等待某一事件而暂时不能运行。</p>
-<h4 id="2-三状态模型及状态转换"><a href="#2-三状态模型及状态转换" class="headerlink" title="(2).三状态模型及状态转换"></a>(2).三状态模型及状态转换</h4><img src="//zybtree.github.io/2020/08/10/进程-线程模型/3.png" style="zoom:25%;">
+<h3 id="2-三状态模型及状态转换"><a href="#2-三状态模型及状态转换" class="headerlink" title="(2).三状态模型及状态转换"></a>(2).三状态模型及状态转换</h3><img src="//zybtree.github.io/2020/08/10/进程-线程模型/3.png" style="zoom:25%;">
 
 <h2 id="2-进程的其他状态"><a href="#2-进程的其他状态" class="headerlink" title="2.进程的其他状态"></a>2.进程的其他状态</h2><p>###(1).创建态</p>
 <p>已完成创建一进程所必要的工作，比如分配了PID、填写了PCB。但由于某些原因，操作系统尚未同意执行该进程。</p>
@@ -150,7 +150,7 @@
 </li>
 </ol>
 <h2 id="3-进程阻塞"><a href="#3-进程阻塞" class="headerlink" title="3.进程阻塞"></a>3.进程阻塞</h2><p><strong>处于运行状态的进程，在其运行过程中期待某一事件发生</strong>，如等待键盘输入、等待 磁盘数据传输完成、等待其它进程发送消息， <font color="red">当被等待的事件未发生时，由<strong>进程自己执行阻塞原语，使自己由运行态变为阻塞态</strong>。</font></p>
-<h3 id="4-UNIX的几个进程控制操作"><a href="#4-UNIX的几个进程控制操作" class="headerlink" title="4.UNIX的几个进程控制操作"></a>4.UNIX的几个进程控制操作</h3><ul>
+<h2 id="4-UNIX的几个进程控制操作"><a href="#4-UNIX的几个进程控制操作" class="headerlink" title="4.UNIX的几个进程控制操作"></a>4.UNIX的几个进程控制操作</h2><ul>
 <li><p><strong>fork( )：</strong>通过<font color="red">复制调用进程来</font>建立新的进程，是 最基本的进程建立过程</p>
 </li>
 <li><p><strong>exec( )：</strong>包括一系列系统调用，它们都是通过用 一段新的程序代码覆盖原来的地址空间，<font color="red">实现进程执行代码的转换</font></p>
@@ -163,7 +163,7 @@
 <blockquote>
 <p>他们都是以系统调用的形式，作为一个接头呈现给用户，由用户程序来调用 。</p>
 </blockquote>
-<h2 id="4-UNIX的FORK-实现"><a href="#4-UNIX的FORK-实现" class="headerlink" title="4.UNIX的FORK()实现"></a>4.UNIX的FORK()实现</h2><ol>
+<h2 id="5-UNIX的FORK-实现"><a href="#5-UNIX的FORK-实现" class="headerlink" title="5.UNIX的FORK()实现"></a>5.UNIX的FORK()实现</h2><ol>
 <li><p><strong>首先会为子进程分配一个空闲的进程描述符，也就是 PCB。</strong></p>
 <blockquote>
 <p> PCB在 UNIX 一般叫 proc 结构 </p>
@@ -230,7 +230,7 @@
 <p>有些经常需要输入、 输出、 读盘这样一些操作，这些进程被称之为 I/O 密集型 </p>
 <p>那么这两类进程的区分也是为了以后调度程序的选择做一些准备 。</p>
 </blockquote>
-<h3 id="3-进程层次结构"><a href="#3-进程层次结构" class="headerlink" title="(3).进程层次结构"></a>(3).进程层次结构</h3><h4 id="UNIX进程家族树-init为根"><a href="#UNIX进程家族树-init为根" class="headerlink" title="UNIX进程家族树:init为根"></a>UNIX进程家族树:init为根</h4><p>UNIX 进程都是在一个家族里，这个家族树有一个根，这个根是一个 init 进程，是个 1 号进程，是所有进程的一个祖宗。在某些情况下，某一个进程它结束了，那么它的子孙进程，其实也必须全部的结束。</p>
+<h3 id="2-进程层次结构"><a href="#2-进程层次结构" class="headerlink" title="(2).进程层次结构"></a>(2).进程层次结构</h3><h4 id="UNIX进程家族树-init为根"><a href="#UNIX进程家族树-init为根" class="headerlink" title="UNIX进程家族树:init为根"></a>UNIX进程家族树:init为根</h4><p>UNIX 进程都是在一个家族里，这个家族树有一个根，这个根是一个 init 进程，是个 1 号进程，是所有进程的一个祖宗。在某些情况下，某一个进程它结束了，那么它的子孙进程，其实也必须全部的结束。</p>
 <h4 id="Windows-地位相同"><a href="#Windows-地位相同" class="headerlink" title="Windows:地位相同"></a>Windows:地位相同</h4><p> 那在 Windows 中也是一个进程创建另一个进程，但是创建完之后，这两个进程的关系比较疏远，也就是它们的地位是相同的。 </p>
 <h2 id="2-进程与程序的区别"><a href="#2-进程与程序的区别" class="headerlink" title="2.进程与程序的区别"></a>2.进程与程序的区别</h2><ul>
 <li><strong>进程更能准确刻画并发，而程序不能</strong></li>
