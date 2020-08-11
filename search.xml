@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>处理器调度</title>
+    <url>/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>处理器调度</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>进程&线程模型</title>
     <url>/2020/08/10/%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-进程基本概念"><a href="#一-进程基本概念" class="headerlink" title="一.进程基本概念"></a>一.进程基本概念</h1><blockquote>
