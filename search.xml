@@ -53,24 +53,24 @@
 <li><strong>代码执行入口地址</strong></li>
 <li><strong>程序的磁盘地址</strong></li>
 <li><strong>运行统计信息</strong>(执行时间、页面调度) </li>
-<li>进程间同步和通信</li>
-<li>进程的队列指针</li>
-<li>进程的消息队列指针</li>
+<li><strong>进程间同步和通信</strong></li>
+<li><strong>进程的队列指针</strong></li>
+<li><strong>进程的消息队列指针</strong></li>
 </ul>
 <h4 id="所拥有的资源和使用情况"><a href="#所拥有的资源和使用情况" class="headerlink" title="所拥有的资源和使用情况"></a>所拥有的资源和使用情况</h4><ul>
-<li>虚拟地址空间的状况 </li>
-<li>打开文件列表</li>
+<li><strong>虚拟地址空间的状况</strong> </li>
+<li><strong>打开文件列表</strong></li>
 </ul>
 <h4 id="CPU现场信息"><a href="#CPU现场信息" class="headerlink" title="CPU现场信息"></a>CPU现场信息</h4><blockquote>
 <p><strong>CPU的现场信息</strong>是指当进程不运行的时候，操作系统要把一些重要的信息，硬件执行的状态信息，保存在PCB 里。</p>
 </blockquote>
 <ul>
-<li><p>寄存器值(通用寄存器、程序计数 器PC、程序状态字PSW、栈指针)</p>
+<li><p><strong>寄存器值</strong>(通用寄存器、程序计数 器PC、程序状态字PSW、栈指针)</p>
 </li>
-<li><p>指向该进程页表的指针</p>
+<li><p><strong>指向该进程页表的指针</strong></p>
 </li>
 </ul>
-<h3 id="3-SOLARIS的进程控制块与进程表"><a href="#3-SOLARIS的进程控制块与进程表" class="headerlink" title="(3)SOLARIS的进程控制块与进程表"></a>(3)SOLARIS的进程控制块与进程表</h3><img src="//zybtree.github.io/2020/08/10/进程-线程模型/2.png" style="zoom:33%;">
+<h3 id="3-SOLARIS的进程控制块与进程表"><a href="#3-SOLARIS的进程控制块与进程表" class="headerlink" title="(3).SOLARIS的进程控制块与进程表"></a>(3).SOLARIS的进程控制块与进程表</h3><img src="//zybtree.github.io/2020/08/10/进程-线程模型/2.png" style="zoom:33%;">
 
 <p>SOLARIS是基于 Unix 操作系统，它的进程控制块的名字一般叫Proc结构。每一个Proc结构代表一个PCB。把所有的Proc结构组织成一个链，那么这就是一个进程表。</p>
 <p><strong>Proc 结构保存的信息：</strong>（重点介绍三个）</p>
@@ -89,8 +89,7 @@
 <p>进程因等待某一事件而暂时不能运行。</p>
 <h3 id="2-三状态模型及状态转换"><a href="#2-三状态模型及状态转换" class="headerlink" title="(2).三状态模型及状态转换"></a>(2).三状态模型及状态转换</h3><img src="//zybtree.github.io/2020/08/10/进程-线程模型/3.png" style="zoom:25%;">
 
-<h2 id="2-进程的其他状态"><a href="#2-进程的其他状态" class="headerlink" title="2.进程的其他状态"></a>2.进程的其他状态</h2><p>###(1).创建态</p>
-<p>已完成创建一进程所必要的工作，比如分配了PID、填写了PCB。但由于某些原因，操作系统尚未同意执行该进程。</p>
+<h2 id="2-进程的其他状态"><a href="#2-进程的其他状态" class="headerlink" title="2.进程的其他状态"></a>2.进程的其他状态</h2><h3 id="1-创建态"><a href="#1-创建态" class="headerlink" title="(1).创建态"></a>(1).创建态</h3><p>已完成创建一进程所必要的工作，比如分配了PID、填写了PCB。但由于某些原因，操作系统尚未同意执行该进程。</p>
 <h3 id="2-终止态"><a href="#2-终止态" class="headerlink" title="(2).终止态"></a>(2).终止态</h3><p>终止执行后，进程进入该状态。</p>
 <ul>
 <li><p>可完成一些数据统计工作</p>
@@ -291,7 +290,103 @@
 </li>
 </ul>
 <hr>
-<h1 id="五-线程的引入"><a href="#五-线程的引入" class="headerlink" title="五.线程的引入"></a>五.线程的引入</h1>]]></content>
+<h1 id="五-线程的引入"><a href="#五-线程的引入" class="headerlink" title="五.线程的引入"></a>五.线程的引入</h1><p>为什么在进程中再派生线程?具体有三个理由：</p>
+<ul>
+<li><strong>应用的需要</strong> </li>
+<li><strong>开销的考虑</strong> </li>
+<li><strong>性能的考虑</strong></li>
+</ul>
+<h2 id="1-Web服务器为例"><a href="#1-Web服务器为例" class="headerlink" title="1.Web服务器为例"></a>1.Web服务器为例</h2><h3 id="1-工作方式"><a href="#1-工作方式" class="headerlink" title="(1).工作方式"></a>(1).工作方式</h3><p><strong>以Web服务器为例，</strong>其工作方式是：</p>
+<ol>
+<li>从客户端接收网页请求(http协议) </li>
+<li>从磁盘上检索相关网页，读入内存</li>
+<li>将网页返回给对应的客户端</li>
+</ol>
+<blockquote>
+<p>每次到磁盘上搜索相关的网页，进程就会停在那里，这样性能就比较慢。 怎么样去提高服务器的工作的效率?</p>
+</blockquote>
+<p>通常情况下，是在服务器的内存里头，开辟一个<strong>网页缓存</strong> ( Web page Cache )，保存了常用的网页。当Web服务器从客户端接收了网页请求之后会先到网页缓存当中去查找，如果找到就直接把结果返回给客户端，就不用到磁盘上去找。 但是如果没找到就先到磁盘上去搜索相关的网页，得到了之后写入网页缓存，然后再把结果返回给用户。 </p>
+<h3 id="2-无线程的情况"><a href="#2-无线程的情况" class="headerlink" title="(2).无线程的情况"></a>(2).无线程的情况</h3><p>此时有两种解决方案：</p>
+<h4 id="服务进程"><a href="#服务进程" class="headerlink" title="服务进程"></a>服务进程</h4><p>设定一个服务进程，这个服务进程只能是顺序编程 。也就是说，如果它到磁盘上去搜寻网页，那就不能再去接收客户端的请求。因此会造成服务器性能下降。</p>
+<blockquote>
+<p>为什么不能设定多个服务进程？</p>
+<p><strong>每个进程有自己独立的地址空间，所以它不能共享信息，所以只能有一个服务进程。</strong></p>
+</blockquote>
+<h4 id="有限状态机"><a href="#有限状态机" class="headerlink" title="有限状态机"></a>有限状态机</h4><p>有限状态机的方法<strong>实际上是用一个复杂的编程模型来自己模拟一些并发的工作，即进程自己来模拟并发的工作。</strong> </p>
+<p>比如说接收了一个用户请求之后，如果要到磁盘上搜寻这个网页，那么原本这个进程会被暂停，这个时候就要改造这个搜寻网页的操作，把它改造成一个<strong>非阻塞的I/O</strong>。</p>
+<blockquote>
+<p>到磁盘上去搜寻网页的同时这个进程还可以继续做与这个网页内容无关的一些工作。 所以叫非阻塞 I/O。</p>
+</blockquote>
+<p>在查询网页的同时，磁盘在工作，而且<strong>这个进程就可以回来做别的事情，它可以继续去接收用户的客户端请求。 当新的请求被接收到之后，它继续可能在 Web Cache 里找网页，然后返回去，如果没找到网页呢，继续再去调用磁盘</strong>。<font color="red">但是这就出现了一个问题：磁盘的这个结果返回了，究竟是哪一个客户端的请求呢？</font></p>
+<p>所以这个时候，进程要自己把这些信息记录下来，然后磁盘返回了请求之后，就要判断是哪一个客户端的请求，然后返回给对应的客户 端。因此，它的编程模型呢是比较复杂的。</p>
+<h3 id="3-引进多线程之后"><a href="#3-引进多线程之后" class="headerlink" title="(3).引进多线程之后"></a>(3).引进多线程之后</h3><img src="//zybtree.github.io/2020/08/10/进程-线程模型/11.png" style="zoom:35%;">
+
+<p><strong>工作方式：</strong> </p>
+<p>把线程分成两类：</p>
+<ul>
+<li><p><strong>分派线程</strong></p>
+<blockquote>
+<p>分派线程只需要一个，分派线程的<strong>主要工作就是监听客户端</strong>，客户端只要有请求就把请求读进来，但是它不完成客户端的请求，它把这个请求分派给其它的线程来完成，而完成工作的线程就是工作线程。 </p>
+</blockquote>
+</li>
+<li><p><strong>工作线程</strong></p>
+<blockquote>
+<p>Web 服务器上有一堆工作线程，它们都是用来完成的是服务客户请求的。分派线程获得了客户端请求之后就把它分给某一个工作线程，工作线程呢还跟前面一样先到Web Cache里去查找网页是否存在，如果存在就返回给客户端，如果不存在就要启动磁盘，到磁盘上去搜寻网页。它到磁盘上搜寻网页，这是一个阻塞的I/O，<strong>这时它就会被阻塞，然后等待，但是没有关系，因为还有其它的工作线程。</strong> </p>
+</blockquote>
+<h2 id="2-引入线程的优点"><a href="#2-引入线程的优点" class="headerlink" title="2.引入线程的优点"></a>2.引入线程的优点</h2></li>
+</ul>
+<h3 id="1-从开销的角度"><a href="#1-从开销的角度" class="headerlink" title="(1).从开销的角度"></a>(1).从开销的角度</h3><img src="//zybtree.github.io/2020/08/10/进程-线程模型/12.png" style="zoom:35%;">
+
+<h3 id="2-从性能的角度"><a href="#2-从性能的角度" class="headerlink" title="(2).从性能的角度"></a>(2).从性能的角度</h3><p>如果一个进程里头又有多个线程，而这些线程，有的计算，有的去 I/O，当有多个处理器的时候，就可以充分发挥这个优势了。所以当多处理器的情况下，一个进程就可以有很多的任务同时在执行。性能就提高了很多。</p>
+<hr>
+<h1 id="六-线程的基本概念"><a href="#六-线程的基本概念" class="headerlink" title="六.线程的基本概念"></a>六.线程的基本概念</h1><p>进程有两个基本的属性：</p>
+<ul>
+<li><p><strong>进程是资源的拥有者。</strong> </p>
+</li>
+<li><p><strong>进程是CPU的一个调度单位。</strong> </p>
+</li>
+</ul>
+<p>但是有了线程之后，<font color="red">线程就继承了进程中的一个属性，也就是线程成为了 CPU 的调度单位。 而进程依然还是管理资源，然后是资源的一个拥有者。 </font></p>
+<p>线程实际上是<strong>进程中的一个运行实体。</strong> </p>
+<blockquote>
+<p> 从运行的角度，它是一个运行的实体，它是一个 CPU 的调度单位。 有的时候把线程称之为轻量级进程。 也就是说，在进程当中又增加了多个执行序列， 让这些执行序列可以并发执行，以提高软件的运行效率。 </p>
+</blockquote>
+<p>所以强调的是：<font color="red"><strong>在进程中增加了多个执行序列，叫线程。</strong></font></p>
+<hr>
+<h1 id="七-线程的属性"><a href="#七-线程的属性" class="headerlink" title="七.线程的属性"></a>七.线程的属性</h1><p> 线程是一个运行实体，它有属于线程自己的一些属性： </p>
+<ul>
+<li><p><strong>有标识符ID</strong></p>
+<blockquote>
+<p> 同一个进程的不同线程要区分 </p>
+</blockquote>
+</li>
+<li><p><strong>有状态及状态转换</strong> </p>
+<blockquote>
+<p>因为线程是上 CPU 的，所以它有状态。它也有状态的转换，也需要提供一些针对线程的操作。 </p>
+</blockquote>
+</li>
+<li><p><strong>不运行的时需要保存上下文环境</strong></p>
+<blockquote>
+<p>上下文环境：程序计数器等寄存器(保存在线程的相对的数据结构里)</p>
+</blockquote>
+</li>
+<li><p><strong>有自己的栈和栈指针</strong></p>
+<blockquote>
+<p>不同的线程，这些信息也是不一样的。 </p>
+</blockquote>
+</li>
+<li><p><strong>共享所在进程的地址空间和其他资源</strong></p>
+<blockquote>
+<p>同一个进程的不同线程它们是共享所在进程地址空间，内容和这个进程所拥有的资源的，所以这是非常重要的，也就是线程之间的通信，或者其他的一些操作带来了便利的地方，它们是共享同一个进程的地址空间和有关的资源。 </p>
+</blockquote>
+</li>
+<li><p><strong>可以创建、撤消另一个线程</strong></p>
+<blockquote>
+<p>当创建进程以后，实际上是只有一个线程，我们称之为一个主线程。 然后由它再创建其他的线程，所以程序开始的时候，我们可以看成是一个单线程的进程在运行。</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
       <categories>
         <category>操作系统</category>
       </categories>
