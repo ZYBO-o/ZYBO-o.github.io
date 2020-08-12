@@ -440,12 +440,10 @@
 <p><strong>软件方面来看：</strong>程序需要一种方法访问对象。这可以通过声明变量来完成。</p>
 <p>以下面的例子作为分析：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> entity = <span class="number">3</span>;</span><br></pre></td></tr></table></figure></div>
-
 <p>该声明创建了一个名为<code>entity</code>的<code>标识符(identifier)</code>。标识符是一个名称，在这种情况下，标识符可以用来指定(designate)特定对象的内容。标识符遵循变量的命名规则。在该例中，标识符<code>entity</code>即是软件(即C程序)指定<strong>硬件内存中的对象的方式</strong>。该声明还提供了<strong>储存在对象中的值</strong>。</p>
 <p>但是变量名不是指定对象的唯一途径。以下面的例子作为分析：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * pt = &amp;entity;</span><br><span class="line"><span class="keyword">int</span> ranks[<span class="number">10</span>];</span><br></pre></td></tr></table></figure></div>
-
-<p>第1行声明中，<code>pt</code>是一个标识符，它指定了一个储存地址的对象。但是，表达式<code>pt</code>不是标识符，因为它不是一个名称。然而，它确实指定了一个对象，在这种情况下，它与 <code>entity</code>指定的对象相同。一般而言，那些指定对象的表达式被称为<em>左值<em>。所以，<code>entity</code>既是标识符也是左值；`</em>pt<code>既是表达式也是左值。按照这个思路，</code>ranks + 2 * entity<code>既不是标识符（不是名称），也不是左值（它不指定内存位置上的内容）。但是表达式</code></em>(ranks + 2 * entity)`是一个左值，因为它的确指定了特定内存位置的值，即ranks数组的第7个元素。顺带一提，ranks的声明创建了一个可容纳10个int类型元素的对象，该数组的每个元素也是一个对象。</p>
+<p>第1行声明中，<code>pt</code>是一个标识符，它指定了一个储存地址的对象。但是，表达式<code>pt</code>不是标识符，因为它不是一个名称。然而，它确实指定了一个对象，在这种情况下，它与 <code>entity</code>指定的对象相同。一般而言，那些指定对象的表达式被称为<em>左值</em>。所以，<code>entity</code>既是标识符也是左值；<code>*pt</code>既是表达式也是左值。按照这个思路，<code>ranks + 2 * entity</code>既不是标识符（不是名称），也不是左值（它不指定内存位置上的内容）。但是表达式<code>*(ranks + 2 * entity)</code>是一个左值，因为它的确指定了特定内存位置的值，即ranks数组的第7个元素。顺带一提，ranks的声明创建了一个可容纳10个int类型元素的对象，该数组的每个元素也是一个对象。</p>
 
       
     </div>
@@ -705,7 +703,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">52.2k</span>
+    <span title="Site words total count">56k</span>
   
 </div>
 

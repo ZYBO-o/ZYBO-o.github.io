@@ -449,36 +449,24 @@
 </ul>
 <h2 id="一-操作系统做了什么"><a href="#一-操作系统做了什么" class="headerlink" title="一.操作系统做了什么"></a>一.操作系统做了什么</h2><p>通过下面程序的执行过程来分析操作系统对此程序的执行有哪些支持。</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  	<span class="built_in">puts</span>(<span class="string">"hello world"</span>);</span><br><span class="line">  	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
 <ul>
-<li><p>用户告诉操作系统执行 <code>helloworld</code>程序.</p>
-</li>
-<li><p>操作系统: 找到 <code>helloworld</code> 程序的相关信息，检查其类型是否是可执行文件; 并通过程序首部信息, 确定代码和数据在可执行文件中的位置并计算出对 应的磁盘块地址.</p>
-</li>
+<li>用户告诉操作系统执行 <code>helloworld</code>程序.</li>
+<li>操作系统: 找到 <code>helloworld</code> 程序的相关信息，检查其类型是否是可执行文件; 并通过程序首部信息, 确定代码和数据在可执行文件中的位置并计算出对 应的磁盘块地址.</li>
 <li><p>操作系统: 创建一个<strong>新的进程</strong>，并将 <code>helloworld</code> 可 执行文件映射到该进程结构，表示由该进程执行 <code>helloworld</code> 程序.</p>
 </li>
 <li><p>操作系统:为 <code>helloworld</code> 程序设置<strong>CPU上下文环境</strong>, 并跳到程序开始处,准备执行程序 (假设调度程序选中hello程序)</p>
 </li>
-<li><p>执行helloworld程序的第一条指令，<strong>发生缺页异常</strong>（代码和数据还没有读入内存，硬件机制会捕获缺页异常，把控制权交给操作系统）</p>
-</li>
-<li><p>操作系统: 分配一页<strong>物理内存</strong>，并将代码从磁盘读入内存，然后继续执行 <code>helloworld</code> 程序.</p>
-</li>
-<li><p><code>helloworld</code> 程序执行 <code>puts</code> 函数[<strong>系统调用</strong>(<strong>操作系统完成这个功能</strong>)]，在显示器上写一字符串.</p>
-</li>
-<li><p>操作系统: 找到要将字符串送往的显示设备，通常设备是由一个<strong>进程控制</strong>的，所以，操作系统将要写的字符串送给该进程.</p>
-</li>
-<li><p>操作系统: 控制设备的进程告诉设备的窗口系统 它要显示字符串，窗口系统确定这是一个合法的操作，然后将字符串转换成像素，将像素写入设备的<strong>存储映像区</strong>.</p>
-</li>
-<li><p>视频硬件将像素转换成显示器可接收的一组 <strong>控制/数据信号</strong>.</p>
-</li>
-<li><p>显示器解释信号，激发液晶屏.</p>
-</li>
-<li><p>OK!!!我们在屏幕上看到了 “hello world” .</p>
-</li>
+<li>执行helloworld程序的第一条指令，<strong>发生缺页异常</strong>（代码和数据还没有读入内存，硬件机制会捕获缺页异常，把控制权交给操作系统）</li>
+<li>操作系统: 分配一页<strong>物理内存</strong>，并将代码从磁盘读入内存，然后继续执行 <code>helloworld</code> 程序.</li>
+<li><code>helloworld</code> 程序执行 <code>puts</code> 函数[<strong>系统调用</strong>(<strong>操作系统完成这个功能</strong>)]，在显示器上写一字符串.</li>
+<li>操作系统: 找到要将字符串送往的显示设备，通常设备是由一个<strong>进程控制</strong>的，所以，操作系统将要写的字符串送给该进程.</li>
+<li>操作系统: 控制设备的进程告诉设备的窗口系统 它要显示字符串，窗口系统确定这是一个合法的操作，然后将字符串转换成像素，将像素写入设备的<strong>存储映像区</strong>.</li>
+<li>视频硬件将像素转换成显示器可接收的一组 <strong>控制/数据信号</strong>.</li>
+<li>显示器解释信号，激发液晶屏.</li>
+<li>OK!!!我们在屏幕上看到了 “hello world” .</li>
 </ul>
 <p><strong>从用户程序在执行过程中，不断请求操作系统服务的角度来看程序执行的过程：</strong></p>
-<img src="//zybtree.github.io/2020/07/15/操作系统概述/1.png" style="zoom:25%;">
-
+<p><img src="//zybtree.github.io/2020/07/15/操作系统概述/1.png" style="zoom:25%;"></p>
 <p>在CPU上执行一个用户程序，这个用户程序会不时地去请求操作系统的服务，因此在CPU上，时而运行的是用户程序。时而运行操作系统程序。</p>
 <blockquote>
 <p>以helloworld程序为例：</p>
@@ -488,8 +476,7 @@
 <p>此时又转向了操作系统去进行系统调用。 </p>
 </blockquote>
 <p><strong>换一个角度看用户程序的执行：</strong></p>
-<img src="//zybtree.github.io/2020/07/15/操作系统概述/2.png" style="zoom:25%;">
-
+<p><img src="//zybtree.github.io/2020/07/15/操作系统概述/2.png" style="zoom:25%;"></p>
 <blockquote>
 <p> 实际上，是操作系统在执行过程中呢，如果选中了一个程序，那么就去<strong>通过调度</strong>选中这个程序，去执行这个程序</p>
 <p>程序执行过程中，会不断地去陷入操作系统,  由操作系统完成一些服务.然后再通过调度再选中程序，接着执行.</p>
@@ -533,14 +520,10 @@
 <li>动态分配策略(根据数据结构与资源使用情况来分配，资源的利用率得到了显著的提高)</li>
 </ul>
 </li>
-<li><p>实施资源的分配(根据资源分配策略去决定)和回收</p>
-</li>
-<li><p>提高资源利用率</p>
-</li>
-<li><p>保护资源的使用(一个进程使用资源时，不能被另外的所干扰)</p>
-</li>
-<li><p>协调多个进程对资源请求的冲突</p>
-</li>
+<li>实施资源的分配(根据资源分配策略去决定)和回收</li>
+<li>提高资源利用率</li>
+<li>保护资源的使用(一个进程使用资源时，不能被另外的所干扰)</li>
+<li>协调多个进程对资源请求的冲突</li>
 </ul>
 <h4 id="3-从资源管理的角度—五大基本功能"><a href="#3-从资源管理的角度—五大基本功能" class="headerlink" title="(3)从资源管理的角度—五大基本功能"></a>(3)从资源管理的角度—五大基本功能</h4><ul>
 <li><p>进程/线程管理(CPU管理)</p>
@@ -581,16 +564,11 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="5-操作系统是硬件之上的第一层软件"><a href="#5-操作系统是硬件之上的第一层软件" class="headerlink" title="(5).操作系统是硬件之上的第一层软件"></a>(5).操作系统是硬件之上的第一层软件</h4><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/操作系统概述/3.png" style="zoom:30%;">
-
+<h4 id="5-操作系统是硬件之上的第一层软件"><a href="#5-操作系统是硬件之上的第一层软件" class="headerlink" title="(5).操作系统是硬件之上的第一层软件"></a>(5).操作系统是硬件之上的第一层软件</h4><p><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/操作系统概述/3.png" style="zoom:30%;"></p>
 <h4 id="6-操作系统在硬件机器的扩展"><a href="#6-操作系统在硬件机器的扩展" class="headerlink" title="(6).操作系统在硬件机器的扩展"></a>(6).操作系统在硬件机器的扩展</h4><p>操作系统在应用程序与硬件之间建立了一个等价的扩展机器(虚拟机)，对硬件抽象，提高可移植性;比底层硬件更容易 编程。</p>
-<img src="//zybtree.github.io/2020/07/15/操作系统概述/4.png" style="zoom:30%;">
-
+<p><img src="//zybtree.github.io/2020/07/15/操作系统概述/4.png" style="zoom:30%;"></p>
 <hr>
-<h2 id="三-操作系统的特征"><a href="#三-操作系统的特征" class="headerlink" title="三.操作系统的特征"></a>三.操作系统的特征</h2><img src="//zybtree.github.io/2020/07/15/操作系统概述/5.png" style="zoom:25%;">
-
-
-
+<h2 id="三-操作系统的特征"><a href="#三-操作系统的特征" class="headerlink" title="三.操作系统的特征"></a>三.操作系统的特征</h2><p><img src="//zybtree.github.io/2020/07/15/操作系统概述/5.png" style="zoom:25%;"></p>
 <h3 id="1-并发"><a href="#1-并发" class="headerlink" title="1.并发"></a>1.并发</h3><p><strong>并发(concurrency):</strong> 指处理多个同时性活动的能力。</p>
 <blockquote>
 <p>由于并发将会引发很多的问题:  活动切换、保护、相互依赖的活动间的同步.</p>
@@ -613,7 +591,7 @@
 </li>
 </ul>
 <p>正是这些功能，所以又有了复杂的问题:  <strong>资源分配难以达到最优化，如何保护资源？</strong></p>
-<h3 id="3-虚拟"><a href="#3-虚拟" class="headerlink" title="3.虚拟"></a>3.虚拟</h3><p><strong>虚拟(Virtual) : **一个物理实体映射为若干个对应的逻辑实体——</strong>分时<strong>或</strong>分空间**。虚拟是操作系统管理系统资源的重要手段，可提高资源利用率。</p>
+<h3 id="3-虚拟"><a href="#3-虚拟" class="headerlink" title="3.虚拟"></a>3.虚拟</h3><p><strong>虚拟(Virtual) : </strong>一个物理实体映射为若干个对应的逻辑实体——<strong>分时</strong>或<strong>分空间</strong>。虚拟是操作系统管理系统资源的重要手段，可提高资源利用率。</p>
 <blockquote>
 <p><strong>典型的例子：</strong></p>
 <ul>
@@ -887,7 +865,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">52.2k</span>
+    <span title="Site words total count">56k</span>
   
 </div>
 

@@ -102,15 +102,28 @@
 <meta name="description" content="一.CPU调度的相关概念1.CPU调度(1).定义CPU调度的任务是控制、 协调多个进程对CPU的竞争。即按照一定的调度算法，从就绪队列中选择一个进程，然后把CPU的控制权交给被选中的进程。如果就绪队列没有其它的进程，那么系统会安排一个空闲进程(idle 进程)上 CPU 运行。 (2).系统场景CPU调度所面临的场景：  系统有N 个进程，它们就绪等待上 CPU 运行 而系统有M个 CPU，M">
 <meta name="keywords" content="处理器调度">
 <meta property="og:type" content="article">
-<meta property="og:title" content="处理器调度">
+<meta property="og:title" content="ZYBO_o&#39;s Blogs">
 <meta property="og:url" content="https://zybtree.github.io/2020/08/11/处理器调度/index.html">
 <meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
 <meta property="og:description" content="一.CPU调度的相关概念1.CPU调度(1).定义CPU调度的任务是控制、 协调多个进程对CPU的竞争。即按照一定的调度算法，从就绪队列中选择一个进程，然后把CPU的控制权交给被选中的进程。如果就绪队列没有其它的进程，那么系统会安排一个空闲进程(idle 进程)上 CPU 运行。 (2).系统场景CPU调度所面临的场景：  系统有N 个进程，它们就绪等待上 CPU 运行 而系统有M个 CPU，M">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/1.png">
-<meta property="og:updated_time" content="2020-08-12T09:25:43.109Z">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/2.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/3.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/4.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/5.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/6.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/7.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/8.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/9.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/10.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/11.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/12.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/13.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/14.png">
+<meta property="og:updated_time" content="2020-08-12T13:09:39.853Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="处理器调度">
+<meta name="twitter:title" content="ZYBO_o&#39;s Blogs">
 <meta name="twitter:description" content="一.CPU调度的相关概念1.CPU调度(1).定义CPU调度的任务是控制、 协调多个进程对CPU的竞争。即按照一定的调度算法，从就绪队列中选择一个进程，然后把CPU的控制权交给被选中的进程。如果就绪队列没有其它的进程，那么系统会安排一个空闲进程(idle 进程)上 CPU 运行。 (2).系统场景CPU调度所面临的场景：  系统有N 个进程，它们就绪等待上 CPU 运行 而系统有M个 CPU，M">
 <meta name="twitter:image" content="https://zybtree.github.io/2020/08/11/处理器调度/1.png">
 
@@ -148,7 +161,7 @@
 
 
 
-  <title>处理器调度 | ZYBO_o's Blogs</title>
+  <title> | ZYBO_o's Blogs</title>
   
 
 
@@ -344,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">处理器调度</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -410,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
+                  5.4k
                 </span>
               
 
@@ -530,8 +543,7 @@
 </ul>
 </blockquote>
 <p>从用户角度和系统角度对调度算法的要求不一样，下图描述了性能方面的不同要求： </p>
-<img src="//zybtree.github.io/2020/08/11/处理器调度/1.png" style="zoom:35%;">
-
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/1.png" style="zoom:35%;"></p>
 <blockquote>
 <p>从上图可以看到，用户的角度和系统的角度对于调度算法有不同的要求。 而这些要求有时候是相互矛盾的。 因此在设计调度算法的时候是要在各种因素中折中权衡。</p>
 </blockquote>
@@ -566,7 +578,243 @@
 </ul>
 </li>
 </ul>
-
+<hr>
+<h1 id="二-设计调度算法时需要考虑的问题"><a href="#二-设计调度算法时需要考虑的问题" class="headerlink" title="二.设计调度算法时需要考虑的问题"></a>二.设计调度算法时需要考虑的问题</h1><p>设计调度算法时要考虑以下几个问题: </p>
+<ul>
+<li><p>进程控制块PCB中</p>
+<blockquote>
+<p>需要记录哪些与CPU调度有关的信息</p>
+</blockquote>
+</li>
+<li><p>进程优先级及就绪队列的组织 </p>
+</li>
+<li>抢占式调度与非抢占式调度 </li>
+<li>I/O密集型与CPU密集型进程 </li>
+<li>时间片</li>
+</ul>
+<h2 id="1-进程优先级-数"><a href="#1-进程优先级-数" class="headerlink" title="1.进程优先级(数)"></a>1.进程优先级(数)</h2><p>优先级和优先数是两个不同的概念。</p>
+<p><strong>优先级是表现进程的重要性和紧迫性</strong>。 优先数是一个<strong>数值，它反映了某一个优先级</strong>。 </p>
+<blockquote>
+<p>有些系统像 UNIX 优先数小的优先级高，但是不能完全根据数的大小来决定优先级的高低。</p>
+</blockquote>
+<p>根据优先级是否能改变分为静态优先级和动态优先级。</p>
+<p>静态优先指在进程创建时，<strong>指定优先级之后在进程运行的过程中，这个优先级不再发生改变。</strong> </p>
+<p>动态优先级是在<strong>进程运行过程中，优先级的级别还会不断地调整。</strong> </p>
+<blockquote>
+<p>有的时候需要动态优先级，比如当一个进程在就绪队列当中等待的时间很长的时候，要提升它的优先级，让它尽快有机会得到CPU去运行。</p>
+</blockquote>
+<h2 id="2-进程就绪队列组织"><a href="#2-进程就绪队列组织" class="headerlink" title="2.进程就绪队列组织"></a>2.进程就绪队列组织</h2><p><strong>按照优先级来排队 ：</strong></p>
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/2.png" style="zoom:35%;"></p>
+<p>可以按照优先级来组织就绪队列。当创建一个新的进程的时候，根据它的优先级排不同的就绪队列，在这里设定n个就绪队列优先级，不同的优先级进入不同的就绪队列。 就绪队列 1 的优先级是最高的，当调度程序选择进程的时候，首先应该从高优先级的队列来选择进程 。如果高优先级队列没有进程了，再从次高就绪队列来选择进程。</p>
+<p><strong>另一种排队方式：</strong></p>
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/3.png" style="zoom:35%;"></p>
+<p>所有的进程第一次创建之后都进到第一级就绪队列，随着进程的运行可能会降低某些进程的优先级。比如当一个进程分配给它的时间片用完了，那么它就会降一级，降到第二级就绪队列。 如果它经常地用完时间片，慢慢的这个进程就会降低到最后一级就绪队列。进程调度首先在第一级队列里选，说明第一级就绪队列的优先级比较高。如果这个队列是空的，那么调度就会从其他的就绪队列里头选择进程。如果进程已经进到了最后一级队列，那么它的优先级就越来越低，它被调度上 CPU 的机会就会变得很小。</p>
+<h2 id="3-占用CPU的方式—抢占与非抢占"><a href="#3-占用CPU的方式—抢占与非抢占" class="headerlink" title="3.占用CPU的方式—抢占与非抢占"></a>3.占用CPU的方式—抢占与非抢占</h2><p>指占用CPU的方式:</p>
+<ul>
+<li><strong>可抢占式Preemptive(可剥夺式)</strong>：</li>
+</ul>
+<p>当有比正在运行的进程优先级更高的进程就绪时，系统可强行剥夺正在运行进程的CPU，提供给具有更高优先级的进程使用。</p>
+<ul>
+<li><strong>不可抢占式Non-preemptive(不可剥夺式)</strong>：</li>
+</ul>
+<p>某一进程被调度运行后，除非由于它自身的原因不能运行，否则一直运行下去</p>
+<h2 id="4-I-O密集型与CPU密集型进程"><a href="#4-I-O密集型与CPU密集型进程" class="headerlink" title="4.I/O密集型与CPU密集型进程"></a>4.I/O密集型与CPU密集型进程</h2><p>按进程执行过程中的行为划分:</p>
+<ul>
+<li><p><strong>I/O密集型或I/O型(I/O-bound)</strong></p>
+<blockquote>
+<p>频繁的进行I/O，通常会花费很多时间等待I/O操作的完成</p>
+</blockquote>
+</li>
+<li><p><strong>CPU密集型或CPU型或计算密集型(CPU-bound)</strong> </p>
+<blockquote>
+<p>需要大量的CPU时间进行计算</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/4.png" style="zoom:40%;"></p>
+<blockquote>
+<p>在设计调度算法时，通常会对I/O型的进程会有一些友好，希望更多的I/O型进程早一点上CPU运行。</p>
+<p>因为这些进程上CPU 之后只用了很短的一下，CPU时间就让出CPU，因为它要去做其它的输入输出操作。因此对于一般的调度程序，都会对I/O型进程更偏好一些。 </p>
+</blockquote>
+<h2 id="5-时间片"><a href="#5-时间片" class="headerlink" title="5.时间片"></a>5.时间片</h2><p>时间片指的是一个时间段，<strong>指分配给调度上CPU的进程，允许这个进程在CPU上执行多长时间，它是一个时间的长度。</strong></p>
+<p>那么如何选择时间片呢？ 应该考虑很多的因素： </p>
+<ul>
+<li><p><strong>进程切换的开销有多大</strong></p>
+</li>
+<li><p><strong>进程对响应时间的要求</strong> </p>
+</li>
+<li><p><strong>系统当中有多少进程处于就绪</strong> </p>
+</li>
+<li><p><strong>CPU的能力有多大</strong></p>
+</li>
+<li><p><strong>进程的行为</strong>(不同进程可能区别对待)</p>
+<p>因此在设计时间片大小的时候要考虑到这些因素。 具体分配时间片的方式会在时间片轮转算法时进行介绍。</p>
+</li>
+</ul>
+<hr>
+<h1 id="三-批处理系统中采用的调度算法"><a href="#三-批处理系统中采用的调度算法" class="headerlink" title="三.批处理系统中采用的调度算法"></a>三.批处理系统中采用的调度算法</h1><p>介绍批处理系统中的常用的调度算法：</p>
+<ul>
+<li><strong>先来先服务 (FCFS-First Come First Serve)</strong></li>
+<li><strong>最短作业优先 (SJF-Shortest Job First) </strong></li>
+<li><strong>最短剩余时间优先 (SRTN-Shortest Remaining Time Next) </strong> </li>
+<li><strong>最高相应比优先 (HRRN-Highest Response Ratio Next)</strong></li>
+</ul>
+<blockquote>
+<p>在批处理操作系统中对于算法的要求往往是看它的带来的 <strong>吞吐量大小，周转时间，CPU 利用率</strong>，<strong>公平和平衡</strong> 这几个因素。 </p>
+</blockquote>
+<h2 id="1-先来先服务FCFS"><a href="#1-先来先服务FCFS" class="headerlink" title="1.先来先服务FCFS"></a>1.先来先服务FCFS</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="(1).概念"></a>(1).概念</h3><p>先来先服务调度算法也称为先进先出。指的是<font color="red"><strong>按照进程就绪的先后顺序来使用 CPU。</strong></font>先进先出调用算法是一个<strong>非抢占式</strong>的调度算法。 </p>
+<p><strong>优点：</strong></p>
+<ul>
+<li><strong>公平</strong> (谁先就绪谁先上CPU) </li>
+<li><strong>实现简单</strong> (维护一个队列就可以了) </li>
+</ul>
+<blockquote>
+<p>选择进程时从队首选择， 新就绪的进程排在队尾。 </p>
+</blockquote>
+<p><strong>缺点:</strong> </p>
+<ul>
+<li><strong>长进程后面的短进程需要等很长时间，不利于用户体验</strong></li>
+</ul>
+<blockquote>
+<p>如果有一个短的进程排在了一个长时间运行进程的后面， 它需要等待的时间比较长， 这样使得用户体验不够友好。</p>
+</blockquote>
+<h3 id="2-举例"><a href="#2-举例" class="headerlink" title="(2).举例"></a>(2).举例</h3><p>假设有三个进程，按照P1、P2、P3就绪。 P1进程需要运行24秒，P2和P3分别需要3秒计算。 </p>
+<p>采用先来先服务的调度算法调度：</p>
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/5.png" style="zoom:34%;"></p>
+<p>同样还是这个例子， 改变调度的顺序：</p>
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/6.png" style="zoom:34%;"></p>
+<blockquote>
+<p>可以看到平均周转时间降低到了13秒。 </p>
+</blockquote>
+<p>所以可以看到改变调度的顺序，也就是<strong>调度算法的改变会改善平均周转时间， 进而可能改善了响应时间这些指标。</strong> </p>
+<h2 id="2-短作业优先SJF"><a href="#2-短作业优先SJF" class="headerlink" title="2.短作业优先SJF"></a>2.短作业优先SJF</h2><h3 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="(1).概念"></a>(1).概念</h3><p><strong><font color="red">短作业优先</font></strong>指的是具有<strong>最短完成时间的进程优先执行</strong>。 </p>
+<ul>
+<li><strong>非抢占式</strong></li>
+</ul>
+<p>如果短作业优先调度算法再改进一下： 加抢占模式，变成了抢占式的版本。这就是<font color="red"><strong>最短剩余时间优先调度算法</strong></font>。 </p>
+<ul>
+<li><strong>抢占式</strong></li>
+</ul>
+<p>所谓最短剩余时间就是当 <strong>一个新就绪的进程</strong> 比 <strong>正在当前运行的进程它的 剩余的运行时间短</strong>的时候， <strong>系统就会去抢占当前的进程，然后把CPU交给这个运行时间更短的进程</strong>。 </p>
+<blockquote>
+<p>因为在一个短作业运行的过程中，可能有一个新的进程创建出来，或者一个进程从等待变成就绪，那么它剩余的时间比当前正在运行的这个进程剩余的这个运行时间还短， 就要抢占了。</p>
+</blockquote>
+<h3 id="2-举例-1"><a href="#2-举例-1" class="headerlink" title="(2).举例"></a>(2).举例</h3><p>有四个进程到达时刻不是同时到达的，有不同的时刻：</p>
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/7.png" style="zoom:33%;"></p>
+<h3 id="3-优缺点"><a href="#3-优缺点" class="headerlink" title="(3).优缺点"></a>(3).优缺点</h3><p><strong>优点：</strong></p>
+<ul>
+<li>在所有进程同时可运行时，采用SJF调度算法可以得到最短的平均周转时间。</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>源源不断的短任务到来，可能使长的任务长时间得不到运行 → <strong>产生 “饥饿”现象 (starvation)</strong></li>
+</ul>
+<h2 id="3-最高相应比优先-HRRN"><a href="#3-最高相应比优先-HRRN" class="headerlink" title="3.最高相应比优先 HRRN"></a>3.最高相应比优先 HRRN</h2><blockquote>
+<p> 既有先来先服务的优点，又有短作业优点,，这是操作系统当中的一个常用的手段——<strong>折衷权衡。</strong> 这种调度算法其中之一就是<strong>最高响应比优先</strong>。 </p>
+</blockquote>
+<p>基本思想是这样的： </p>
+<p><strong>调度时，首先计算每个进程的响应比R；之后，总是选择R最高的进程执行。</strong></p>
+<p>其中一种方案：</p>
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/8.png" style="zoom:35%;"> </p>
+<blockquote>
+<p>很明显地看到，如果处理时间短，也就是短作业，那么分母小，整个的值就大，因此响应比就大。 </p>
+<p>如果很早就绪了，在就绪队列中等的时间非常长，那等待时间就变得越来越大， 最后响应比变得非常大，被调度上 CPU。 </p>
+</blockquote>
+<hr>
+<h1 id="四-交互式系统的调度算法"><a href="#四-交互式系统的调度算法" class="headerlink" title="四.交互式系统的调度算法"></a>四.交互式系统的调度算法</h1><p>介绍交互式系统中所采用的一些调度算法：</p>
+<ul>
+<li><strong>轮转调度 (RR-Round Robin)</strong></li>
+<li><strong>最高优先级调度 (HPF—Highest Priority First)</strong></li>
+<li><strong>多级反馈队列 (Multiple feedback queue)</strong></li>
+<li><strong>最短进程优先 (Shortest Process Next)</strong></li>
+</ul>
+<p>追求的指标主要是<strong>响应时间，公平，资源的平衡使用。</strong>最短进程优先调度算法呢短作业优先调度算法差不多，就不再介绍。</p>
+<h2 id="1-时间片轮转算法"><a href="#1-时间片轮转算法" class="headerlink" title="1.时间片轮转算法"></a>1.时间片轮转算法</h2><h3 id="1-概念-2"><a href="#1-概念-2" class="headerlink" title="(1).概念"></a>(1).概念</h3><p><img src="//zybtree.github.io/2020/08/11/处理器调度/9.png" style="zoom:35%;"></p>
+<p>左图看到当前正在运行的是B进程，排在它后面的是F进程。当B进程用完它的时间片之后就回到队列的末位，调度就会选择下一个进程，所以右图当前运行进程F上CPU。这就是一个时间片轮转，然后F运行完它的时间片后就继续去排队。队列里面的每一个进程都有机会轮流上CPU。</p>
+<p><strong>目标：</strong></p>
+<ul>
+<li><strong>改善短作业(短任务)的平均响应时间。</strong></li>
+</ul>
+<p><strong>具体做法：</strong></p>
+<ul>
+<li><p><strong>周期性地切换</strong> </p>
+</li>
+<li><p><strong>每个进程分配一个时间片</strong></p>
+</li>
+<li><strong>通过了时钟中断引发轮换</strong></li>
+</ul>
+<p>以此来达到改善短作业的平均响应时间的目标。 </p>
+<h3 id="2-如何选择合适的时间片"><a href="#2-如何选择合适的时间片" class="headerlink" title="(2).如何选择合适的时间片"></a>(2).如何选择合适的时间片</h3><h4 id="如果选择的时间片太长："><a href="#如果选择的时间片太长：" class="headerlink" title="如果选择的时间片太长："></a><strong>如果选择的时间片太长：</strong></h4><p><img src="//zybtree.github.io/2020/08/11/处理器调度/10.png" style="zoom:40%;"></p>
+<p>上图可以看到这个进程开始运行后，给它一个时间片，在没有用完时间片的前提下就已经完成了一个响应。<strong>如果系统中绝大部分进程都不到一个时间片就可以完成响应的话，那么时间片轮转算法实际上已经退化成了一个先来先服务的这种算法。</strong>另外如果时间片过长会延长某些进程的响应时间。</p>
+<h4 id="如果选择的时间片过短："><a href="#如果选择的时间片过短：" class="headerlink" title="如果选择的时间片过短："></a><strong>如果选择的时间片过短：</strong></h4><p><img src="//zybtree.github.io/2020/08/11/处理器调度/11.png" style="zoom:35%;"></p>
+<p>如果时间片太短，响应时间也会变长，<strong>频繁地去切换，那切换这个行为本身会带来开销。</strong>前面已经讲过上下文切换是有开销的，所以切换也就浪费了CPU的时间。</p>
+<h3 id="3-优缺点-1"><a href="#3-优缺点-1" class="headerlink" title="(3).优缺点"></a>(3).优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li><p><strong>公平</strong> (进程轮流上CPU)</p>
+</li>
+<li><p><strong>有利于交互式计算，响应时间快</strong></p>
+</li>
+<li><p><strong>对于不同大小的进程是有利的</strong></p>
+</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><p><strong>由于进程切换，时间片轮转算法要花费较高的开销</strong> (得让切换所带来的开销对于时间片来说能做到忽略不计)</p>
+</li>
+<li><p><strong>对于大小相同的进程是不利的</strong></p>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/12.png" style="zoom:30%;"></p>
+<h3 id="4-虚拟轮转法-VIRTUAL-RR"><a href="#4-虚拟轮转法-VIRTUAL-RR" class="headerlink" title="(4).虚拟轮转法 VIRTUAL RR"></a>(4).虚拟轮转法 VIRTUAL RR</h3><p>时间片轮转算法往往不区分I/O型进程与CPU型进程。这样会给I/O型进程带来一定的不公平。</p>
+<blockquote>
+<p>因为当一个CPU型进程被调度上CPU之后，用完它的时间片就会去重新排队，下一次再调度上CPU又用会完一个完整时间片。而I/O型进程被调度上CPU之后，运行完它的时间片，可能运行的很短就完成了它的任务，然后就去等待I/O，进入等待队列。一旦等待的结果到来，又变成一个就绪再次上 CPU，它又没有用完分配给它的时间片就结束了任务。所以CPU型的进程总是用完给它的时间片。 所以它占用了更多的 CPU 时间而I/O型进程总是用不完它的时间片，所以这个调度算法对它有些不公平。</p>
+</blockquote>
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/13.png" style="zoom:33%;"></p>
+<p>上图是设计的虚拟轮转法： </p>
+<p>当一个I/O型进程让出 CPU进到等待队列，从等待队列又重新回到就绪状态的时候。不去进入原来的就绪队列，会单独为它设置一个队列，<strong>叫做辅助队列</strong>。也就是所有I/O型的进程从等待变成就绪的时会进到这个队列。调度算法在选择进程的时候首先从这个辅助队列里去选择I/O 型进程。I/O 型进程上CPU之后，又很快地放弃了CPU进入等待直到辅助队列为空。实践表明这个方案改善了这个对I/O型进程的一种不公平性。</p>
+<h2 id="2-最高优先级调度算法"><a href="#2-最高优先级调度算法" class="headerlink" title="2.最高优先级调度算法"></a>2.最高优先级调度算法</h2><h3 id="1-概念-3"><a href="#1-概念-3" class="headerlink" title="(1).概念"></a>(1).概念</h3><p>最高优先级调度算法思想比较简单，总是选择优先级最高去执行。</p>
+<p>通常情况下：</p>
+<ul>
+<li>系统进程优先级 <font color="blue">高于</font> 用户进程 </li>
+<li>前台进程优先级 <font color="blue">高于</font> 后台进程</li>
+<li>操作系统更偏好 I/O型进程</li>
+</ul>
+<p>优先级可以是静态不变的，也可以动态调整。优先数可以决定优先级。就绪队列可以按照优先级组织</p>
+<p><strong>特点：</strong></p>
+<ul>
+<li><strong>实现简单</strong></li>
+<li><strong>不公平</strong> (出现饥饿现象)</li>
+</ul>
+<h3 id="2-优先级反转问题"><a href="#2-优先级反转问题" class="headerlink" title="(2).优先级反转问题"></a>(2).优先级反转问题</h3><p><strong>如果是基于优先级的抢占式调度算法，就会出现一个优先级反转问题。</strong></p>
+<blockquote>
+<p>优先级反转又称:优先级反置、翻转、倒挂</p>
+</blockquote>
+<p><strong>现象：</strong></p>
+<p>一个低优先级进程持有一个高优先级进程所需要的资源，使得高优先级进程等待低优先级进程运行。</p>
+<p>例子:</p>
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/14.png" style="zoom:33%;"></p>
+<p><strong>影响:</strong></p>
+<ul>
+<li><strong>系统错误</strong></li>
+<li><strong>高优先级进程停滞不前，导致系统性能降低</strong></li>
+</ul>
+<p><strong>解决方案</strong></p>
+<ul>
+<li><p><strong>设置优先级上限</strong> </p>
+<blockquote>
+<p>凡是进入临界区的进程优先级都是最高的。 不在临界区的进程优先级都会比这个进入临界区的这进程优先级要低。这样的话就可以执行完成，然后把临界区还回去。</p>
+</blockquote>
+</li>
+<li><p><strong>优先级继承</strong></p>
+<blockquote>
+<p>如果一个低优先级的进程阻碍了一个高优先级进程执行，它可以<strong>临时地继承这个高优先级的这个进程的优先级，</strong>一下子把自己优先级继承到这个高优先级的这个程度。那么就可以去运行，然后把临界区还回去。 </p>
+</blockquote>
+</li>
+<li><p><strong>使用中断禁止</strong></p>
+<blockquote>
+<p> 凡是进入临界区的进程，那么就不再响应中断的。 直到出临界区才响应中断，这样就保护了这个进程，让它继续去执行。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-多级反馈队列调度算法"><a href="#3-多级反馈队列调度算法" class="headerlink" title="3.多级反馈队列调度算法"></a>3.多级反馈队列调度算法</h2>
       
     </div>
     
@@ -787,7 +1035,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-CPU调度的相关概念"><span class="nav-text">一.CPU调度的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-CPU调度"><span class="nav-text">1.CPU调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-定义"><span class="nav-text">(1).定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-系统场景"><span class="nav-text">(2).系统场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-CPU调度要解决的三个问题"><span class="nav-text">2.CPU调度要解决的三个问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-CPU调度的时机"><span class="nav-text">3.CPU调度的时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-CPU调度的过程—进程切换"><span class="nav-text">4.CPU调度的过程—进程切换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-进程切换的概念"><span class="nav-text">(1).进程切换的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-上下文切换的具体步骤"><span class="nav-text">(2).上下文切换的具体步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-上下文切换的开销"><span class="nav-text">(3).上下文切换的开销</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-CPU调度算法的设计"><span class="nav-text">5.CPU调度算法的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-调度算法衡量指标"><span class="nav-text">6.调度算法衡量指标</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-CPU调度的相关概念"><span class="nav-text">一.CPU调度的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-CPU调度"><span class="nav-text">1.CPU调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-定义"><span class="nav-text">(1).定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-系统场景"><span class="nav-text">(2).系统场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-CPU调度要解决的三个问题"><span class="nav-text">2.CPU调度要解决的三个问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-CPU调度的时机"><span class="nav-text">3.CPU调度的时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-CPU调度的过程—进程切换"><span class="nav-text">4.CPU调度的过程—进程切换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-进程切换的概念"><span class="nav-text">(1).进程切换的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-上下文切换的具体步骤"><span class="nav-text">(2).上下文切换的具体步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-上下文切换的开销"><span class="nav-text">(3).上下文切换的开销</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-CPU调度算法的设计"><span class="nav-text">5.CPU调度算法的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-调度算法衡量指标"><span class="nav-text">6.调度算法衡量指标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-设计调度算法时需要考虑的问题"><span class="nav-text">二.设计调度算法时需要考虑的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程优先级-数"><span class="nav-text">1.进程优先级(数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-进程就绪队列组织"><span class="nav-text">2.进程就绪队列组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-占用CPU的方式—抢占与非抢占"><span class="nav-text">3.占用CPU的方式—抢占与非抢占</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-I-O密集型与CPU密集型进程"><span class="nav-text">4.I/O密集型与CPU密集型进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-时间片"><span class="nav-text">5.时间片</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-批处理系统中采用的调度算法"><span class="nav-text">三.批处理系统中采用的调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-先来先服务FCFS"><span class="nav-text">1.先来先服务FCFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-举例"><span class="nav-text">(2).举例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-短作业优先SJF"><span class="nav-text">2.短作业优先SJF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-1"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-举例-1"><span class="nav-text">(2).举例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-优缺点"><span class="nav-text">(3).优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-最高相应比优先-HRRN"><span class="nav-text">3.最高相应比优先 HRRN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-交互式系统的调度算法"><span class="nav-text">四.交互式系统的调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-时间片轮转算法"><span class="nav-text">1.时间片轮转算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-2"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-如何选择合适的时间片"><span class="nav-text">(2).如何选择合适的时间片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如果选择的时间片太长："><span class="nav-text">如果选择的时间片太长：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果选择的时间片过短："><span class="nav-text">如果选择的时间片过短：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-优缺点-1"><span class="nav-text">(3).优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-虚拟轮转法-VIRTUAL-RR"><span class="nav-text">(4).虚拟轮转法 VIRTUAL RR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最高优先级调度算法"><span class="nav-text">2.最高优先级调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-3"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-优先级反转问题"><span class="nav-text">(2).优先级反转问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-多级反馈队列调度算法"><span class="nav-text">3.多级反馈队列调度算法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -821,7 +1069,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">52.2k</span>
+    <span title="Site words total count">56k</span>
   
 </div>
 
