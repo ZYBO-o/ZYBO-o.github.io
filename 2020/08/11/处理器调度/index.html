@@ -121,7 +121,12 @@
 <meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/12.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/13.png">
 <meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/14.png">
-<meta property="og:updated_time" content="2020-08-12T13:09:39.853Z">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/15.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/16.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/17.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/18.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/11/处理器调度/19.png">
+<meta property="og:updated_time" content="2020-08-12T14:43:53.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZYBO_o&#39;s Blogs">
 <meta name="twitter:description" content="一.CPU调度的相关概念1.CPU调度(1).定义CPU调度的任务是控制、 协调多个进程对CPU的竞争。即按照一定的调度算法，从就绪队列中选择一个进程，然后把CPU的控制权交给被选中的进程。如果就绪队列没有其它的进程，那么系统会安排一个空闲进程(idle 进程)上 CPU 运行。 (2).系统场景CPU调度所面临的场景：  系统有N 个进程，它们就绪等待上 CPU 运行 而系统有M个 CPU，M">
@@ -423,7 +428,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5.4k
+                  5.9k
                 </span>
               
 
@@ -814,7 +819,49 @@
 </blockquote>
 </li>
 </ul>
-<h2 id="3-多级反馈队列调度算法"><a href="#3-多级反馈队列调度算法" class="headerlink" title="3.多级反馈队列调度算法"></a>3.多级反馈队列调度算法</h2>
+<h2 id="3-多级反馈队列调度算法"><a href="#3-多级反馈队列调度算法" class="headerlink" title="3.多级反馈队列调度算法"></a>3.多级反馈队列调度算法</h2><ol>
+<li><p>设置多个就绪队列，第一级队列优先级最高</p>
+</li>
+<li><p>给不同就绪队列中的进程分配长度不同的时间片，第 一级队列时间片最小;随着队列优先级别的降低，时间片增大</p>
+</li>
+<li><p>当第一级队列为空时，在第二级队列调度，以此类推</p>
+</li>
+<li><p>各级队列按照时间片轮转方式进行调度</p>
+</li>
+<li><p>当一个新创建进程就绪后，进入第一级队列</p>
+</li>
+<li><p>进程用完时间片而放弃CPU，进入下一级就绪队列</p>
+</li>
+<li><p>由于阻塞而放弃CPU的进程进入相应的等待队列，一旦 等待的事件发生，该进程回到原来一级就绪队列</p>
+</li>
+</ol>
+<p><img src="//zybtree.github.io/2020/08/11/处理器调度/15.png" style="zoom:40%;"></p>
+<h2 id="4-各种调度算法对比"><a href="#4-各种调度算法对比" class="headerlink" title="4.各种调度算法对比"></a>4.各种调度算法对比</h2><p><img src="//zybtree.github.io/2020/08/11/处理器调度/16.png" style="zoom:40%;"></p>
+<h2 id="5-多处理器调度算法需要考虑到的问题"><a href="#5-多处理器调度算法需要考虑到的问题" class="headerlink" title="5.多处理器调度算法需要考虑到的问题"></a>5.多处理器调度算法需要考虑到的问题</h2><ul>
+<li><p>不仅要决定选择哪一个进程执行 </p>
+<blockquote>
+<p>还需要决定在哪一个CPU上执行</p>
+</blockquote>
+</li>
+<li><p>要考虑进程在多个CPU之间迁移时的开销</p>
+<ul>
+<li><p>高速缓存失效、TLB失效</p>
+</li>
+<li><p>尽可能使进程总是在同一个CPU上执行</p>
+<blockquote>
+<p>如果每个进程可以调度到所有CPU上，假如进程上 次在CPU1上执行，本次被调度到CPU2，则会增加 高速缓存失效、TLB失效;如果每个进程尽量调度 到指定的CPU上，各种失效就会减少</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>考虑负载均衡问题</p>
+</li>
+</ul>
+<hr>
+<h1 id="五-典型操作系统的调度算法—Windows调度"><a href="#五-典型操作系统的调度算法—Windows调度" class="headerlink" title="五.典型操作系统的调度算法—Windows调度"></a>五.典型操作系统的调度算法—Windows调度</h1><h2 id="1-Windows线程调度"><a href="#1-Windows线程调度" class="headerlink" title="1.Windows线程调度"></a>1.Windows线程调度</h2><h2 id="2-线程优先级"><a href="#2-线程优先级" class="headerlink" title="2.线程优先级"></a>2.线程优先级</h2><h2 id="3-线程的时间配额"><a href="#3-线程的时间配额" class="headerlink" title="3.线程的时间配额"></a>3.线程的时间配额</h2><h2 id="4-调度策略"><a href="#4-调度策略" class="headerlink" title="4.调度策略"></a>4.调度策略</h2><h3 id="1-主动切换"><a href="#1-主动切换" class="headerlink" title="(1).主动切换"></a>(1).主动切换</h3><p><img src="//zybtree.github.io/2020/08/11/处理器调度/17.png" style="zoom:30%;"></p>
+<h3 id="2-抢占"><a href="#2-抢占" class="headerlink" title="(2).抢占"></a>(2).抢占</h3><p><img src="//zybtree.github.io/2020/08/11/处理器调度/18.png" style="zoom:30%;"></p>
+<h3 id="3-时间配额用完"><a href="#3-时间配额用完" class="headerlink" title="(3).时间配额用完"></a>(3).时间配额用完</h3><p><img src="//zybtree.github.io/2020/08/11/处理器调度/19.png" style="zoom:40%;"></p>
+<h3 id="4-线程优先级提升和与时间配额挑整"><a href="#4-线程优先级提升和与时间配额挑整" class="headerlink" title="(4).线程优先级提升和与时间配额挑整"></a>(4).线程优先级提升和与时间配额挑整</h3><h3 id="5-线程优先级提升"><a href="#5-线程优先级提升" class="headerlink" title="5.线程优先级提升"></a>5.线程优先级提升</h3><h3 id="1-I-O操作完成后的线程优先级提升"><a href="#1-I-O操作完成后的线程优先级提升" class="headerlink" title="(1).I/O操作完成后的线程优先级提升"></a>(1).I/O操作完成后的线程优先级提升</h3><h3 id="2-“饥饿”线程的优先级提升"><a href="#2-“饥饿”线程的优先级提升" class="headerlink" title="(2).“饥饿”线程的优先级提升"></a>(2).“饥饿”线程的优先级提升</h3>
       
     </div>
     
@@ -853,6 +900,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/12/同步机制/" rel="prev" title="同步机制">
+                同步机制 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -931,7 +982,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -953,7 +1004,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1035,7 +1086,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-CPU调度的相关概念"><span class="nav-text">一.CPU调度的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-CPU调度"><span class="nav-text">1.CPU调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-定义"><span class="nav-text">(1).定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-系统场景"><span class="nav-text">(2).系统场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-CPU调度要解决的三个问题"><span class="nav-text">2.CPU调度要解决的三个问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-CPU调度的时机"><span class="nav-text">3.CPU调度的时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-CPU调度的过程—进程切换"><span class="nav-text">4.CPU调度的过程—进程切换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-进程切换的概念"><span class="nav-text">(1).进程切换的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-上下文切换的具体步骤"><span class="nav-text">(2).上下文切换的具体步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-上下文切换的开销"><span class="nav-text">(3).上下文切换的开销</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-CPU调度算法的设计"><span class="nav-text">5.CPU调度算法的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-调度算法衡量指标"><span class="nav-text">6.调度算法衡量指标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-设计调度算法时需要考虑的问题"><span class="nav-text">二.设计调度算法时需要考虑的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程优先级-数"><span class="nav-text">1.进程优先级(数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-进程就绪队列组织"><span class="nav-text">2.进程就绪队列组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-占用CPU的方式—抢占与非抢占"><span class="nav-text">3.占用CPU的方式—抢占与非抢占</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-I-O密集型与CPU密集型进程"><span class="nav-text">4.I/O密集型与CPU密集型进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-时间片"><span class="nav-text">5.时间片</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-批处理系统中采用的调度算法"><span class="nav-text">三.批处理系统中采用的调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-先来先服务FCFS"><span class="nav-text">1.先来先服务FCFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-举例"><span class="nav-text">(2).举例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-短作业优先SJF"><span class="nav-text">2.短作业优先SJF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-1"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-举例-1"><span class="nav-text">(2).举例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-优缺点"><span class="nav-text">(3).优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-最高相应比优先-HRRN"><span class="nav-text">3.最高相应比优先 HRRN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-交互式系统的调度算法"><span class="nav-text">四.交互式系统的调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-时间片轮转算法"><span class="nav-text">1.时间片轮转算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-2"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-如何选择合适的时间片"><span class="nav-text">(2).如何选择合适的时间片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如果选择的时间片太长："><span class="nav-text">如果选择的时间片太长：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果选择的时间片过短："><span class="nav-text">如果选择的时间片过短：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-优缺点-1"><span class="nav-text">(3).优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-虚拟轮转法-VIRTUAL-RR"><span class="nav-text">(4).虚拟轮转法 VIRTUAL RR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最高优先级调度算法"><span class="nav-text">2.最高优先级调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-3"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-优先级反转问题"><span class="nav-text">(2).优先级反转问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-多级反馈队列调度算法"><span class="nav-text">3.多级反馈队列调度算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-CPU调度的相关概念"><span class="nav-text">一.CPU调度的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-CPU调度"><span class="nav-text">1.CPU调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-定义"><span class="nav-text">(1).定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-系统场景"><span class="nav-text">(2).系统场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-CPU调度要解决的三个问题"><span class="nav-text">2.CPU调度要解决的三个问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-CPU调度的时机"><span class="nav-text">3.CPU调度的时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-CPU调度的过程—进程切换"><span class="nav-text">4.CPU调度的过程—进程切换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-进程切换的概念"><span class="nav-text">(1).进程切换的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-上下文切换的具体步骤"><span class="nav-text">(2).上下文切换的具体步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-上下文切换的开销"><span class="nav-text">(3).上下文切换的开销</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-CPU调度算法的设计"><span class="nav-text">5.CPU调度算法的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-调度算法衡量指标"><span class="nav-text">6.调度算法衡量指标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-设计调度算法时需要考虑的问题"><span class="nav-text">二.设计调度算法时需要考虑的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程优先级-数"><span class="nav-text">1.进程优先级(数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-进程就绪队列组织"><span class="nav-text">2.进程就绪队列组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-占用CPU的方式—抢占与非抢占"><span class="nav-text">3.占用CPU的方式—抢占与非抢占</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-I-O密集型与CPU密集型进程"><span class="nav-text">4.I/O密集型与CPU密集型进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-时间片"><span class="nav-text">5.时间片</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-批处理系统中采用的调度算法"><span class="nav-text">三.批处理系统中采用的调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-先来先服务FCFS"><span class="nav-text">1.先来先服务FCFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-举例"><span class="nav-text">(2).举例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-短作业优先SJF"><span class="nav-text">2.短作业优先SJF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-1"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-举例-1"><span class="nav-text">(2).举例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-优缺点"><span class="nav-text">(3).优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-最高相应比优先-HRRN"><span class="nav-text">3.最高相应比优先 HRRN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-交互式系统的调度算法"><span class="nav-text">四.交互式系统的调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-时间片轮转算法"><span class="nav-text">1.时间片轮转算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-2"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-如何选择合适的时间片"><span class="nav-text">(2).如何选择合适的时间片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如果选择的时间片太长："><span class="nav-text">如果选择的时间片太长：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果选择的时间片过短："><span class="nav-text">如果选择的时间片过短：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-优缺点-1"><span class="nav-text">(3).优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-虚拟轮转法-VIRTUAL-RR"><span class="nav-text">(4).虚拟轮转法 VIRTUAL RR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最高优先级调度算法"><span class="nav-text">2.最高优先级调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-3"><span class="nav-text">(1).概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-优先级反转问题"><span class="nav-text">(2).优先级反转问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-多级反馈队列调度算法"><span class="nav-text">3.多级反馈队列调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-各种调度算法对比"><span class="nav-text">4.各种调度算法对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-多处理器调度算法需要考虑到的问题"><span class="nav-text">5.多处理器调度算法需要考虑到的问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五-典型操作系统的调度算法—Windows调度"><span class="nav-text">五.典型操作系统的调度算法—Windows调度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Windows线程调度"><span class="nav-text">1.Windows线程调度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线程优先级"><span class="nav-text">2.线程优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-线程的时间配额"><span class="nav-text">3.线程的时间配额</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-调度策略"><span class="nav-text">4.调度策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-主动切换"><span class="nav-text">(1).主动切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-抢占"><span class="nav-text">(2).抢占</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-时间配额用完"><span class="nav-text">(3).时间配额用完</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-线程优先级提升和与时间配额挑整"><span class="nav-text">(4).线程优先级提升和与时间配额挑整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-线程优先级提升"><span class="nav-text">5.线程优先级提升</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-I-O操作完成后的线程优先级提升"><span class="nav-text">(1).I/O操作完成后的线程优先级提升</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-“饥饿”线程的优先级提升"><span class="nav-text">(2).“饥饿”线程的优先级提升</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1069,7 +1120,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">56k</span>
+    <span title="Site words total count">56.6k</span>
   
 </div>
 
