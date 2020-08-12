@@ -3,7 +3,138 @@
   <entry>
     <title>处理器调度</title>
     <url>/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-CPU调度的相关概念"><a href="#一-CPU调度的相关概念" class="headerlink" title="一.CPU调度的相关概念"></a>一.CPU调度的相关概念</h1><h2 id="1-CPU调度"><a href="#1-CPU调度" class="headerlink" title="1.CPU调度"></a>1.CPU调度</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="(1).定义"></a>(1).定义</h3><p><strong>CPU调度的任务是控制、 协调多个进程对CPU的竞争。</strong><font color="red">即按照一定的调度算法，从就绪队列中选择一个进程，然后把CPU的控制权交给被选中的进程。如果就绪队列没有其它的进程，那么系统会安排一个空闲进程(idle 进程)上 CPU 运行。</font></p>
+<h3 id="2-系统场景"><a href="#2-系统场景" class="headerlink" title="(2).系统场景"></a>(2).系统场景</h3><p>CPU调度所面临的场景：</p>
+<ul>
+<li>系统有N 个进程，它们就绪等待上 CPU 运行</li>
+<li>而系统有M个 CPU，M $\geq$ 1 </li>
+<li>操作系统调度模块需要要决策给哪个进程分配哪一个CPU</li>
+</ul>
+<h2 id="2-CPU调度要解决的三个问题"><a href="#2-CPU调度要解决的三个问题" class="headerlink" title="2.CPU调度要解决的三个问题"></a>2.CPU调度要解决的三个问题</h2><ul>
+<li><p><strong>WHAT：按什么原则选择下一个要执行的进程</strong> </p>
+<p>— 调度算法</p>
+</li>
+<li><p><strong>WHEN：何时选择</strong> </p>
+<p>— 调度时机</p>
+</li>
+<li><p><strong>HOW：如何让被选中的进程上CPU运行</strong></p>
+<p>— 调度过程(主要内容是：进程的上下文切换)</p>
+</li>
+</ul>
+<h2 id="3-CPU调度的时机"><a href="#3-CPU调度的时机" class="headerlink" title="3.CPU调度的时机"></a>3.CPU调度的时机</h2><blockquote>
+<p> 系统运行时，会发生很多的事件。比如说，一些进程的操作：I/O 中断，时间中断。 这些事件发生以后系统要做相应的处理。 这是第二讲的主要内容。 </p>
+</blockquote>
+<p><strong>事件发生 → 当前运行的进程暂停运行 → 硬件机制响应 后 → 进入操作系统，处理相应的事件 → 结束处理后:</strong> </p>
+<p>事件处理完后某些进程的状态发生了变化，也可能创建出了一些新的进程。这就导致了就绪队列的改变，而这就需要进程调度。<strong>按照事先预定的算法从就绪队列中重新选择一个进程 ，这就是调度的时机。 <font color="red">即就绪队列的改变引发了重新调度</font>。</strong> </p>
+<p>进程调度的时机有4个:</p>
+<ul>
+<li>进程正常终止 或 由于某种错误而终止 </li>
+<li>新进程创建 或 一个等待进程变成就绪 </li>
+<li>当一个进程从运行态进入阻塞态</li>
+<li>当一个进程从运行态变为就绪态</li>
+</ul>
+<blockquote>
+<p>总而言之什么时候重新调度？</p>
+<p>往往是内核对中断,陷入,系统调用等处理之后，返回到用户态，这个时候要重新调度。这就是CPU 调度的时机。</p>
+</blockquote>
+<h2 id="4-CPU调度的过程—进程切换"><a href="#4-CPU调度的过程—进程切换" class="headerlink" title="4.CPU调度的过程—进程切换"></a>4.CPU调度的过程—进程切换</h2><h3 id="1-进程切换的概念"><a href="#1-进程切换的概念" class="headerlink" title="(1).进程切换的概念"></a>(1).进程切换的概念</h3><blockquote>
+<p>当有一个新的进程被选中之后 ，这个进程可以是刚刚被暂停执行的进程，也可以是一个新的进程。 如果是一个新的进程，那就要发生一个进程切换。</p>
+</blockquote>
+<p><strong>进程切换就指的是一个进程让出CPU，另外一个进程占用CPU的一个过程。</strong></p>
+<p>进程切换主要包括两部分工作：</p>
+<ul>
+<li><p>先切换全局页目录，以此来加载一个新的地址空间 </p>
+<blockquote>
+<p>因为新的进程上CPU ，那么它要用自己的地址空间 </p>
+</blockquote>
+</li>
+<li><p>是切换内核栈和硬件上下文，其中硬件上下文包括了内核执行新进程需要的全部信息，如 CPU相关寄存器</p>
+</li>
+</ul>
+<p>因此，进程切换实际上包括了<strong>对原有进程的各种状态的保存</strong>，以及<strong>对新的进程的状态的恢复</strong>，这样一个过程。</p>
+<h3 id="2-上下文切换的具体步骤"><a href="#2-上下文切换的具体步骤" class="headerlink" title="(2).上下文切换的具体步骤"></a>(2).上下文切换的具体步骤</h3><blockquote>
+<p>例子：如果进程A下CPU，进程B上CPU ，那么进程切换主要做的工作呢？</p>
+</blockquote>
+<ol>
+<li><p><strong>保存进程A的上下文环境</strong> (程序计数器、程序状态字、其他寄存器……)</p>
+</li>
+<li><p><strong>用新状态和其他相关信息更新进程A的PCB</strong></p>
+</li>
+<li><p><strong>把进程A移至合适的队列</strong> (就绪、阻塞……)</p>
+</li>
+<li><p><strong>将进程B的状态设置为运行态</strong></p>
+</li>
+<li><p><strong>从进程B的PCB中恢复上下文</strong>(程序计数器、程 序状态字、其他寄存器……)</p>
+</li>
+</ol>
+<p>做完了这些事情，进程B就上CPU运行， 而进程A的所有信息保存好之后，以后它还可以继续上CPU接着执行。 </p>
+<h3 id="3-上下文切换的开销"><a href="#3-上下文切换的开销" class="headerlink" title="(3).上下文切换的开销"></a>(3).上下文切换的开销</h3><p>上下文切换的开销包括两部分： </p>
+<ul>
+<li><p><strong>直接开销：</strong>内核完成上下文切换所花费CPU的时间 </p>
+<blockquote>
+<p>这些时间用于：</p>
+<ul>
+<li>保存和恢复寄存器</li>
+<li>用于切换地址空间 (切换地址空间的指令比较昂贵) </li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>间接开销</strong></p>
+<blockquote>
+<p>高速缓存(Cache)、缓冲区缓存(BufferCache) 和 TLB快表(Translation Look-aside Buffer)失效</p>
+<p>高速缓存中存放了刚才执行的这些进程中的一些指令和数据， TLB快表中存放了进程的一些页表表项。当新的进程上CPU之后，原来的这些内容都都失效了。还要把新的进程所需要的指令数据，送入高速缓存或者是把新的进程的页表表项送入TLB快表里。这又需要花一些时间，这些都是间接开销。 </p>
+</blockquote>
+</li>
+</ul>
+<h2 id="5-CPU调度算法的设计"><a href="#5-CPU调度算法的设计" class="headerlink" title="5.CPU调度算法的设计"></a>5.CPU调度算法的设计</h2><p>从操作系统发展的角度来看调度算法的一些演变：</p>
+<p>批处理系统 → 多道程序设计系统 → 批处理与分时的混合系统 → 个人计算机 → 网络服务器</p>
+<blockquote>
+<ul>
+<li>早期的批处理对调度算法的要求不高，也比较简单，那么因为它是一个程序执行完了以后接着执行下一个程序 </li>
+<li>有了多道程序设计系统之后，多个程序都要想进内存，去上CPU，此时调度算法就要去选择让哪些进程早一点上CPU了 </li>
+<li>到了批处理与分时系统混合系统中，调度算法既要照顾到前台的进程也要照顾到那些后台的进程，需要合理地安排调度的顺序，让不同的进程都能有机会上CPU执行 </li>
+<li>个人计算机刚开始时调度算法非常简单，后来慢慢慢慢演化到现在桌面操作系统里头调度算法变得非常复杂 </li>
+<li>网络服务器由于有多个客户端同时向它提出服务请求，所以要在调度算法上下一些功夫 </li>
+</ul>
+</blockquote>
+<p>从用户角度和系统角度对调度算法的要求不一样，下图描述了性能方面的不同要求： </p>
+<img src="//zybtree.github.io/2020/08/11/处理器调度/1.png" style="zoom:35%;">
+
+<blockquote>
+<p>从上图可以看到，用户的角度和系统的角度对于调度算法有不同的要求。 而这些要求有时候是相互矛盾的。 因此在设计调度算法的时候是要在各种因素中折中权衡。</p>
+</blockquote>
+<h2 id="6-调度算法衡量指标"><a href="#6-调度算法衡量指标" class="headerlink" title="6.调度算法衡量指标"></a>6.调度算法衡量指标</h2><ul>
+<li><p><strong>吞吐量 Throughput</strong> </p>
+<blockquote>
+<p>每单位时间完成的进程数目</p>
+</blockquote>
+</li>
+<li><p><strong>周转时间TT (Turnaround Time)</strong></p>
+<blockquote>
+<p>每个进程从提出请求到运行完成的时间</p>
+</blockquote>
+</li>
+<li><p><strong>响应时间RT (Response Time)</strong> </p>
+<blockquote>
+<p>从提出请求到第一次回应的时间</p>
+</blockquote>
+</li>
+<li><p><strong>其他</strong></p>
+<ul>
+<li><p><strong>CPU 利用率 (CPU Utilization)</strong></p>
+<blockquote>
+<p>CPU做有效工作的时间比例</p>
+</blockquote>
+</li>
+<li><p><strong>等待时间 (Waitingtime)</strong></p>
+<blockquote>
+<p>每个进程在就绪队列 (ready queue) 中等待的时间</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
       <categories>
         <category>操作系统</category>
       </categories>
@@ -557,7 +688,19 @@
 <li><input checked disabled type="checkbox"> 操作系统第二章结束</li>
 </ul>
 <p>晚上看半泽直树2，什么都不能阻止自己！</p>
-]]></content>
+<h2 id="2020年8月10日"><a href="#2020年8月10日" class="headerlink" title="2020年8月10日"></a>2020年8月10日</h2><ul>
+<li><input checked disabled type="checkbox"> VScode 进行 Debug Makefile项目成功</li>
+<li><input checked disabled type="checkbox"> 认证与机器学习的英文论文结束</li>
+<li><input checked disabled type="checkbox"> 操作系统进程部分结束，并写好博客</li>
+<li><input checked disabled type="checkbox"> 跑步5km</li>
+</ul>
+<h2 id="2020年8月11日"><a href="#2020年8月11日" class="headerlink" title="2020年8月11日"></a>2020年8月11日</h2><ul>
+<li><input disabled type="checkbox"> 把物理层c项目分枝移植到VScode。(出问题，不知道如何在VScode上debug shell命令)</li>
+<li><input checked disabled type="checkbox"> 认证与机器学习论文梳理，准备好回报PPT的流程</li>
+<li><input checked disabled type="checkbox"> 操作系统线程部分结束，并写好了博客</li>
+<li><input checked disabled type="checkbox"> 跳绳3000个</li>
+</ul>
+<h2 id="2020年8月12日"><a href="#2020年8月12日" class="headerlink" title="2020年8月12日"></a>2020年8月12日</h2>]]></content>
       <categories>
         <category>研究生学习</category>
       </categories>
