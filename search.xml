@@ -12,7 +12,7 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>处理器调度</title>
     <url>/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-CPU调度的相关概念"><a href="#一-CPU调度的相关概念" class="headerlink" title="一.CPU调度的相关概念"></a>一.CPU调度的相关概念</h1><h2 id="1-CPU调度"><a href="#1-CPU调度" class="headerlink" title="1.CPU调度"></a>1.CPU调度</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="(1).定义"></a>(1).定义</h3><p><strong>CPU调度的任务是控制、 协调多个进程对CPU的竞争。</strong><font color="red">即按照一定的调度算法，从就绪队列中选择一个进程，然后把CPU的控制权交给被选中的进程。如果就绪队列没有其它的进程，那么系统会安排一个空闲进程(idle 进程)上 CPU 运行。</font></p>
 <h3 id="2-系统场景"><a href="#2-系统场景" class="headerlink" title="(2).系统场景"></a>(2).系统场景</h3><p>CPU调度所面临的场景：</p>
