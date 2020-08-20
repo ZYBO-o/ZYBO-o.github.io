@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>文件系统</title>
+    <url>/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>文件系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>存储模型</title>
     <url>/2020/08/17/%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-基本概念：地址重定位"><a href="#一-基本概念：地址重定位" class="headerlink" title="一.基本概念：地址重定位"></a>一.基本概念：地址重定位</h1><h2 id="1-要解决的问题"><a href="#1-要解决的问题" class="headerlink" title="1.要解决的问题"></a>1.要解决的问题</h2><p><img src="//zybtree.github.io/2020/08/17/存储模型/1png.png" style="zoom:30%;"></p>
