@@ -99,15 +99,30 @@
 
 
 
+<meta name="description" content="一.I/O管理概述1.计算机I/O系统结构 2.I/O管理示意 3.I/O管理的特点 I/O性能经常成为系统性能的瓶颈  操作系统庞大复杂的原因之一: 速度差异很大 应用 控制接口的复杂性 传送单位  数据表示  错误条件   与其他功能联系密切，特别是文件系统  4.设备的分类(1).按数据组织分 块设备   以数据块为单位存储、传输信息  传输速率较高、可寻址(随机读写)   字符设备   以">
 <meta name="keywords" content="I&#x2F;O系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="I&#x2F;O系统">
 <meta property="og:url" content="https://zybtree.github.io/2020/08/29/I-O系统/index.html">
 <meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
+<meta property="og:description" content="一.I/O管理概述1.计算机I/O系统结构 2.I/O管理示意 3.I/O管理的特点 I/O性能经常成为系统性能的瓶颈  操作系统庞大复杂的原因之一: 速度差异很大 应用 控制接口的复杂性 传送单位  数据表示  错误条件   与其他功能联系密切，特别是文件系统  4.设备的分类(1).按数据组织分 块设备   以数据块为单位存储、传输信息  传输速率较高、可寻址(随机读写)   字符设备   以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-29T13:43:37.458Z">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/29/I-O系统/1.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/29/I-O系统/2.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/29/I-O系统/3.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/29/I-O系统/4.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/29/I-O系统/5.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/29/I-O系统/6.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/29/I-O系统/7.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/29/I-O系统/8.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/29/I-O系统/9.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/29/I-O系统/10.png">
+<meta property="og:image" content="https://zybtree.github.io/2020/08/29/I-O系统/11.png">
+<meta property="og:updated_time" content="2020-08-29T16:20:57.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="I&#x2F;O系统">
+<meta name="twitter:description" content="一.I/O管理概述1.计算机I/O系统结构 2.I/O管理示意 3.I/O管理的特点 I/O性能经常成为系统性能的瓶颈  操作系统庞大复杂的原因之一: 速度差异很大 应用 控制接口的复杂性 传送单位  数据表示  错误条件   与其他功能联系密切，特别是文件系统  4.设备的分类(1).按数据组织分 块设备   以数据块为单位存储、传输信息  传输速率较高、可寻址(随机读写)   字符设备   以">
+<meta name="twitter:image" content="https://zybtree.github.io/2020/08/29/I-O系统/1.png">
 
 
 
@@ -405,7 +420,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  4.5k
                 </span>
               
 
@@ -430,7 +445,403 @@
       
 
       
-        
+        <h1 id="一-I-O管理概述"><a href="#一-I-O管理概述" class="headerlink" title="一.I/O管理概述"></a>一.I/O管理概述</h1><h2 id="1-计算机I-O系统结构"><a href="#1-计算机I-O系统结构" class="headerlink" title="1.计算机I/O系统结构"></a>1.计算机I/O系统结构</h2><p><img src="//zybtree.github.io/2020/08/29/I-O系统/1.png" style="zoom:33%;"></p>
+<h2 id="2-I-O管理示意"><a href="#2-I-O管理示意" class="headerlink" title="2.I/O管理示意"></a>2.I/O管理示意</h2><p><img src="//zybtree.github.io/2020/08/29/I-O系统/2.png" style="zoom:30%;"></p>
+<h2 id="3-I-O管理的特点"><a href="#3-I-O管理的特点" class="headerlink" title="3.I/O管理的特点"></a>3.I/O管理的特点</h2><ul>
+<li><strong>I/O性能经常成为系统性能的瓶颈</strong> </li>
+<li><strong>操作系统庞大复杂的原因之一:</strong><ul>
+<li><strong>速度差异很大</strong></li>
+<li><strong>应用</strong></li>
+<li><strong>控制接口的复杂性</strong></li>
+<li><strong>传送单位</strong> </li>
+<li><strong>数据表示</strong> </li>
+<li><strong>错误条件</strong></li>
+</ul>
+</li>
+<li><strong>与其他功能联系密切，特别是文件系统</strong></li>
+</ul>
+<h2 id="4-设备的分类"><a href="#4-设备的分类" class="headerlink" title="4.设备的分类"></a>4.设备的分类</h2><h3 id="1-按数据组织分"><a href="#1-按数据组织分" class="headerlink" title="(1).按数据组织分"></a>(1).按数据组织分</h3><ul>
+<li><p>块设备 </p>
+<ul>
+<li>以数据块为单位存储、传输信息 </li>
+<li>传输速率较高、可寻址(随机读写)</li>
+</ul>
+</li>
+<li><p>字符设备 </p>
+<ul>
+<li>以字符为单位存储、传输信息 </li>
+<li>传输速率低、不可寻址</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>另一个角度：</p>
+<ul>
+<li>存储设备(磁盘、磁带)</li>
+<li><p>传输设备(网卡、Modem)</p>
+</li>
+<li><p>人机交互设备(显示器、 键盘、鼠标)</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="2-从资源分配角度"><a href="#2-从资源分配角度" class="headerlink" title="(2).从资源分配角度"></a>(2).从资源分配角度</h3><ul>
+<li>独占设备 <ul>
+<li>在一段时间内只能有一个进程使用的设备，一般为低速I/O设备(如打印机，磁带等)</li>
+</ul>
+</li>
+<li><p>共享设备</p>
+<ul>
+<li>在一段时间内可有多个进程共同使用的设备，多个进程以交叉的方式来使用设备，其资源利用率高(如硬盘)</li>
+</ul>
+</li>
+<li><p>虚设备 </p>
+<ul>
+<li><p>在一类设备上模拟另一类设备，常用共享设备模拟独占设备，用高速设备模拟低速设备，被模拟的设备称为虚设备</p>
+</li>
+<li><p>目的：将慢速的独占设备改造成多个用户可共享的设备，提高设备的利用率</p>
+<blockquote>
+<p>实例:SPOOLing技术，利用虚设备技术——用硬盘模拟输入输出设备</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-I-O管理的目标和任务"><a href="#5-I-O管理的目标和任务" class="headerlink" title="5.I/O管理的目标和任务"></a>5.I/O管理的目标和任务</h2><ul>
+<li><p>按照用户的请求，控制设备的各种操作，完成I/O设 备与内存之间的数据交换，最终完成用户的I/O请求</p>
+<ul>
+<li>设备分配与回收<ul>
+<li>记录设备的状态</li>
+<li>根据用户的请求和设备的类型，采用一定的分配算 法，选择一条数据通路</li>
+</ul>
+</li>
+<li>执行设备驱动程序，实现真正的I/O操作</li>
+<li>设备中断处理:处理外部设备的中断</li>
+<li>缓冲区管理:管理I/O缓冲区</li>
+</ul>
+</li>
+<li><p>建立方便、统一的独立于设备的接口</p>
+<ul>
+<li><p>方便性：向用户提供使用外部设备的方便接口，使用户编程时不考虑设备的复杂物理特性。</p>
+</li>
+<li><p>统一性：对不同的设备采取统一的操作方式，即在用户程序中使用的是逻辑设备</p>
+<ul>
+<li><p>逻辑设备与物理设备</p>
+</li>
+<li><p>屏蔽硬件细节(设备的物理特性、错误处理、不同I/O过程的差异性)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>充分利用各种技术(通道，中断，缓冲，异步I/O等)提高CPU设备、设备与设备之间的并行工作能力，充分利用资源，提高资源利用率</p>
+<ul>
+<li>并行性</li>
+<li>均衡性(使设备充分忙碌</li>
+</ul>
+<blockquote>
+<p>性能 CPU与I/O的速度差别大</p>
+<p>→减少由于速度差异造成 的整体性能开销</p>
+<p>→尽量使两者交叠运</p>
+</blockquote>
+</li>
+<li><p>保护</p>
+<ul>
+<li>设备传送或管理的数据应该是安全的、不被破坏的、保密的</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="二-I-O硬件组成"><a href="#二-I-O硬件组成" class="headerlink" title="二.I/O硬件组成"></a>二.I/O硬件组成</h1><h2 id="1-I-O设备组成"><a href="#1-I-O设备组成" class="headerlink" title="1.I/O设备组成"></a>1.I/O设备组成</h2><p>I/O设备一般由机械和电子两部分组成</p>
+<ul>
+<li><p>机械部分是设备本身(物理装置)</p>
+</li>
+<li><p>电子部分又称设备控制器(或适配器)</p>
+<ul>
+<li><p>(端口)地址译码</p>
+</li>
+<li><p>按照主机与设备之间约定的格式和过程接受计算 机发来的数据和控制信号或向主机发送数据和状态信号</p>
+</li>
+<li><p>将计算机的数字信号转换成机械部分能识别的模拟信号，或反之</p>
+</li>
+<li><p>实现设备内部硬件缓冲、数据加工等提高性能或增强功能</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-设备接口——控制器的作用"><a href="#2-设备接口——控制器的作用" class="headerlink" title="2.设备接口——控制器的作用"></a>2.设备接口——控制器的作用</h2><ul>
+<li><p><strong>操作系统将命令写入控制器的接口寄存器(或接口缓冲区)中，以实现输入/输出，并从接口寄存器读取状态 信息或结果信息</strong></p>
+</li>
+<li><p><strong>当控制器接受一条命令后，可<font color="red">独立于CPU</font>完成指定操作，CPU可以另外执行其他计算；命令完成时，控制器产生一个中断，CPU响应中断，控制转给操作系统;通过读控制器寄存器中的信息，获得操作结果和设备状态</strong></p>
+</li>
+</ul>
+<ul>
+<li><strong>控制器与设备之间的接口常常是一个低级接口</strong></li>
+<li><strong>控制器的任：把串行的位流转换为字节块，并进行必 要的错误修正：首先，控制器按位进行组装，然后存入 控制器内部的缓冲区中形成以字节为单位的块;在对块 验证检查和并证明无错误时，再将它复制到内存中</strong></li>
+</ul>
+<h2 id="3-I-O端口地址"><a href="#3-I-O端口地址" class="headerlink" title="3.I/O端口地址"></a>3.I/O端口地址</h2><ul>
+<li><p><strong>I/O端口地址：接口电路中每个寄存器具有的、唯一的地址，是个整数</strong></p>
+</li>
+<li><p><strong>所有I/O端口地址形成I/O端口空间(受到保护)</strong></p>
+</li>
+</ul>
+<p>I/O指令形式与I/O地址是相互关联的， 主要有两种形式: </p>
+<ul>
+<li>内存映像编址(内存映像I/O模式)</li>
+<li>I/O独立编址(I/O专用指令)</li>
+</ul>
+<h2 id="4-I-O独立编制"><a href="#4-I-O独立编制" class="headerlink" title="4.I/O独立编制"></a>4.I/O独立编制</h2><ul>
+<li><p>分配给系统中所有端口的地址空间 完全独立，与内存地址空间无关</p>
+</li>
+<li><p>使用专门的I/O指令对端口进行操作</p>
+</li>
+<li><p>优点</p>
+<ul>
+<li>外设不占用内存的地址空间</li>
+<li>编程时，易于区分是对内存操作还是对I/O端口操作</li>
+</ul>
+</li>
+<li><p>缺点:I/O端口操作的指令类型少，操作不灵活</p>
+<blockquote>
+<p>例子:8086/8088，分配给I/O端口 的地址空间64K，0000H~0FFFFH， 只能用in和out指令进行读写操作</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/3.png" style="zoom:30%;"></p>
+<h2 id="5-内存映像编址"><a href="#5-内存映像编址" class="headerlink" title="5.内存映像编址"></a>5.内存映像编址</h2><ul>
+<li>分配给系统中所有端口的地址空间与内存的地址空 间统一编址</li>
+</ul>
+<ul>
+<li>把I/O端口看作一个存储单元，对I/O的读写操作等 同于对内存的操作</li>
+<li>优点<ul>
+<li>凡是可对内存操作的指令都可对I/O端口操作 </li>
+<li>不需要专门的I/O指令</li>
+<li>I/O端口可占有较大的地址空间</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>占用内存空间</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-内存映射I-O的优点"><a href="#6-内存映射I-O的优点" class="headerlink" title="6.内存映射I/O的优点"></a>6.内存映射I/O的优点</h2><ul>
+<li>不需要特殊的保护机制来阻止用户进程执行I/O操作 </li>
+</ul>
+<p>操作系统必须要做的事情:避免把包含控制寄存器的那部分地址空间放入任何用户的虚拟地址空间之中</p>
+<ul>
+<li>可以引用内存的每一条指令也可以引用控制寄存器</li>
+</ul>
+<p>例如，如果指令TEST可以测试一个内存字是否为0，那么它 也可以用来测试一个控制寄存器是否为0</p>
+<h2 id="7-内存映射I-O的缺点"><a href="#7-内存映射I-O的缺点" class="headerlink" title="7.内存映射I/O的缺点"></a>7.内存映射I/O的缺点</h2><ul>
+<li>对一个设备控制寄存器不能进行高速缓存</li>
+<li>考虑以下汇编代码循环，第一次引用PORT_4将导致它被高速缓存，随后的引用将只从高速缓存中取值并且不会再查 询设备，之后当设备最终变为就绪时，软件将没有办法发 现这一点，结果循环将永远进行下去</li>
+<li>为避免这一情形，硬件必须针对每个页面具备选择性禁用 高速缓存的能力，操作系统必须管理选择性高速缓存，所以这一特性为硬件和操作系统两者增添了额外的复杂性</li>
+</ul>
+<hr>
+<h1 id="三-I-O控制方式"><a href="#三-I-O控制方式" class="headerlink" title="三.I/O控制方式"></a>三.I/O控制方式</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><ul>
+<li>可编程I/O(轮询/查询) <ul>
+<li>由CPU代表进程给I/O模块发I/O命令，进程进入忙等待，直到操作完成才继续执行 </li>
+</ul>
+</li>
+<li><p>中断驱动I/O</p>
+<ul>
+<li>为了减少设备驱动程序不断地询问控制器状态寄存器的开销 </li>
+<li>I/O操作结束后，由设备控制器主动通知设备驱动程序</li>
+</ul>
+</li>
+<li><p>DMA</p>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/4.png" style="zoom:33%;"></p>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/5.png" style="zoom:33%;"></p>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/6.png" style="zoom:33%;"></p>
+<h2 id="2-I-O部件的演变"><a href="#2-I-O部件的演变" class="headerlink" title="2.I/O部件的演变"></a>2.I/O部件的演变</h2><p>1.CPU直接控制外围设备 </p>
+<p>2.增加了控制器或I/O部件，CPU使用非中断的可编程I/O</p>
+<blockquote>
+<p> CPU开始从外部设备接口的具体细节中分离出来 </p>
+</blockquote>
+<p>3.与2相同，但采用了中断方式</p>
+<blockquote>
+<p> CPU无需花费等待执行一次I/O操作所需的时间，效率提高 </p>
+</blockquote>
+<p>4.I/O部件通过DMA直接控制存储器</p>
+<blockquote>
+<p>可以在没有CPU参与的情况下，从内存中移出或者往内存中 移入一块数据，仅仅在传送开始和结束时需要CPU干预 </p>
+</blockquote>
+<p>5.I/O部件增强为一个单独的处理器，有专门为I/O设计的指令 集;CPU指导I/O处理器执行内存中的一个I/O程序。I/O处理器在 没有CPU干涉的情况下取指令并执行这些指令 </p>
+<p>6.I/O部件有自己的局部存储器(其本身就是一台计算机)</p>
+<blockquote>
+<p> 使用这种体系结构可以控制许多I/O设备，并且使需要CPU参 与程度降到最小(通常用于控制与交互终端的通信，I/O处理器 负责大多数控制终端的任务)</p>
+</blockquote>
+<hr>
+<h1 id="四-I-O软件组成"><a href="#四-I-O软件组成" class="headerlink" title="四.I/O软件组成"></a>四.I/O软件组成</h1><h2 id="1-I-O软件设计"><a href="#1-I-O软件设计" class="headerlink" title="1.I/O软件设计"></a>1.I/O软件设计</h2><p>分层的设计思想：</p>
+<ul>
+<li>把I/O软件组织成多个层次</li>
+<li>每一层都执行操作系统所需要的功能的一个相关子集， 它依赖于更低一层所执行的更原始的功能，从而可以 隐藏这些功能的细节;同时，它又给高一层提供服务</li>
+<li>较低层考虑硬件的特性，并向较高层软件提供接口</li>
+<li>较高层不依赖于硬件，并向用户提供一个友好的、清晰的、简单的、功能更强的接口</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/7.png" style="zoom:30%;"></p>
+<h2 id="2-I-O软件层次"><a href="#2-I-O软件层次" class="headerlink" title="2.I/O软件层次"></a>2.I/O软件层次</h2><p><img src="//zybtree.github.io/2020/08/29/I-O系统/8.png" style="zoom:33%;"></p>
+<p>(1)用户进程层执行输入输出系统调用，对I/O数据进行格 式化，为假脱机输入/输出作准备</p>
+<p>(2)独立于设备的软件实现设备的命名、设备的保护、成块处理、缓冲技术和设备分配</p>
+<p>(3)设备驱动程序设置设备寄存器、检查设备的执行状态</p>
+<p>(4)中断处理程序负责I/O完成时，唤醒设备驱动程序进程，进行中断处理 </p>
+<p>(5)硬件层实现物理I/O的操作</p>
+<h2 id="3-设备独立性"><a href="#3-设备独立性" class="headerlink" title="3.设备独立性"></a>3.设备独立性</h2><blockquote>
+<p>好处:设备分配时的灵活性，易于实现I/O重定向</p>
+</blockquote>
+<p>用户编写的程序可以访问任意I/O设备，无需事先指定设备</p>
+<p><strong>从用户角度：</strong>用户在编制程序时，使用逻辑设备名， 由系统实现从逻辑设备到物理设备(实际设备)的 转换，并实施I/O操作。</p>
+<p><strong>从系统角度：</strong>设计并实现I/O软件时，除了直接与设备打交道的低层软件之外，其他部分的软件不依赖于硬件。</p>
+<hr>
+<h1 id="五-I-O相关技术"><a href="#五-I-O相关技术" class="headerlink" title="五.I/O相关技术"></a>五.I/O相关技术</h1><h2 id="1-引入缓冲技术解决什么问题？"><a href="#1-引入缓冲技术解决什么问题？" class="headerlink" title="1.引入缓冲技术解决什么问题？"></a>1.引入缓冲技术解决什么问题？</h2><p>操作系统中最早引入的技术</p>
+<ul>
+<li><p><strong>解决CPU与I/O设备之间速度的不匹配问题凡是数据到达和离去速度不匹配的地方均可采用缓冲技术</strong></p>
+</li>
+<li><p><strong>提高CPU与I/O设备之间的并行性</strong></p>
+</li>
+<li><p><strong>减少了I/O设备对CPU的中断请求次数，放宽 CPU对中断响应时间的要求</strong></p>
+</li>
+</ul>
+<h2 id="2-缓冲技术实现"><a href="#2-缓冲技术实现" class="headerlink" title="2.缓冲技术实现"></a>2.缓冲技术实现</h2><ul>
+<li><p>缓冲区分类 </p>
+<ul>
+<li>硬缓冲:由硬件寄存器实现(例如:设备中设置的缓冲区) </li>
+<li>软缓冲:在内存中开辟一个空间，用作缓冲区</li>
+</ul>
+</li>
+<li><p>缓冲区管理 </p>
+<ul>
+<li>单缓冲</li>
+<li>双缓冲</li>
+<li>缓冲池(多缓冲，循环缓冲):统一管理多个缓冲 区，采用有界缓冲区的生产者/消费者模型对缓冲池中的缓冲区进行循环使用</li>
+</ul>
+</li>
+<li><p>例子</p>
+<ul>
+<li><p>终端输入软件中的键盘驱动程序 其任务之一：收集字符</p>
+<blockquote>
+<p>两种常见的字符缓冲方法:</p>
+<ul>
+<li><p>公共缓冲池(驱动程序中)</p>
+</li>
+<li><p>终端数据结构缓冲</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="六-I-O设备管理"><a href="#六-I-O设备管理" class="headerlink" title="六.I/O设备管理"></a>六.I/O设备管理</h1><h2 id="1-I-O设备管理有关数据结构"><a href="#1-I-O设备管理有关数据结构" class="headerlink" title="1.I/O设备管理有关数据结构"></a>1.I/O设备管理有关数据结构</h2><ul>
+<li><p><strong>描述设备、控制器等部件的表格：</strong>系统中常常为每一个部件、每一台设备分别设置一张表格，常称为设备表或部件控制块。这类表格具体描述设备的类型、标识符、状态，以及当前使用者的进程标识符等</p>
+</li>
+<li><p><strong>建立同类资源的队列：</strong>系统为了方便对I/O设备的分配管理，通常在设备表的基础上通过指针将相同物理属性的设备连成队列(称设备队列)</p>
+</li>
+<li><p><strong>面向进程I/O请求的动态数据结构：</strong>每当进程发出I/O请求时，系统建立一张表格(称I/O请求包)，将此次 I/O请求的参数填入表中，同时也将该I/O有关的系统缓冲区地址等信息填入表中。I/O请求包随着I/O的完成而被删除</p>
+</li>
+<li><p><strong>建立I/O队列：</strong>如请求包队列</p>
+</li>
+</ul>
+<h2 id="2-独占设备的分配"><a href="#2-独占设备的分配" class="headerlink" title="2.独占设备的分配"></a>2.独占设备的分配</h2><p>在申请设备时，如果设备空闲，就将其独占，不再允许其他进程申请使用，一直等到该设备被释放，才允许被其他进程申请使用考虑效率问题，并避免由于不合理的分配策略造成死锁。</p>
+<ul>
+<li>静态分配:<br> 在进程运行前, 完成设备分配;运行结束时，收回设备 <ul>
+<li>缺点:设备利用率低</li>
+</ul>
+</li>
+<li>动态分配:<br> 在进程运行过程中，当用户提出设备要求时，进行分配，一旦停止使用立即收回<ul>
+<li>优点:效率好;</li>
+<li>缺点:分配策略不好时, 产生死锁</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-分时式共享设备的分配"><a href="#3-分时式共享设备的分配" class="headerlink" title="3.分时式共享设备的分配"></a>3.分时式共享设备的分配</h2><ul>
+<li>所谓分时式共享就是以一次I/O为单位分时使用设备，不同进程的I/O操作请求以排队方式分时地占用设备进行I/O</li>
+<li>由于同时有多个进程同时访问，且访问频繁，就会影响整个设备使用效率，影响系统效率。因此要考虑多个访问请求到达时服务的顺序，使平均 服务时间越短越好</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/9.png" style="zoom:33%;"></p>
+<h2 id="4-设备驱动程序"><a href="#4-设备驱动程序" class="headerlink" title="4.设备驱动程序"></a>4.设备驱动程序</h2><h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="(1). 基本概念"></a>(1). 基本概念</h3><ul>
+<li><p>与设备密切相关的代码放在设备驱动程序中，每个设备驱动程序处理一种设备类型</p>
+</li>
+<li><p>一般，设备驱动程序的任务是接收来自与设备无关的上层软件的抽象请求，并执行这个请求</p>
+</li>
+</ul>
+<ul>
+<li>每一个控制器都设有一个或多个设备寄存器，用来存放向设备发送的命令和参数。设备驱动程序负责释放这些命令，并监督它们正确执行</li>
+<li>在设备驱动程序的进程释放一条或多条命令后，系统 有两种处理方式，多数情况下，执行设备驱动程序的进程必须等待命令完成，这样，在命令开始执行后， 它阻塞自已，直到中断处理时将它解除阻塞为止;而 在其它情况下，命令执行不必延迟就很快完成</li>
+</ul>
+<h3 id="2-设备驱动程序与外界的接口"><a href="#2-设备驱动程序与外界的接口" class="headerlink" title="(2).设备驱动程序与外界的接口"></a>(2).设备驱动程序与外界的接口</h3><ul>
+<li><p>与操作系统的接口</p>
+<ul>
+<li>为实现设备无关性，设备作为特殊文件处理。用户的 I/O请求、对命令的合法性检查以及参数处理在文件系统中完成。在需要各种设备执行具体操作时，通过相应数据结构转入不同的设备驱动程序</li>
+</ul>
+</li>
+<li><p>与系统引导的接口(初始化，包括分配数据结构， 建立设备的请求队列)</p>
+</li>
+<li><p>与设备的接口</p>
+</li>
+</ul>
+<h3 id="3-设备驱动程序接口函数"><a href="#3-设备驱动程序接口函数" class="headerlink" title="(3).设备驱动程序接口函数"></a>(3).设备驱动程序接口函数</h3><ul>
+<li><strong>驱动程序初始化函数</strong><ul>
+<li>如向操作系统登记该驱动程序的接口函 数，该初始化函数在系统启动时或驱动程序安装入内核时执行</li>
+</ul>
+</li>
+<li><strong>驱动程序卸载函数</strong></li>
+<li><strong>申请设备函数</strong></li>
+<li><strong>释放设备函数</strong></li>
+<li><strong>I/O操作函数</strong><ul>
+<li>对独占设备，包含启动I/O的指令;对共享设备，将I/O请求形成一个请求包，排到设备请求队列，如果请求队列空，则直接启动设 备</li>
+</ul>
+</li>
+<li><strong>中断处理函数</strong><ul>
+<li>对I/O完成做善后处理，一般是唤醒等待刚完成I/O请求的阻塞进 程，使其能进一步做后续工作;如果存在I/O请求队列，则启动下 一个I/O请求</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="七-I-O性能问题"><a href="#七-I-O性能问题" class="headerlink" title="七.I/O性能问题"></a>七.I/O性能问题</h1><h2 id="1-性能问题"><a href="#1-性能问题" class="headerlink" title="1.性能问题"></a>1.性能问题</h2><ul>
+<li><p>使CPU利用率尽可能不被I/O降低  使CPU尽可能摆脱I/O</p>
+</li>
+<li><p>减少或缓解速度差距 → 缓冲技术</p>
+</li>
+<li>使CPU不等待I/O → 异步I/O</li>
+<li>让CPU摆脱I/O操作 → DMA、通道</li>
+</ul>
+<h2 id="2-异步传输"><a href="#2-异步传输" class="headerlink" title="2.异步传输"></a>2.异步传输</h2><ul>
+<li><p><strong>Windows提供两种模式的I/O操作</strong>: 异步和同步</p>
+</li>
+<li><p><strong>异步模式</strong>：用于优化应用程序的性能</p>
+<ul>
+<li>通过异步I/O，应用程序可以启动一个I/O操作，然后在I/O请求执行的同时继续处理</li>
+<li>基本思想:填充I/O操作间等待的CPU时间</li>
+</ul>
+</li>
+<li><p><strong>同步I/O</strong>：应用程序被阻塞直到I/O操作完成</p>
+</li>
+</ul>
+<h2 id="3-同步传输I-O流程"><a href="#3-同步传输I-O流程" class="headerlink" title="3.同步传输I/O流程"></a>3.同步传输I/O流程</h2><ul>
+<li>在I/O处理过程中，CPU处于空闲等待状态</li>
+<li>而在处理数据的过程中，不能同时进行I/O操作</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/10.png" style="zoom:33%;"></p>
+<h2 id="4-异步传输I-O流程"><a href="#4-异步传输I-O流程" class="headerlink" title="4.异步传输I/O流程"></a>4.异步传输I/O流程</h2><p><img src="//zybtree.github.io/2020/08/29/I-O系统/11.png" style="zoom:33%;"></p>
+<ul>
+<li><p>系统实现</p>
+<ul>
+<li>通过切换到其他线程保证CPU利用率</li>
+<li>对少量数据的I/O操作会引入切换的开销</li>
+</ul>
+</li>
+<li><p>用户实现</p>
+<ul>
+<li>将访问控制分成两段进行</li>
+<li>发出读取指令后继续做其他操作</li>
+<li>当需要用读入的数据的时候，再使用wait命令等待其完成 </li>
+<li>不引入线程切换，减少开销</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     
@@ -469,6 +880,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/30/死锁/" rel="prev" title="死锁">
+                死锁 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -520,8 +935,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -538,7 +962,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -560,7 +984,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -633,6 +1057,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-I-O管理概述"><span class="nav-text">一.I/O管理概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-计算机I-O系统结构"><span class="nav-text">1.计算机I/O系统结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-I-O管理示意"><span class="nav-text">2.I/O管理示意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-I-O管理的特点"><span class="nav-text">3.I/O管理的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-设备的分类"><span class="nav-text">4.设备的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-按数据组织分"><span class="nav-text">(1).按数据组织分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-从资源分配角度"><span class="nav-text">(2).从资源分配角度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-I-O管理的目标和任务"><span class="nav-text">5.I/O管理的目标和任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-I-O硬件组成"><span class="nav-text">二.I/O硬件组成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-I-O设备组成"><span class="nav-text">1.I/O设备组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-设备接口——控制器的作用"><span class="nav-text">2.设备接口——控制器的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-I-O端口地址"><span class="nav-text">3.I/O端口地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-I-O独立编制"><span class="nav-text">4.I/O独立编制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-内存映像编址"><span class="nav-text">5.内存映像编址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-内存映射I-O的优点"><span class="nav-text">6.内存映射I/O的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-内存映射I-O的缺点"><span class="nav-text">7.内存映射I/O的缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-I-O控制方式"><span class="nav-text">三.I/O控制方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基本概念"><span class="nav-text">1.基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-I-O部件的演变"><span class="nav-text">2.I/O部件的演变</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-I-O软件组成"><span class="nav-text">四.I/O软件组成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-I-O软件设计"><span class="nav-text">1.I/O软件设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-I-O软件层次"><span class="nav-text">2.I/O软件层次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-设备独立性"><span class="nav-text">3.设备独立性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五-I-O相关技术"><span class="nav-text">五.I/O相关技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-引入缓冲技术解决什么问题？"><span class="nav-text">1.引入缓冲技术解决什么问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-缓冲技术实现"><span class="nav-text">2.缓冲技术实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六-I-O设备管理"><span class="nav-text">六.I/O设备管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-I-O设备管理有关数据结构"><span class="nav-text">1.I/O设备管理有关数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-独占设备的分配"><span class="nav-text">2.独占设备的分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-分时式共享设备的分配"><span class="nav-text">3.分时式共享设备的分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-设备驱动程序"><span class="nav-text">4.设备驱动程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本概念-1"><span class="nav-text">(1). 基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-设备驱动程序与外界的接口"><span class="nav-text">(2).设备驱动程序与外界的接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-设备驱动程序接口函数"><span class="nav-text">(3).设备驱动程序接口函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七-I-O性能问题"><span class="nav-text">七.I/O性能问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-性能问题"><span class="nav-text">1.性能问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-异步传输"><span class="nav-text">2.异步传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-同步传输I-O流程"><span class="nav-text">3.同步传输I/O流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-异步传输I-O流程"><span class="nav-text">4.异步传输I/O流程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -660,7 +1100,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">78.7k</span>
+    <span title="Site words total count">88.4k</span>
   
 </div>
 

@@ -1,9 +1,708 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>死锁</title>
+    <url>/2020/08/30/%E6%AD%BB%E9%94%81/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-死锁的基本概念"><a href="#一-死锁的基本概念" class="headerlink" title="一.死锁的基本概念"></a>一.死锁的基本概念</h1><h2 id="1-死锁的定义"><a href="#1-死锁的定义" class="headerlink" title="1.死锁的定义"></a>1.死锁的定义</h2><ul>
+<li><strong>一组进程中，每个进程都无限等待被该组进程中另一进程所占有的资源，因而永远无法得到的资源，这种现象称为<font color="red">进程死锁</font>，这一组进程就称为<font color="red">死锁进程</font></strong></li>
+<li><strong>如果死锁发生，会浪费大量系统资源，甚至导致系统崩溃</strong></li>
+</ul>
+<blockquote>
+<p>推论：</p>
+<ul>
+<li>参与死锁的所有进程都在等待资源 </li>
+<li>参与死锁的进程是当前系统中所有进程的子集</li>
+</ul>
+</blockquote>
+<h2 id="2-死锁的现象"><a href="#2-死锁的现象" class="headerlink" title="2.死锁的现象"></a>2.死锁的现象</h2><p><img src="//zybtree.github.io/2020/08/30/死锁/1png.png" style="zoom:20%;"><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/死锁/2.png" style="zoom:20%;"></p>
+<h2 id="3-出现死锁的原因"><a href="#3-出现死锁的原因" class="headerlink" title="3.出现死锁的原因"></a>3.出现死锁的原因</h2><p>原因：<strong>资源数量有限、锁和信号量错误使用</strong>，导致了死锁的出现。</p>
+<p>资源的使用方式:  <strong>“申请—分配—使用—释放”</strong>模式。</p>
+<p>资源的分类：</p>
+<p><strong>可重用资源：可被多个进程多次使用</strong></p>
+<ul>
+<li>可抢占资源与不可抢占资源</li>
+<li>处理器、I/O部件、内存、文件、数据库、信号量</li>
+</ul>
+<p><strong>可消耗资源：只可使用一次、可创建和销毁的资源</strong></p>
+<ul>
+<li>信号、中断、消息</li>
+</ul>
+<h3 id="1-进程竞争可重用资源"><a href="#1-进程竞争可重用资源" class="headerlink" title="(1).进程竞争可重用资源"></a>(1).进程竞争可重用资源</h3><p><img src="//zybtree.github.io/2020/08/30/死锁/3.png" style="zoom:30%;"></p>
+<h3 id="2-进程竞争可消耗资源"><a href="#2-进程竞争可消耗资源" class="headerlink" title="(2).进程竞争可消耗资源"></a>(2).进程竞争可消耗资源</h3><p><img src="//zybtree.github.io/2020/08/30/死锁/4.png" style="zoom:33%;"></p>
+<h2 id="4-活锁和饥饿"><a href="#4-活锁和饥饿" class="headerlink" title="4.活锁和饥饿"></a>4.活锁和饥饿</h2><p><img src="//zybtree.github.io/2020/08/30/死锁/5.png" style="zoom:30%;"></p>
+<p>活锁</p>
+<ul>
+<li><p>先加锁</p>
+</li>
+<li><p>再轮询</p>
+<blockquote>
+<p>既无进展也没有阻塞</p>
+</blockquote>
+</li>
+</ul>
+<p>饥饿</p>
+<ul>
+<li>资源分配策略决定</li>
+</ul>
+<h2 id="5-产生死锁的必要条件"><a href="#5-产生死锁的必要条件" class="headerlink" title="5.产生死锁的必要条件"></a>5.产生死锁的必要条件</h2><ul>
+<li><p><strong>互斥使用(资源独占)</strong> </p>
+<ul>
+<li>一个资源每次<strong>只能给一个进程使用</strong></li>
+</ul>
+</li>
+<li><p><strong>占有且等待(请求和保持，部分分配)</strong> </p>
+<ul>
+<li>进程在申请新的资源的<strong>同时保持对原有资源的占有</strong></li>
+</ul>
+</li>
+<li><p><strong>不可抢占(不可剥夺)</strong> </p>
+<ul>
+<li>资源申请者<strong>不能强行的从资源占有者手中夺取资源，资源只能由占有者自愿释放</strong></li>
+</ul>
+</li>
+<li><p><strong>循环等待</strong></p>
+<ul>
+<li>存在一个进程等待队列 {P1 , P2 , … , Pn}，其中P1等待P2占有的资源，P2等待P3占有的资源, … , Pn等待P1占有的资源，<strong>形成一个进程等待环路</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="二-资源分配图"><a href="#二-资源分配图" class="headerlink" title="二.资源分配图"></a>二.资源分配图</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p><strong>为了解决死锁的问题，用有向图描述系统资源和进程的状态。</strong></p>
+<p>二元组G=(V，E)</p>
+<ul>
+<li><p>V：结点的集合，分为P(进程)，R(资源)两部分</p>
+<ul>
+<li>P = {P1, P2, … , Pn}</li>
+<li>R = {R1, R2, … , Rm} </li>
+</ul>
+</li>
+<li><p>E：有向边的集合，其元素为有序二元组(Pi, Rj) 或 (Rj, Pi)</p>
+</li>
+</ul>
+<h2 id="2-资源分配图画法说明"><a href="#2-资源分配图画法说明" class="headerlink" title="2.资源分配图画法说明"></a>2.资源分配图画法说明</h2><p>系统由若干类资源构成，一类资源称为一个资源类; 每个资源类中包含若干个同种资源，称为资源实例。</p>
+<ul>
+<li>资源类:用方框表示</li>
+<li>资源实例:用方框中的黑圆点表示</li>
+<li>进程:用圆圈中加进程名表示</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/30/死锁/6.png" style="zoom:33%;"></p>
+<p>分配边：资源实例——&gt;进程 </p>
+<p>申请边：进程 ——&gt;资源类</p>
+<p><img src="//zybtree.github.io/2020/08/30/死锁/7.png" style="zoom:33%;"></p>
+<p>例子：</p>
+<p><img src="//zybtree.github.io/2020/08/30/死锁/8.png" style="zoom:30%;"></p>
+<h2 id="3-死锁定理"><a href="#3-死锁定理" class="headerlink" title="3.死锁定理"></a>3.死锁定理</h2><ul>
+<li><p>如果资源分配图中没有环路，则系统中没有死锁， 如果图中存在环路则系统中可能存在死锁</p>
+</li>
+<li><p>如果<strong>每个资源类中只包含一个资源实例</strong>，则环路是死锁存在的充分必要条件</p>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/30/死锁/9.png" style="zoom:33%;"></p>
+<h2 id="4-资源分配的化简"><a href="#4-资源分配的化简" class="headerlink" title="4.资源分配的化简"></a>4.资源分配的化简</h2><p>化简步骤:</p>
+<ol>
+<li><p>找一个非孤立、且只有分配边的进程结点 去掉分配边，将其变为孤立结点</p>
+</li>
+<li><p>再把相应的资源分配给一个等待该资源的进程 即将该进程的申请边变为分配边</p>
+</li>
+<li>重复1，2</li>
+</ol>
+<p><img src="//zybtree.github.io/2020/08/30/死锁/10.png" style="zoom:30%;"></p>
+<p>这张图最后能够完全被化简掉，所以没有死锁。</p>
+<hr>
+<h1 id="三-死锁预防"><a href="#三-死锁预防" class="headerlink" title="三.死锁预防"></a>三.死锁预防</h1><p>四种方法来解决死锁问题：</p>
+<ul>
+<li><p><strong>不考虑此问题(鸵鸟算法)</strong> </p>
+</li>
+<li><p>不让死锁发生</p>
+<ul>
+<li><p><strong>死锁预防</strong> </p>
+<ul>
+<li>静态策略：设计合适的资源分配算法，不让死锁发生</li>
+</ul>
+</li>
+<li><p><strong>死锁避免</strong> </p>
+<ul>
+<li>动态策略:以不让死锁发生为目标，跟踪并评估资源分配过程，根据评估结果决策是否分配</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>让死锁发生</strong></p>
+<ul>
+<li>死锁检测与解除</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><ul>
+<li>在设计系统时，通过确定资源分配算法，排除发生死锁的可能性</li>
+<li>具体的做法是：<strong>防止产生死锁的四个必要条件中任何一个条件发生</strong></li>
+</ul>
+<blockquote>
+<p>破坏产生死锁的四 个必要条件之一</p>
+</blockquote>
+<h3 id="2-破坏“互斥使用-资源独占”条件"><a href="#2-破坏“互斥使用-资源独占”条件" class="headerlink" title="(2).破坏“互斥使用/资源独占”条件"></a>(2).破坏“互斥使用/资源独占”条件</h3><ul>
+<li><p>资源转换技术:把独占资源变为共享资源</p>
+</li>
+<li><p>SPOOLing技术的引入</p>
+<ul>
+<li>解决不允许任何进程直接占有打印机的问题</li>
+<li>设计一个“守护进程/线程”负责管理打印机， 进程需要打印时，将请求发给该daemon，由它完成 打印任务</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-破坏“占有且等待”条件"><a href="#3-破坏“占有且等待”条件" class="headerlink" title="(3).破坏“占有且等待”条件"></a>(3).破坏“占有且等待”条件</h3><ul>
+<li><p>实现方案1:要求每个进程在运行前必须一次性申请它所要求的所有资源，且仅当该进程所要资源均可满足时才给予一次性分配</p>
+<ul>
+<li>问题:资源利用率低;“饥饿”现象</li>
+</ul>
+</li>
+<li><p>实现方案2:在允许进程动态申请资源前提下规定，一个进程在申请新的资源不能立即得到满足 而变为等待状态之前，必须释放已占有的全部资源，若需要再重新申请</p>
+</li>
+</ul>
+<h3 id="4-破坏“不可抢占”条件"><a href="#4-破坏“不可抢占”条件" class="headerlink" title="(4).破坏“不可抢占”条件"></a>(4).破坏“不可抢占”条件</h3><ul>
+<li><p>实现方案:</p>
+<ul>
+<li>当一个进程申请的资源被其他进程占用时，可以 通过操作系统抢占这一资源(两个进程优先级不同)</li>
+</ul>
+</li>
+<li><p>局限性:</p>
+<ul>
+<li>适用于状态易于保存和恢复的资源 CPU、内存</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-破坏“循环等待”条件"><a href="#5-破坏“循环等待”条件" class="headerlink" title="(5).破坏“循环等待”条件"></a>(5).破坏“循环等待”条件</h3><ul>
+<li>通过定义资源类型的线性顺序实现</li>
+<li><p>实施方案：<strong>资源有序分配法</strong> </p>
+<ul>
+<li>把系统中所有资源编号，进程在申请资源时必须严格按资源编号的递增次序进行，否则操作系统不予分配</li>
+</ul>
+</li>
+<li><p>实现时要考虑什么问题呢? </p>
+<ul>
+<li>例子:解决哲学家就餐问题</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="四-死锁避免"><a href="#四-死锁避免" class="headerlink" title="四.死锁避免"></a>四.死锁避免</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h2><p>在系统运行过程中，对进程发出的每一个系统 能够满足的资源申请进行动态检查，并根据检 查结果决定是否分配资源，若分配后系统发生 死锁或可能发生死锁，则不予分配，否则予以分配。</p>
+<blockquote>
+<p>安全状态：如果系统中存在一个由所有进程构成的安全序列P1 ,…, Pn，则称系统处于安全状态。</p>
+</blockquote>
+<h2 id="2-安全序列"><a href="#2-安全序列" class="headerlink" title="2.安全序列"></a>2.安全序列</h2><p>一个进程序列{P1，…，Pn}是安全的，如果对于每一个进程$Pi(1≤i≤n):$ 它以后还需要的资源量不超过系统当前剩余资 源量与所有进程Pj (j &lt; i )当前占有资源量之和，则称系统处于安全状态。</p>
+<blockquote>
+<p><strong>安全状态一定没有死锁发生.</strong></p>
+</blockquote>
+<h2 id="3-安全状态与不安全状态"><a href="#3-安全状态与不安全状态" class="headerlink" title="3.安全状态与不安全状态"></a>3.安全状态与不安全状态</h2><p>不安全状态：系统中不存在一个安全序列 </p>
+<p>不安全状态一定导致死锁</p>
+<p><img src="//zybtree.github.io/2020/08/30/死锁/11.png" style="zoom:30%;"></p>
+<hr>
+<h1 id="五-死活避免——银行家算法"><a href="#五-死活避免——银行家算法" class="headerlink" title="五.死活避免——银行家算法"></a>五.死活避免——银行家算法</h1><h2 id="1-应用条件"><a href="#1-应用条件" class="headerlink" title="1.应用条件"></a>1.应用条件</h2><p>应用条件:</p>
+<ol>
+<li><p>在固定数量的进程中共享数量固定的资源</p>
+</li>
+<li><p>每个进程预先指定完成工作所需的最大资源数量</p>
+</li>
+<li><p>进程不能申请比系统中可用资源总数还多的资源</p>
+</li>
+<li><p>进程等待资源的时间是有限的</p>
+</li>
+<li><p>如果系统满足了进程对资源的最大需求，那么， 进程应该在有限的时间内使用资源，然后归还给系统</p>
+</li>
+</ol>
+<h2 id="2-银行家算法"><a href="#2-银行家算法" class="headerlink" title="2. 银行家算法"></a>2. 银行家算法</h2><p>n:系统中进程数量 </p>
+<p>m:资源类数量</p>
+<p>Available: ARRAY[1..m] of integer;//可以分配的资源</p>
+<p>Max: ARRAY[1..n,1..m] of integer; //最大需求</p>
+<p>Allocation: ARRAY[1..n,1..m] of integer; //当前拥有的资源</p>
+<p>Need: ARRAY[1..n,1..m] of integer; //还需要的资源</p>
+<p>Request: ARRAY[1..n,1..m] of integer;//本次对资源的申请</p>
+<p>当进程Pi提出资源申请时，系统执行下列步骤:</p>
+<p>(1)若Request[i] ≤ Need[i]，转(2);否则，报错返回;</p>
+<p>(2)若Request[i] ≤ Available，转(3); 否则，进程等待;</p>
+<p>(3)假设系统分配了资源，则有</p>
+<p>​    Available = Available - Request[i];</p>
+<p>​    Allocation[i] = Allocation[i] + Request[i]; </p>
+<p>​    Need[i] = Need[i] - Request[i];</p>
+<blockquote>
+<p>若系统新状态是安全的，则分配完成 </p>
+<p>若系统新状态是不安全的，则恢复原来状态，进程等待</p>
+</blockquote>
+<p><strong>如何判断是否安全：</strong></p>
+<p>为进行安全性检查，定义数据结构:</p>
+<p>Work: ARRAY[1..m] of integer; </p>
+<p>Finish: ARRAY[1..n] of Boolean;</p>
+<p>安全性检查的步骤:</p>
+<p>(1) Work = Available; Finish = false;</p>
+<p>(2) 寻找满足条件的i: </p>
+<p>​    a. Finish[i]==false;<br>​    b. Need[i]≤Work; 如果不存在，则转(4)</p>
+<p>(3) Work = Work + Allocation[i]; Finish[i] = true;转(2)</p>
+<p>(4) 若对所有i，Finish[i]==true， 则系统处于安全状态，否则系统处于不安全状态</p>
+<hr>
+<h1 id="六-死锁检测与解除"><a href="#六-死锁检测与解除" class="headerlink" title="六.死锁检测与解除"></a>六.死锁检测与解除</h1><h2 id="1-基本概念-2"><a href="#1-基本概念-2" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>死锁检测:</p>
+<ul>
+<li><p>允许死锁发生，但是操作系统会不断监视系统进 展情况，判断死锁是否真的发生</p>
+</li>
+<li><p>一旦死锁发生则采取专门的措施，解除死锁并以最小的代价恢复操作系统运行</p>
+</li>
+</ul>
+<p>检测时机:</p>
+<ul>
+<li><p>当进程由于资源请求不满足而等待时检测死锁</p>
+<ul>
+<li>缺点:系统开销大</li>
+</ul>
+</li>
+<li><p>定时检测</p>
+</li>
+<li>系统资源利用率下降时检测死锁</li>
+</ul>
+<h2 id="2-一个简单的死锁检测算法"><a href="#2-一个简单的死锁检测算法" class="headerlink" title="2.一个简单的死锁检测算法"></a>2.一个简单的死锁检测算法</h2><ul>
+<li><p>每个进程、每个资源指定唯一编号</p>
+</li>
+<li><p>设置一张资源分配表记录各进程与其占用资源之间的关系</p>
+</li>
+<li>设置一张进程等待表记录各进程与要申请资源之间的关系</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/30/死锁/12.png" style="zoom:33%;"></p>
+<p><img src="//zybtree.github.io/2020/08/30/死锁/13.png" style="zoom:30%;"></p>
+<h2 id="3-死锁的解除"><a href="#3-死锁的解除" class="headerlink" title="3.死锁的解除"></a>3.死锁的解除</h2><p><strong>重要的是以最小的代价恢复系统的运行</strong>。</p>
+<p>方法如下</p>
+<ul>
+<li>撤消所有死锁进程</li>
+<li>进程回退(Rollback)再启动</li>
+<li>按照某种原则逐一撤消死锁进程，直到…</li>
+<li>按照某种原则逐一抢占资源(资源被抢占的进程 必须回退到之前的对应状态)，直到…</li>
+</ul>
+<hr>
+<h1 id="七-哲学家就餐问题"><a href="#七-哲学家就餐问题" class="headerlink" title="七.哲学家就餐问题"></a>七.哲学家就餐问题</h1><h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h2><ul>
+<li>有五个哲学家围坐在一圆桌旁， 桌中央有一盘通心粉，每人面前有一只空盘子，每两人之间放一只筷子</li>
+<li>每个哲学家的行为是思考，感到饥饿，然后吃通心粉</li>
+<li>为了吃通心粉，每个哲学家必 须拿到两只筷子，并且每个人只能直接从自己的左边或右边去取筷子(筷子的互斥使用、 不能出现死锁现象)</li>
+</ul>
+<p>问题模型：应用程序中并发线程 执行时，协调处理共享资源。</p>
+<h2 id="2-第一种解法"><a href="#2-第一种解法" class="headerlink" title="2.第一种解法"></a>2.第一种解法</h2><p>把筷子当做信号量来进行处理</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line">semaphore fork [<span class="number">5</span>] = &#123;<span class="number">1</span>&#125;; <span class="keyword">int</span> i;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span> <span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">		think();</span><br><span class="line">		P (fork[i]);</span><br><span class="line">		P (fork [(i+<span class="number">1</span>) mod <span class="number">5</span>]); eat();</span><br><span class="line">		V (fork [(i+<span class="number">1</span>) mod <span class="number">5</span>]); V (fork[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	parbegin (philosopher (<span class="number">0</span>), philosopher (<span class="number">1</span>),philosopher (<span class="number">2</span>), philosopher (<span class="number">3</span>),philosopher (<span class="number">4</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="3-为了防止死锁发生可采取的措施"><a href="#3-为了防止死锁发生可采取的措施" class="headerlink" title="3.为了防止死锁发生可采取的措施"></a>3.为了防止死锁发生可采取的措施</h3><ul>
+<li>最多允许4个哲学家同时坐在桌子周围</li>
+<li>仅当一个哲学家左右两边的筷子都可用时，才允许他拿筷子</li>
+<li>给所有哲学家编号，奇数号的哲学家必须首先 拿左边的筷子，偶数号的哲学家则反之</li>
+</ul>
+<h2 id="4-第二种解法"><a href="#4-第二种解法" class="headerlink" title="4.第二种解法"></a>4.第二种解法</h2><p>增加了room变量</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line">semaphore fork[<span class="number">5</span>] = &#123;<span class="number">1</span>&#125;; semaphore room = &#123;<span class="number">4</span>&#125;; <span class="keyword">int</span> i;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span> <span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">		think();</span><br><span class="line">		P (room);</span><br><span class="line">		P (fork[i]);</span><br><span class="line">		P (fork [(i+<span class="number">1</span>) mod <span class="number">5</span>]); eat();</span><br><span class="line">		V (fork [(i+<span class="number">1</span>) mod <span class="number">5</span>]); V (fork[i]);</span><br><span class="line">		V (room);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  parbegin ( philosopher (<span class="number">0</span>), philosopher (<span class="number">1</span>),philosopher (<span class="number">2</span>), philosopher(<span class="number">3</span>),philosopher (<span class="number">4</span>) );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="5-第三种解法"><a href="#5-第三种解法" class="headerlink" title="5.第三种解法"></a>5.第三种解法</h2><p>使用管程解决哲学家就餐问题</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> philosopher[k=<span class="number">0</span> to <span class="number">4</span>]</span><br><span class="line"><span class="comment">/* the five philosopher clients */</span> &#123;</span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">	&lt;think&gt;;</span><br><span class="line">	get_forks(k); <span class="comment">/* client requests two forks via monitor */</span> &lt;eat spaghetti&gt;;</span><br><span class="line">	release_forks(k); <span class="comment">/* client releases forks via the monitor */</span></span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line">monitor dining_controller; </span><br><span class="line">cond ForkReady[<span class="number">5</span>]; </span><br><span class="line">boolean fork[<span class="number">5</span>] = &#123;<span class="literal">true</span>&#125;; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_forks</span><span class="params">(<span class="keyword">int</span> pid)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> left = pid;</span><br><span class="line">	<span class="keyword">int</span> right = (++pid) % <span class="number">5</span>;</span><br><span class="line">  <span class="comment">/*grant the left fork*/</span> </span><br><span class="line">  <span class="keyword">if</span> (!fork(left)</span><br><span class="line">		cwait(ForkReady[left]);</span><br><span class="line">	<span class="comment">/* queue on condition variable */</span></span><br><span class="line">	fork(left) = <span class="literal">false</span>;</span><br><span class="line">	<span class="comment">/*grant the right fork*/</span></span><br><span class="line">	<span class="keyword">if</span> (!fork(right) </span><br><span class="line">      cwait(ForkReady(right);</span><br><span class="line">	<span class="comment">/* queue on condition variable */</span></span><br><span class="line">	fork(right) = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> release_forks(<span class="keyword">int</span> pid) &#123;</span><br><span class="line">	<span class="keyword">int</span> left = pid;</span><br><span class="line">	<span class="keyword">int</span> right = (++pid) % <span class="number">5</span>; </span><br><span class="line">  <span class="comment">/*release the left fork*/</span></span><br><span class="line">	<span class="keyword">if</span> (empty(ForkReady[left])</span><br><span class="line">		<span class="comment">/*no one is waiting for this fork */</span></span><br><span class="line">		fork(left) = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="comment">/* awaken a process waiting on this fork */</span></span><br><span class="line">		csignal(ForkReady[left]);</span><br><span class="line">	<span class="comment">/*release the right fork*/</span></span><br><span class="line">	<span class="keyword">if</span> (empty(ForkReady[right])</span><br><span class="line">		<span class="comment">/*no one is waiting for this fork */</span></span><br><span class="line">		fork(right) = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="comment">/* awaken a process waiting on this fork */</span></span><br><span class="line">		csignal(ForkReady[right]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="6-第四种解法"><a href="#6-第四种解法" class="headerlink" title="6.第四种解法"></a>6.第四种解法</h2><p>为了避免死锁，把哲学家分为三种状态，思考，饥饿，进食，并且一次拿到两只筷 子，否则不拿。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> THINKING 0 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HUNGRY 1 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EATING 2 </span></span><br><span class="line"><span class="meta">#typedef int semaphore; </span></span><br><span class="line"><span class="keyword">int</span> state[N];</span><br><span class="line">semaphore mutex=<span class="number">1</span>; </span><br><span class="line">semaphore s[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span> <span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; </span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>)&#123; </span><br><span class="line">    思考;</span><br><span class="line">		P(&amp;mutex);</span><br><span class="line">		state[i] = HUNGRY;</span><br><span class="line">		test(i);</span><br><span class="line">		V(&amp;mutex);</span><br><span class="line">    P(&amp;s[i]);</span><br><span class="line"> 		拿左筷子;</span><br><span class="line">  	拿右筷子;</span><br><span class="line">  	进食;</span><br><span class="line">    放左筷子;</span><br><span class="line">		放右筷子;</span><br><span class="line">		P(&amp;mutex)</span><br><span class="line">		state[ i ] = THINKING; </span><br><span class="line">    test([i<span class="number">-1</span>] % <span class="number">5</span>); </span><br><span class="line">    test([i+<span class="number">1</span>] % <span class="number">5</span>); </span><br><span class="line">    V(&amp;mutex);</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line">state[ i ] = THINKING; </span><br><span class="line">s[i]=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (state[ i ] == HUNGRY)&amp;&amp; (state [(i<span class="number">-1</span>) % <span class="number">5</span>] != EATING) &amp;&amp; (state [(i+<span class="number">1</span>) % <span class="number">5</span>] != EATING) &#123;</span><br><span class="line">	state[ i ] = EATING;</span><br><span class="line">	V(&amp;s[ i ]); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>死锁</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>I/O系统</title>
     <url>/2020/08/29/I-O%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-I-O管理概述"><a href="#一-I-O管理概述" class="headerlink" title="一.I/O管理概述"></a>一.I/O管理概述</h1><h2 id="1-计算机I-O系统结构"><a href="#1-计算机I-O系统结构" class="headerlink" title="1.计算机I/O系统结构"></a>1.计算机I/O系统结构</h2><p><img src="//zybtree.github.io/2020/08/29/I-O系统/1.png" style="zoom:33%;"></p>
+<h2 id="2-I-O管理示意"><a href="#2-I-O管理示意" class="headerlink" title="2.I/O管理示意"></a>2.I/O管理示意</h2><p><img src="//zybtree.github.io/2020/08/29/I-O系统/2.png" style="zoom:30%;"></p>
+<h2 id="3-I-O管理的特点"><a href="#3-I-O管理的特点" class="headerlink" title="3.I/O管理的特点"></a>3.I/O管理的特点</h2><ul>
+<li><strong>I/O性能经常成为系统性能的瓶颈</strong> </li>
+<li><strong>操作系统庞大复杂的原因之一:</strong><ul>
+<li><strong>速度差异很大</strong></li>
+<li><strong>应用</strong></li>
+<li><strong>控制接口的复杂性</strong></li>
+<li><strong>传送单位</strong> </li>
+<li><strong>数据表示</strong> </li>
+<li><strong>错误条件</strong></li>
+</ul>
+</li>
+<li><strong>与其他功能联系密切，特别是文件系统</strong></li>
+</ul>
+<h2 id="4-设备的分类"><a href="#4-设备的分类" class="headerlink" title="4.设备的分类"></a>4.设备的分类</h2><h3 id="1-按数据组织分"><a href="#1-按数据组织分" class="headerlink" title="(1).按数据组织分"></a>(1).按数据组织分</h3><ul>
+<li><p>块设备 </p>
+<ul>
+<li>以数据块为单位存储、传输信息 </li>
+<li>传输速率较高、可寻址(随机读写)</li>
+</ul>
+</li>
+<li><p>字符设备 </p>
+<ul>
+<li>以字符为单位存储、传输信息 </li>
+<li>传输速率低、不可寻址</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>另一个角度：</p>
+<ul>
+<li>存储设备(磁盘、磁带)</li>
+<li><p>传输设备(网卡、Modem)</p>
+</li>
+<li><p>人机交互设备(显示器、 键盘、鼠标)</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="2-从资源分配角度"><a href="#2-从资源分配角度" class="headerlink" title="(2).从资源分配角度"></a>(2).从资源分配角度</h3><ul>
+<li>独占设备 <ul>
+<li>在一段时间内只能有一个进程使用的设备，一般为低速I/O设备(如打印机，磁带等)</li>
+</ul>
+</li>
+<li><p>共享设备</p>
+<ul>
+<li>在一段时间内可有多个进程共同使用的设备，多个进程以交叉的方式来使用设备，其资源利用率高(如硬盘)</li>
+</ul>
+</li>
+<li><p>虚设备 </p>
+<ul>
+<li><p>在一类设备上模拟另一类设备，常用共享设备模拟独占设备，用高速设备模拟低速设备，被模拟的设备称为虚设备</p>
+</li>
+<li><p>目的：将慢速的独占设备改造成多个用户可共享的设备，提高设备的利用率</p>
+<blockquote>
+<p>实例:SPOOLing技术，利用虚设备技术——用硬盘模拟输入输出设备</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-I-O管理的目标和任务"><a href="#5-I-O管理的目标和任务" class="headerlink" title="5.I/O管理的目标和任务"></a>5.I/O管理的目标和任务</h2><ul>
+<li><p>按照用户的请求，控制设备的各种操作，完成I/O设 备与内存之间的数据交换，最终完成用户的I/O请求</p>
+<ul>
+<li>设备分配与回收<ul>
+<li>记录设备的状态</li>
+<li>根据用户的请求和设备的类型，采用一定的分配算 法，选择一条数据通路</li>
+</ul>
+</li>
+<li>执行设备驱动程序，实现真正的I/O操作</li>
+<li>设备中断处理:处理外部设备的中断</li>
+<li>缓冲区管理:管理I/O缓冲区</li>
+</ul>
+</li>
+<li><p>建立方便、统一的独立于设备的接口</p>
+<ul>
+<li><p>方便性：向用户提供使用外部设备的方便接口，使用户编程时不考虑设备的复杂物理特性。</p>
+</li>
+<li><p>统一性：对不同的设备采取统一的操作方式，即在用户程序中使用的是逻辑设备</p>
+<ul>
+<li><p>逻辑设备与物理设备</p>
+</li>
+<li><p>屏蔽硬件细节(设备的物理特性、错误处理、不同I/O过程的差异性)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>充分利用各种技术(通道，中断，缓冲，异步I/O等)提高CPU设备、设备与设备之间的并行工作能力，充分利用资源，提高资源利用率</p>
+<ul>
+<li>并行性</li>
+<li>均衡性(使设备充分忙碌</li>
+</ul>
+<blockquote>
+<p>性能 CPU与I/O的速度差别大</p>
+<p>→减少由于速度差异造成 的整体性能开销</p>
+<p>→尽量使两者交叠运</p>
+</blockquote>
+</li>
+<li><p>保护</p>
+<ul>
+<li>设备传送或管理的数据应该是安全的、不被破坏的、保密的</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="二-I-O硬件组成"><a href="#二-I-O硬件组成" class="headerlink" title="二.I/O硬件组成"></a>二.I/O硬件组成</h1><h2 id="1-I-O设备组成"><a href="#1-I-O设备组成" class="headerlink" title="1.I/O设备组成"></a>1.I/O设备组成</h2><p>I/O设备一般由机械和电子两部分组成</p>
+<ul>
+<li><p>机械部分是设备本身(物理装置)</p>
+</li>
+<li><p>电子部分又称设备控制器(或适配器)</p>
+<ul>
+<li><p>(端口)地址译码</p>
+</li>
+<li><p>按照主机与设备之间约定的格式和过程接受计算 机发来的数据和控制信号或向主机发送数据和状态信号</p>
+</li>
+<li><p>将计算机的数字信号转换成机械部分能识别的模拟信号，或反之</p>
+</li>
+<li><p>实现设备内部硬件缓冲、数据加工等提高性能或增强功能</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-设备接口——控制器的作用"><a href="#2-设备接口——控制器的作用" class="headerlink" title="2.设备接口——控制器的作用"></a>2.设备接口——控制器的作用</h2><ul>
+<li><p><strong>操作系统将命令写入控制器的接口寄存器(或接口缓冲区)中，以实现输入/输出，并从接口寄存器读取状态 信息或结果信息</strong></p>
+</li>
+<li><p><strong>当控制器接受一条命令后，可<font color="red">独立于CPU</font>完成指定操作，CPU可以另外执行其他计算；命令完成时，控制器产生一个中断，CPU响应中断，控制转给操作系统;通过读控制器寄存器中的信息，获得操作结果和设备状态</strong></p>
+</li>
+</ul>
+<ul>
+<li><strong>控制器与设备之间的接口常常是一个低级接口</strong></li>
+<li><strong>控制器的任：把串行的位流转换为字节块，并进行必 要的错误修正：首先，控制器按位进行组装，然后存入 控制器内部的缓冲区中形成以字节为单位的块;在对块 验证检查和并证明无错误时，再将它复制到内存中</strong></li>
+</ul>
+<h2 id="3-I-O端口地址"><a href="#3-I-O端口地址" class="headerlink" title="3.I/O端口地址"></a>3.I/O端口地址</h2><ul>
+<li><p><strong>I/O端口地址：接口电路中每个寄存器具有的、唯一的地址，是个整数</strong></p>
+</li>
+<li><p><strong>所有I/O端口地址形成I/O端口空间(受到保护)</strong></p>
+</li>
+</ul>
+<p>I/O指令形式与I/O地址是相互关联的， 主要有两种形式: </p>
+<ul>
+<li>内存映像编址(内存映像I/O模式)</li>
+<li>I/O独立编址(I/O专用指令)</li>
+</ul>
+<h2 id="4-I-O独立编制"><a href="#4-I-O独立编制" class="headerlink" title="4.I/O独立编制"></a>4.I/O独立编制</h2><ul>
+<li><p>分配给系统中所有端口的地址空间 完全独立，与内存地址空间无关</p>
+</li>
+<li><p>使用专门的I/O指令对端口进行操作</p>
+</li>
+<li><p>优点</p>
+<ul>
+<li>外设不占用内存的地址空间</li>
+<li>编程时，易于区分是对内存操作还是对I/O端口操作</li>
+</ul>
+</li>
+<li><p>缺点:I/O端口操作的指令类型少，操作不灵活</p>
+<blockquote>
+<p>例子:8086/8088，分配给I/O端口 的地址空间64K，0000H~0FFFFH， 只能用in和out指令进行读写操作</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/3.png" style="zoom:30%;"></p>
+<h2 id="5-内存映像编址"><a href="#5-内存映像编址" class="headerlink" title="5.内存映像编址"></a>5.内存映像编址</h2><ul>
+<li>分配给系统中所有端口的地址空间与内存的地址空 间统一编址</li>
+</ul>
+<ul>
+<li>把I/O端口看作一个存储单元，对I/O的读写操作等 同于对内存的操作</li>
+<li>优点<ul>
+<li>凡是可对内存操作的指令都可对I/O端口操作 </li>
+<li>不需要专门的I/O指令</li>
+<li>I/O端口可占有较大的地址空间</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>占用内存空间</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-内存映射I-O的优点"><a href="#6-内存映射I-O的优点" class="headerlink" title="6.内存映射I/O的优点"></a>6.内存映射I/O的优点</h2><ul>
+<li>不需要特殊的保护机制来阻止用户进程执行I/O操作 </li>
+</ul>
+<p>操作系统必须要做的事情:避免把包含控制寄存器的那部分地址空间放入任何用户的虚拟地址空间之中</p>
+<ul>
+<li>可以引用内存的每一条指令也可以引用控制寄存器</li>
+</ul>
+<p>例如，如果指令TEST可以测试一个内存字是否为0，那么它 也可以用来测试一个控制寄存器是否为0</p>
+<h2 id="7-内存映射I-O的缺点"><a href="#7-内存映射I-O的缺点" class="headerlink" title="7.内存映射I/O的缺点"></a>7.内存映射I/O的缺点</h2><ul>
+<li>对一个设备控制寄存器不能进行高速缓存</li>
+<li>考虑以下汇编代码循环，第一次引用PORT_4将导致它被高速缓存，随后的引用将只从高速缓存中取值并且不会再查 询设备，之后当设备最终变为就绪时，软件将没有办法发 现这一点，结果循环将永远进行下去</li>
+<li>为避免这一情形，硬件必须针对每个页面具备选择性禁用 高速缓存的能力，操作系统必须管理选择性高速缓存，所以这一特性为硬件和操作系统两者增添了额外的复杂性</li>
+</ul>
+<hr>
+<h1 id="三-I-O控制方式"><a href="#三-I-O控制方式" class="headerlink" title="三.I/O控制方式"></a>三.I/O控制方式</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><ul>
+<li>可编程I/O(轮询/查询) <ul>
+<li>由CPU代表进程给I/O模块发I/O命令，进程进入忙等待，直到操作完成才继续执行 </li>
+</ul>
+</li>
+<li><p>中断驱动I/O</p>
+<ul>
+<li>为了减少设备驱动程序不断地询问控制器状态寄存器的开销 </li>
+<li>I/O操作结束后，由设备控制器主动通知设备驱动程序</li>
+</ul>
+</li>
+<li><p>DMA</p>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/4.png" style="zoom:33%;"></p>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/5.png" style="zoom:33%;"></p>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/6.png" style="zoom:33%;"></p>
+<h2 id="2-I-O部件的演变"><a href="#2-I-O部件的演变" class="headerlink" title="2.I/O部件的演变"></a>2.I/O部件的演变</h2><p>1.CPU直接控制外围设备 </p>
+<p>2.增加了控制器或I/O部件，CPU使用非中断的可编程I/O</p>
+<blockquote>
+<p> CPU开始从外部设备接口的具体细节中分离出来 </p>
+</blockquote>
+<p>3.与2相同，但采用了中断方式</p>
+<blockquote>
+<p> CPU无需花费等待执行一次I/O操作所需的时间，效率提高 </p>
+</blockquote>
+<p>4.I/O部件通过DMA直接控制存储器</p>
+<blockquote>
+<p>可以在没有CPU参与的情况下，从内存中移出或者往内存中 移入一块数据，仅仅在传送开始和结束时需要CPU干预 </p>
+</blockquote>
+<p>5.I/O部件增强为一个单独的处理器，有专门为I/O设计的指令 集;CPU指导I/O处理器执行内存中的一个I/O程序。I/O处理器在 没有CPU干涉的情况下取指令并执行这些指令 </p>
+<p>6.I/O部件有自己的局部存储器(其本身就是一台计算机)</p>
+<blockquote>
+<p> 使用这种体系结构可以控制许多I/O设备，并且使需要CPU参 与程度降到最小(通常用于控制与交互终端的通信，I/O处理器 负责大多数控制终端的任务)</p>
+</blockquote>
+<hr>
+<h1 id="四-I-O软件组成"><a href="#四-I-O软件组成" class="headerlink" title="四.I/O软件组成"></a>四.I/O软件组成</h1><h2 id="1-I-O软件设计"><a href="#1-I-O软件设计" class="headerlink" title="1.I/O软件设计"></a>1.I/O软件设计</h2><p>分层的设计思想：</p>
+<ul>
+<li>把I/O软件组织成多个层次</li>
+<li>每一层都执行操作系统所需要的功能的一个相关子集， 它依赖于更低一层所执行的更原始的功能，从而可以 隐藏这些功能的细节;同时，它又给高一层提供服务</li>
+<li>较低层考虑硬件的特性，并向较高层软件提供接口</li>
+<li>较高层不依赖于硬件，并向用户提供一个友好的、清晰的、简单的、功能更强的接口</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/7.png" style="zoom:30%;"></p>
+<h2 id="2-I-O软件层次"><a href="#2-I-O软件层次" class="headerlink" title="2.I/O软件层次"></a>2.I/O软件层次</h2><p><img src="//zybtree.github.io/2020/08/29/I-O系统/8.png" style="zoom:33%;"></p>
+<p>(1)用户进程层执行输入输出系统调用，对I/O数据进行格 式化，为假脱机输入/输出作准备</p>
+<p>(2)独立于设备的软件实现设备的命名、设备的保护、成块处理、缓冲技术和设备分配</p>
+<p>(3)设备驱动程序设置设备寄存器、检查设备的执行状态</p>
+<p>(4)中断处理程序负责I/O完成时，唤醒设备驱动程序进程，进行中断处理 </p>
+<p>(5)硬件层实现物理I/O的操作</p>
+<h2 id="3-设备独立性"><a href="#3-设备独立性" class="headerlink" title="3.设备独立性"></a>3.设备独立性</h2><blockquote>
+<p>好处:设备分配时的灵活性，易于实现I/O重定向</p>
+</blockquote>
+<p>用户编写的程序可以访问任意I/O设备，无需事先指定设备</p>
+<p><strong>从用户角度：</strong>用户在编制程序时，使用逻辑设备名， 由系统实现从逻辑设备到物理设备(实际设备)的 转换，并实施I/O操作。</p>
+<p><strong>从系统角度：</strong>设计并实现I/O软件时，除了直接与设备打交道的低层软件之外，其他部分的软件不依赖于硬件。</p>
+<hr>
+<h1 id="五-I-O相关技术"><a href="#五-I-O相关技术" class="headerlink" title="五.I/O相关技术"></a>五.I/O相关技术</h1><h2 id="1-引入缓冲技术解决什么问题？"><a href="#1-引入缓冲技术解决什么问题？" class="headerlink" title="1.引入缓冲技术解决什么问题？"></a>1.引入缓冲技术解决什么问题？</h2><p>操作系统中最早引入的技术</p>
+<ul>
+<li><p><strong>解决CPU与I/O设备之间速度的不匹配问题凡是数据到达和离去速度不匹配的地方均可采用缓冲技术</strong></p>
+</li>
+<li><p><strong>提高CPU与I/O设备之间的并行性</strong></p>
+</li>
+<li><p><strong>减少了I/O设备对CPU的中断请求次数，放宽 CPU对中断响应时间的要求</strong></p>
+</li>
+</ul>
+<h2 id="2-缓冲技术实现"><a href="#2-缓冲技术实现" class="headerlink" title="2.缓冲技术实现"></a>2.缓冲技术实现</h2><ul>
+<li><p>缓冲区分类 </p>
+<ul>
+<li>硬缓冲:由硬件寄存器实现(例如:设备中设置的缓冲区) </li>
+<li>软缓冲:在内存中开辟一个空间，用作缓冲区</li>
+</ul>
+</li>
+<li><p>缓冲区管理 </p>
+<ul>
+<li>单缓冲</li>
+<li>双缓冲</li>
+<li>缓冲池(多缓冲，循环缓冲):统一管理多个缓冲 区，采用有界缓冲区的生产者/消费者模型对缓冲池中的缓冲区进行循环使用</li>
+</ul>
+</li>
+<li><p>例子</p>
+<ul>
+<li><p>终端输入软件中的键盘驱动程序 其任务之一：收集字符</p>
+<blockquote>
+<p>两种常见的字符缓冲方法:</p>
+<ul>
+<li><p>公共缓冲池(驱动程序中)</p>
+</li>
+<li><p>终端数据结构缓冲</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="六-I-O设备管理"><a href="#六-I-O设备管理" class="headerlink" title="六.I/O设备管理"></a>六.I/O设备管理</h1><h2 id="1-I-O设备管理有关数据结构"><a href="#1-I-O设备管理有关数据结构" class="headerlink" title="1.I/O设备管理有关数据结构"></a>1.I/O设备管理有关数据结构</h2><ul>
+<li><p><strong>描述设备、控制器等部件的表格：</strong>系统中常常为每一个部件、每一台设备分别设置一张表格，常称为设备表或部件控制块。这类表格具体描述设备的类型、标识符、状态，以及当前使用者的进程标识符等</p>
+</li>
+<li><p><strong>建立同类资源的队列：</strong>系统为了方便对I/O设备的分配管理，通常在设备表的基础上通过指针将相同物理属性的设备连成队列(称设备队列)</p>
+</li>
+<li><p><strong>面向进程I/O请求的动态数据结构：</strong>每当进程发出I/O请求时，系统建立一张表格(称I/O请求包)，将此次 I/O请求的参数填入表中，同时也将该I/O有关的系统缓冲区地址等信息填入表中。I/O请求包随着I/O的完成而被删除</p>
+</li>
+<li><p><strong>建立I/O队列：</strong>如请求包队列</p>
+</li>
+</ul>
+<h2 id="2-独占设备的分配"><a href="#2-独占设备的分配" class="headerlink" title="2.独占设备的分配"></a>2.独占设备的分配</h2><p>在申请设备时，如果设备空闲，就将其独占，不再允许其他进程申请使用，一直等到该设备被释放，才允许被其他进程申请使用考虑效率问题，并避免由于不合理的分配策略造成死锁。</p>
+<ul>
+<li>静态分配:<br> 在进程运行前, 完成设备分配;运行结束时，收回设备 <ul>
+<li>缺点:设备利用率低</li>
+</ul>
+</li>
+<li>动态分配:<br> 在进程运行过程中，当用户提出设备要求时，进行分配，一旦停止使用立即收回<ul>
+<li>优点:效率好;</li>
+<li>缺点:分配策略不好时, 产生死锁</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-分时式共享设备的分配"><a href="#3-分时式共享设备的分配" class="headerlink" title="3.分时式共享设备的分配"></a>3.分时式共享设备的分配</h2><ul>
+<li>所谓分时式共享就是以一次I/O为单位分时使用设备，不同进程的I/O操作请求以排队方式分时地占用设备进行I/O</li>
+<li>由于同时有多个进程同时访问，且访问频繁，就会影响整个设备使用效率，影响系统效率。因此要考虑多个访问请求到达时服务的顺序，使平均 服务时间越短越好</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/9.png" style="zoom:33%;"></p>
+<h2 id="4-设备驱动程序"><a href="#4-设备驱动程序" class="headerlink" title="4.设备驱动程序"></a>4.设备驱动程序</h2><h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="(1). 基本概念"></a>(1). 基本概念</h3><ul>
+<li><p>与设备密切相关的代码放在设备驱动程序中，每个设备驱动程序处理一种设备类型</p>
+</li>
+<li><p>一般，设备驱动程序的任务是接收来自与设备无关的上层软件的抽象请求，并执行这个请求</p>
+</li>
+</ul>
+<ul>
+<li>每一个控制器都设有一个或多个设备寄存器，用来存放向设备发送的命令和参数。设备驱动程序负责释放这些命令，并监督它们正确执行</li>
+<li>在设备驱动程序的进程释放一条或多条命令后，系统 有两种处理方式，多数情况下，执行设备驱动程序的进程必须等待命令完成，这样，在命令开始执行后， 它阻塞自已，直到中断处理时将它解除阻塞为止;而 在其它情况下，命令执行不必延迟就很快完成</li>
+</ul>
+<h3 id="2-设备驱动程序与外界的接口"><a href="#2-设备驱动程序与外界的接口" class="headerlink" title="(2).设备驱动程序与外界的接口"></a>(2).设备驱动程序与外界的接口</h3><ul>
+<li><p>与操作系统的接口</p>
+<ul>
+<li>为实现设备无关性，设备作为特殊文件处理。用户的 I/O请求、对命令的合法性检查以及参数处理在文件系统中完成。在需要各种设备执行具体操作时，通过相应数据结构转入不同的设备驱动程序</li>
+</ul>
+</li>
+<li><p>与系统引导的接口(初始化，包括分配数据结构， 建立设备的请求队列)</p>
+</li>
+<li><p>与设备的接口</p>
+</li>
+</ul>
+<h3 id="3-设备驱动程序接口函数"><a href="#3-设备驱动程序接口函数" class="headerlink" title="(3).设备驱动程序接口函数"></a>(3).设备驱动程序接口函数</h3><ul>
+<li><strong>驱动程序初始化函数</strong><ul>
+<li>如向操作系统登记该驱动程序的接口函 数，该初始化函数在系统启动时或驱动程序安装入内核时执行</li>
+</ul>
+</li>
+<li><strong>驱动程序卸载函数</strong></li>
+<li><strong>申请设备函数</strong></li>
+<li><strong>释放设备函数</strong></li>
+<li><strong>I/O操作函数</strong><ul>
+<li>对独占设备，包含启动I/O的指令;对共享设备，将I/O请求形成一个请求包，排到设备请求队列，如果请求队列空，则直接启动设 备</li>
+</ul>
+</li>
+<li><strong>中断处理函数</strong><ul>
+<li>对I/O完成做善后处理，一般是唤醒等待刚完成I/O请求的阻塞进 程，使其能进一步做后续工作;如果存在I/O请求队列，则启动下 一个I/O请求</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="七-I-O性能问题"><a href="#七-I-O性能问题" class="headerlink" title="七.I/O性能问题"></a>七.I/O性能问题</h1><h2 id="1-性能问题"><a href="#1-性能问题" class="headerlink" title="1.性能问题"></a>1.性能问题</h2><ul>
+<li><p>使CPU利用率尽可能不被I/O降低  使CPU尽可能摆脱I/O</p>
+</li>
+<li><p>减少或缓解速度差距 → 缓冲技术</p>
+</li>
+<li>使CPU不等待I/O → 异步I/O</li>
+<li>让CPU摆脱I/O操作 → DMA、通道</li>
+</ul>
+<h2 id="2-异步传输"><a href="#2-异步传输" class="headerlink" title="2.异步传输"></a>2.异步传输</h2><ul>
+<li><p><strong>Windows提供两种模式的I/O操作</strong>: 异步和同步</p>
+</li>
+<li><p><strong>异步模式</strong>：用于优化应用程序的性能</p>
+<ul>
+<li>通过异步I/O，应用程序可以启动一个I/O操作，然后在I/O请求执行的同时继续处理</li>
+<li>基本思想:填充I/O操作间等待的CPU时间</li>
+</ul>
+</li>
+<li><p><strong>同步I/O</strong>：应用程序被阻塞直到I/O操作完成</p>
+</li>
+</ul>
+<h2 id="3-同步传输I-O流程"><a href="#3-同步传输I-O流程" class="headerlink" title="3.同步传输I/O流程"></a>3.同步传输I/O流程</h2><ul>
+<li>在I/O处理过程中，CPU处于空闲等待状态</li>
+<li>而在处理数据的过程中，不能同时进行I/O操作</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/29/I-O系统/10.png" style="zoom:33%;"></p>
+<h2 id="4-异步传输I-O流程"><a href="#4-异步传输I-O流程" class="headerlink" title="4.异步传输I/O流程"></a>4.异步传输I/O流程</h2><p><img src="//zybtree.github.io/2020/08/29/I-O系统/11.png" style="zoom:33%;"></p>
+<ul>
+<li><p>系统实现</p>
+<ul>
+<li>通过切换到其他线程保证CPU利用率</li>
+<li>对少量数据的I/O操作会引入切换的开销</li>
+</ul>
+</li>
+<li><p>用户实现</p>
+<ul>
+<li>将访问控制分成两段进行</li>
+<li>发出读取指令后继续做其他操作</li>
+<li>当需要用读入的数据的时候，再使用wait命令等待其完成 </li>
+<li>不引入线程切换，减少开销</li>
+</ul>
+</li>
+</ul>
+]]></content>
       <categories>
         <category>操作系统</category>
       </categories>
@@ -223,7 +922,7 @@
 <li><p><strong>目录项可以是FCB，<font color="red">目录是文件控制块的有序集合</font></strong></p>
 </li>
 </ul>
-<h2 id="3-文件目录结构的演化"><a href="#3-文件目录结构的演化" class="headerlink" title="3.文件目录结构的演化"></a>3.文件目录结构的演化</h2><p><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/文件系统/6.png" style="zoom:30%;"></p>
+<h2 id="3-文件目录结构的演化"><a href="#3-文件目录结构的演化" class="headerlink" title="3.文件目录结构的演化"></a>3.文件目录结构的演化</h2><p><img src="//zybtree.github.io/2020/08/20/文件系统/6.png" style="zoom:30%;"></p>
 <h2 id="4-与目录相关的概念"><a href="#4-与目录相关的概念" class="headerlink" title="4.与目录相关的概念"></a>4.与目录相关的概念</h2><h3 id="1-一些基本概念"><a href="#1-一些基本概念" class="headerlink" title="(1).一些基本概念"></a>(1).一些基本概念</h3><ul>
 <li><p><strong>路径名(文件名)</strong></p>
 <ul>
@@ -243,7 +942,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-目录文件的关联"><a href="#2-目录文件的关联" class="headerlink" title="(2).目录文件的关联"></a>(2).目录文件的关联</h3><p><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/文件系统/7.png" style="zoom:33%;"></p>
+<h3 id="2-目录文件的关联"><a href="#2-目录文件的关联" class="headerlink" title="(2).目录文件的关联"></a>(2).目录文件的关联</h3><p><img src="//zybtree.github.io/2020/08/20/文件系统/7.png" style="zoom:33%;"></p>
 <p>这是一个根目录文件，目录文件是由若干目录项组成的，可以看到这里有ABC 三个目录项，通过这个目录项，找到目录项所对应的文件。</p>
 <hr>
 <h1 id="五-文件的物理结构"><a href="#五-文件的物理结构" class="headerlink" title="五.文件的物理结构"></a>五.文件的物理结构</h1><h2 id="1-基本概念-3"><a href="#1-基本概念-3" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p><strong>是指文件在存储介质上的存放方式。</strong></p>
@@ -255,7 +954,7 @@
 </li>
 </ul>
 <h2 id="2-顺序结构"><a href="#2-顺序结构" class="headerlink" title="2.顺序结构"></a>2.顺序结构</h2><h3 id="1-基本概念-4"><a href="#1-基本概念-4" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><p><strong>是指文件的信息<font color="red">存放在若干连续的物理块</font>中。</strong></p>
-<p><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/文件系统/8.png" style="zoom:40%;"></p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/8.png" style="zoom:40%;"></p>
 <p>在FCB中如何记录文件地址?</p>
 <ul>
 <li><strong>文件第一块块号</strong></li>
@@ -283,7 +982,7 @@
 </li>
 </ul>
 <h2 id="2-链接结构"><a href="#2-链接结构" class="headerlink" title="2.链接结构"></a>2.链接结构</h2><h3 id="1-基本概念-5"><a href="#1-基本概念-5" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><p><strong>一个文件的信息存放在若干不连续的物理块中， 各块之间通过指针连接，前一个物理块指向下一个物理块。</strong></p>
-<p><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/文件系统/9.png" style="zoom:40%;"></p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/9.png" style="zoom:40%;"></p>
 <p>在FCB中如何记录文件地址?</p>
 <ul>
 <li><strong>只需要知道第一块的地址即可。</strong></li>
@@ -378,8 +1077,578 @@
 <p>试问:采用这种结构，一个文件最大可达到 ?个物理块</p>
 <p><img src="//zybtree.github.io/2020/08/20/文件系统/13.png" style="zoom:30%;"></p>
 <hr>
-<h1 id="六-文件系统的实现"><a href="#六-文件系统的实现" class="headerlink" title="六.文件系统的实现"></a>六.文件系统的实现</h1><hr>
-<h1 id="七-文件系统实例——UNIX"><a href="#七-文件系统实例——UNIX" class="headerlink" title="七.文件系统实例——UNIX"></a>七.文件系统实例——UNIX</h1><hr>
+<h1 id="六-文件系统的实现"><a href="#六-文件系统的实现" class="headerlink" title="六.文件系统的实现"></a>六.文件系统的实现</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p><strong>实现文件系统需要考虑<font color="red">磁盘上</font>与<font color="red">内存中</font>的内容布局。</strong></p>
+<h3 id="1-磁盘上"><a href="#1-磁盘上" class="headerlink" title="(1).磁盘上"></a>(1).磁盘上</h3><ul>
+<li>如何启动操作系统?</li>
+<li>磁盘是怎样管理的?怎样获取磁盘的有关信息? </li>
+<li>目录文件在磁盘上怎么存放?普通文件在磁盘上怎么存放?</li>
+</ul>
+<h3 id="2-内存中"><a href="#2-内存中" class="headerlink" title="(2).内存中"></a>(2).内存中</h3><ul>
+<li>当进程使用文件时，操作系统是如何支持的? 也就是文件系统的内存数据结构。</li>
+</ul>
+<h2 id="2-相关术语"><a href="#2-相关术语" class="headerlink" title="2.相关术语"></a>2.相关术语</h2><ul>
+<li><p><strong>磁盘分区(partition)：</strong>把一个<font color="red">物理磁盘</font>的存储空间划分为几个相互独立的部分，称为<font color="red">分区</font></p>
+</li>
+<li><p><strong>文件卷(volume)</strong>：磁盘上的逻辑分区，由一个或多个物 理块(簇)组成</p>
+<ul>
+<li>一个文件卷可以是<strong>整个磁盘</strong>或<strong>部分磁盘</strong>或<strong>跨盘(RAID)</strong> </li>
+<li>同一个文件卷中<font color="red">使用同一份管理数据</font>进行文件<font color="red">分配和磁盘空闲空间管理</font>，不同的文件卷中的管理数据是相互独立的</li>
+<li>一个文件卷上：包括<strong>文件系统信息</strong>、<strong>一组文件(</strong>用户文件、 目录文件)、<strong>未分配空间</strong></li>
+<li><strong>块(Block)</strong>或 <strong>簇(Cluster)</strong> : 一个或多个(2的幂)连续的扇区，可寻址数据块</li>
+</ul>
+</li>
+<li><p><strong>格式化(format)：</strong>在<strong>一个文件卷上建立文件系统</strong>，即建立并初始化用于文件分配和磁盘空闲空间管理的管理数据——元数据</p>
+</li>
+</ul>
+<h2 id="3-磁盘上的内容"><a href="#3-磁盘上的内容" class="headerlink" title="3.磁盘上的内容"></a>3.磁盘上的内容</h2><p><img src="//zybtree.github.io/2020/08/20/文件系统/14.png" style="zoom:30%;"></p>
+<p>存放的内容：</p>
+<ul>
+<li><p><strong>引导区</strong> </p>
+<ul>
+<li>包括了从该卷引导操作系统所需要的信息</li>
+<li>每个卷(分区)一个，通常为第一个扇区</li>
+</ul>
+</li>
+<li><p><strong>卷(分区)信息</strong> </p>
+<ul>
+<li>包括该卷(分区)的块(簇)数、块(簇)大小、空闲块(簇)数量和指针、空闲FCB数量和指针…… </li>
+</ul>
+</li>
+<li><p><strong>目录文件</strong>(根目录文件及其他目录文件)</p>
+</li>
+<li><p><strong>用户文件</strong></p>
+</li>
+</ul>
+<h2 id="4-磁盘上文件系统的布局"><a href="#4-磁盘上文件系统的布局" class="headerlink" title="4.磁盘上文件系统的布局"></a>4.磁盘上文件系统的布局</h2><p><img src="//zybtree.github.io/2020/08/20/文件系统/15.png" style="zoom:30%;"></p>
+<h2 id="5-内存中所需的数据结构——以UNIX为例"><a href="#5-内存中所需的数据结构——以UNIX为例" class="headerlink" title="5.内存中所需的数据结构——以UNIX为例"></a>5.内存中所需的数据结构——以UNIX为例</h2><ul>
+<li><strong>系统打开文件表</strong><ul>
+<li>整个系统一张</li>
+<li>放在内存：用于保存已打开文件的FCB</li>
+</ul>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/16.png" style="zoom:33%;"></p>
+<ul>
+<li><strong>用户打开文件表</strong><ul>
+<li>每个进程一个</li>
+<li>进程的PCB中记录了用户打开文件表的位置</li>
+</ul>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/17.png" style="zoom:33%;"></p>
+<hr>
+<h1 id="七-文件系统实例——UNIX"><a href="#七-文件系统实例——UNIX" class="headerlink" title="七.文件系统实例——UNIX"></a>七.文件系统实例——UNIX</h1><h2 id="1-文件目录检索"><a href="#1-文件目录检索" class="headerlink" title="1.文件目录检索"></a>1.文件目录检索</h2><p>访问一个文件时，用户通常给出一个文件名，通过使用文件名把文件的内容读入内存通常具有两个步骤：</p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/18.png" style="zoom:33%;"></p>
+<ul>
+<li><p><strong>目录检索</strong></p>
+<ul>
+<li><strong>用户给出文件名 → 按文件名查找到目录项/FCB</strong></li>
+<li><strong>根据路径名检索:</strong><ul>
+<li><strong>全路径名:</strong>从根开始 \A\B\C\File1 </li>
+<li><strong>相对路径:</strong>从当前目录开始 C\File1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>文件寻址</strong></p>
+<ul>
+<li>根据目录项/FCB中文件物理地址等信息，计算出文件中任意记录或字符在存储介质上的地址</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-目录文件实现时的改进"><a href="#2-目录文件实现时的改进" class="headerlink" title="2.目录文件实现时的改进"></a>2.目录文件实现时的改进</h2><h3 id="1-基本概念-7"><a href="#1-基本概念-7" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><ul>
+<li>问题：如何加快目录检索?</li>
+<li>一种解决方案：<ul>
+<li><strong>目录项分解法：</strong>即把FCB分成两部分<ul>
+<li><strong>符号目录顶：</strong>文件名，文件号</li>
+<li><strong>基本目录项：</strong>除文件名外的所有字段——UNIX的I节点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-示意图"><a href="#2-示意图" class="headerlink" title="(2).示意图"></a>(2).示意图</h3><p><img src="//zybtree.github.io/2020/08/20/文件系统/19.png" style="zoom:33%;"></p>
+<h3 id="3-改进后的好处"><a href="#3-改进后的好处" class="headerlink" title="(3).改进后的好处"></a>(3).改进后的好处</h3><p>例子:</p>
+<p>假设 一个FCB 占 48 个字节，物理块大小 512 字节</p>
+<ul>
+<li><p>符号目录项：占 8 字节(文件名6字节，文件号2字节) </p>
+</li>
+<li><p>基本目录项：占48–6=42字节</p>
+</li>
+<li><p>一个目录文件有128个目录项</p>
+</li>
+</ul>
+<p>分解前：占13块 </p>
+<p>分解后：符号文件占 2 块，基本文件占11块</p>
+<p>查找一个文件的平均访盘次数:</p>
+<ul>
+<li><p><strong>分解前:7次</strong></p>
+</li>
+<li><p><strong>分解后:2.5次</strong></p>
+</li>
+</ul>
+<p><strong>目录文件改进后减少了访盘次数，提高了文件检索速度</strong></p>
+<h2 id="3-UNIX文件系统"><a href="#3-UNIX文件系统" class="headerlink" title="3.UNIX文件系统"></a>3.UNIX文件系统</h2><ul>
+<li><p>FCB划分成两部分：目录项+i节点</p>
+<ul>
+<li><p>目录项:文件名+i节点号</p>
+</li>
+<li><p>目录文件由目录项构成</p>
+</li>
+<li><p>i节点:描述文件的相关信息</p>
+</li>
+</ul>
+</li>
+<li><p>UNIX每个文件由一个目录项、一个i节点和若干磁盘块构成。</p>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/20.png" style="zoom:33%;"></p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/2·.png" style="zoom:33%;"></p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/21.png" style="zoom:33%;"></p>
+<hr>
+<h1 id="八-文件系统实例——FAT"><a href="#八-文件系统实例——FAT" class="headerlink" title="八.文件系统实例——FAT"></a>八.文件系统实例——FAT</h1><h2 id="1-WINDOWS—FAT16文件系统"><a href="#1-WINDOWS—FAT16文件系统" class="headerlink" title="1.WINDOWS—FAT16文件系统"></a>1.WINDOWS—FAT16文件系统</h2><ul>
+<li>簇大小：1、2、4、8、16、32或64扇区</li>
+<li>文件系统的数据记录在”引导扇区”中</li>
+<li>文件分配表FAT的作用<ul>
+<li>描述簇的分配状态、标注下一簇的簇号等</li>
+</ul>
+</li>
+<li><p>FAT表项：2字节</p>
+</li>
+<li><p>目录项：32字节</p>
+</li>
+<li>根目录大小固定</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/22.png" style="zoom:33%;"></p>
+<h2 id="2-FAT文件系统"><a href="#2-FAT文件系统" class="headerlink" title="2.FAT文件系统"></a>2.FAT文件系统</h2><h3 id="1-MBR"><a href="#1-MBR" class="headerlink" title="(1).MBR"></a>(1).MBR</h3><p>主引导记录通常放在0号扇区。</p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/23.png" style="zoom:33%;"></p>
+<h3 id="2-DBR"><a href="#2-DBR" class="headerlink" title="(2).DBR"></a>(2).DBR</h3><p><img src="//zybtree.github.io/2020/08/20/文件系统/24.png" style="zoom:33%;"></p>
+<h2 id="3-引导扇区"><a href="#3-引导扇区" class="headerlink" title="3.引导扇区"></a>3.引导扇区</h2><h3 id="1-BIOS参数块"><a href="#1-BIOS参数块" class="headerlink" title="(1).BIOS参数块"></a>(1).BIOS参数块</h3><p><img src="//zybtree.github.io/2020/08/20/文件系统/25.png" style="zoom:33%;"></p>
+<h3 id="2-扩展BIOS参数块-EBPB"><a href="#2-扩展BIOS参数块-EBPB" class="headerlink" title="(2).扩展BIOS参数块(EBPB)"></a>(2).扩展BIOS参数块(EBPB)</h3><p><img src="//zybtree.github.io/2020/08/20/文件系统/26.png" style="zoom:34%;"></p>
+<h2 id="4-文件分配表FAT"><a href="#4-文件分配表FAT" class="headerlink" title="4.文件分配表FAT"></a>4.文件分配表FAT</h2><ul>
+<li><p>可以把文件分配表看成是一个整数数组，每个整数代表磁盘分区的一个簇号</p>
+</li>
+<li><p>状态 </p>
+<ul>
+<li>未使用、坏簇、系统保留、被文件占用(下一簇簇号)、最后一簇(0xFFFF)</li>
+</ul>
+</li>
+<li>簇号从0开始编号，簇0和簇1是保留的</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/27.png" style="zoom:33%;"></p>
+<h2 id="5-FAT16目录项"><a href="#5-FAT16目录项" class="headerlink" title="5.FAT16目录项"></a>5.FAT16目录项</h2><p><img src="//zybtree.github.io/2020/08/20/文件系统/28.png" style="zoom:33%;"></p>
+<h2 id="6-FAT32-文件系统"><a href="#6-FAT32-文件系统" class="headerlink" title="6.FAT32 文件系统"></a>6.FAT32 文件系统</h2><h3 id="1-基本概念-8"><a href="#1-基本概念-8" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><ul>
+<li>FAT32的根目录区(ROOT区)不是固定区域、固定大小，而是数据区的一部分，采用与子目录文件相同的管理方式</li>
+<li>目录项仍占32字节，但分为各种类型(包括:“.”目 录项、“..”目录项、短文件名目录项、长文件名目录项、卷标项(根目录)、已删除目录项(第一字节为0xE5)等)</li>
+<li>支持长文件名格式</li>
+<li>支持Unicode</li>
+<li>不支持高级容错特性，不具有内部安全特性</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/29.png" style="zoom:33%;"></p>
+<h3 id="2-目录项"><a href="#2-目录项" class="headerlink" title="(2).目录项"></a>(2).目录项</h3><p><img src="//zybtree.github.io/2020/08/20/文件系统/31.png" style="zoom:50%;"></p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/30.png" style="zoom:33%;"></p>
+<h3 id="3-一般长文件名的实现方式"><a href="#3-一般长文件名的实现方式" class="headerlink" title="(3).一般长文件名的实现方式"></a>(3).一般长文件名的实现方式</h3><p><img src="//zybtree.github.io/2020/08/20/文件系统/32.png" style="zoom:33%;"></p>
+<p>FAT32——长文件名的目录项格式</p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/33.png" style="zoom:33%;"></p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/34.png" style="zoom:33%;"></p>
+<h2 id="7-Windows例子"><a href="#7-Windows例子" class="headerlink" title="7.Windows例子"></a>7.Windows例子</h2><p><img src="//zybtree.github.io/2020/08/20/文件系统/35.png" style="zoom:33%;"></p>
+<p>Windows为其建立了五个目录项、四个保存长文件名、一个保存压缩文件名THEQUI~1。</p>
+<hr>
+<h1 id="九-文件操作的实现"><a href="#九-文件操作的实现" class="headerlink" title="九.文件操作的实现"></a>九.文件操作的实现</h1><h2 id="1-操作的实现"><a href="#1-操作的实现" class="headerlink" title="1.操作的实现"></a>1.操作的实现</h2><h3 id="1-创建文件"><a href="#1-创建文件" class="headerlink" title="(1).创建文件"></a>(1).创建文件</h3><p><strong>建立系统与文件的联系，实质是建立文件的FCB。</strong></p>
+<ul>
+<li><p>在目录中为新文件建立一个目录项，根据提供的参数及需要填写相关内容</p>
+</li>
+<li><p>分配必要的存储空间</p>
+</li>
+</ul>
+<h3 id="2-打开文件"><a href="#2-打开文件" class="headerlink" title="(2).打开文件"></a>(2).打开文件</h3><p>根据文件名在文件目录中检索，并将该文件的目录项读入内存，建立相应的数据结构，为后续的文件操作做好准备。</p>
+<blockquote>
+<p> 文件描述符/文件句柄</p>
+</blockquote>
+<h2 id="2-文件操作——建立文件"><a href="#2-文件操作——建立文件" class="headerlink" title="2.文件操作——建立文件"></a>2.文件操作——建立文件</h2><p><strong>create(文件名，访问权限)。</strong></p>
+<ol>
+<li><p>检查参数的合法性</p>
+<blockquote>
+<p>例如:文件名是否符合命名规则；有无重名文件;</p>
+<p>合法→2，否则→报错、返回</p>
+</blockquote>
+</li>
+<li><p>申请空闲目录项，并填写相关内容;</p>
+</li>
+<li>为文件申请磁盘块</li>
+<li>返回</li>
+</ol>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/36.png" style="zoom:35%;"></p>
+<h2 id="3-文件操作——打开文件"><a href="#3-文件操作——打开文件" class="headerlink" title="3.文件操作——打开文件"></a>3.文件操作——打开文件</h2><p><strong>打开文件是为文件读写做准备。</strong></p>
+<p>给出文件路径名，获得文件句柄(file handle)或文件描述 符(file descriptor)，需将该文件的目录项读到内存</p>
+<blockquote>
+<p> fd=open(文件路径名，打开方式)</p>
+</blockquote>
+<ol>
+<li><p>根据文件路径名查目录，找到目录项 (或I节点号) ;</p>
+</li>
+<li><p>根据文件号查系统打开文件表，看文件是否已被打开;</p>
+<blockquote>
+<p> 是 → 共享计数加1<br> 否则 → 将目录项 (或I节点)等信息填入系统打开文件 表空表项，共享计数置为1;</p>
+</blockquote>
+</li>
+<li><p>根据打开方式、共享说明和用户身份检查访问合法性; </p>
+</li>
+<li><p>在用户打开文件表中获取一空表项，填写打开方式等，并指向系统打开文件表对应表项</p>
+<blockquote>
+<p> 返回信息:fd:文件描述符，是一个非负整数，用于以 后读写文件</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="4-文件操作——指针定位"><a href="#4-文件操作——指针定位" class="headerlink" title="4.文件操作——指针定位"></a>4.文件操作——指针定位</h2><blockquote>
+<p>seek(fd, 新指针的位置)</p>
+</blockquote>
+<p><strong>系统为每个进程打开的每个文件维护一个读写指针，即相对于文件开头的偏移地址</strong>(读写指针指向每次文件读写的开始位置，在每次读写完成后， 读写指针按照读写的数据量自动后移相应数值)</p>
+<ol>
+<li><p>由fd查用户打开文件表，找到对应的表项;</p>
+</li>
+<li><p>将用户打开文件表中文件读写指针位置设为新指针的位置，供后继读写命令存取该指针处文件内容。</p>
+</li>
+</ol>
+<h2 id="5-文件操作——读文件"><a href="#5-文件操作——读文件" class="headerlink" title="5.文件操作——读文件"></a>5.文件操作——读文件</h2><blockquote>
+<p>read(文件描述符，读指针，要读的长度，内存目的地址)</p>
+</blockquote>
+<ol>
+<li><p>根据打开文件时得到的文件描述符，找到相应的文件控制块(目录项) </p>
+<blockquote>
+<p>确定读操作的合法性 </p>
+<p>读操作合法→2，</p>
+<p>否则→出错处理 </p>
+<p>问题:文件尚未打开?</p>
+</blockquote>
+</li>
+<li><p>将文件的逻辑块号转换为物理块号</p>
+<ul>
+<li>根据参数中的读指针、长度与文件控制块中的信息，确定块号、块数、块内位移</li>
+</ul>
+</li>
+<li><p>申请缓冲区</p>
+</li>
+<li>启动磁盘I/O操作，把磁盘块中的信息读入缓冲区，再传送到指定的内存区(多次读盘)</li>
+<li>反复执行3、4直至读出所需数量的数据或读至文件尾</li>
+</ol>
+<hr>
+<h1 id="十-文件系统的管理"><a href="#十-文件系统的管理" class="headerlink" title="十.文件系统的管理"></a>十.文件系统的管理</h1><h2 id="1-文件系统的可靠性"><a href="#1-文件系统的可靠性" class="headerlink" title="1.文件系统的可靠性"></a>1.文件系统的可靠性</h2><p><strong>可靠性: 抵御和预防各种物理性破坏和人为性破坏的能力</strong></p>
+<ul>
+<li>坏块问题 </li>
+<li>备份<ul>
+<li>通过转储操作，形成文件或文件系统的多个副本</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-文件系统备份"><a href="#2-文件系统备份" class="headerlink" title="2.文件系统备份"></a>2.文件系统备份</h2><ul>
+<li><p><strong>全量转储:</strong></p>
+<ul>
+<li>定期将所有文件拷贝到后援存储器</li>
+</ul>
+</li>
+<li><p><strong>增量转储:</strong></p>
+<ul>
+<li>只转储修改过的文件，即两次备份之间的修改，减少系统开销</li>
+</ul>
+</li>
+<li><p><strong>物理转储:</strong></p>
+<ul>
+<li>从磁盘第0块开始，将所有磁盘块按序输出到磁带</li>
+</ul>
+</li>
+<li><strong>逻辑转储:</strong><ul>
+<li>从一个或几个指定目录开始，递归地转储自给定日期后所有更改的文件和目录</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-文件系统一致性"><a href="#3-文件系统一致性" class="headerlink" title="3.文件系统一致性"></a>3.文件系统一致性</h2><h3 id="1-问题的产生"><a href="#1-问题的产生" class="headerlink" title="(1).问题的产生:"></a>(1).问题的产生:</h3><ul>
+<li>磁盘块 → 内存 → 写回磁盘块 </li>
+<li>若在写回之前，系统崩溃，则文件系统出现不一致</li>
+</ul>
+<h3 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="(2).解决方案"></a>(2).解决方案</h3><p>设计一个实用程序，当系统再次启动时，运行该 程序，检查磁盘块和目录系统。</p>
+<h2 id="4-磁盘块的一致性检查"><a href="#4-磁盘块的一致性检查" class="headerlink" title="4.磁盘块的一致性检查"></a>4.磁盘块的一致性检查</h2><p><img src="//zybtree.github.io/2020/08/20/文件系统/37.png" style="zoom:33%;"></p>
+<p>UNIX一致性检查工作过程: </p>
+<p>两张表，每块对应一个表中的计数器，初值为0</p>
+<ul>
+<li><p>表一:记录了每块在文件中出现的次数 </p>
+</li>
+<li><p>表二:记录了每块在空闲块表中出现的次数</p>
+</li>
+</ul>
+<h2 id="5-磁盘系统的写入策略"><a href="#5-磁盘系统的写入策略" class="headerlink" title="5.磁盘系统的写入策略"></a>5.磁盘系统的写入策略</h2><ul>
+<li><p><strong>通写(write-through)</strong> </p>
+<ul>
+<li><p>内存中的修改立即写到磁盘 </p>
+</li>
+<li><p>缺点:速度性能差</p>
+<blockquote>
+<p>例: FAT文件系统</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>延迟写(lazy-write)</strong></p>
+<ul>
+<li>利用回写(write back)缓存的方法得到高速 </li>
+<li>可恢复性差</li>
+</ul>
+</li>
+<li><p><strong>可恢复写(transaction log)</strong> </p>
+<ul>
+<li>采用事务日志来实现文件系统的写入 </li>
+<li>既考虑安全性，又考虑速度性能</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="十一-文件系统的安全性"><a href="#十一-文件系统的安全性" class="headerlink" title="十一.文件系统的安全性"></a>十一.文件系统的安全性</h1><h2 id="1-文件保护机制"><a href="#1-文件保护机制" class="headerlink" title="1.文件保护机制"></a>1.文件保护机制</h2><ul>
+<li>用于提供安全性、特定的操作系统机制</li>
+<li>对拥有权限的用户，应该让其进行相应操作，否则，应禁止</li>
+<li>防止其他用户冒充对文件进行操作</li>
+</ul>
+<p>实现：</p>
+<ul>
+<li>用户身份验证 </li>
+<li>访问控制</li>
+</ul>
+<h2 id="2-文件的访问的控制"><a href="#2-文件的访问的控制" class="headerlink" title="2.文件的访问的控制"></a>2.文件的访问的控制</h2><h3 id="1-主动控制-访问控制表"><a href="#1-主动控制-访问控制表" class="headerlink" title="(1).主动控制:访问控制表"></a>(1).主动控制:访问控制表</h3><ul>
+<li>每个文件一个</li>
+<li>记录用户ID和访问权限 </li>
+<li>用户可以是一组用户</li>
+<li>文件可以是一组文件</li>
+</ul>
+<h3 id="2-能力表-权限表"><a href="#2-能力表-权限表" class="headerlink" title="(2).能力表(权限表)"></a>(2).能力表(权限表)</h3><ul>
+<li><p>每个用户一个</p>
+</li>
+<li><p>记录文件名及访问权限 </p>
+</li>
+<li>用户可以是一组用户</li>
+<li>文件可以是一组文件</li>
+</ul>
+<h2 id="3-UNIX的文件访问控制"><a href="#3-UNIX的文件访问控制" class="headerlink" title="3.UNIX的文件访问控制"></a>3.UNIX的文件访问控制</h2><p>采用文件的二级存取控制审查用户的身份、审查操作的合法性。</p>
+<ul>
+<li><p><strong>第一级:对访问者的识别，对用户分类:</strong></p>
+<ul>
+<li>文件主(owner) </li>
+<li>文件主的同组用户(group)</li>
+<li>其他用户(other)</li>
+</ul>
+</li>
+<li><p>第二级:对操作权限的识别，对操作分类:</p>
+<ul>
+<li>读操作(r)</li>
+<li>写操作(w)</li>
+<li>执行操作(x)</li>
+<li>不能执行任何操作(-)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="十二-文件系统的性能"><a href="#十二-文件系统的性能" class="headerlink" title="十二.文件系统的性能"></a>十二.文件系统的性能</h1><blockquote>
+<p>磁盘服务是速度成为系统性能的主要瓶颈之一，设计文件系统应尽可能减少磁盘访问次数。</p>
+<p>提高文件系统性能的方法有：目录项(FCB)分解、当前目录、磁盘碎片整理；块高速缓存、磁盘调度、提前读取、合理分配磁 盘空间、信息的优化分布、RAID技术… …</p>
+</blockquote>
+<h2 id="1-块高速缓存-BLOCK-CACHE"><a href="#1-块高速缓存-BLOCK-CACHE" class="headerlink" title="1.块高速缓存(BLOCK CACHE)"></a>1.块高速缓存(BLOCK CACHE)</h2><h3 id="1-基本概念-9"><a href="#1-基本概念-9" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><p>块高速缓存又称为文件缓存、磁盘高速缓存、缓冲区高速缓存。</p>
+<p><strong>基本思想是:在内存中为磁盘块设置的一个缓冲区，保存了磁盘中某些块的副本。</strong></p>
+<p>利用方式：</p>
+<ul>
+<li>检查所有的读请求，看所需块是否在块高速缓存中 </li>
+<li>如果在，则可直接进行读操作；否则，先将数据块读入块高速缓存，再拷贝到所需的地方</li>
+</ul>
+<p>引入原因：<strong>由于访问的局部性原理，当一数据块被读入块高速缓存以满足一个I/O请求时，很可能将来还会再次访问到这一数据块</strong></p>
+<h3 id="2-如何实现"><a href="#2-如何实现" class="headerlink" title="(2).如何实现"></a>(2).如何实现</h3><ul>
+<li>块高速缓存的组织：</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/38.png" style="zoom:33%;"></p>
+<ul>
+<li>块高速缓存的置换(修改LRU)<ul>
+<li>该块是否不久后会再次使用</li>
+</ul>
+</li>
+<li>块高速缓存写入策略<ul>
+<li>该块是否会影响文件系 统的一致性</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-提前读取"><a href="#2-提前读取" class="headerlink" title="2.提前读取"></a>2.提前读取</h2><ul>
+<li><strong>思路：</strong>每次访问磁盘，多读入一些磁盘块</li>
+<li><strong>依据：</strong>程序执行的空间局部性原理</li>
+<li><strong>开销：</strong>较小(只有数据传输时间)</li>
+<li>具有针对性</li>
+</ul>
+<h2 id="3-WINDOWS的文件访问方式"><a href="#3-WINDOWS的文件访问方式" class="headerlink" title="3.WINDOWS的文件访问方式"></a>3.WINDOWS的文件访问方式</h2><ul>
+<li><p><strong>不使用文件缓存</strong> </p>
+<ul>
+<li>普通方式</li>
+<li>通过Windows提供的FlushFileBuffer函数实现  使用文件缓存</li>
+</ul>
+</li>
+<li><p><strong>预读取。</strong></p>
+<ul>
+<li>每次读取的块大小、缓冲区大小、 置换方式</li>
+<li>写回。写回时机选择、一致性问题</li>
+</ul>
+</li>
+<li><p><strong>异步模式</strong></p>
+<ul>
+<li>不再等待磁盘操作的完成 </li>
+<li>使处理器和I/O并发工作</li>
+</ul>
+</li>
+</ul>
+<p>用户对磁盘的访问通过访问文件缓存来实现。</p>
+<ul>
+<li><p>由Windows的CacheManager实现对缓存的控制 </p>
+<ul>
+<li><p>读取数据的时候预取</p>
+</li>
+<li><p>在Cache满时，根据LRU原则清除缓存的内容 </p>
+</li>
+<li>定期更新磁盘内容使其与Cache一致(1秒)</li>
+</ul>
+</li>
+<li><p>Write-back机制</p>
+<ul>
+<li>在用户要对磁盘写数据时，只更改Cache中的 内容，由Cache Manager决定何时将更新反映到磁盘</li>
+</ul>
+</li>
+</ul>
+<p>例子</p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/40.png" style="zoom:33%;"></p>
+<h2 id="4-合理分配磁盘空间"><a href="#4-合理分配磁盘空间" class="headerlink" title="4.合理分配磁盘空间"></a>4.合理分配磁盘空间</h2><p>分配磁盘块时，把有可能顺序存取的块放在一起。尽量分配在同一柱面上，从而减少磁盘臂的移动次数和距离。</p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/41.png" style="zoom:33%;"></p>
+<h2 id="5-磁盘调度"><a href="#5-磁盘调度" class="headerlink" title="5.磁盘调度"></a>5.磁盘调度</h2><p>当有多个访盘请求等待时，采用一定的策略，对这 些请求的服务顺序调整安排，从而降低平均磁盘服务时间，达到公平、高效。</p>
+<blockquote>
+<ul>
+<li>公平：一个I/O请求在有限时间内满足 </li>
+<li>高效：减少设备机械运动带来的时间开销</li>
+</ul>
+</blockquote>
+<p>一次访盘时间 = 寻道时间+旋转延迟时间+传输时间</p>
+<blockquote>
+<p>• 减少寻道时间 </p>
+<p>• 减少延迟时间</p>
+</blockquote>
+<p>例子：</p>
+<p>例子:假设磁盘访问序列: 98，183，37，122，14，124，65，67</p>
+<p>读写头起始位置:53</p>
+<p>要求计算:</p>
+<ul>
+<li>磁头服务序列</li>
+<li>磁头移动总距离(道数)</li>
+</ul>
+<h3 id="1-先来先服务-FCFS"><a href="#1-先来先服务-FCFS" class="headerlink" title="(1).先来先服务(FCFS)"></a>(1).先来先服务(FCFS)</h3><p>思想：按访问请求到达的先后次序服务</p>
+<ul>
+<li><p>优点：简单，公平</p>
+</li>
+<li><p>缺点：效率不高，相临两次请求可能会造成最内到最 外的柱面寻道，使磁头反复移动，增加了服务时间， 对机械也不利</p>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/42.png" style="zoom:33%;"></p>
+<h3 id="2-最短寻道时间优先-Shortest-Seek-Time-First"><a href="#2-最短寻道时间优先-Shortest-Seek-Time-First" class="headerlink" title="(2).最短寻道时间优先(Shortest Seek Time First)"></a>(2).最短寻道时间优先(Shortest Seek Time First)</h3><p>思想：优先选择距当前磁头最近的访问请求进行服务 主要考虑寻道优先</p>
+<ul>
+<li><p>优点：改善了磁盘平均服务时间</p>
+</li>
+<li><p>缺点：造成某些访问请求长期等待得不到服务</p>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/43.png" style="zoom:33%;"></p>
+<h3 id="3-扫描算法SCAN-电梯算法"><a href="#3-扫描算法SCAN-电梯算法" class="headerlink" title="(3).扫描算法SCAN(电梯算法)"></a>(3).扫描算法SCAN(电梯算法)</h3><p>思想：当设备无访问请求时，磁头不动;当有访问请求时，磁头 按一个方向移动，在移动过程中对遇到的访问请求进行服 务，然后判断该方向上是否还有访问请求，如果有则继续 扫描;否则改变移动方向，并为经过的访问请求服务，如此反复。</p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/44.png" style="zoom:33%;"></p>
+<h3 id="4-单向扫描调度算法C-SCAN"><a href="#4-单向扫描调度算法C-SCAN" class="headerlink" title="(4).单向扫描调度算法C-SCAN"></a>(4).单向扫描调度算法C-SCAN</h3><ul>
+<li>总是从0号柱面开始向里扫描</li>
+<li><p>按柱面(磁道)位置选择访问者</p>
+</li>
+<li><p>移动臂到达最后一个柱面后，立即带动读写磁头快速 返回到0号柱面</p>
+</li>
+<li>返回时不为任何的等待访问者服务</li>
+<li>返回后可再次进行扫描</li>
+</ul>
+<p>效果：减少了新请求的最大延迟</p>
+<h3 id="5-N-step-SCAN策略"><a href="#5-N-step-SCAN策略" class="headerlink" title="(5).N-step-SCAN策略"></a>(5).N-step-SCAN策略</h3><ul>
+<li>把磁盘请求队列分成长度为N的子队列，每一次用SCAN处理一个子队列</li>
+<li>在处理某一个队列时，新请求添加到其他子队列中</li>
+<li>如果最后剩下的请求数小于N，则它们全都将在下一次扫描时处理</li>
+<li>N值比较大时，其性能接近SCAN；当N=1时，即FIFO</li>
+</ul>
+<p>克服“磁头臂的粘性”</p>
+<h3 id="6-FSCAN策略"><a href="#6-FSCAN策略" class="headerlink" title="(6).FSCAN策略"></a>(6).FSCAN策略</h3><ul>
+<li>使用两个子队列</li>
+</ul>
+<ul>
+<li>扫描开始时，所有请求都在一个队列中，而另一个队列为空</li>
+<li>扫描过程中，所有新到的请求都放入另一个队列中</li>
+<li>对新请求的服务延迟到处理完所有老请求之后</li>
+</ul>
+<h3 id="7-旋转调度算法"><a href="#7-旋转调度算法" class="headerlink" title="(7).旋转调度算法"></a>(7).旋转调度算法</h3><p>旋转调度:根据延迟时间来决定执行次序的调度</p>
+<p>三种情况:</p>
+<ul>
+<li><p>若干等待访问者请求访问同一磁头上的不同扇区</p>
+</li>
+<li><p>若干等待访问者请求访问不同磁头上的不同编号的扇区</p>
+</li>
+<li><p>若干等待访问者请求访问不同磁头上具有相同的扇区</p>
+</li>
+</ul>
+<p>解决方案:</p>
+<ul>
+<li><p>对于前两种情况：总是让首先到达读写磁头位置下的扇区先进行传送操作</p>
+</li>
+<li><p>对于第三种情况：这些扇区同时到达读写磁头位置下，可任意选择一个读写磁头进行传送操作</p>
+</li>
+</ul>
+<p>例子</p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/45.png" style="zoom:33%;"></p>
+<h2 id="6-信息的优化分布"><a href="#6-信息的优化分布" class="headerlink" title="6.信息的优化分布"></a>6.信息的优化分布</h2><p><strong>记录在磁道上的排列方式也会影响输入输出操作的时间。</strong></p>
+<p>例子:处理程序要求顺序处理8个记录；磁盘旋转一周为20毫秒/周;花5毫秒对记录进行处理。</p>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/46.png" style="zoom:33%;"></p>
+<h2 id="7-记录的成组与分解"><a href="#7-记录的成组与分解" class="headerlink" title="7.记录的成组与分解"></a>7.记录的成组与分解</h2><p>记录的成组：把若干个逻辑记录合成一组存放一块的工作</p>
+<ul>
+<li><p>进行成组操作时必须使用内存缓冲区，缓冲区的 长度等于逻辑记录长度乘以成组的块因子。</p>
+</li>
+<li><p>成组目的：提高了存储空间的利用率;减少了启 动外设的次数，提高系统的工作效率。</p>
+</li>
+<li><p>记录的分解从一组逻辑记录中把一个逻辑记录分离出来。</p>
+</li>
+</ul>
+<h2 id="8-RAID技术"><a href="#8-RAID技术" class="headerlink" title="8.RAID技术"></a>8.RAID技术</h2><h3 id="1-基本概念-10"><a href="#1-基本概念-10" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><p>RAID(独立磁盘冗余阵列) (Redundant Arrays of Independent Disks) ：多块磁盘按照一定要求构成一个独立的存储设备。</p>
+<p><strong>目标：</strong>提高可靠性和性能</p>
+<p><strong>考虑：</strong>磁盘存储系统 的 速度、容量、容错、数据 灾难发生后的数据恢复</p>
+<p><strong>数据的组织方式：</strong></p>
+<ul>
+<li><p>通过把多个磁盘组织在一起，作为一个逻辑卷提供磁盘跨越功能</p>
+</li>
+<li><p>通过把数据分成多个数据块，并行写入/读出多个磁盘，以提高数据传输率(数据分条stripe)</p>
+</li>
+<li><p>通过镜像或校验操作，提供容错能力(冗余)</p>
+</li>
+</ul>
+<blockquote>
+<p>最简单的RAID组织方式:镜像 </p>
+<p>最复杂的RAID组织方式:块交错校验</p>
+</blockquote>
+<h3 id="2-RAID-0-—-条带化"><a href="#2-RAID-0-—-条带化" class="headerlink" title="(2).RAID 0 — 条带化"></a>(2).RAID 0 — 条带化</h3><ul>
+<li><p>数据分布在阵列的所有磁盘上</p>
+</li>
+<li><p>有数据请求时，同时多个磁盘并行操作</p>
+</li>
+<li><p>充分利用总线带宽，数据吞吐率提高，驱动器负载均衡</p>
+</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/47.png" style="zoom:33%;"></p>
+<h3 id="3-RAID-1-—-镜像"><a href="#3-RAID-1-—-镜像" class="headerlink" title="(3).RAID 1 — 镜像"></a>(3).RAID 1 — 镜像</h3><ul>
+<li>最大限度保证数据安全及可恢复性</li>
+<li>所有数据同时存在于两块磁盘的相同位置 </li>
+<li>磁盘利用率50%</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/48.png" style="zoom:33%;"></p>
+<h3 id="4-RAID-4-—-交错块奇偶校验"><a href="#4-RAID-4-—-交错块奇偶校验" class="headerlink" title="(4).RAID 4 — 交错块奇偶校验"></a>(4).RAID 4 — 交错块奇偶校验</h3><ul>
+<li>带奇偶校验</li>
+<li>以数据块为单位</li>
+</ul>
+<p><img src="//zybtree.github.io/2020/08/20/文件系统/49.png" style="zoom:33%;"></p>
+<hr>
 ]]></content>
       <categories>
         <category>操作系统</category>
@@ -2582,108 +3851,44 @@
   <entry>
     <title>研究生学习历程</title>
     <url>/2020/08/05/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="2020年8月学习计划"><a href="#2020年8月学习计划" class="headerlink" title="2020年8月学习计划"></a>2020年8月学习计划</h1><h2 id="2020年8月5日"><a href="#2020年8月5日" class="headerlink" title="2020年8月5日"></a>2020年8月5日</h2><ul>
-<li>[x]  Makefile实验楼结束(博客写好)【但是还是感觉深度不够，继续看陈皓的《跟我一起写Makefile》】</li>
-<li>[x]  有关物理层认证的论文搜集好</li>
-<li>[x]  《跟我一起写Makefile》20页完成</li>
-<li>[x]  职业素质教育第二篇结束</li>
-<li>[x]  操作系统第二章一半(操作系统运行环境与运行机制)并完成博客</li>
-<li>[x]  跑步5公里</li>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="2020年9学习计划"><a href="#2020年9学习计划" class="headerlink" title="2020年9学习计划"></a>2020年9学习计划</h1><h4 id="9月第一周"><a href="#9月第一周" class="headerlink" title="9月第一周"></a>9月第一周</h4><p>也就成功进行了Debug<code>l1app</code>子项目，论文没有进展，数据结构也没有真的开始，要戒骄戒躁啊。重新规划一下吧。</p>
+<h2 id="2020年9月第二周"><a href="#2020年9月第二周" class="headerlink" title="2020年9月第二周"></a>2020年9月第二周</h2><h3 id="主要任务"><a href="#主要任务" class="headerlink" title="主要任务"></a>主要任务</h3><ul>
+<li>论文阅读<ul>
+<li>自适应矩阵完全搞懂</li>
+<li>综述论文修改+排版</li>
+<li>论文汇报</li>
 </ul>
-<p>学习和看书时尝试不再听歌，不再看手机，培养专注的习惯。</p>
-<h2 id="2020年8月6日"><a href="#2020年8月6日" class="headerlink" title="2020年8月6日"></a>2020年8月6日</h2><ul>
-<li>[x] 《跟我一起写Makefile》只剩一章，知识点比较偏，不打算看了。</li>
-<li>[x] 英文综述看完一半。</li>
-<li>[x] 职业素质教育第三篇结束</li>
-</ul>
-<p>Deadline是第一生产力，这周把实验楼的Makefile和《跟我一起写Makefile》学了一遍，还是觉得《跟我一起写Makefile》更好一点。希望明天能把Makefile的Debug成功实现吧。</p>
-<h2 id="2020年8月7日"><a href="#2020年8月7日" class="headerlink" title="2020年8月7日"></a>2020年8月7日</h2><ul>
-<li>[x] 复变函数公开课一讲</li>
-<li>[ ] Eclipse 进行Makefile 的 Debug操作(没有成功，不知道是平台的原因还是代码的原因。。很可能是自己太菜了。。明天移植到VS或者VScode上试一下)</li>
-<li>[x] 英文综述看完</li>
-<li>[x] 职业素质教育第四篇结束</li>
-<li>[ ] 操作系统第二章结束(没有结束。。打了两小时球。。)</li>
-<li>[x] 跑步5km</li>
-</ul>
-<h2 id="2020年8月8日"><a href="#2020年8月8日" class="headerlink" title="2020年8月8日"></a>2020年8月8日</h2><ul>
-<li>[x] 复变函数公开课</li>
-<li>[x] 职业素质教育第五篇结束</li>
-<li>[x] 论文三分之一</li>
-</ul>
-<p>去金鹰和朋友吃饭了。。晚上没看东西。。</p>
-<h2 id="2020年8月9日"><a href="#2020年8月9日" class="headerlink" title="2020年8月9日"></a>2020年8月9日</h2><ul>
-<li>[x] 复变函数公开课</li>
-<li>[x] 无线通信公开课一讲</li>
-<li>[x] 职业素质教育整理结束(终于没有其他的东西了)</li>
-<li>[x] 论文三分之二</li>
-<li>[x] 操作系统第二章结束</li>
-</ul>
-<p>晚上看半泽直树2，什么都不能阻止自己！</p>
-<h2 id="2020年8月10日"><a href="#2020年8月10日" class="headerlink" title="2020年8月10日"></a>2020年8月10日</h2><ul>
-<li>[x] VScode 进行 Debug Makefile项目成功</li>
-<li>[x] 认证与机器学习的英文论文结束</li>
-<li>[x] 操作系统进程部分结束，并写好博客</li>
-<li>[x] 跑步5km</li>
-</ul>
-<h2 id="2020年8月11日"><a href="#2020年8月11日" class="headerlink" title="2020年8月11日"></a>2020年8月11日</h2><ul>
-<li>[ ] 把物理层c项目分枝移植到VScode。(出问题，不知道如何在VScode上debug shell命令)</li>
-<li>[x] 认证与机器学习论文梳理，准备好回报PPT的流程</li>
-<li>[x] 操作系统线程部分结束，并写好了博客</li>
-<li>[x] 跳绳3000个</li>
-</ul>
-<h2 id="2020年8月12日"><a href="#2020年8月12日" class="headerlink" title="2020年8月12日"></a>2020年8月12日</h2><ul>
-<li>[ ] 和老师讨论完怎么迁移，但是服务器内存不够了，就很坑，还在找办法</li>
-<li>[ ] 汇报PPT还剩3张</li>
-<li>[x] 复变函数知识点迁移到《通信之道》这本书中</li>
-<li>[x] 操作系统调度算法这章结束，博客写完</li>
-<li>[x] 跳绳3k</li>
-</ul>
-<h2 id="2020年8月13日"><a href="#2020年8月13日" class="headerlink" title="2020年8月13日"></a>2020年8月13日</h2><ul>
-<li>[ ] 项目运行出问题了，Make不成功，又不行。。</li>
-<li>[x]  做论文汇报PPT，文稿，然后论文汇报，一天就结束了</li>
-<li>[ ]  进程并发执行才开头。。</li>
-<li>[x]  跑步6km</li>
-</ul>
-<p>写出论文好难啊。。</p>
-<h2 id="2020年8月14日"><a href="#2020年8月14日" class="headerlink" title="2020年8月14日"></a>2020年8月14日</h2><p>忘记干了什么了。。</p>
-<h2 id="2020年8月15日"><a href="#2020年8月15日" class="headerlink" title="2020年8月15日"></a>2020年8月15日</h2><ul>
-<li>[x] 综述论文确定主题，框架搭完一半。</li>
-<li>[x] 出去和同学吃了一顿饭，晚上打了一小时球。</li>
-<li>[x] 回去跑步8公里。</li>
-</ul>
-<p>以最好的状态去写论文吧，尽人事，听天命，自己不后悔就行了，就当尝试第一次投论文，知道怎么去更好的阅读论文，归纳方法就行了。慢慢找好点子。只是恨疫情让自己白白浪费了半年的时光吧，导致自己拼尽全力来补偿这半年的空白。</p>
-<h2 id="2020年8月16日"><a href="#2020年8月16日" class="headerlink" title="2020年8月16日"></a>2020年8月16日</h2><ul>
-<li>[x] 论文框架结束</li>
-<li>[x] 操作系统并发结束。</li>
-</ul>
-<p>我也不知道今天自己干了什么。。早些睡觉，迎接新一周的到来。</p>
-<h2 id="2020年8月17日"><a href="#2020年8月17日" class="headerlink" title="2020年8月17日"></a>2020年8月17日</h2><ul>
-<li>[x] 项目换了环境还是不行，得等老师回来一起讨论了</li>
-<li>[x] 论文前面到引言部分写完</li>
-<li>[x] 操作系统 同步机制 结束</li>
-</ul>
-<p>还是喜欢自己一个人捣腾东西。</p>
-<h2 id="2020年8月18日"><a href="#2020年8月18日" class="headerlink" title="2020年8月18日"></a>2020年8月18日</h2><ul>
-<li><p>[ ] </p>
 </li>
-<li><p>[x] 操作系统 存储模型一 结束</p>
-</li>
-<li>[x] 论文第二部分找好资料写好具体框架，不过真写起来是真的难憋</li>
-<li>[x] 跑步6km</li>
+<li>论文仿真<ul>
+<li>K临近算法</li>
 </ul>
-<h2 id="2020年8月19日"><a href="#2020年8月19日" class="headerlink" title="2020年8月19日"></a>2020年8月19日</h2><ul>
-<li><p>[ ] </p>
 </li>
-<li><p>[x] 操作系统 存储模型二 完成一半</p>
+<li>数据结构<ul>
+<li>基本概念+线性结构</li>
+</ul>
 </li>
-<li>[x] 论文第二部分写完一半，英文论文就是讲的比中文的更加详细</li>
-<li><p>[ ] </p>
+<li>操作系统<ul>
+<li>概述——书 + 视频</li>
+</ul>
 </li>
-<li><p>[x] 跳绳3500</p>
+<li>项目<ul>
+<li>调通 testMac 与 l1app</li>
+</ul>
 </li>
 </ul>
-<p>直接在实验室完成当天任务再回去，回去直接洗澡睡觉了。不然回了公寓也会忘记写这个总结。还不用带书包，更加方便快捷。</p>
-<h2 id="2020年8月20日"><a href="#2020年8月20日" class="headerlink" title="2020年8月20日"></a>2020年8月20日</h2>]]></content>
+<h3 id="每日任务"><a href="#每日任务" class="headerlink" title="每日任务"></a>每日任务</h3><h4 id="9月7日"><a href="#9月7日" class="headerlink" title="9月7日"></a>9月7日</h4><ul>
+<li>[x] 综述论文修改完三分之一</li>
+<li>[x] 汇报的论文完成三分之一</li>
+<li>[x] VScode Debug例子结局，能够同时在Server与Client进行调试</li>
+</ul>
+<p>明天开始晚上停止打球了，不然累了什么都不想干。坚持跳绳21天，每天5k个，看看究竟能瘦多少。</p>
+<h4 id="9月8日"><a href="#9月8日" class="headerlink" title="9月8日"></a>9月8日</h4><ul>
+<li>[x]   综述论文修改到射频增强部分</li>
+<li>[x]  汇报的论文完成三分之二</li>
+<li>[x]  数据结构完成概述笔记</li>
+<li>[x] 跳绳5k</li>
+</ul>
+]]></content>
       <categories>
         <category>研究生学习</category>
       </categories>
@@ -3211,16 +4416,7 @@
 <p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/4.png" style="zoom:50%;"></p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> ret = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//1.判断线性表是否合法</span></span><br><span class="line"><span class="comment">//2.判断删除位置是否合法</span></span><br><span class="line"><span class="keyword">if</span>((<span class="built_in">list</span> != <span class="literal">NULL</span>) &amp;&amp; (<span class="number">0</span> &lt;= pos) &amp;&amp; (pos&lt;= <span class="built_in">list</span>-&gt;length))</span><br><span class="line">&#123;</span><br><span class="line">		<span class="comment">//3.将元素取出</span></span><br><span class="line">		ret = <span class="built_in">list</span>-&gt;node[pos];</span><br><span class="line">      </span><br><span class="line">		<span class="comment">//4.将删除位置后的元素分别向前移动一个位置</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = pos+<span class="number">1</span>; i &lt; <span class="built_in">list</span>-&gt;length; i++)</span><br><span class="line">		&#123;</span><br><span class="line">				<span class="built_in">list</span>-&gt;node[i<span class="number">-1</span>] = <span class="built_in">list</span>-&gt;node[i];</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">  	<span class="comment">//5.线性表长度减1</span></span><br><span class="line">		<span class="built_in">list</span>-&gt;length--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
-<h3 id="3-代码具体实现"><a href="#3-代码具体实现" class="headerlink" title="(3).代码具体实现"></a>(3).代码具体实现</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by ZYB on 2020/6/2.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> LIST_SEQLIST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LIST_SEQLIST_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//用void做封装，使用void之后在main函数中不会产生误操作</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">void</span> SeqList;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">void</span> SeqListNode;</span><br><span class="line"></span><br><span class="line"><span class="function">SeqList* <span class="title">SeqList_Create</span><span class="params">(<span class="keyword">int</span> capacity)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SeqList_Destroy</span><span class="params">(SeqList* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SeqList_Clear</span><span class="params">(SeqList* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SeqList_Length</span><span class="params">(SeqList* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SeqList_Capacity</span><span class="params">(SeqList* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SeqList_Insert</span><span class="params">(SeqList* <span class="built_in">list</span>, SeqListNode* node, <span class="keyword">int</span> pos)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">SeqListNode* <span class="title">SeqList_Get</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">SeqListNode* <span class="title">SeqList_Delete</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//LIST_SEQLIST_H</span></span></span><br></pre></td></tr></table></figure></div>
-<p>&lt;/br&gt;</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by ZYB on 2020/6/2.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"SeqList1.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span>  <span class="keyword">int</span> TSeqListNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> capacity;</span><br><span class="line">    <span class="keyword">int</span> length;</span><br><span class="line">    TSeqListNode * node;</span><br><span class="line">&#125;TSeqList;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个新的线性表</span></span><br><span class="line"><span class="function">SeqList* <span class="title">SeqList_Create</span><span class="params">(<span class="keyword">int</span> capacity)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.创建</span></span><br><span class="line">    TSeqList* ret = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(capacity &gt;= <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//2.分配内存</span></span><br><span class="line">        ret = (TSeqList*) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(TSeqList) + <span class="keyword">sizeof</span>(TSeqListNode) * capacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3.检验分配是否成功</span></span><br><span class="line">    <span class="keyword">if</span>(ret != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ret-&gt;capacity = capacity;</span><br><span class="line">        ret-&gt;length = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//新建完的链表的指针指向第一个节点的结尾处</span></span><br><span class="line">        ret-&gt;node = (TSeqListNode*)(ret + <span class="keyword">sizeof</span>(TSeqList));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回新建成功的链表</span></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//销毁线性表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SeqList_Destroy</span><span class="params">(SeqList* <span class="built_in">list</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">free</span>(<span class="built_in">list</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//清空线性表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SeqList_Clear</span><span class="params">(SeqList* <span class="built_in">list</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.强制转换类型，把void类型转换成需要的类型</span></span><br><span class="line">    TSeqList* slist = (TSeqList*)<span class="built_in">list</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2.在转换后线性表不为空的情况下，把长度设置为0</span></span><br><span class="line">    <span class="keyword">if</span>(slist != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        slist-&gt;length = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取线性表的长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SeqList_Length</span><span class="params">(SeqList* <span class="built_in">list</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.强制转换类型，把void类型转换成需要的类型</span></span><br><span class="line">    TSeqList* slist = (TSeqList*)<span class="built_in">list</span>;</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2.在线性表不为空的情况下，获取表的长度</span></span><br><span class="line">    <span class="keyword">if</span>(slist != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ret = slist-&gt;length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//线性表的长度</span></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取线性表的容量大小</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SeqList_Capacity</span><span class="params">(SeqList* <span class="built_in">list</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.强制转换类型，把void类型转换成需要的类型</span></span><br><span class="line">    TSeqList* slist = (TSeqList*)<span class="built_in">list</span>;</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2.在线性表不为空的情况下，获取表的容量大小</span></span><br><span class="line">    <span class="keyword">if</span>(slist != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ret = slist-&gt;capacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3.返回线性表的容量大小</span></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//向线性表的指定位置插入值</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SeqList_Insert</span><span class="params">(SeqList* <span class="built_in">list</span>, SeqListNode* node, <span class="keyword">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.强制转换类型，把void类型转换成需要的类型</span></span><br><span class="line">    TSeqList* slist = (TSeqList*)<span class="built_in">list</span>;</span><br><span class="line">    <span class="comment">//2.检查列表不为空</span></span><br><span class="line">    <span class="keyword">int</span> ret = (slist != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3.检查线性表长度不大于容量。并且需要插入的值合理</span></span><br><span class="line">    ret = ret&amp;&amp;(slist-&gt;length+<span class="number">1</span> &lt;= slist-&gt;capacity);</span><br><span class="line">    ret = ret&amp;&amp;(<span class="number">0</span> &lt;= pos);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//4.在上述条件都合理的情况下进行操作</span></span><br><span class="line">    <span class="keyword">if</span>(ret)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//如果需要插入的位置大于等于线性表的长度，则把修改位置为线性表的最后</span></span><br><span class="line">        <span class="keyword">if</span>( pos &gt;= slist-&gt;length)</span><br><span class="line">        &#123;</span><br><span class="line">            pos = slist-&gt;length;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//把需要插入位置后的节点都往后移一个单位</span></span><br><span class="line">        <span class="keyword">for</span> (i = slist-&gt;length; i &gt; pos ; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            slist-&gt;node[i] = slist-&gt;node[i<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//把节点插入需要的位置</span></span><br><span class="line">        slist-&gt;node[pos] = *((TSeqListNode*)node);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//线性表的长度加1</span></span><br><span class="line">        slist-&gt;length++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回操作结果(成功为1，失败为0)</span></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//在线性表中删除指定的值</span></span><br><span class="line"><span class="function">SeqListNode* <span class="title">SeqList_Delete</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.强制转换类型，把void类型转换成需要的类型</span></span><br><span class="line">    TSeqList* slist = (TSeqList*)<span class="built_in">list</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3.去除删除元素</span></span><br><span class="line">    SeqListNode* ret = SeqList_Get(slist,pos);</span><br><span class="line">    <span class="comment">//因为上面是指针变量，所以删除后，ret指向的指针会改变，对于的值自然也会变，所以要及时转换成数值类型的变量</span></span><br><span class="line">    TSeqListNode date = *(TSeqListNode*)ret;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//printf("在为SeqList_Delete函数中:%d\n",*(int*)ret);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//2.判断删除位置是否合法</span></span><br><span class="line">    <span class="keyword">if</span>((slist != <span class="literal">NULL</span>) &amp;&amp; (<span class="number">0</span> &lt;= pos) &amp;&amp; (pos &lt; slist-&gt;length))</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//4.把删除后的元素全部向前移动一个单元</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = pos + <span class="number">1</span>; i &lt; slist-&gt;length ; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            slist-&gt;node[i<span class="number">-1</span>] = slist-&gt;node[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        slist-&gt;length--;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//5.返回删除的值</span></span><br><span class="line">    <span class="keyword">return</span> &amp;date;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//取出线性表对应位置的值</span></span><br><span class="line"><span class="function">SeqListNode* <span class="title">SeqList_Get</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.强制转换类型，把void类型转换成需要的类型</span></span><br><span class="line">    TSeqList* slist = (TSeqList*)<span class="built_in">list</span>;</span><br><span class="line">    SeqListNode* ret = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//2.判断位置是否合法</span></span><br><span class="line">    <span class="keyword">if</span>( (slist != <span class="literal">NULL</span>) &amp;&amp; (<span class="number">0</span> &lt;= pos) &amp;&amp; (pos &lt; slist-&gt;length) )</span><br><span class="line">    &#123;</span><br><span class="line">        ret = (SeqListNode*)(&amp;slist-&gt;node[pos]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>&lt;/br&gt;</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by ZYB on 2020/6/2.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"SeqList.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* run this program using the console pauser or add your own getch, system("pause") or input loop */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    SeqList* <span class="built_in">list</span> = SeqList_Create(<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">int</span> y = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">int</span> z = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    SeqList_Insert(<span class="built_in">list</span>, &amp;i, <span class="number">0</span>);</span><br><span class="line">    SeqList_Insert(<span class="built_in">list</span>, &amp;j, <span class="number">0</span>);</span><br><span class="line">    SeqList_Insert(<span class="built_in">list</span>, &amp;k, <span class="number">0</span>);</span><br><span class="line">    SeqList_Insert(<span class="built_in">list</span>, &amp;x, <span class="number">0</span>);</span><br><span class="line">    SeqList_Insert(<span class="built_in">list</span>, &amp;y, <span class="number">0</span>);</span><br><span class="line">    SeqList_Insert(<span class="built_in">list</span>, &amp;z, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"线性表长度为:%d\n"</span>,SeqList_Length(<span class="built_in">list</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> index=<span class="number">0</span>; index&lt;SeqList_Length(<span class="built_in">list</span>); index++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span>* p = (<span class="keyword">int</span>*)SeqList_Get(<span class="built_in">list</span>, index);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (SeqList_Length(<span class="built_in">list</span>) &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *(<span class="keyword">int</span>*)SeqList_Delete(<span class="built_in">list</span>, <span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    SeqList_Destroy(<span class="built_in">list</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"线性表长度为:%d\n"</span>,SeqList_Length(<span class="built_in">list</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>&lt;/br&gt;</p>
-<p><strong>运行结果：</strong></p>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/5.png" style="zoom:50%;"></p>
-<p>&lt;/br&gt;</p>
-<h3 id="4-顺序存储的优缺点"><a href="#4-顺序存储的优缺点" class="headerlink" title="(4).顺序存储的优缺点"></a>(4).顺序存储的优缺点</h3><p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/7.png" style="zoom:40%;"></p>
+<h3 id="3-顺序存储的优缺点"><a href="#3-顺序存储的优缺点" class="headerlink" title="(3).顺序存储的优缺点"></a>(3).顺序存储的优缺点</h3><p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/7.png" style="zoom:40%;"></p>
 <hr>
 <p>&lt;/br&gt;</p>
 <h2 id="4-线性表的链式存储结构"><a href="#4-线性表的链式存储结构" class="headerlink" title="4.线性表的链式存储结构"></a>4.线性表的链式存储结构</h2><h3 id="1-结构分析-1"><a href="#1-结构分析-1" class="headerlink" title="(1).结构分析"></a>(1).结构分析</h3><p><strong>链式存储定义：</strong>为了表示每个数据元素与其直接后继的元素之间的逻辑关系，每个元素除了存储本身的信息之外，还需要存储指示其直接后继的消息。</p>
@@ -3270,15 +4466,7 @@
 <p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/12.png" style="zoom:45%;"></p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line">LinkListNode* ret = <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//1.判断线性表是否合法</span></span><br><span class="line"><span class="comment">//2.判断插入位置是否合法</span></span><br><span class="line"><span class="keyword">if</span>( (sList != <span class="literal">NULL</span>) &amp;&amp; (<span class="number">0</span> &lt;= pos) &amp;&amp; (pos &lt; sList-&gt;length) )</span><br><span class="line">&#123;</span><br><span class="line">		LinkListNode* current = (LinkListNode*)sList;</span><br><span class="line">		<span class="comment">//3.获取第pos个元素</span></span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;pos; i++)</span><br><span class="line">		&#123;</span><br><span class="line">				current = current-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//4.将第pos个元素从链表中删除</span></span><br><span class="line">		ret = current-&gt;next;</span><br><span class="line">		current-&gt;next = ret-&gt;next;</span><br><span class="line">		<span class="comment">//5.线性表长度减1</span></span><br><span class="line">		sList-&gt;length--;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> ret;</span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
-<h3 id="3-代码具体实现-1"><a href="#3-代码具体实现-1" class="headerlink" title="(3).代码具体实现"></a>(3).代码具体实现</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by ZYB on 2020/6/5.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> LIST_LINKLIST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LIST_LINKLIST_H</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">void</span> LinkList;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">tag_LinkListNode</span> <span class="title">LinkListNode</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> _<span class="title">tag_LinkListNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    LinkListNode* next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">LinkList* <span class="title">LinkList_Create</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LinkList_Destroy</span><span class="params">(LinkList* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LinkList_Clear</span><span class="params">(LinkList* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LinkList_Length</span><span class="params">(LinkList* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LinkList_Insert</span><span class="params">(LinkList* <span class="built_in">list</span>, LinkListNode* node, <span class="keyword">int</span> pos)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">LinkListNode* <span class="title">LinkList_Get</span><span class="params">(LinkList* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">LinkListNode* <span class="title">LinkList_Delete</span><span class="params">(LinkList* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//LIST_LINKLIST_H</span></span></span><br></pre></td></tr></table></figure></div>
-<p>&lt;/br&gt;</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by ZYB on 2020/6/5.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"LinkList.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">tag_LinkList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    LinkListNode head;</span><br><span class="line">    <span class="keyword">int</span> length;</span><br><span class="line">&#125;TLinkList;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建链表</span></span><br><span class="line"><span class="function">LinkList* <span class="title">LinkList_Create</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//动态生成一个表头结点</span></span><br><span class="line">    TLinkList* ret = (TLinkList*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(TLinkList));</span><br><span class="line">    <span class="comment">//判断是否创建成功</span></span><br><span class="line">    <span class="keyword">if</span>(ret != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ret-&gt;length = <span class="number">0</span>;</span><br><span class="line">        ret-&gt;head.next = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回创建的链表</span></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//销毁链表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LinkList_Destroy</span><span class="params">(LinkList* <span class="built_in">list</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">free</span>(<span class="built_in">list</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//清空链表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LinkList_Clear</span><span class="params">(LinkList* <span class="built_in">list</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//进行强制转换</span></span><br><span class="line">    TLinkList* slist = (TLinkList*)<span class="built_in">list</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//长度设置为0，头结点指向空</span></span><br><span class="line">    <span class="keyword">if</span>(slist != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        slist-&gt;length = <span class="number">0</span>;</span><br><span class="line">        slist-&gt;head.next = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获得链表的长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LinkList_Length</span><span class="params">(LinkList* <span class="built_in">list</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//进行强制转换</span></span><br><span class="line">    TLinkList* slist = (TLinkList*)<span class="built_in">list</span>;</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">-1</span>;</span><br><span class="line">    <span class="comment">//长度赋给变量然后返回</span></span><br><span class="line">    <span class="keyword">if</span>(slist != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ret = slist-&gt;length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//插入节点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LinkList_Insert</span><span class="params">(LinkList* <span class="built_in">list</span>, LinkListNode* node, <span class="keyword">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//进行强制转换</span></span><br><span class="line">    TLinkList* slist = (TLinkList*)<span class="built_in">list</span>;</span><br><span class="line">    <span class="comment">//进行条件检测</span></span><br><span class="line">    <span class="keyword">int</span> ret = (slist != <span class="literal">NULL</span>) &amp;&amp; (pos &gt;= <span class="number">0</span>) &amp;&amp; (node != <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(ret)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//定义一个插入指针指向头结点</span></span><br><span class="line">        LinkListNode* current = (LinkListNode*)slist;</span><br><span class="line">        <span class="comment">//移动指针到需要插入的地方</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; (i &lt; pos) &amp;&amp; (current-&gt;next != <span class="literal">NULL</span>); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            current = current-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//插入节点</span></span><br><span class="line">        node-&gt;next = current-&gt;next;</span><br><span class="line">        current-&gt;next = node;</span><br><span class="line">        <span class="comment">//链表长度加一</span></span><br><span class="line">        slist-&gt;length++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获得对应节点的值</span></span><br><span class="line"><span class="function">LinkListNode* <span class="title">LinkList_Get</span><span class="params">(LinkList* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//进行强制转换</span></span><br><span class="line">    TLinkList* slist = (TLinkList*)<span class="built_in">list</span>;</span><br><span class="line">    LinkListNode* ret = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//进行条件检测</span></span><br><span class="line">   <span class="keyword">if</span>((slist != <span class="literal">NULL</span>) &amp;&amp; (pos &gt;= <span class="number">0</span>) &amp;&amp; (pos &lt; slist-&gt;length))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//定义一个插入指针指向头结点</span></span><br><span class="line">        LinkListNode* current = (LinkListNode*)slist;</span><br><span class="line">        <span class="comment">//移动指针到指定的地方</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; (i &lt; pos) &amp;&amp; (current-&gt;next != <span class="literal">NULL</span>); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            current = current-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//把对应的节点地址赋给ret</span></span><br><span class="line">        ret = current-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除节点</span></span><br><span class="line"><span class="function">LinkListNode* <span class="title">LinkList_Delete</span><span class="params">(LinkList* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//进行强制转换</span></span><br><span class="line">    TLinkList* slist = (TLinkList*)<span class="built_in">list</span>;</span><br><span class="line">    LinkListNode* ret = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//进行条件检测</span></span><br><span class="line">    <span class="keyword">if</span>((slist != <span class="literal">NULL</span>) &amp;&amp; (pos &gt;= <span class="number">0</span>) &amp;&amp; (pos &lt; slist-&gt;length))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//定义一个插入指针指向头结点</span></span><br><span class="line">        LinkListNode* current = (LinkListNode*)slist;</span><br><span class="line">        <span class="comment">//移动指针到指定的地方</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; (i &lt; pos) &amp;&amp; (current-&gt;next != <span class="literal">NULL</span>); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            current = current-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//进行删除操作</span></span><br><span class="line">        ret = current-&gt;next;</span><br><span class="line">        current-&gt;next = ret-&gt;next;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//链表长度减一</span></span><br><span class="line">        slist-&gt;length--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>&lt;/br&gt;</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"LinkList.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* run this program using the console pauser or add your own getch, system("pause") or input loop */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Value</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    LinkListNode header;</span><br><span class="line">    <span class="keyword">int</span> v;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LinkList*  <span class="built_in">list</span> = LinkList_Create();</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Value</span> <span class="title">v1</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Value</span> <span class="title">v2</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Value</span> <span class="title">v3</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Value</span> <span class="title">v4</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Value</span> <span class="title">v5</span>;</span></span><br><span class="line"></span><br><span class="line">    v1.v = <span class="number">1</span>;</span><br><span class="line">    v2.v = <span class="number">2</span>;</span><br><span class="line">    v3.v = <span class="number">3</span>;</span><br><span class="line">    v4.v = <span class="number">4</span>;</span><br><span class="line">    v5.v = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    LinkList_Insert(<span class="built_in">list</span>, (LinkListNode*)&amp;v1, LinkList_Length(<span class="built_in">list</span>));</span><br><span class="line">    LinkList_Insert(<span class="built_in">list</span>, (LinkListNode*)&amp;v2, LinkList_Length(<span class="built_in">list</span>));</span><br><span class="line">    LinkList_Insert(<span class="built_in">list</span>, (LinkListNode*)&amp;v3, LinkList_Length(<span class="built_in">list</span>));</span><br><span class="line">    LinkList_Insert(<span class="built_in">list</span>, (LinkListNode*)&amp;v4, LinkList_Length(<span class="built_in">list</span>));</span><br><span class="line">    LinkList_Insert(<span class="built_in">list</span>, (LinkListNode*)&amp;v5, LinkList_Length(<span class="built_in">list</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"链表长度为:%d\n"</span>,LinkList_Length(<span class="built_in">list</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; LinkList_Length(<span class="built_in">list</span>); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">Value</span>* <span class="title">pv</span> = (<span class="title">struct</span> <span class="title">Value</span>*)<span class="title">LinkList_Get</span>(<span class="title">list</span>, <span class="title">i</span>);</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"结点%d的值为:%d\n"</span>, i, pv-&gt;v);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>( LinkList_Length(<span class="built_in">list</span>) &gt; <span class="number">0</span> )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">Value</span>* <span class="title">pv</span> = (<span class="title">struct</span> <span class="title">Value</span>*)<span class="title">LinkList_Delete</span>(<span class="title">list</span>, 0);</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"删除的节点的值为:%d\n"</span>, pv-&gt;v);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"链表长度为:%d\n"</span>,LinkList_Length(<span class="built_in">list</span>));</span><br><span class="line"></span><br><span class="line">    LinkList_Destroy(<span class="built_in">list</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>&lt;/br&gt;</p>
-<p><strong>运行结果：</strong></p>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/14.png" style="zoom:40%;"></p>
-<h3 id="4-单链表结构与顺序存储结构优缺点"><a href="#4-单链表结构与顺序存储结构优缺点" class="headerlink" title="(4).单链表结构与顺序存储结构优缺点"></a>(4).单链表结构与顺序存储结构优缺点</h3><p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/15.png" style="zoom:50%;"></p>
+<h3 id="3-单链表结构与顺序存储结构优缺点"><a href="#3-单链表结构与顺序存储结构优缺点" class="headerlink" title="(3).单链表结构与顺序存储结构优缺点"></a>(3).单链表结构与顺序存储结构优缺点</h3><p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/15.png" style="zoom:50%;"></p>
 <hr>
 <p>&lt;/br&gt;</p>
 <h2 id="5-静态链表"><a href="#5-静态链表" class="headerlink" title="5.静态链表"></a>5.静态链表</h2><h3 id="1-结构分析-2"><a href="#1-结构分析-2" class="headerlink" title="(1).结构分析"></a>(1).结构分析</h3><p><strong>静态链表：</strong>让数组的元素都是由两个数据域组成，data和next。也就是说，数组的每个下标都对应一个data和一个next。数据域data，用来存放数据元素，也就是通常我们要处理的数据；而next相当于单链表中的next指针，存放该元素的后继在数组中的下标，我们把next叫做游标。</p>
@@ -3325,13 +4513,7 @@
 </ul>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
-<h3 id="3-具体代码实现"><a href="#3-具体代码实现" class="headerlink" title="(3).具体代码实现"></a>(3).具体代码实现</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-<p>&lt;/br&gt;</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-<p>&lt;/br&gt;</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-<p>&lt;/br&gt;</p>
-<h3 id="4-静态链表优缺点"><a href="#4-静态链表优缺点" class="headerlink" title="(4).静态链表优缺点"></a>(4).静态链表优缺点</h3><p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/18.png" style="zoom:50%;"></p>
+<h3 id="3-静态链表优缺点"><a href="#3-静态链表优缺点" class="headerlink" title="(3).静态链表优缺点"></a>(3).静态链表优缺点</h3><p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/18.png" style="zoom:50%;"></p>
 <hr>
 <p>&lt;/br&gt;</p>
 <h2 id="6-循环链表"><a href="#6-循环链表" class="headerlink" title="6.循环链表"></a>6.循环链表</h2><h3 id="1-结构分析-3"><a href="#1-结构分析-3" class="headerlink" title="(1).结构分析"></a>(1).结构分析</h3><p><strong>循环链表的定义：</strong>将单链表中最后一个数据元素的next指针指向第一个元素.</p>
@@ -3347,13 +4529,6 @@
 <li>插入元素到位置pos</li>
 <li>删除位置pos处的元素</li>
 </ul>
-<p>&lt;/br&gt;</p>
-<h3 id="3-代码具体实现-2"><a href="#3-代码具体实现-2" class="headerlink" title="(3).代码具体实现"></a>(3).代码具体实现</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-<p>&lt;/br&gt;</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-<p>&lt;/br&gt;</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-<hr>
 <p>&lt;/br&gt;</p>
 <h2 id="7-双向链表"><a href="#7-双向链表" class="headerlink" title="7.双向链表"></a>7.双向链表</h2>]]></content>
       <categories>
