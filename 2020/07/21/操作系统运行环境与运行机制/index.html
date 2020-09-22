@@ -107,18 +107,18 @@
 <meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
 <meta property="og:description" content="一.操作系统的主要工作 程序的执行  启动程序，执行程序以及程序的结束工作   完成体系结构相关的工作(操作系统与其他软件所不同的地方，与硬件打交道)  完成应用程序所需的共性任务(读盘，申请内存，打印文件)  提供各种基本服务   性能，安全，健壮等问题   用下图来明确操作系统的的地位：   从图中我们可以看出操作系统是在硬件基础上的第一层扩展。  它底下是硬件， 这个硬件都做了什么工作呢？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/1.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/2.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/3.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/4.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/5.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/6.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/7.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/07/21/操作系统运行环境与运行机制/1.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/07/21/操作系统运行环境与运行机制/2.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/07/21/操作系统运行环境与运行机制/3.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/07/21/操作系统运行环境与运行机制/4.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/07/21/操作系统运行环境与运行机制/5.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/07/21/操作系统运行环境与运行机制/6.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/07/21/操作系统运行环境与运行机制/7.png">
 <meta property="og:updated_time" content="2020-08-10T00:15:03.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统运行环境与运行机制">
 <meta name="twitter:description" content="一.操作系统的主要工作 程序的执行  启动程序，执行程序以及程序的结束工作   完成体系结构相关的工作(操作系统与其他软件所不同的地方，与硬件打交道)  完成应用程序所需的共性任务(读盘，申请内存，打印文件)  提供各种基本服务   性能，安全，健壮等问题   用下图来明确操作系统的的地位：   从图中我们可以看出操作系统是在硬件基础上的第一层扩展。  它底下是硬件， 这个硬件都做了什么工作呢？">
-<meta name="twitter:image" content="https://zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/1.png">
+<meta name="twitter:image" content="https://zybo_o.github.io/2020/07/21/操作系统运行环境与运行机制/1.png">
 
 
 
@@ -458,7 +458,7 @@
 </li>
 </ul>
 <p>用下图来明确操作系统的的地位：</p>
-<p><img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/1.png" style="zoom:30%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/07/21/操作系统运行环境与运行机制/1.png" style="zoom:30%;"></p>
 <blockquote>
 <p>从图中我们可以看出操作系统是在硬件基础上的第一层扩展。 </p>
 <p>它底下是硬件， 这个硬件都做了什么工作呢？ 怎么样去了解底下的硬件呢？<strong>这就是本讲的一个内容之一：操作系统运行环境。</strong> 和硬件相关的很多的工作实际上是和操作系统的各个功能相结合的，<strong>这里介绍最基本的 CPU 状态： 中断与异常机制。</strong> 其他的像虚拟页式存储管理的机制， 设备等等的，会在后面跟操作系统功能结合起来讲。 </p>
@@ -496,7 +496,7 @@
 <p>有了这样一个需求之后，<strong>现代处理器通常把CPU 的状态设计为两种、 三种、 或者是四种。</strong> 但是这样在CPU 上时而运行操作系统、时而运行用户程序，CPU 如何知道是运行哪一种状态呢？ 这样就有赖于一些寄存器的某些位的设置：通常是在<font color="red">程序状态字寄存器 PSW</font>中专门设置一位或是两位，根据运行程序对资源和指令的权限不同，设置不同的 CPU 状态。 </p>
 <p>这样不同的程序对资源和指令的使用要求是不同的。</p>
 <p>以X86 处理器当中的典型的一个标志寄存器 EFLAGS，EFLAGS 寄存器为例：</p>
-<p><img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/2.png" style="zoom:50%;"> </p>
+<p><img src="//ZYBO_o.github.io/2020/07/21/操作系统运行环境与运行机制/2.png" style="zoom:50%;"> </p>
 <p>其中就有一位<code>IOPL</code> 是 IO 的权限级别。 这个级别用两位来表示四个状态。 除了这个寄存器以外，还有一些 描述符设置了权限级别。 这是硬件提供的各种不同的CPU状态 。</p>
 <h3 id="3-特权指令和非特权指令"><a href="#3-特权指令和非特权指令" class="headerlink" title="3.特权指令和非特权指令"></a>3.特权指令和非特权指令</h3><p>操作系统需要两种 CPU状态：</p>
 <ul>
@@ -561,24 +561,24 @@
 <blockquote>
 <p>如算术溢出、除零、取数时的奇偶错，访存地址时越界或执行了“陷入指令” 等，这时硬件改变了CPU当前的执行流程，转到相应的错误处理程序或异常处理程序或执行系统调用。</p>
 </blockquote>
-<h3 id="3-事件"><a href="#3-事件" class="headerlink" title="3.事件"></a>3.事件</h3><p><img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/3.png" style="zoom:30%;"></p>
+<h3 id="3-事件"><a href="#3-事件" class="headerlink" title="3.事件"></a>3.事件</h3><p><img src="//ZYBO_o.github.io/2020/07/21/操作系统运行环境与运行机制/3.png" style="zoom:30%;"></p>
 <blockquote>
 <p>中断是外部事件在CPU 之外产生的事件打断了 CPU 。这些事件是正在运行的程序所不期望的。</p>
 <p>异常是由正在执行的指令而引发的 。</p>
 </blockquote>
-<h3 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h3><p><img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/4.png" style="zoom:50%;"></p>
+<h3 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h3><p><img src="//ZYBO_o.github.io/2020/07/21/操作系统运行环境与运行机制/4.png" style="zoom:50%;"></p>
 <h2 id="四-中断与异常机制的工作原理"><a href="#四-中断与异常机制的工作原理" class="headerlink" title="四.中断与异常机制的工作原理"></a>四.中断与异常机制的工作原理</h2><p>中断/异常机制实际上是现代计算机系统中的核心机制之一。它的主要工作是硬件和软件相互配合来完成的通过软硬件的配合，来使计算机的能力得到充分地发挥。中断/异常机制的工作原理主要是从硬件与软件两个方面分析。</p>
 <p><strong>硬件：</strong>捕获中断源发出的各种中断/异常的请求 ，以某一种方式来响应，通过把控制权转交给特定的处理程序来完成这个过程，而这个过程就是中断 。异常的响应，响应中断，响应异常这是硬件完成的工作。</p>
 <p><strong>软件：</strong>识别中断， 异常类型完成对应的处理，<strong>实际上就是处理程序</strong>，把它称之为中断/异常处理程序。</p>
 <h3 id="1-中断响应"><a href="#1-中断响应" class="headerlink" title="1.中断响应"></a>1.中断响应</h3><p>中断响应是发现中断、接收中断的过程，这部分由中断硬件部件完成。处理器控制部件中设有<strong>中断寄存器</strong>，其中保存了各种中断信号。</p>
 <p><strong>CPU响应中断过程示意：</strong></p>
-<p><img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/5.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/07/21/操作系统运行环境与运行机制/5.png" style="zoom:50%;"></p>
 <blockquote>
 <p>中断向量表是个非常重要的软硬件结合的这么一个数据结构。 每一行呢实际上是一个中断向量 。中断向量表是由若干中断向量组成。</p>
 <p>每一个中断向量其实就是一个<strong>内存单元</strong>。它是存放了中断处理程序的这个入口地址，以及这个程序，在运行的时候所需要的一个处理机的状态字。</p>
 </blockquote>
 <p><strong>中断响应示意：</strong></p>
-<p><img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/6.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/07/21/操作系统运行环境与运行机制/6.png" style="zoom:50%;"></p>
 <h3 id="2-中断处理程序"><a href="#2-中断处理程序" class="headerlink" title="2.中断处理程序"></a>2.中断处理程序</h3><p>设计操作系统时，为每一类中断/异常事件编好相 应的处理程序，并设置好中断向量表。系统运行时若响应中断，中断硬件部件将CPU控 制权转给中断处理程序。</p>
 <p><strong>中断处理程序主要做的工作：</strong></p>
 <ul>
@@ -606,7 +606,7 @@
 </ul>
 <h2 id="五-系统调用机制"><a href="#五-系统调用机制" class="headerlink" title="五.系统调用机制"></a>五.系统调用机制</h2><h3 id="1-系统调用"><a href="#1-系统调用" class="headerlink" title="1.系统调用"></a>1.系统调用</h3><h4 id="什么是系统调用"><a href="#什么是系统调用" class="headerlink" title="什么是系统调用"></a>什么是系统调用</h4><p>系统调用是用户在编程时可以调用的操作系统功能。系统调用全称应该是操作系统功能调用，简称系统调用 。</p>
 <h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>系统调用是操作系统给编程人员提供的唯一接口。 通过系统调用使得 CPU 的状态从用户态陷入了内核态。</p>
-<h3 id="2-系统调用，库函数，API，内核函数之间的关系"><a href="#2-系统调用，库函数，API，内核函数之间的关系" class="headerlink" title="2.系统调用，库函数，API，内核函数之间的关系"></a>2.系统调用，库函数，API，内核函数之间的关系</h3><p><img src="//zybtree.github.io/2020/07/21/操作系统运行环境与运行机制/7.png" style="zoom:40%;"></p>
+<h3 id="2-系统调用，库函数，API，内核函数之间的关系"><a href="#2-系统调用，库函数，API，内核函数之间的关系" class="headerlink" title="2.系统调用，库函数，API，内核函数之间的关系"></a>2.系统调用，库函数，API，内核函数之间的关系</h3><p><img src="//ZYBO_o.github.io/2020/07/21/操作系统运行环境与运行机制/7.png" style="zoom:40%;"></p>
 <blockquote>
 <ul>
 <li>应用程序可以直接调系统调用。但是通常情况下，应用程序都是通过了 C 函数库或者是 API 的接口来间接地调用系统调用。</li>

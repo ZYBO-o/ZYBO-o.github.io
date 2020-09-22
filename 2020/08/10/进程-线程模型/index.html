@@ -107,26 +107,26 @@
 <meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
 <meta property="og:description" content="一.进程基本概念 以多道程序设计技术为切点。多道程序设计技术是操作系统最早引入的软件技术。它的基本思想是允许多个程序同时进入内存并运行。主要是为了提高 CPU的利用率,进而提高整个系统的效率。   来看一个例子： ​        在A图中, 内存里有四个程序,因为只有一个物理的程序计数器，所以这四个程序呢是串形执行的。 ​        有了多道程序设计技术之后，每个程序变换成了一个独立的控制流">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/1.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/2.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/3.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/4.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/5.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/6.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/7.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/8.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/9.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/10.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/11.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/12.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/13.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/14.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/15.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/1.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/2.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/3.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/4.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/5.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/6.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/7.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/8.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/9.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/10.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/11.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/12.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/13.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/14.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/15.png">
 <meta property="og:updated_time" content="2020-08-11T12:22:15.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程&amp;线程模型">
 <meta name="twitter:description" content="一.进程基本概念 以多道程序设计技术为切点。多道程序设计技术是操作系统最早引入的软件技术。它的基本思想是允许多个程序同时进入内存并运行。主要是为了提高 CPU的利用率,进而提高整个系统的效率。   来看一个例子： ​        在A图中, 内存里有四个程序,因为只有一个物理的程序计数器，所以这四个程序呢是串形执行的。 ​        有了多道程序设计技术之后，每个程序变换成了一个独立的控制流">
-<meta name="twitter:image" content="https://zybtree.github.io/2020/08/10/进程-线程模型/1.png">
+<meta name="twitter:image" content="https://zybo_o.github.io/2020/08/10/进程-线程模型/1.png">
 
 
 
@@ -452,7 +452,7 @@
         <h1 id="一-进程基本概念"><a href="#一-进程基本概念" class="headerlink" title="一.进程基本概念"></a>一.进程基本概念</h1><blockquote>
 <p>以多道程序设计技术为切点。多道程序设计技术是操作系统最早引入的软件技术。它的基本思想是允许<font color="red">多个程序同时进入内存</font>并运行。主要是<strong>为了提高 CPU的利用率,进而提高整个系统的效率。</strong></p>
 </blockquote>
-<p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/1.png" style="zoom:40%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/1.png" style="zoom:40%;"></p>
 <p>来看一个例子：</p>
 <p>​        在A图中, 内存里有四个程序,因为只有一个物理的程序计数器，所以这四个程序呢是串形执行的。</p>
 <p>​        有了多道程序设计技术之后，每个程序变换成了一个独立的控制流，占用一个逻辑的程序计数器。这也是<strong>操作系统虚拟性的一个体现</strong>，<font color="red">把一个物理的程序计数器，给它变换成多个逻辑的程序计数器</font>，实际上每个程序都有自己的程序计数器，由于物理上只有一个程序计数器，所以每个程序真正的上 CPU 就把逻辑程序计数器的内容，推送到物理程序计数器里头。通过这种变换，达到了在内存中同时有多个程序，达到并发执行的效果。</p>
@@ -515,7 +515,7 @@
 <li><p><strong>指向该进程页表的指针</strong></p>
 </li>
 </ul>
-<h3 id="3-SOLARIS的进程控制块与进程表"><a href="#3-SOLARIS的进程控制块与进程表" class="headerlink" title="(3).SOLARIS的进程控制块与进程表"></a>(3).SOLARIS的进程控制块与进程表</h3><p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/2.png" style="zoom:33%;"></p>
+<h3 id="3-SOLARIS的进程控制块与进程表"><a href="#3-SOLARIS的进程控制块与进程表" class="headerlink" title="(3).SOLARIS的进程控制块与进程表"></a>(3).SOLARIS的进程控制块与进程表</h3><p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/2.png" style="zoom:33%;"></p>
 <p>SOLARIS是基于 Unix 操作系统，它的进程控制块的名字一般叫Proc结构。每一个Proc结构代表一个PCB。把所有的Proc结构组织成一个链，那么这就是一个进程表。</p>
 <p><strong>Proc 结构保存的信息：</strong>（重点介绍三个）</p>
 <p>第一个是可执行文件 p_exec，通过这样一个记录信息，可以找到这个进程所对应的可执行文件在磁盘上的位置。</p>
@@ -531,7 +531,7 @@
 <p>也称阻塞态、封锁态、睡眠态 </p>
 </blockquote>
 <p>进程因等待某一事件而暂时不能运行。</p>
-<h3 id="2-三状态模型及状态转换"><a href="#2-三状态模型及状态转换" class="headerlink" title="(2).三状态模型及状态转换"></a>(2).三状态模型及状态转换</h3><p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/3.png" style="zoom:25%;"></p>
+<h3 id="2-三状态模型及状态转换"><a href="#2-三状态模型及状态转换" class="headerlink" title="(2).三状态模型及状态转换"></a>(2).三状态模型及状态转换</h3><p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/3.png" style="zoom:25%;"></p>
 <h2 id="2-进程的其他状态"><a href="#2-进程的其他状态" class="headerlink" title="2.进程的其他状态"></a>2.进程的其他状态</h2><h3 id="1-创建态"><a href="#1-创建态" class="headerlink" title="(1).创建态"></a>(1).创建态</h3><p>已完成创建一进程所必要的工作，比如分配了PID、填写了PCB。但由于某些原因，操作系统尚未同意执行该进程。</p>
 <h3 id="2-终止态"><a href="#2-终止态" class="headerlink" title="(2).终止态"></a>(2).终止态</h3><p>终止执行后，进程进入该状态。</p>
 <ul>
@@ -543,15 +543,15 @@
 <h3 id="3-挂起态"><a href="#3-挂起态" class="headerlink" title="(3).挂起态"></a>(3).挂起态</h3><p>在操作系统当中，如果想进行一些负载调节时，可能会把进程送入这个状态。</p>
 <p>比如如果现在系统中进程太多，CPU也忙不过来了，此时操作系统会把一部分进程，让它暂时不能运行，但是它又不是等待某个事件发生，所以就把它弄成一个特殊的状态，叫挂起态。</p>
 <p>一旦进程进入了挂起态，操作系统会把它的内存空间呢收回来。把这些进程的相关的内容送到磁盘上保存起来，一旦继续让它运行，我们通常称之为激活。进程的内容再从磁盘上读入内存就可以了。</p>
-<h2 id="3-五状态模型"><a href="#3-五状态模型" class="headerlink" title="3.五状态模型"></a>3.五状态模型</h2><p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/4.png" style="zoom:30%;"></p>
-<h2 id="4-七状态模型"><a href="#4-七状态模型" class="headerlink" title="4.七状态模型"></a>4.七状态模型</h2><p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/5.png" style="zoom:32%;"></p>
+<h2 id="3-五状态模型"><a href="#3-五状态模型" class="headerlink" title="3.五状态模型"></a>3.五状态模型</h2><p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/4.png" style="zoom:30%;"></p>
+<h2 id="4-七状态模型"><a href="#4-七状态模型" class="headerlink" title="4.七状态模型"></a>4.七状态模型</h2><p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/5.png" style="zoom:32%;"></p>
 <h2 id="5-进程队列"><a href="#5-进程队列" class="headerlink" title="5.进程队列"></a>5.进程队列</h2><blockquote>
 <p>操作系统在设计进程模型的时候要确定有什么样的状态，确定状态之间的转换，在什么条件下转换 ，通过什么样的操作来促成这种转换。 而且操作系统当中有很多的进程，它们都处于不同的状态。所以需要按不同的状态把它们管理起来，因此，操作系统设计了一个若干个进程队列。</p>
 </blockquote>
 <p>操作系统设计了一个若干个进程队列，为<strong>每一个类进程建立一个或者多个队列也是可以的。</strong> 每个队列的元素，实际上就是PCB 状态的改变，其实就是某个进程的PCB从一个队列出队，然后在另一个队列里头入队的过程。也就是伴随着状态的改变，进程的PCB从一个队列进入到另外一个队列。 </p>
-<p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/6.png" style="zoom:35%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/6.png" style="zoom:35%;"></p>
 <p><strong>五状态进程模型的队列模型：</strong></p>
-<p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/7.png" style="zoom:38%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/7.png" style="zoom:38%;"></p>
 <hr>
 <h1 id="三-进程控制"><a href="#三-进程控制" class="headerlink" title="三.进程控制"></a>三.进程控制</h1><p>进程控制操作主要是完成进程之间的各状态之间的转换，<strong>进程控制操作实际上就是具有特定功能的程序。</strong> <font color="red">这个程序执行的时候，由于不允许被中断</font>，所以把它称之为原语。</p>
 <p><strong>原语：</strong> <strong>所谓原语(有时候又称之为原子操作) 是完成某种特定功能的一段程序</strong>，比如说完成创建，或者是完成阻塞，它是一段程序，完成了某种特定功能，<font color="red">但是这个程序在执行过程中，是具有不可分割性，或者是不可中断的，它必须持续地执行，不允许被打断</font>，这就是原语。</p>
@@ -627,7 +627,7 @@
 <p><strong>代码例子：</strong></p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">pid_t</span> pid;</span><br><span class="line">	pid = fork();<span class="comment">/* 创建一个子进程 */</span></span><br><span class="line">  <span class="keyword">if</span> (pid &lt; <span class="number">0</span>) &#123;<span class="comment">/* 出错 */</span></span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, “fork failed”);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">-1</span>); </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123; <span class="comment">/* 子进程 */</span> </span><br><span class="line">    execlp(“/bin/ls”, “ls”, <span class="literal">NULL</span>); </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123; <span class="comment">/* 父进程 */</span></span><br><span class="line">    wait(<span class="literal">NULL</span>); <span class="comment">/* 父进程等待子进程结束 */</span> </span><br><span class="line">    <span class="built_in">printf</span>(“child complete”);</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p><strong>流程：</strong></p>
-<p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/8.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/8.png" style="zoom:50%;"></p>
 <hr>
 <h1 id="四-进程相关概念"><a href="#四-进程相关概念" class="headerlink" title="四.进程相关概念"></a>四.进程相关概念</h1><h2 id="1-进程的讨论"><a href="#1-进程的讨论" class="headerlink" title="1.进程的讨论"></a>1.进程的讨论</h2><h3 id="1-进程的分类"><a href="#1-进程的分类" class="headerlink" title="(1).进程的分类"></a>(1).进程的分类</h3><h4 id="第一种分类"><a href="#第一种分类" class="headerlink" title="第一种分类"></a>第一种分类</h4><ul>
 <li><strong>系统进程</strong></li>
@@ -670,12 +670,12 @@
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> myval;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">  myval = atoi(argv[<span class="number">1</span>]); </span><br><span class="line">  <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">printf</span>(“myval is %d, loc <span class="number">0</span>x%lx\n”, myval, (<span class="keyword">long</span>) &amp;myval);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>这个程序实际上是从命令行接收了参数，把这个参数赋给一个变量 myval 然后就是循环，来打印这个变量的值，同时把这个变量的位置 打印出来。 </p>
 <p>现在同时执行两个 myval 程序。 也就是这两个进程在执行，因为用了一个循环，所以这个进程会一直在那运行下去。如果运行这两个进程，分别用参数 7，8 来调用这个程序，输出的结果如下：</p>
-<p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/9.png" style="zoom:35%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/9.png" style="zoom:35%;"></p>
 <blockquote>
 <p>当执行 myval 7 的时候，myval 的这个变量值是 7 ，地址是 60104C 。同时 myval 8 也在执行。 发现 myval 的值是 8 ，而myval 的地址呢 也是 60104C。 <strong>为何变量 myval 的值是不一样的，地址却是相同的呢？</strong></p>
 </blockquote>
 <p>实际上每个进程有自己相对独立地址空间。 <font color="red"><strong>两个进程实际上是两个地址空间。而且它们的地址空间是隔离的。不同的地址空间，它的地址不是实际的物理内存地址。 实际上是一个相对地址，如果支持虚存的系统当中，那么这个地址就是虚拟地址，也可以说是一个相对地址，或者是逻辑地址。</strong></font></p>
-<p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/10.png" style="zoom:35%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/10.png" style="zoom:35%;"></p>
 <p>上图是一个进程地址空间的表示图。在这个空间里，操作系统会占一部分内容：</p>
 <ul>
 <li><p>上半部分是<strong>操作系统内核的地址空间</strong> </p>
@@ -741,7 +741,7 @@
 </blockquote>
 <p>在查询网页的同时，磁盘在工作，而且<strong>这个进程就可以回来做别的事情，它可以继续去接收用户的客户端请求。 当新的请求被接收到之后，它继续可能在 Web Cache 里找网页，然后返回去，如果没找到网页呢，继续再去调用磁盘</strong>。<font color="red">但是这就出现了一个问题：磁盘的这个结果返回了，究竟是哪一个客户端的请求呢？</font></p>
 <p>所以这个时候，进程要自己把这些信息记录下来，然后磁盘返回了请求之后，就要判断是哪一个客户端的请求，然后返回给对应的客户 端。因此，它的编程模型呢是比较复杂的。</p>
-<h3 id="3-引进多线程之后"><a href="#3-引进多线程之后" class="headerlink" title="(3).引进多线程之后"></a>(3).引进多线程之后</h3><p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/11.png" style="zoom:35%;"></p>
+<h3 id="3-引进多线程之后"><a href="#3-引进多线程之后" class="headerlink" title="(3).引进多线程之后"></a>(3).引进多线程之后</h3><p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/11.png" style="zoom:35%;"></p>
 <p><strong>工作方式：</strong> </p>
 <p>把线程分成两类：</p>
 <ul>
@@ -756,7 +756,7 @@
 </blockquote>
 <h2 id="2-引入线程的优点"><a href="#2-引入线程的优点" class="headerlink" title="2.引入线程的优点"></a>2.引入线程的优点</h2></li>
 </ul>
-<h3 id="1-从开销的角度"><a href="#1-从开销的角度" class="headerlink" title="(1).从开销的角度"></a>(1).从开销的角度</h3><p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/12.png" style="zoom:35%;"></p>
+<h3 id="1-从开销的角度"><a href="#1-从开销的角度" class="headerlink" title="(1).从开销的角度"></a>(1).从开销的角度</h3><p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/12.png" style="zoom:35%;"></p>
 <h3 id="2-从性能的角度"><a href="#2-从性能的角度" class="headerlink" title="(2).从性能的角度"></a>(2).从性能的角度</h3><p>如果一个进程里头又有多个线程，而这些线程，有的计算，有的去 I/O，当有多个处理器的时候，就可以充分发挥这个优势了。所以当多处理器的情况下，一个进程就可以有很多的任务同时在执行。性能就提高了很多。</p>
 <hr>
 <h1 id="六-线程的基本概念"><a href="#六-线程的基本概念" class="headerlink" title="六.线程的基本概念"></a>六.线程的基本概念</h1><p>进程有两个基本的属性：</p>
@@ -812,7 +812,7 @@
 <p>由于在线程的概念提出之前，操作系统已经运行了很多年，进程的概念已经用了很长时间。 因此当有一个新的机制提出来的时候， 不同的操作系统对这个机制的支持是不一样的。</p>
 </blockquote>
 <h2 id="1-用户级线程"><a href="#1-用户级线程" class="headerlink" title="1.用户级线程"></a>1.用户级线程</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="(1).概念"></a>(1).概念</h3><p><strong>用户级线程：</strong>在用户空间建了一个线程库， 这个线程库里提供了一系列的针对线程的操作。 这些线程的管理是通过一个 Run-time System 运行时系统来管理的。 它完成的就是这些线程的创建和线程数据结构的一些管理工作。 如下图所示：</p>
-<p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/13.png" style="zoom:40%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/13.png" style="zoom:40%;"></p>
 <blockquote>
 <p>有一个Run-time System，它是管理这些线程里的数据结构、 线程表。这是用户级线程的一个实现。 </p>
 </blockquote>
@@ -823,7 +823,7 @@
 </blockquote>
 <h3 id="2-POSIX线程库——PTHREAD"><a href="#2-POSIX线程库——PTHREAD" class="headerlink" title="(2).POSIX线程库——PTHREAD"></a>(2).POSIX线程库——PTHREAD</h3><p>UNIX内的操作系统通常采用这种方式来支持线程。 它支持线程的时候是遵循 POSIX 规范。也就是 POSIX 规范当中确定了多线程的这种编程的接口。 </p>
 <p>那以什么样的方式呈现给用户呢？它对线程库进行了相应的规范。 这个规范就是 PTHREAD 线程库。 这个线程库按照规范要提供若干个函数来支持线程、 创建线程、撤销线程，等待某个线程的结束。 </p>
-<p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/14.png" style="zoom:33%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/14.png" style="zoom:33%;"></p>
 <blockquote>
 <p>在这堆操作当中，重点介绍一下 yield 函数，<strong>这个函数表示这个线程自愿让出 CPU。</strong> </p>
 <p>我们知道一个进程的若干线程实际上是相互配合来完成一项任务的。 所以这线程之间是可以协商由谁上 CPU，所以一个线程如果占 CPU 时间太长，那么别的线程得不到机会，就需要这个线程<code>高尚</code>一点，让出 CPU，它就调用 yield 让出 CPU。 如果它不让出 CPU，其实其它线程是没法上 CPU 的，<font color="red"><strong>因为对于线程而言，它感知不到时钟中断，因为整个时钟段是对进程而言的。</strong> </font></p>
@@ -859,7 +859,7 @@
 </blockquote>
 </li>
 </ul>
-<p><img src="//zybtree.github.io/2020/08/10/进程-线程模型/15.png" style="zoom:35%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/10/进程-线程模型/15.png" style="zoom:35%;"></p>
 <ul>
 <li>线程的切换需要内核干预，因此要进入内核来完成切换的过程。 调度也是以线程为单位来进行的。 </li>
 </ul>

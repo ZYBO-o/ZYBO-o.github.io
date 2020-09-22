@@ -107,20 +107,20 @@
 <meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
 <meta property="og:description" content="一.简介Docker是一个开源的应用容器引擎，它是由 Go 语言 开发实现的轻量级容器技术，它是基于 Linux 内核的 cgroup，namespace，以及 AUFS 类的 Union FS 等技术，对进程进行封装隔离，属于 操作系统层面的虚拟化技术。由于隔离的进程独立于宿主和其它隔离的进程，因此也称其为容器。   二.概念1.概要理解Docker支持安装各种软件并做好配置后编译成镜像，最">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/1.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/2.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/3.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/4.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/5.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/7.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/6.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/9.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/12/Docker学习/8.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/12/Docker学习/1.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/12/Docker学习/2.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/12/Docker学习/3.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/12/Docker学习/4.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/12/Docker学习/5.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/12/Docker学习/7.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/12/Docker学习/6.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/12/Docker学习/9.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/12/Docker学习/8.png">
 <meta property="og:updated_time" content="2020-03-13T01:12:34.260Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker学习">
 <meta name="twitter:description" content="一.简介Docker是一个开源的应用容器引擎，它是由 Go 语言 开发实现的轻量级容器技术，它是基于 Linux 内核的 cgroup，namespace，以及 AUFS 类的 Union FS 等技术，对进程进行封装隔离，属于 操作系统层面的虚拟化技术。由于隔离的进程独立于宿主和其它隔离的进程，因此也称其为容器。   二.概念1.概要理解Docker支持安装各种软件并做好配置后编译成镜像，最">
-<meta name="twitter:image" content="https://zybtree.github.io/2020/03/12/Docker学习/1.png">
+<meta name="twitter:image" content="https://zybo_o.github.io/2020/03/12/Docker学习/1.png">
 
 
 
@@ -443,10 +443,10 @@
       
 
       
-        <p><img src="//zybtree.github.io/2020/03/12/Docker学习/1.png" alt></p>
+        <p><img src="//ZYBO_o.github.io/2020/03/12/Docker学习/1.png" alt></p>
 <hr>
 <h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h2><p><strong>Docker</strong>是一个开源的应用容器引擎，它是由 <a href="https://golang.org/" target="_blank" rel="noopener">Go 语言</a> 开发实现的轻量级容器技术，它是基于 <code>Linux</code> 内核的 <a href="https://zh.wikipedia.org/wiki/Cgroups" target="_blank" rel="noopener">cgroup</a>，<a href="https://en.wikipedia.org/wiki/Linux_namespaces" target="_blank" rel="noopener">namespace</a>，以及 <a href="https://en.wikipedia.org/wiki/Aufs" target="_blank" rel="noopener">AUFS</a> 类的 <a href="https://en.wikipedia.org/wiki/Union_mount" target="_blank" rel="noopener">Union FS</a> 等技术，对进程进行封装隔离，属于 <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization" target="_blank" rel="noopener">操作系统层面的虚拟化技术</a>。由于隔离的进程独立于宿主和其它隔离的进程，因此也称其为容器。</p>
-<p><img src="//zybtree.github.io/2020/03/12/Docker学习/2.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/03/12/Docker学习/2.png" style="zoom:50%;"></p>
 <hr>
 <h2 id="二-概念"><a href="#二-概念" class="headerlink" title="二.概念"></a>二.概念</h2><h3 id="1-概要理解"><a href="#1-概要理解" class="headerlink" title="1.概要理解"></a>1.概要理解</h3><p>Docker支持安装各种软件并做好配置后编译成镜像，最终可以直接运行镜像产生一个或多个运行于宿主机内核上的容器。为了形象的理解容器，可以简单的理解它为运行在操作系统上的独立沙箱系统，这些沙箱系统内部的文件系统和Linux的非常相似，事实上确是如此，因为Docker就是融合了Linux内核而实现的虚拟化技术，由于具有沙箱的特性，所以各个容器之间是隔离运行的、独立的、互不影响的，程序员甚至不用担心容器内部损坏或者崩溃导致宿主机出错，因为只要删除掉这些有问题的容器，而再运行相关的镜像又会得到全新的容器了，只要不进行数据挂载，整个过程甚至干净不留残余。</p>
 <h3 id="2-核心内容"><a href="#2-核心内容" class="headerlink" title="2.核心内容"></a>2.核心内容</h3><p><strong>docker主机(Host)：</strong>或者称为docker宿主机，即安装了Docker程序的机器。</p>
@@ -454,7 +454,7 @@
 <p><strong>docker镜像(Images)：</strong>是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
 <p><strong>docker容器(Container)：</strong>运行镜像后产生的实例称为容器，实质是运行于独立的<a href="https://en.wikipedia.org/wiki/Linux_namespaces" target="_blank" rel="noopener">命名空间</a>的进程。</p>
 <p><strong>docker仓库(Registry)：</strong>集中存储、分发镜像的仓库服务系统，作用是允许用户上传、下载并管理镜像，包括公有仓库和私有仓库。</p>
-<p><img src="//zybtree.github.io/2020/03/12/Docker学习/3.png" style="zoom:80%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/03/12/Docker学习/3.png" style="zoom:80%;"></p>
 <h3 id="3-对比传统虚拟机"><a href="#3-对比传统虚拟机" class="headerlink" title="3.对比传统虚拟机"></a>3.对比传统虚拟机</h3><div class="table-container">
 <table>
 <thead>
@@ -490,8 +490,8 @@
 </div>
 <p><strong>虚拟机的架构：</strong> 每个虚拟机都包括应用程序、必要的二进制文件和库以及一个完整的客户操作系统(Guest OS)，尽管它们被分离，它们共享并利用主机的硬件资源，将近需要十几个 GB 的大小。</p>
 <p><strong>容器的架构：</strong> 容器包括应用程序及其所有的依赖，但与其他容器共享内核。它们以独立的用户空间进程形式运行在宿主机操作系统上。他们也不依赖于任何特定的基础设施，Docker 容器可以运行在任何计算机上，任何基础设施和任何云上。</p>
-<p><img src="//zybtree.github.io/2020/03/12/Docker学习/4.png" style="zoom:100%;"></p>
-<p><img src="//zybtree.github.io/2020/03/12/Docker学习/5.png" style="zoom:100%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/03/12/Docker学习/4.png" style="zoom:100%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/03/12/Docker学习/5.png" style="zoom:100%;"></p>
 <h3 id="4-优势"><a href="#4-优势" class="headerlink" title="4.优势"></a>4.优势</h3><p>（1）快速的启动时间</p>
 <p>由于Docker容器直接运行于宿主内核，无需启动完整的操作系统即可运行，因此可以做到秒级、甚至毫秒级的启动时间，这大大的节约了开发、测试、部署的时间。</p>
 <p>（2）一致的运行环境</p>
@@ -554,7 +554,7 @@
 <li>在生产系统上，可能会需要应该安装一个特定版本的Docker CE，而不是总是使用最新版本,列出可用的版本：</li>
 </ul>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> apt-cache madison docker-ce</span><br></pre></td></tr></table></figure></div>
-<p><img src="//zybtree.github.io/2020/03/12/Docker学习/7.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/03/12/Docker学习/7.png" style="zoom:50%;"></p>
 <p>选择要安装的特定版本，第二列是版本字符串，第三列是存储库名称，它指示包来自哪个存储库，以及扩展它的稳定性级别。要安装一个特定的版本，将版本字符串附加到包名中，并通过等号(=)分隔它们：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get install docker-ce=&lt;VERSION&gt;</span><br></pre></td></tr></table></figure></div>
 <blockquote>
@@ -573,7 +573,7 @@
 <li>经典的hello world：</li>
 </ul>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo docker pull hello-world</span><br><span class="line"><span class="meta">$</span> sudo docker run hello-world</span><br></pre></td></tr></table></figure></div>
-<p><img src="//zybtree.github.io/2020/03/12/Docker学习/6.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/03/12/Docker学习/6.png" style="zoom:50%;"></p>
 <hr>
 <h2 id="五-镜像下载加速"><a href="#五-镜像下载加速" class="headerlink" title="五.镜像下载加速"></a>五.镜像下载加速</h2><p>鉴于国内网络问题，Docker默认是从官方Docker Hub拉取 Docker 镜像十分缓慢，我们可以需要配置加速器来解决。</p>
 <ul>
@@ -596,12 +596,12 @@
 <p>如果方便建议使用aliyun的镜像</p>
 <p>地址：<a href="https://cr.console.aliyun.com/cn-shenzhen/instances/mirrors" target="_blank" rel="noopener">https://cr.console.aliyun.com/cn-shenzhen/instances/mirrors</a></p>
 </blockquote>
-<p><img src="//zybtree.github.io/2020/03/12/Docker学习/9.png" alt></p>
+<p><img src="//ZYBO_o.github.io/2020/03/12/Docker学习/9.png" alt></p>
 <hr>
 <h2 id="六-镜像操作"><a href="#六-镜像操作" class="headerlink" title="六.镜像操作"></a>六.镜像操作</h2><p><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a></p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>检索	(去https://hub.docker.com上查看镜像的详细信息。eg：docker search redis)</span><br><span class="line"><span class="meta">$</span> docker  search 镜像关键字</span><br><span class="line"><span class="meta">#</span>拉取	(name是镜像名，:tag是可选的，tag表示标签，多为软件的版本，默认是latest)</span><br><span class="line"><span class="meta">$</span> docker pull name[:tag]</span><br><span class="line"><span class="meta">#</span>列出	(查看所有本地镜像)</span><br><span class="line"><span class="meta">$</span> docker images</span><br><span class="line"><span class="meta">#</span>删除	(删除指定的本地镜像,image-id是镜像id)</span><br><span class="line"><span class="meta">$</span> docker rmi image-id</span><br></pre></td></tr></table></figure></div>
 <hr>
-<h2 id="七-容器操作"><a href="#七-容器操作" class="headerlink" title="七.容器操作"></a>七.容器操作</h2><p><img src="//zybtree.github.io/2020/03/12/Docker学习/8.png" alt></p>
+<h2 id="七-容器操作"><a href="#七-容器操作" class="headerlink" title="七.容器操作"></a>七.容器操作</h2><p><img src="//ZYBO_o.github.io/2020/03/12/Docker学习/8.png" alt></p>
 
       
     </div>

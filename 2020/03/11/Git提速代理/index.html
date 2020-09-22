@@ -107,14 +107,14 @@
 <meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
 <meta property="og:description" content="因为平时在Ubuntu虚拟机上使用Git clone的时候速度特别慢，使用干脆写个代理文件进行提速。  梯子准备在主机上挂个梯子，然后查看IP地址与端口(确保能使用)。 12345678en0: flags=8863&amp;lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&amp;gt; mtu 1500	options=400&amp;lt;CHANNEL_IO&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/11/Git提速代理/1.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/11/Git提速代理/2.png">
-<meta property="og:image" content="https://zybtree.github.io/2020/03/11/Git提速代理/3.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/11/Git提速代理/1.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/11/Git提速代理/2.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/03/11/Git提速代理/3.png">
 <meta property="og:updated_time" content="2020-03-11T10:37:12.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git提速代理">
 <meta name="twitter:description" content="因为平时在Ubuntu虚拟机上使用Git clone的时候速度特别慢，使用干脆写个代理文件进行提速。  梯子准备在主机上挂个梯子，然后查看IP地址与端口(确保能使用)。 12345678en0: flags=8863&amp;lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&amp;gt; mtu 1500	options=400&amp;lt;CHANNEL_IO&amp;gt;">
-<meta name="twitter:image" content="https://zybtree.github.io/2020/03/11/Git提速代理/1.png">
+<meta name="twitter:image" content="https://zybo_o.github.io/2020/03/11/Git提速代理/1.png">
 
 
 
@@ -442,12 +442,12 @@
 </blockquote>
 <h2 id="梯子准备"><a href="#梯子准备" class="headerlink" title="梯子准备"></a>梯子准备</h2><p>在主机上挂个梯子，然后查看IP地址与端口(确保能使用)。</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">en0: flags=8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500</span><br><span class="line">	options=400&lt;CHANNEL_IO&gt;</span><br><span class="line">	ether 38:f9:d3:8d:58:3e</span><br><span class="line">	inet6 fe80::1434:df1:87d5:7e09%en0 prefixlen 64 secured scopeid 0x6</span><br><span class="line">	inet 192.168.1.4 netmask 0xffffff00 broadcast 192.168.1.255</span><br><span class="line">	nd6 options=201&lt;PERFORMNUD,DAD&gt;</span><br><span class="line">	media: autoselect</span><br><span class="line">	status: active</span><br></pre></td></tr></table></figure></div>
-<p><img src="//zybtree.github.io/2020/03/11/Git提速代理/1.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/03/11/Git提速代理/1.png" style="zoom:50%;"></p>
 <p>我的IP与端口:192.168.1.4:7890</p>
 <h2 id="写代理文件"><a href="#写代理文件" class="headerlink" title="写代理文件"></a>写代理文件</h2><p>在Ubuntu上写代理文件，在与Desktop同一级的目录下新建.gitconfig文件并进行编辑。</p>
-<p><img src="//zybtree.github.io/2020/03/11/Git提速代理/2.png" alt></p>
+<p><img src="//ZYBO_o.github.io/2020/03/11/Git提速代理/2.png" alt></p>
 <p>这样就可以加速了。实践一下。</p>
-<p><img src="//zybtree.github.io/2020/03/11/Git提速代理/3.png" alt></p>
+<p><img src="//ZYBO_o.github.io/2020/03/11/Git提速代理/3.png" alt></p>
 <p>这个速度就爽多！</p>
 
       
