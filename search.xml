@@ -4365,14 +4365,14 @@
 <li>线性表中的数据元素的类型必须相同。</li>
 </ul>
 </blockquote>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/1.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/1.png" style="zoom:50%;"></p>
 <p>&lt;/br&gt;</p>
 <h2 id="2-线性表的抽象数据类型"><a href="#2-线性表的抽象数据类型" class="headerlink" title="2.线性表的抽象数据类型"></a>2.线性表的抽象数据类型</h2><p><strong>线性表的抽象数据类型定义如下：</strong></p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line">ADT 线性表(List)</span><br><span class="line">Data</span><br><span class="line">    线性表的数据对象集合为&#123;a1, a2, ......, an&#125;，每个元素的类型均为DataType。</span><br><span class="line">    其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，</span><br><span class="line">    除了最后一个元素an外，每一个元素有且只有一个直接后继元素。</span><br><span class="line">    数据元素之间的关系是一对一的关系。</span><br><span class="line">Operation</span><br><span class="line"><span class="comment">/*该方法用于创建并且返回一个空的线性表*/</span></span><br><span class="line"><span class="function">List* <span class="title">List_Create</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于销毁一个线性表list*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">List_Destroy</span><span class="params">(List* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于将一个线性表list中的所有元素清空,使得线性表回到创建时的初始状态*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">List_Clear</span><span class="params">(List* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于返回一个线性表list中的所有元素个数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">List_Length</span><span class="params">(List* <span class="built_in">list</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于向一个线性表list的pos位置处插入新元素node,返回值为1表示插入成功，0表示插入失败*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">List_Insert</span><span class="params">(List* <span class="built_in">list</span>, ListNode* node, <span class="keyword">int</span> pos)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于获取一个线性表list的pos位置处的元素,返回值为pos位置处的元素，NULL表示获取失败*/</span></span><br><span class="line"><span class="function">ListNode* <span class="title">List_Get</span><span class="params">(List* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*该方法用于删除一个线性表list的pos位置处的元素,返回值为被删除的元素，NULL表示删除失败*/</span></span><br><span class="line"><span class="function">ListNode* <span class="title">List_Delete</span><span class="params">(List* <span class="built_in">list</span>, <span class="keyword">int</span> pos)</span></span>;</span><br></pre></td></tr></table></figure></div>
 <hr>
 <p>&lt;/br&gt;</p>
 <h2 id="3-线性表的顺序存储结构"><a href="#3-线性表的顺序存储结构" class="headerlink" title="3.线性表的顺序存储结构"></a>3.线性表的顺序存储结构</h2><h3 id="1-结构分析"><a href="#1-结构分析" class="headerlink" title="(1).结构分析"></a>(1).结构分析</h3><p><strong>线性表的顺序存储结构</strong>，指的是用一段地址连续的存储单元依次存储线性表的数据元素。线性表（a1,a2,……,an）的顺序存储示意图如下：</p>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/2.png" style="zoom:45%;">. </p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/2.png" style="zoom:45%;">. </p>
 <p><strong>在C中用一维数组来实现顺序存储结构：</strong></p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">存储空间的起始位置:数组node</span></span><br><span class="line"><span class="comment">线性表的最大容量:数组长度MAXSIZE</span></span><br><span class="line"><span class="comment">线性表的当前长度:length</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 存储空间初始分配量 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 20             </span></span><br><span class="line"><span class="comment">/* ElemType类型根据实际情况而定，这里假设为int */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;          </span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">/* 数组存储数据元素，最大值为MAXSIZE */</span></span><br><span class="line">    ElemType data[MAXSIZE];    </span><br><span class="line">    <span class="comment">/* 线性表当前长度 */</span></span><br><span class="line">    <span class="keyword">int</span> length;                </span><br><span class="line">&#125; SeqList;</span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
@@ -4383,7 +4383,7 @@
 <li>检验分配情况并把新建完的链表的指针指向结构体地址后的node处</li>
 <li>返回表的地址</li>
 </ul>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/6.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/6.png" style="zoom:50%;"></p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.创建</span></span><br><span class="line">TSeqList* ret = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(capacity &gt;= <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//2.分配内存（结构体+数据表）</span></span><br><span class="line">    ret = (TSeqList*) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(TSeqList) + <span class="keyword">sizeof</span>(TSeqListNode) * capacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.检验分配是否成功</span></span><br><span class="line"><span class="keyword">if</span>(ret != <span class="literal">NULL</span>)</span><br><span class="line">&#123;</span><br><span class="line">    ret-&gt;capacity = capacity;</span><br><span class="line">    ret-&gt;length = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//新建完的链表的指针指向结构图后的node处</span></span><br><span class="line">    ret-&gt;node = (TSeqListNode*)(ret + <span class="keyword">sizeof</span>(TSeqList));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回新建成功的链表</span></span><br><span class="line"><span class="keyword">return</span> ret;</span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
 <h4 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h4><p><strong>操作步骤：</strong></p>
@@ -4402,7 +4402,7 @@
 <li>将新元素插入</li>
 <li>线性表长度加1</li>
 </ul>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/3.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/3.png" style="zoom:50%;"></p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.判断线性表是否合法</span></span><br><span class="line"><span class="keyword">int</span> ret = (List != <span class="literal">NULL</span>);</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.判断插入位置是否合法</span></span><br><span class="line">ret = ret &amp;&amp; (List-&gt;length + <span class="number">1</span> &lt;= List-&gt;capacity);</span><br><span class="line">ret = ret &amp;&amp; (<span class="number">0</span> &lt;= pos);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( ret )</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>( pos &gt;= List-&gt;length )</span><br><span class="line">&#123;</span><br><span class="line">		pos = List-&gt;length;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//3.把最后一个元素到插入位置的元素后移一个位置</span></span><br><span class="line"><span class="keyword">for</span>(i=List-&gt;length; i&gt;pos; i--)</span><br><span class="line">&#123;</span><br><span class="line">		List-&gt;node[i] = List-&gt;node[i<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//4.将新元素插入</span></span><br><span class="line">List-&gt;node[i] = (<span class="keyword">int</span>)node;</span><br><span class="line"><span class="comment">//5.线性表长度加1</span></span><br><span class="line">List-&gt;length++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
 <h4 id="删除元素操作"><a href="#删除元素操作" class="headerlink" title="删除元素操作"></a>删除元素操作</h4><p><strong>操作步骤：</strong></p>
@@ -4413,24 +4413,24 @@
 <li>将删除位置后的元素分别向前移动一个位置</li>
 <li>线性表长度减1</li>
 </ul>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/4.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/4.png" style="zoom:50%;"></p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> ret = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//1.判断线性表是否合法</span></span><br><span class="line"><span class="comment">//2.判断删除位置是否合法</span></span><br><span class="line"><span class="keyword">if</span>((<span class="built_in">list</span> != <span class="literal">NULL</span>) &amp;&amp; (<span class="number">0</span> &lt;= pos) &amp;&amp; (pos&lt;= <span class="built_in">list</span>-&gt;length))</span><br><span class="line">&#123;</span><br><span class="line">		<span class="comment">//3.将元素取出</span></span><br><span class="line">		ret = <span class="built_in">list</span>-&gt;node[pos];</span><br><span class="line">      </span><br><span class="line">		<span class="comment">//4.将删除位置后的元素分别向前移动一个位置</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = pos+<span class="number">1</span>; i &lt; <span class="built_in">list</span>-&gt;length; i++)</span><br><span class="line">		&#123;</span><br><span class="line">				<span class="built_in">list</span>-&gt;node[i<span class="number">-1</span>] = <span class="built_in">list</span>-&gt;node[i];</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">  	<span class="comment">//5.线性表长度减1</span></span><br><span class="line">		<span class="built_in">list</span>-&gt;length--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
-<h3 id="3-顺序存储的优缺点"><a href="#3-顺序存储的优缺点" class="headerlink" title="(3).顺序存储的优缺点"></a>(3).顺序存储的优缺点</h3><p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/7.png" style="zoom:40%;"></p>
+<h3 id="3-顺序存储的优缺点"><a href="#3-顺序存储的优缺点" class="headerlink" title="(3).顺序存储的优缺点"></a>(3).顺序存储的优缺点</h3><p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/7.png" style="zoom:40%;"></p>
 <hr>
 <p>&lt;/br&gt;</p>
 <h2 id="4-线性表的链式存储结构"><a href="#4-线性表的链式存储结构" class="headerlink" title="4.线性表的链式存储结构"></a>4.线性表的链式存储结构</h2><h3 id="1-结构分析-1"><a href="#1-结构分析-1" class="headerlink" title="(1).结构分析"></a>(1).结构分析</h3><p><strong>链式存储定义：</strong>为了表示每个数据元素与其直接后继的元素之间的逻辑关系，每个元素除了存储本身的信息之外，还需要存储指示其直接后继的消息。</p>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/8.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/8.png" style="zoom:50%;"></p>
 <p><strong>链式存储逻辑结构：</strong>n个结点链接成一个链式线性表的结构叫做<strong>链表</strong>，当每个结点中只包含一个指针域时，叫做<strong>单链表</strong>。</p>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/9.png" style="zoom:30%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/9.png" style="zoom:30%;"></p>
 <p><strong>链表的基本概念:</strong></p>
 <ul>
 <li><strong>表头结点：</strong>链表中的第一个结点，包含指向第一个数据元素的指针以及链表自身的一些信息。(<font color="red">本身不是数据元素</font>)</li>
 <li><strong>数据结点：</strong>链表中代表数据元素的结点，包含指向下一个数据元素的指针和数据元素的信息。</li>
 <li><strong>尾结点：</strong>链表中的最后一个数据结点，其下一元素指针为空，表示无后继。</li>
 </ul>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/10.png" style="zoom:40%;"></p>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/11.png" style="zoom:60%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/10.png" style="zoom:40%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/11.png" style="zoom:60%;"></p>
 <p><strong>C语言用结构体来定义链表中的结点：</strong></p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> _tag_LinkListNode LinkListNode;</span><br><span class="line"></span><br><span class="line"><span class="comment">//结点指针域定义</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> _<span class="title">tag_LinkListNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  LinkListNode* next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//头结点定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">tag_LinkList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  LinkListNode header;</span><br><span class="line">  <span class="keyword">int</span> length;</span><br><span class="line">&#125;TLinkList;</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据元素定义示例</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Value</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  LinkListNode header;</span><br><span class="line">  <span class="keyword">int</span> value;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
@@ -4450,7 +4450,7 @@
 <li>将新元素插入</li>
 <li>线性表长度加1</li>
 </ul>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/13.png" style="zoom:45%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/13.png" style="zoom:45%;"></p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.判断线性表是否合法</span></span><br><span class="line"><span class="comment">//2.判断插入位置是否合法</span></span><br><span class="line"><span class="keyword">int</span> ret = (sList != <span class="literal">NULL</span>) &amp;&amp; (pos &gt;= <span class="number">0</span>) &amp;&amp; (node != <span class="literal">NULL</span>);</span><br><span class="line"><span class="keyword">if</span>( ret )</span><br><span class="line">&#123;</span><br><span class="line">    LinkListNode* current = (LinkListNode*)sList;</span><br><span class="line">    <span class="comment">//3.由表头开始通过next指针移动pos次后，当前元素的next指针即指向要插入的位置</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; (i&lt;pos) &amp;&amp; (current-&gt;next != <span class="literal">NULL</span>); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        current = current-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//4.将新元素插入</span></span><br><span class="line">    node-&gt;next = current-&gt;next;</span><br><span class="line">    current-&gt;next = node;</span><br><span class="line">    <span class="comment">//5.线性表长度加1</span></span><br><span class="line">    sList-&gt;length++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
 <h4 id="删除元素操作-1"><a href="#删除元素操作-1" class="headerlink" title="删除元素操作"></a>删除元素操作</h4><p><strong>操作步骤：</strong></p>
@@ -4463,28 +4463,32 @@
 <li>将第pos个元素从链表中删除</li>
 <li>线性表长度减1</li>
 </ul>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/12.png" style="zoom:45%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/12.png" style="zoom:45%;"></p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line">LinkListNode* ret = <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//1.判断线性表是否合法</span></span><br><span class="line"><span class="comment">//2.判断插入位置是否合法</span></span><br><span class="line"><span class="keyword">if</span>( (sList != <span class="literal">NULL</span>) &amp;&amp; (<span class="number">0</span> &lt;= pos) &amp;&amp; (pos &lt; sList-&gt;length) )</span><br><span class="line">&#123;</span><br><span class="line">		LinkListNode* current = (LinkListNode*)sList;</span><br><span class="line">		<span class="comment">//3.获取第pos个元素</span></span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;pos; i++)</span><br><span class="line">		&#123;</span><br><span class="line">				current = current-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//4.将第pos个元素从链表中删除</span></span><br><span class="line">		ret = current-&gt;next;</span><br><span class="line">		current-&gt;next = ret-&gt;next;</span><br><span class="line">		<span class="comment">//5.线性表长度减1</span></span><br><span class="line">		sList-&gt;length--;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> ret;</span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
-<h3 id="3-单链表结构与顺序存储结构优缺点"><a href="#3-单链表结构与顺序存储结构优缺点" class="headerlink" title="(3).单链表结构与顺序存储结构优缺点"></a>(3).单链表结构与顺序存储结构优缺点</h3><p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/15.png" style="zoom:50%;"></p>
+<h3 id="3-单链表结构与顺序存储结构优缺点"><a href="#3-单链表结构与顺序存储结构优缺点" class="headerlink" title="(3).单链表结构与顺序存储结构优缺点"></a>(3).单链表结构与顺序存储结构优缺点</h3><p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/15.png" style="zoom:50%;"></p>
 <hr>
 <p>&lt;/br&gt;</p>
-<h2 id="5-静态链表"><a href="#5-静态链表" class="headerlink" title="5.静态链表"></a>5.静态链表</h2><h3 id="1-结构分析-2"><a href="#1-结构分析-2" class="headerlink" title="(1).结构分析"></a>(1).结构分析</h3><p><strong>静态链表：</strong>让数组的元素都是由两个数据域组成，data和next。也就是说，数组的每个下标都对应一个data和一个next。数据域data，用来存放数据元素，也就是通常我们要处理的数据；而next相当于单链表中的next指针，存放该元素的后继在数组中的下标，我们把next叫做游标。</p>
+<h2 id="5-静态链表"><a href="#5-静态链表" class="headerlink" title="5.静态链表"></a>5.静态链表</h2><h3 id="1-结构分析-2"><a href="#1-结构分析-2" class="headerlink" title="(1).结构分析"></a>(1).结构分析</h3><p><strong>静态链表：</strong>让数组的元素都是由两个数据域组成，data和cur。也就是说，数组的每个下标都对应一个data和一个cur。数据域data，用来存放数据元素，也就是通常我们要处理的数据；而cur相当于单链表中的next指针，存放该元素的后继在数组中的下标，我们把cur叫做游标。</p>
 <ul>
-<li>顺序表数组中的元素由两个数据域组成:data和next</li>
+<li>顺序表数组中的元素由两个数据域组成:data和cur</li>
 <li>data域用于存储数据</li>
-<li>next域用于存储下一个元素在数组中的下标</li>
+<li>cur域用于存储下一个元素在数组中的下标</li>
 </ul>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/17.png" style="zoom:50%;"></p>
-<blockquote>
-<p>表头结点中，<code>data = 3</code> 表示链表长度为3，<code>next = 1</code> 表示下一个结点的位置是1。</p>
-</blockquote>
-<font color="red">**静态链表是在顺序表的基础 静态链表是在顺序表的基础上利用数组实现的单链表。**</font>
-
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/17.png" style="zoom:60%;"></p>
+<p>把未被使用的数组元素称为<strong>备用链表。</strong>而数组第一个元素，即下标为0的元素的cur就存放备用链表的第一个结点的下标；</p>
+<p><strong>数组的最后一个元素的cur则存放第一个有数值的元素的下标</strong>，相当于单链表中的头结点作用，当整个链表为空时，则为0。</p>
 <p><strong>在C中用一维数组来实现顺序存储结构：</strong></p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//节点结构体定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">tag_StaticListNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> date;</span><br><span class="line">  <span class="keyword">int</span> next;</span><br><span class="line">&#125;TStaticListNode;</span><br><span class="line"></span><br><span class="line"><span class="comment">//静态链表结构体定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">tag_StaticList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">int</span> capacity;</span><br><span class="line">  TStaticListNode header;</span><br><span class="line">  TStaticListNode node[];</span><br><span class="line">&#125;TStaticList;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">List</span>;</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">	ElementType Data;</span><br><span class="line">    <span class="comment">//Cursor,为0时表示无指向 </span></span><br><span class="line">	<span class="keyword">int</span> Cur; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
-<h3 id="2-重点操作-2"><a href="#2-重点操作-2" class="headerlink" title="(2).重点操作"></a>(2).重点操作</h3><h4 id="获取第pos个元素操作-1"><a href="#获取第pos个元素操作-1" class="headerlink" title="获取第pos个元素操作"></a>获取第pos个元素操作</h4><p><strong>操作步骤：</strong></p>
+<h3 id="2-重点操作-2"><a href="#2-重点操作-2" class="headerlink" title="(2).重点操作"></a>(2).重点操作</h3><h4 id="创建链表"><a href="#创建链表" class="headerlink" title="创建链表"></a>创建链表</h4><p><strong>操作步骤：</strong></p>
+<ul>
+<li>申请MAXSIZE大小的空间</li>
+<li>给游标赋值，最后一个游标赋为0</li>
+<li>返回链表指针</li>
+</ul>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line">List <span class="built_in">list</span> = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(List)*MAXSIZE);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAXSIZE - <span class="number">1</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">		<span class="built_in">list</span>[i].Cur = i+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 目前静态链表为空，最后一个元素的cur为0 */</span></span><br><span class="line"><span class="built_in">list</span>[MAXSIZE - <span class="number">1</span>].Cur = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">list</span>;</span><br></pre></td></tr></table></figure></div>
+<h4 id="获取第pos个元素操作-1"><a href="#获取第pos个元素操作-1" class="headerlink" title="获取第pos个元素操作"></a>获取第pos个元素操作</h4><p><strong>操作步骤：</strong></p>
 <ul>
 <li>判断线性表是否合法</li>
 <li>判断位置是否合法</li>
@@ -4513,11 +4517,11 @@
 </ul>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 <p>&lt;/br&gt;</p>
-<h3 id="3-静态链表优缺点"><a href="#3-静态链表优缺点" class="headerlink" title="(3).静态链表优缺点"></a>(3).静态链表优缺点</h3><p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/18.png" style="zoom:50%;"></p>
+<h3 id="3-静态链表优缺点"><a href="#3-静态链表优缺点" class="headerlink" title="(3).静态链表优缺点"></a>(3).静态链表优缺点</h3><p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/18.png" style="zoom:50%;"></p>
 <hr>
 <p>&lt;/br&gt;</p>
 <h2 id="6-循环链表"><a href="#6-循环链表" class="headerlink" title="6.循环链表"></a>6.循环链表</h2><h3 id="1-结构分析-3"><a href="#1-结构分析-3" class="headerlink" title="(1).结构分析"></a>(1).结构分析</h3><p><strong>循环链表的定义：</strong>将单链表中最后一个数据元素的next指针指向第一个元素.</p>
-<p><img src="//zybtree.github.io/2020/04/12/数据结构Ⅱ线性表/19.png" style="zoom:50%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅱ线性表/19.png" style="zoom:50%;"></p>
 <p>&lt;/br&gt;</p>
 <h3 id="2-重点操作-3"><a href="#2-重点操作-3" class="headerlink" title="(2).重点操作"></a>(2).重点操作</h3><p><strong>循环链表拥有单链表的所有操作。</strong></p>
 <ul>
