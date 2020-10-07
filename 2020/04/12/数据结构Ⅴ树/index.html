@@ -99,15 +99,23 @@
 
 
 
+<meta name="description" content="一.树的定义1.需要掌握的定义： 结点(根结点，双亲结点，子节点，兄弟结点) 子树和空树 结点的深度和高 有序树和无序树 森林 树的表示方法   对于结点ni，ni的深度是指从根到ni的唯一路径的长；ni的高是指从ni到一片树叶的最长路径的长。                   图1：线性结构与树结构对比   &amp;lt;/br&amp;gt; 二.二叉树1.二叉树需要掌握的概念(1).二叉树的定义 有序树">
 <meta name="keywords" content="树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构Ⅴ树">
 <meta property="og:url" content="https://ZYBO_o.github.io/2020/04/12/数据结构Ⅴ树/index.html">
 <meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
+<meta property="og:description" content="一.树的定义1.需要掌握的定义： 结点(根结点，双亲结点，子节点，兄弟结点) 子树和空树 结点的深度和高 有序树和无序树 森林 树的表示方法   对于结点ni，ni的深度是指从根到ni的唯一路径的长；ni的高是指从ni到一片树叶的最长路径的长。                   图1：线性结构与树结构对比   &amp;lt;/br&amp;gt; 二.二叉树1.二叉树需要掌握的概念(1).二叉树的定义 有序树">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-12T04:07:47.581Z">
+<meta property="og:image" content="https://zybo_o.github.io/2020/04/12/数据结构Ⅴ树/1.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/04/12/数据结构Ⅴ树/2.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/04/12/数据结构Ⅴ树/3.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/04/12/数据结构Ⅴ树/4.png">
+<meta property="og:updated_time" content="2020-10-07T09:00:04.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构Ⅴ树">
+<meta name="twitter:description" content="一.树的定义1.需要掌握的定义： 结点(根结点，双亲结点，子节点，兄弟结点) 子树和空树 结点的深度和高 有序树和无序树 森林 树的表示方法   对于结点ni，ni的深度是指从根到ni的唯一路径的长；ni的高是指从ni到一片树叶的最长路径的长。                   图1：线性结构与树结构对比   &amp;lt;/br&amp;gt; 二.二叉树1.二叉树需要掌握的概念(1).二叉树的定义 有序树">
+<meta name="twitter:image" content="https://zybo_o.github.io/2020/04/12/数据结构Ⅴ树/1.png">
 
 
 
@@ -405,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  933
                 </span>
               
 
@@ -430,7 +438,102 @@
       
 
       
-        
+        <h2 id="一-树的定义"><a href="#一-树的定义" class="headerlink" title="一.树的定义"></a>一.树的定义</h2><h3 id="1-需要掌握的定义："><a href="#1-需要掌握的定义：" class="headerlink" title="1.需要掌握的定义："></a>1.需要掌握的定义：</h3><ul>
+<li>结点(根结点，双亲结点，子节点，兄弟结点)</li>
+<li>子树和空树</li>
+<li>结点的深度和高</li>
+<li>有序树和无序树</li>
+<li>森林</li>
+<li>树的表示方法</li>
+</ul>
+<blockquote>
+<p>对于结点ni，ni的深度是指<strong>从根到ni</strong>的唯一路径的长；ni的高是指<strong>从ni到一片树叶</strong>的最长路径的长。</p>
+</blockquote>
+<center class="half"> 
+    <img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅴ树/1.png" style="zoom:25%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;color: #999;padding: 2px;">
+图1：线性结构与树结构对比</div>
+</center>
+
+<p>&lt;/br&gt;</p>
+<h2 id="二-二叉树"><a href="#二-二叉树" class="headerlink" title="二.二叉树"></a>二.二叉树</h2><h3 id="1-二叉树需要掌握的概念"><a href="#1-二叉树需要掌握的概念" class="headerlink" title="1.二叉树需要掌握的概念"></a>1.二叉树需要掌握的概念</h3><h4 id="1-二叉树的定义"><a href="#1-二叉树的定义" class="headerlink" title="(1).二叉树的定义"></a>(1).二叉树的定义</h4><ul>
+<li>有序树</li>
+<li>节点的度只能为0，1，2</li>
+</ul>
+<h4 id="2-二叉树的性质"><a href="#2-二叉树的性质" class="headerlink" title="(2).二叉树的性质"></a>(2).二叉树的性质</h4><ul>
+<li>第$i$层最多有 $2^{i-1}$ 个结点。</li>
+<li>若深度为$K$，则最多有$2^K-1$个结点。</li>
+<li>终端结点数(叶子结点数)为$n_0$，度为2的结点数为$n_2$，则$n_0$=$n_2$+1。</li>
+</ul>
+<blockquote>
+<p>性质3的计算方法为：对于一个二叉树来说，除了度为0的叶子结点和度为2的结点，剩下的就是度为1的结点(设为$n_1$)，那么总结点$n=n_0+n_1+n_2$。同时，对于每一个结点来说都是由其父结点分支表示的，假设树中分枝数为B，那么总结点数$n=B+1$。而分枝数是可以通过$n_1$和$n_2$表示的，即$B=n_1+2<em>n_2$。所以，n用另外一种方式表示为$n=n_1+2</em>n_2+1$。两种方式得到的n值组成一个方程组，就可以得出$n_0=n_2+1$。</p>
+</blockquote>
+<h4 id="3-满二叉树"><a href="#3-满二叉树" class="headerlink" title="(3).满二叉树"></a>(3).满二叉树</h4><ul>
+<li><p>概念定义</p>
+<ul>
+<li>除了叶子结点外其余结点的度都为2，则为满二叉树。</li>
+</ul>
+</li>
+<li><p>性质</p>
+<ul>
+<li>满二叉树中第i层的节点数为$2^n-1$个。</li>
+<li>深度为k的满二叉树必有$2^k-1$个节点，叶子数为$2^k-1$。</li>
+<li>满二叉树中不存在度为1的节点，每一个分支点中都两棵深度相同的子树，且叶子节点都在最底层。</li>
+<li>具有n个节点的满二叉树的深度为 $log_2(n+1)$。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-完全二叉树"><a href="#4-完全二叉树" class="headerlink" title="(4).完全二叉树"></a>(4).完全二叉树</h4><ul>
+<li>概念定义<ul>
+<li>如果二叉树中<strong>除去最后一层节点为满二叉树</strong>，且<font color="red"><strong>最后一层的结点依次从左到右分布</strong></font>，则此二叉树被称为完全二叉树。</li>
+</ul>
+</li>
+</ul>
+<center class="half"> 
+    <img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅴ树/2.png" style="zoom:40%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;color: #999;padding: 2px;">
+图2：完全二叉树与非完全二叉树</div>
+</center>
+
+
+<ul>
+<li>性质<ul>
+<li>n 个结点的完全二叉树的深度为$⌊log_2n⌋+1$。</li>
+<li>对于任意一个完全二叉树来说，如果将含有的结点按照层次从左到右依次标号,对于任意一个结点 i,完全二叉树还有以下几个结论成立:<ul>
+<li>当 i&gt;1 时，父亲结点为结点 [i/2] 。（i=1 时，表示的是根结点，无父亲结点）</li>
+<li>如果2*i&gt;n(总结点的个数)，则结点i肯定没有左孩子(为叶子结点)；否则其左孩子是结点2*i 。</li>
+<li>如果2*i+1&gt;n，则结点i肯定没有右孩子；否则右孩子是结点2*i+1。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-二叉树的存储结构"><a href="#2-二叉树的存储结构" class="headerlink" title="2.二叉树的存储结构"></a>2.二叉树的存储结构</h3><h4 id="1-顺序存储结构"><a href="#1-顺序存储结构" class="headerlink" title="(1).顺序存储结构"></a>(1).顺序存储结构</h4><p>二叉树的顺序存储，指的是使用顺序表(数组)存储二叉树。需要注意的是，顺序存储只适用于完全二叉树。换句话说，只有完全二叉树才可以使用顺序表存储。因此，<font color="red">如果想顺序存储普通二叉树，需要提前将普通二叉树转化为完全二叉树，然后从根节点开始，按照层次依次将树中节点存储到数组即可。</font></p>
+<p>如下图所示：</p>
+<center class="half"> 
+    <img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅴ树/3.png" style="zoom:40%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;color: #999;padding: 2px;">
+图3：普通二叉树的转换</div>
+</center>
+
+<p> &lt;/br&gt;</p>
+<p>普通二叉树的数组存储状态如下图所示：</p>
+<center class="half"> 
+    <img src="//ZYBO_o.github.io/2020/04/12/数据结构Ⅴ树/4.png" style="zoom:40%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;color: #999;padding: 2px;">
+图4：普通二叉树的存储状态</div>
+</center>
+
+<p>&lt;/br&gt;</p>
+<h4 id="2-链式存储结构"><a href="#2-链式存储结构" class="headerlink" title="(2).链式存储结构"></a>(2).链式存储结构</h4>
       
     </div>
     
@@ -524,8 +627,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -542,7 +654,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -564,7 +676,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -637,6 +749,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-树的定义"><span class="nav-text">一.树的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-需要掌握的定义："><span class="nav-text">1.需要掌握的定义：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-二叉树"><span class="nav-text">二.二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-二叉树需要掌握的概念"><span class="nav-text">1.二叉树需要掌握的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-二叉树的定义"><span class="nav-text">(1).二叉树的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-二叉树的性质"><span class="nav-text">(2).二叉树的性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-满二叉树"><span class="nav-text">(3).满二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-完全二叉树"><span class="nav-text">(4).完全二叉树</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-二叉树的存储结构"><span class="nav-text">2.二叉树的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-顺序存储结构"><span class="nav-text">(1).顺序存储结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-链式存储结构"><span class="nav-text">(2).链式存储结构</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -664,7 +792,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">88.4k</span>
+    <span title="Site words total count">88.6k</span>
   
 </div>
 
