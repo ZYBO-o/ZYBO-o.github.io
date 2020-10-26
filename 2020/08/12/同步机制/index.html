@@ -1,37 +1,1637 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/head.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/head.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/head.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/head.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="同步机制," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZYBO_o's Blogs" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一.进程的并发执行  问题的提出：这一讲的问题都是由于并发所引起的.并发是所有问题产生的基础，并发也是操作系统设计的一个基础。  1.进程特征所带来的问题(1).并发 进程的执行是间断性的。    每个进程在它的生命周期期间一会儿上CPU执行，一会儿由于某种原因暂停执行，所以每个进程的执行是间断性的    进程的相对执行速度是不可预测    进程执行的间断性使得进程的相对执行速度是不可预测的。由于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="同步机制">
+<meta property="og:url" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
+<meta property="og:description" content="一.进程的并发执行  问题的提出：这一讲的问题都是由于并发所引起的.并发是所有问题产生的基础，并发也是操作系统设计的一个基础。  1.进程特征所带来的问题(1).并发 进程的执行是间断性的。    每个进程在它的生命周期期间一会儿上CPU执行，一会儿由于某种原因暂停执行，所以每个进程的执行是间断性的    进程的相对执行速度是不可预测    进程执行的间断性使得进程的相对执行速度是不可预测的。由于">
+<meta property="og:locale">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/1.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/2.png">
+<meta property="og:image" content="https://zybo_o.github.io/Users/zhangyongbin/Blog/zybTree/source/_posts/同步机制/3.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/4.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/6.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/7.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/8.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/9.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/10.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/11.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/12.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/13.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/14.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/15.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/16.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/17.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/19.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/18.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/20.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/21.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/22.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/23.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/24.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/25.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/26.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/27.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/28.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/29.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/31.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/32.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/33.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/34.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/35.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/36.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/37.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/38.png">
+<meta property="article:published_time" content="2020-08-12T14:54:20.000Z">
+<meta property="article:modified_time" content="2020-08-17T14:33:10.793Z">
+<meta property="article:author" content="ZYBO_o">
+<meta property="article:tag" content="同步机制">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zybo_o.github.io/2020/08/12/同步机制/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ZYBO_o.github.io/2020/08/12/同步机制/"/>
+
+
+
+
+
+  <title>同步机制 | ZYBO_o's Blogs</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZYBO_o's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Follow Excellence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-路径">
+          <a href="/top/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fire"></i> <br />
+            
+            路径
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ZYBO_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZYBO_o's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">同步机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-12T22:54:20+08:00">
+                2020-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7.2k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一-进程的并发执行"><a href="#一-进程的并发执行" class="headerlink" title="一.进程的并发执行"></a>一.进程的并发执行</h1><blockquote>
+<p> <strong>问题的提出：</strong>这一讲的问题都是由于并发所引起的.并发是所有问题产生的基础，并发也是操作系统设计的一个基础。</p>
+</blockquote>
+<h2 id="1-进程特征所带来的问题"><a href="#1-进程特征所带来的问题" class="headerlink" title="1.进程特征所带来的问题"></a>1.进程特征所带来的问题</h2><h3 id="1-并发"><a href="#1-并发" class="headerlink" title="(1).并发"></a>(1).并发</h3><ul>
+<li><strong>进程的执行是间断性的。</strong></li>
+</ul>
+<blockquote>
+<p> 每个进程在它的生命周期期间一会儿上CPU执行，一会儿由于某种原因暂停执行，所以每个进程的执行是间断性的 </p>
+</blockquote>
+<ul>
+<li><strong>进程的相对执行速度是不可预测</strong></li>
+</ul>
+<blockquote>
+<p> 进程执行的间断性使得进程的相对执行速度是不可预测的。由于有进程调度，有其他事件的发生，每个进程上CPU执行可能执行一段时间停止，然后再接着执行，所以整个执行的时间是不可预测的。</p>
+</blockquote>
+<h3 id="2-共享"><a href="#2-共享" class="headerlink" title="(2).共享"></a>(2).共享</h3><ul>
+<li><strong>进程/线程之间的制约性</strong></li>
+</ul>
+<blockquote>
+<p>在一个并发环境下多个进程或者线程之间会共享某些资源，在这些资源的使用过程中会产生进程之间的一种制约性。比如当一个进程享用打印机这个资源，另外一个进程在第一个进程没有释放这个资源的前提之下就得不到这个资源，那就得等待。因此在一个并发环境下多个进程的执行会带来一种制约。</p>
+</blockquote>
+<h3 id="3-不确定性"><a href="#3-不确定性" class="headerlink" title="(3).不确定性"></a>(3).不确定性</h3><ul>
+<li><strong>进程执行的结果与其执行的相对速度有关</strong>，是不确定的</li>
+</ul>
+<blockquote>
+<p>进程执行的结果和它的相对执行速度是有关系的，因此在不同的执行顺序的情况下，进程的执行结果也是不确定的。</p>
+</blockquote>
+<h2 id="2-与时间相关的错误例子"><a href="#2-与时间相关的错误例子" class="headerlink" title="2.与时间相关的错误例子"></a>2.与时间相关的错误例子</h2><p>场景是 get、copy和put 三个进程并发执行：</p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/1.png" style="zoom:35%;"></p>
+<h3 id="1-并发执行过程的分析"><a href="#1-并发执行过程的分析" class="headerlink" title="(1).并发执行过程的分析"></a>(1).并发执行过程的分析</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/2.png" style="zoom:25%;"></p>
+<p>假设 g,c,p 分别为 get,copy 和 put 的一次循环过程。因此从当前状态出发能得到正确的结果。 </p>
+<p><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/同步机制/3.png" style="zoom:25%;"></p>
+<p>所以如果不满足进程的制约关系，调度的顺序不正确，那就会带来这些错误的结果。</p>
+<h3 id="2-进程前趋图"><a href="#2-进程前趋图" class="headerlink" title="(2).进程前趋图"></a>(2).进程前趋图</h3><p>三个进程的制约关系如下：</p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/4.png" style="zoom:30%;"></p>
+<blockquote>
+<ul>
+<li><p>当get执行完第一个循环之后，只能够copy执行它的第一个循环。 </p>
+</li>
+<li><p>当copy执行完第一个循环之后可以 是put执行第一个循环，也可以是get执行第二个循环。</p>
+</li>
+<li><p>以上两个都执行完了，才能够去执行copy的第二个循环。</p>
+</li>
+</ul>
+</blockquote>
+<p>因此这三个进程之间的制约关系应该满足这样一个前趋图才能保证不出错误。</p>
+<hr>
+<h1 id="二-进程互斥"><a href="#二-进程互斥" class="headerlink" title="二.进程互斥"></a>二.进程互斥</h1><h2 id="1-竞争条件"><a href="#1-竞争条件" class="headerlink" title="1.竞争条件"></a>1.竞争条件</h2><p>竞争条件定义：<strong>两个或多个进程读写某些共享数据， 而最后的结果取决于进程运行的精确时序。</strong></p>
+<blockquote>
+<p> 和时间是相关的 这就是带来了竞争条件。</p>
+<p>竞争条件是由于有一个共享的资源，而多个进程都对这个数据进行相应的操作，所以会带来竞争条件这个概念，比如打印机。</p>
+</blockquote>
+<h2 id="2-进程互斥的概念"><a href="#2-进程互斥的概念" class="headerlink" title="2.进程互斥的概念"></a>2.进程互斥的概念</h2><p><strong>进程互斥的概念:</strong>由于各进程要求使用共享资源(变量、文件等)， 而这些资源需要<strong>排他性使用</strong>，各<strong><font color="red">进程之间竞争使用这些资源</font></strong>，这一关系称为进程互斥。</p>
+<p><strong>临界资源 (critical resource)</strong>：系统中<strong><font color="red">某些资源一次只允许一个进程使用</font></strong>，称这样的资源为<strong>临界资源</strong>或<strong>互斥资源</strong>或<strong>共享变量</strong>。</p>
+<blockquote>
+<p>进程互斥所使用的共享资源是一个核心，这个共享资源就是临界资源。</p>
+</blockquote>
+<p><strong>临界区(互斥区) [critical section(region)]</strong>： 各个进程中对某个临界资源(共享变量)实施操作的程序片段。</p>
+<blockquote>
+<p>当多个进程都要使用同一个共享资源时，它的代码里就会有相应的操作。而这些代码就是临界区。 </p>
+<p>这些程序片段，分散在不同的进程里，它们的共同的特点是对同一个共享变量进行一些操作。这一段代码，和另外一个进程的这一段代码<strong>互为临界区，互为互斥区</strong>。</p>
+</blockquote>
+<h2 id="3-临界区的使用原则"><a href="#3-临界区的使用原则" class="headerlink" title="3.临界区的使用原则"></a>3.临界区的使用原则</h2><p>如下图所示，A进程在临界区里还没有出临界区，如果B进程上CPU之后也想进临界区，应该不能够让它进去，如果B进程也进临界区，就会出现关键活动的交叉，带来前面所介绍的各种各样的错误。因此当B进程想要进临界区时，由于A进程还在临界区里，所以 B 进程只能够被阻塞。</p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/6.png" style="zoom:36%;"></p>
+<blockquote>
+<p> 回顾上一章优先级反转问题。 有一个低优先级的进程进入了临界区，因为它优先级比较低，有更高优先级进程就绪时就会抢占它的CPU ，可低优先级进程已经在临界区里，所以更高优先级的进程也上不了CPU运行，因为上CPU运行也进不了临界区。所以就被阻塞。</p>
+<p>而在高优先级和低优先级之间又会有中级优先级且非常耗时的一些进程在执行，使得低优先级的进程上不了CPU ，也就不能够让高优先级的进程尽快上 CPU。</p>
+</blockquote>
+<p>给出临界区的使用原则：</p>
+<ul>
+<li><strong>没有进程在临界区时，想进入临界区的进程可进入</strong></li>
+<li><strong>不允许两个进程同时处于其临界区中</strong></li>
+<li><strong>临界区外运行的进程不得阻塞其他进程进入临界区</strong> </li>
+<li><strong>不得使进程无限期等待进入临界区</strong></li>
+</ul>
+<h2 id="4-实现进程互斥的方案"><a href="#4-实现进程互斥的方案" class="headerlink" title="4.实现进程互斥的方案"></a>4.实现进程互斥的方案</h2><h3 id="1-软件方案"><a href="#1-软件方案" class="headerlink" title="(1).软件方案"></a>(1).软件方案</h3><h4 id="软件解法1"><a href="#软件解法1" class="headerlink" title="软件解法1"></a>软件解法1</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/7.png" style="zoom:28%;"></p>
+<p>假设 P先上的CPU，free的初值是 false ，所以循环结束。 </p>
+<p>如果这时进程P被切换下CPU，而上CPU的正好又是进程 Q，那么进程Q也要判断free是不是false，由于进程P还没有来得及改变它的值，因此Q检测的结果free也等于false ，继续往下执行把 free 变成 true ，然后进入了临界区。 如果Q进入临界区之后又一次被切换下去了。假设正好又是P上CPU了，把 free 变成 true ，然后进入临界区。结果在临界区里两个进程，不满足原则。这就是一个错误的解法。 </p>
+<p>解决方案： </p>
+<p><strong>把两条语句写成一个lock函数，如果把lock函数设计成一个原语</strong>，在执行过程中不容许被中断，那么这个操作就是正确的了。 </p>
+<h4 id="软件解法2"><a href="#软件解法2" class="headerlink" title="软件解法2"></a>软件解法2</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/8.png" style="zoom:28%;"></p>
+<p>如果P进程想进临界区，而turn等于false ，所以它一直在等待进入临界区。可是如果Q进程始终没有进过临界区，也不想进临界区，那么 P进程就进不了临界区，尽管临界区里没有进程。也就是说，在临界区外的进程Q阻止了P进程进临界区。这也是不允许的。</p>
+<h4 id="软件解法3"><a href="#软件解法3" class="headerlink" title="软件解法3"></a>软件解法3</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/9.png" style="zoom:28%;"></p>
+<p>如果当pturn设置为true之后，紧跟着qturn也是true，这就会导致两个进程都进不了临界区，都在”谦让”。而这，就是<code>After you</code>问题。</p>
+<h4 id="软件解法4——DEKKER算法"><a href="#软件解法4——DEKKER算法" class="headerlink" title="软件解法4——DEKKER算法"></a>软件解法4——DEKKER算法</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/10.png" style="zoom:28%;"></p>
+<p>在解法三的基础上引入turn，让turn值来决定是哪一个进程进入临界区，但是这个算法会出现<code>忙等待 busy waiting</code>问题，浪费了时间。</p>
+<h4 id="软件解法5——PETERSON算法"><a href="#软件解法5——PETERSON算法" class="headerlink" title="软件解法5——PETERSON算法"></a>软件解法5——PETERSON算法</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/11.png" style="zoom:28%;"></p>
+<p>当任何一个进程想进临界区时，它只需要调用<code>enter_region</code>函数，查看能发安全地进入临界区，如果能安全地进入临界区，那么就是相当于这个函数执行结束，可以进临界区。如果不能够安全地进入临界区，就会在这个函数当中去等待进入临界区。 </p>
+<p>调用这个函数是用进程号，当进程使用完临界区的相关资源之后，出临界区时就调用<code>leave_region</code>函数，就可以让其他的进程进入临界区。</p>
+<h3 id="2-硬件方案"><a href="#2-硬件方案" class="headerlink" title="(2).硬件方案"></a>(2).硬件方案</h3><h4 id="硬件解法1——中断屏蔽法"><a href="#硬件解法1——中断屏蔽法" class="headerlink" title="硬件解法1——中断屏蔽法"></a>硬件解法1——中断屏蔽法</h4><p>利用开关中断指令，<strong>是一条允许中断或禁止中断的指令</strong>。</p>
+<p>操作就是在<strong>进临界区之前先把中断关闭，然后进入临界区做相应的操作，出临界区时再把中断打开，允许中断。</strong>这实际上就是<strong>原语操作。</strong></p>
+<p>特点：</p>
+<ul>
+<li>简单，高效</li>
+<li>代价高，限制CPU并发能力(临界区大小) </li>
+<li>不适用于多处理器</li>
+<li>适用于操作系统本身，不适于用户进程</li>
+</ul>
+<h4 id="硬件解法2——“测试并加锁”指令"><a href="#硬件解法2——“测试并加锁”指令" class="headerlink" title="硬件解法2——“测试并加锁”指令"></a>硬件解法2——“测试并加锁”指令</h4><p>用测试并加锁这条指令去操作， 这一条指令做了两个事情，一是先读内存单元内容，读到寄存器，然后再去写，把内存单元的内容写上某个值。</p>
+<p><strong>TSL指令：TEST AND SET LOCK</strong></p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/12.png" style="zoom:40%;"></p>
+<h4 id="硬件解法3——“交换”指令"><a href="#硬件解法3——“交换”指令" class="headerlink" title="硬件解法3——“交换”指令"></a>硬件解法3——“交换”指令</h4><p>交换指令的作用<strong>是把两个位置，可能是寄存器或内存单元，在一条指令结束的时把两个位置的内容进行一个交换。</strong></p>
+<p><strong>XCHG指令：EXCHANGE</strong></p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/13.png" style="zoom:40%;"></p>
+<hr>
+<h1 id="三-进程同步"><a href="#三-进程同步" class="headerlink" title="三.进程同步"></a>三.进程同步</h1><blockquote>
+<p>进程互斥指进程之间具有一种竞争关系，而进程同步指多个进程之间的协作关系 。</p>
+</blockquote>
+<p><strong>进程同步 (synchronization)：指系统中多个进程中发生的事件存在<font color="red">某种时序关系</font>，需要相互合作，共同 完成一项任务。</strong>具体地说，一个进程运行到某一点时， 要求另一伙伴进程为它提供消息，在未获得消息之前，该进程进入阻塞态， 获得消息后被唤醒进入就绪态。</p>
+<h2 id="1-生产者与消费者问题"><a href="#1-生产者与消费者问题" class="headerlink" title="1.生产者与消费者问题"></a>1.生产者与消费者问题</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/14.png" style="zoom:32%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/15.png" style="zoom:32%;"></p>
+<blockquote>
+<p>来看一个场景 ：</p>
+<p>消费者判断count是否等于 0，如果在它判断count = 0还没有去调用sleep之前消费者被切换下CPU。那么这个时候count是0，假设生产者又生产了一个数据上CPU，可以看到就不断地去生产放到缓冲区，count也不等于 N ，刚才是0，现在生产者生产了一个数据加完 1 之后count就等于1。这时生产者知道count 等于 1，所以会做一个wakeup。但是由于刚才的消费者还没有sleep，所以做的这个wakeup实际上做了一个空操作，因为没有进程在睡眠，所以就继续接着执行，生产者继续生产。如果生产者被切换下CPU，消费者一上来肯定首先要做sleep，但是这个sleep的进程刚才wakeup已经做完了，所以就不会再被唤醒了。所以没有做到完全解决生产者/消费者问题。</p>
+</blockquote>
+<hr>
+<h1 id="四-信号量及PV操作"><a href="#四-信号量及PV操作" class="headerlink" title="四.信号量及PV操作"></a>四.信号量及PV操作</h1><blockquote>
+<p>之所以叫同步机制是因为通常把进程的互斥看成是一种特殊的同步。它既解决同步的问题，也能解决互斥的问题。这种典型的进程同步机制就称为信号量及PV 操作。</p>
+</blockquote>
+<h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><h3 id="1-信号量"><a href="#1-信号量" class="headerlink" title="(1).信号量"></a>(1).信号量</h3><p><strong>信号量：</strong>是一个特殊变量，用于进程间传递信息的一个整数值。</p>
+<p>定义如下:</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struc semaphore &#123;</span><br><span class="line">  <span class="keyword">int</span> count;</span><br><span class="line">  queueType <span class="built_in">queue</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>由一个值和一个队列组成，<code>int值</code>传递信息的整数值，队列允许进程挂到上面。 </p>
+<ul>
+<li><p>声明一个信号量：<code>semaphore s;</code></p>
+</li>
+<li><p>对信号量可以实施的操作: <strong>初始化、P和V</strong> (P、V分别 是荷兰语的test(proberen)和increment(verhogen))</p>
+</li>
+</ul>
+<h3 id="2-PV操作定义"><a href="#2-PV操作定义" class="headerlink" title="(2).PV操作定义"></a>(2).PV操作定义</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/16.png" style="zoom:34%;"></p>
+<ul>
+<li><p>P、V操作为<strong>原语操作</strong> (primitive or atomic action)</p>
+</li>
+<li><p>在信号量上定义了三个操作: <strong>初始化(非负数)、P操作、V操作</strong></p>
+</li>
+<li><p>最初提出的是二元信号量(解决互斥)</p>
+<blockquote>
+<p>之后，推广到一般信号量(多值)或计数信号量(解决同步)</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="2-用PV操作解决进程间互斥问题"><a href="#2-用PV操作解决进程间互斥问题" class="headerlink" title="2.用PV操作解决进程间互斥问题"></a>2.用PV操作解决进程间互斥问题</h2><h3 id="1-基本步骤"><a href="#1-基本步骤" class="headerlink" title="(1).基本步骤"></a>(1).基本步骤</h3><ul>
+<li><strong>分析并发进程的关键活动，划定临界区</strong></li>
+</ul>
+<ul>
+<li><strong>设置信号量 mutex，初值为1</strong></li>
+<li><strong>在临界区前实施 P(mutex)</strong></li>
+<li><strong>在临界区之后实施 V(mutex)</strong></li>
+</ul>
+<h3 id="2-例子"><a href="#2-例子" class="headerlink" title="(2).例子"></a>(2).例子</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/17.png" style="zoom:35%;"></p>
+<p>假定有三个进程 P1、 P2、 P3，它们都对同一个临界资源进行相应的操作，设定了一个信号量 mutex ，初值是 1。在临界区的前和后把 P、V操作加上。</p>
+<ul>
+<li>假设P1先上CPU，它在做P操作时把 mutex减1，mutex=0 。0不小于0，所以P1进程就可以进入临界区。</li>
+<li>如果P1进程在临界区的期间被中断了，那么P2进程正好上CPU。它也想进临界区，也做 P(mutex)，而mutex-1 = -1。 因此P2进程就等在mutex队列上。</li>
+<li><p>让出 CPU 之后，假设 P3进程又上CPU。它也要进临界区。mutex -1 = 2。因此P3 进程也等在这个信号量上，等在P2后面，让出CPU。 </p>
+</li>
+<li><p>假设P1又上CPU， 然后它在临界区里完成了工作后出临界区。，接着会执行一个 V(mutex) ，mutex + 1 = -1，这个时候信号量的值还是小于等于 0，因此V操作就会到队列里找到进程P2并把它送到就绪队列，然后P1接着做别的事情。 </p>
+</li>
+<li><p>如果P2上CPU了，它就下一个就进入临界区。P操作执行完后，它接着就进临界区，当它出临界区又做一次 V 操作，mutex +1 = 0，还是小于等于 0 ，所以V操作就会把队列里等的P3进入就绪，就是这样一个过程。</p>
+</li>
+</ul>
+<h2 id="3-用信号量解决生产者-消费者问题"><a href="#3-用信号量解决生产者-消费者问题" class="headerlink" title="3.用信号量解决生产者/消费者问题"></a>3.用信号量解决生产者/消费者问题</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/19.png" style="zoom:40%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/18.png" style="zoom:35%;"></p>
+<p>如果把消费者的P(&amp;full)和P(&amp;mutex)互换，当出现缓冲区个数为0的时候，执行P(&amp;mutex)和P(&amp;full)之后，mutex=-1，此时如果生产者执行P(&amp;emputy)和P(&amp;mutex)会<strong>出现死锁</strong>。</p>
+<p>两个V 操作的顺序可以颠倒，因为V操作只是把信号量的值加一。然后查看有无进程等在队列里，如果有就把它释放。 因此V操作不会使得调用V操作的这个进程进入等待状态，所以这两个的顺序是可以颠倒的。 颠倒的结果可能会带来其他的一些问题，比如说，临界区里头会多一点点指令，其他的进程想进临界区可能会稍微晚一点。但是代码中的是最理想的。</p>
+<h2 id="4-用信号量解决读者-写者问题"><a href="#4-用信号量解决读者-写者问题" class="headerlink" title="4.用信号量解决读者/写者问题"></a>4.用信号量解决读者/写者问题</h2><p>问题描述:</p>
+<p>多个进程共享一个数据区，这些进程分为两组: </p>
+<ul>
+<li><strong>读者进程:</strong>只读数据区中的数据 </li>
+<li><strong>写者进程:</strong>只往数据区写数据</li>
+</ul>
+<p>要求满足条件:</p>
+<ul>
+<li>允许多个读者同时执行读操作 </li>
+<li>不允许多个写者同时操作</li>
+<li>不允许读者、写者同时操作</li>
+</ul>
+<h3 id="1-第一类读者写者问题：读者优先"><a href="#1-第一类读者写者问题：读者优先" class="headerlink" title="(1).第一类读者写者问题：读者优先"></a>(1).第一类读者写者问题：读者优先</h3><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>如果读者执行:</p>
+<ul>
+<li><strong>无其他读者、写者，该读者可以读</strong></li>
+<li><strong>若已有写者等，但有其他读者正在读，则该读者也可以读</strong></li>
+<li><strong>若有写者正在写，该读者必须等</strong></li>
+</ul>
+<p>如果写者执行:</p>
+<ul>
+<li><strong>无其他读者、写者，该写者可以写</strong> </li>
+<li><strong>若有读者正在读，该写者等待</strong></li>
+<li><strong>若有其他写者正在写，该写者等待</strong></li>
+</ul>
+<blockquote>
+<p>写者是和其他写者是互斥的，和读者也是互斥的。 所以读者写者问题本质上是一个互斥的问题。</p>
+</blockquote>
+<h4 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/20.png" style="zoom:35%;"></p>
+<p>第一类读者写者问题实际上是要解决的是多个读者可以同时读，因此不需要每个读者都去做P(w)或做V(w) 操作。</p>
+<p>经过分析发现第一个读者 到来时如果没有其他的读者和写者，他可以去读。它在读之前首先要把临界区保护起来，所以第一个读者做P(w)。只要前面有读者在读，那么后续来的读者都可以去读。 当所有的读者都读完就会把临界区还回来，所以最后一个读者去做V(w)操作。 </p>
+<p>在代码中的读者里引入一个计数器rc，它用来记录现在有几个读者。进来一个读者之后通过 <code>rc ＋ 1</code> 判断是不是第一个读者，如果<code>rc = 1</code>，表示是第一个读者，那就去做P(w)的工作。每个读者离开都要去 <code>rc- 1</code> ，当最后一个读者做完 <code>rc - 1</code>， rc就等于0了,最后一个读者去做V(w)操作。</p>
+<p>因为多个读者都对rc进行相应的操作，所以rc就成为了一个新的临界资源。<code>rc = rc + 1</code> 判断 rc，或者 <code>rc = rc - 1</code> 判断 rc 都是一个临界区。 因此还要针对这样一个临界区再增加一个互斥的信号量，对rc这段代码进行保护。</p>
+<h3 id="2-Linux提供的读写锁"><a href="#2-Linux提供的读写锁" class="headerlink" title="(2).Linux提供的读写锁"></a>(2).Linux提供的读写锁</h3><p>应用场景:</p>
+<p>如果<strong>每个执行实体对临界区的访问或者是读或者是写共享变量</strong>，但是它们都不会既读又写时，读写锁是最好的选择。</p>
+<p>实例:</p>
+<p>Linux的IPX路由代码中使用了读-写锁，用 ipx_routes_lock的读-写锁保护IPX路由表的并发访问</p>
+<blockquote>
+<p>要通过查找路由表实现包转发的程序需要请求读锁；需要添加和删除路由表中入口的程序必须获取写锁(由于通过读路由表的情况比更新路由表的情况多得 多，使用读-写锁提高了性能)</p>
+</blockquote>
+<hr>
+<h1 id="五-管程-MONITOR"><a href="#五-管程-MONITOR" class="headerlink" title="五.管程 MONITOR"></a>五.管程 MONITOR</h1><h2 id="1-管程的基本概念"><a href="#1-管程的基本概念" class="headerlink" title="1.管程的基本概念"></a>1.管程的基本概念</h2><h3 id="1-为什么引入管程"><a href="#1-为什么引入管程" class="headerlink" title="(1).为什么引入管程"></a>(1).为什么引入管程</h3><p>信号量机制具有一些缺点，比如<strong>用信号量及PV操作解决问题的时程序编写需要很高的技巧</strong>。 如果没有合理地安排PV操作的位置，就会导致一些出错的结果比如说出现死锁等问题。 所以有人提出一种新的同步机制就是管程。 它实际上是<strong>在程序设计语言中引入的一个成分</strong>，称之为高级同步机制。</p>
+<h3 id="2-管程的定义"><a href="#2-管程的定义" class="headerlink" title="(2).管程的定义"></a>(2).管程的定义</h3><p>管程是一种<strong>特殊的模块</strong>，<strong>每个管程都有一个名字</strong>。<strong>管程主要是管理共享资源所对应的数据结构</strong>，所以管程在管理共享资源的同时也提供了在这个共享资源之上需要的各种各样的操作，也就是由一组操作的过程来组成。 </p>
+<p>示例:</p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/21.png" style="zoom:35%;"></p>
+<p><strong>进程与管程的关系:</strong></p>
+<p>作为进程，它只能<strong>通过调用管程给提供的各种过程来间接地来使用管程当中的数据结构</strong>。</p>
+<h3 id="3-管程的要求"><a href="#3-管程的要求" class="headerlink" title="(3).管程的要求"></a>(3).管程的要求</h3><p>作为一种同步机制，管程要解决两个问题：</p>
+<h4 id="互斥"><a href="#互斥" class="headerlink" title="互斥"></a>互斥</h4><ul>
+<li><strong>管程是互斥进入的。</strong></li>
+<li>互斥是<strong>为了保证管程中数据结构的数据完整性</strong></li>
+<li><strong>管程的互斥性是<font color="red">由编译器负责保证的</font></strong></li>
+</ul>
+<h4 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h4><ul>
+<li><p><strong>管程中设置<font color="red">条件变量及等待/唤醒操作</font>以解决同步问题</strong></p>
+</li>
+<li><p>作用<strong>可以让一个进程或线程在条件变量上等待(<font color="red">此时，应先释放管程的使用权</font>)，也可以通过发送信号将等待在条件变量上的进程或线程唤醒</strong></p>
+</li>
+</ul>
+<h3 id="4-遇到的问题"><a href="#4-遇到的问题" class="headerlink" title="(4).遇到的问题"></a>(4).遇到的问题</h3><p>场景：</p>
+<p>当一个进入管程的进程 执行等待操作时，它应当释放管程的互斥权。当后面进入管程的进程执行唤醒操作时(例如后进的P唤醒前面的Q)，管程中便存在两个同时处于活动状态的进程。</p>
+<p>解决方法：</p>
+<ul>
+<li><strong>P等待Q执行</strong></li>
+<li><strong>Q等待P继续执行</strong></li>
+<li><strong>规定唤醒操作为管程中最后一个可执行 的操作</strong></li>
+</ul>
+<h2 id="2-HOARE管程"><a href="#2-HOARE管程" class="headerlink" title="2.HOARE管程"></a>2.HOARE管程</h2><h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/22.png" style="zoom:35%;"></p>
+<ul>
+<li>因为管程是互斥进入的，所以<strong>当一个进程试图进入 一个已被占用的管程时，应当在管程的入口处等待</strong><ul>
+<li>为此，管程的入口处设置一个进程等待队列，称作<strong>入口等待队列</strong></li>
+</ul>
+</li>
+<li>如果进程P唤醒进程Q，则P等待Q执行;如果进程Q执行中又唤醒进程R，则Q等待R执行;……，如此，在管程内部可能会出现多个等待进程<ul>
+<li><strong>在管程内需要设置一个进程等待队列，称为紧急等待队列，紧急等待队列的优先级高于入口等待队列 的优先级</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-条件变量的实现"><a href="#2-条件变量的实现" class="headerlink" title="(2).条件变量的实现"></a>(2).条件变量的实现</h3><blockquote>
+<p> 因为管程的互斥是由编译器保证的，是语言机制。 所以这里头只考虑怎么样解决同步问题，同步问题是通过条件变量和条件变量上实施的wait和signal这两个操作来完成的。</p>
+</blockquote>
+<p><strong>条件变量——在管程内部说明和使用的一种特殊类型的变量。</strong>对于条件变量，可以执行<strong>wait和signal操作</strong></p>
+<p><strong>wait(c):</strong> </p>
+<p><strong>如果紧急等待队列非空，</strong>则唤醒第一个等待者；否则释放管程的互斥权，执行此操作的进程进入 c(条件变量) 链末尾。</p>
+<p><strong>signal(c):</strong></p>
+<p>如果 c 链为空，则相当于空操作，执行此操作的进程继续执行；否则唤醒第一个等待者，<strong>执行此操作的进程进入紧急等待队列的末尾。</strong></p>
+<h2 id="3-管程的应用"><a href="#3-管程的应用" class="headerlink" title="3.管程的应用"></a>3.管程的应用</h2><h3 id="1-管程的实现"><a href="#1-管程的实现" class="headerlink" title="(1).管程的实现"></a>(1).管程的实现</h3><p>管程实现的两个主要途径:</p>
+<ul>
+<li><p><strong>直接构造——效率高</strong> </p>
+<blockquote>
+<p>因为它是语言机制，所以可以在某个语言当中加入这样一个管程成分，然后去编写相应的编译器</p>
+</blockquote>
+</li>
+<li><p><strong>间接构造——用某种已经实现的同步机制去构造</strong></p>
+<blockquote>
+<p>比如可以用信号量及 PV 操作来构造一个管程 </p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2-用管程解决生产者消费者问题"><a href="#2-用管程解决生产者消费者问题" class="headerlink" title="(2).用管程解决生产者消费者问题"></a>(2).用管程解决生产者消费者问题</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/23.png" style="zoom:35%;"></p>
+<h2 id="4-MESA管程"><a href="#4-MESA管程" class="headerlink" title="4.MESA管程"></a>4.MESA管程</h2><p>引入MESA的原因：</p>
+<ul>
+<li><p>Hoare管程的一个缺点：<strong>两次额外的进程切换</strong></p>
+</li>
+<li><p>解决方式：解决:</p>
+<ul>
+<li>把 <code>signal</code> 改成 <code>notify</code></li>
+<li>notify：当一个正在管程中的进程执行notify(x)时，它使得x条件队列得到通知，发信号的进程继续执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-使用NOTIFY要注意的问题"><a href="#1-使用NOTIFY要注意的问题" class="headerlink" title="(1).使用NOTIFY要注意的问题"></a>(1).使用NOTIFY要注意的问题</h3><ul>
+<li><p><strong>notify的结果：位于条件队列头的进程在将来合适的时候且当处理器可用时恢复执行</strong></p>
+</li>
+<li><p>由于不能保证在它之前没有其他进程进入管程， 因而这个<strong>进程必须重新检查条件</strong></p>
+<blockquote>
+<p><strong>用while循环取代if语句</strong></p>
+</blockquote>
+</li>
+<li><p><strong>导致对条件变量至少多一次额外的检测</strong>(但不再有额外的进程切换)，并且对等待进程在notify 之后何时运行没有任何限制</p>
+</li>
+</ul>
+<h3 id="2-MEAS管程：生产者—消费者问题"><a href="#2-MEAS管程：生产者—消费者问题" class="headerlink" title="(2).MEAS管程：生产者—消费者问题"></a>(2).MEAS管程：生产者—消费者问题</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/24.png" style="zoom:40%;"></p>
+<h3 id="3-改进NOTIFY"><a href="#3-改进NOTIFY" class="headerlink" title="(3).改进NOTIFY"></a>(3).改进NOTIFY</h3><ul>
+<li><p>对notify的一个很有用的改进</p>
+<ul>
+<li>给每个条件原语关联一个监视计时器，<strong>不论是否被通知，一个等待时间超时的进程将被设为就绪态</strong></li>
+<li>当该进程被调度执行时，会再次检查相关条件， 如果条件满足则继续执行</li>
+</ul>
+</li>
+<li><p>超时可以防止如下情况的发生: </p>
+<ul>
+<li>当某些进程在产生相关条件的信号之前失败时，等待该条件的进程就会被无限制地推迟执行而处于饥饿状态</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-引入BROADCAST"><a href="#4-引入BROADCAST" class="headerlink" title="(4).引入BROADCAST"></a>(4).引入BROADCAST</h3><p><strong>broadcast：使所有在该条件上等待的进程都被释放并进入就绪队列</strong></p>
+<p><strong>应用场景：</strong></p>
+<ul>
+<li><strong>当一个进程不知道有多少进程将被激活时，这种方式是非常方便的</strong></li>
+</ul>
+<blockquote>
+<p>例子:生产者/消费者问题中，假设insert和remove 函数都适用于可变长度的字符块，此时，如果一个 生产者往缓冲区中添加了一批字符，它不需要知道 每个正在等待的消费者准备消耗多少字符，而仅仅 执行一个broadcast，所有正在等待的进程都得到通 知并再次尝试运行</p>
+</blockquote>
+<ul>
+<li><strong>当一个进程难以准确判定将激活哪个进程时，也可使用广播</strong></li>
+</ul>
+<h2 id="5-HOARE管程与MESA管程的比较"><a href="#5-HOARE管程与MESA管程的比较" class="headerlink" title="5.HOARE管程与MESA管程的比较"></a>5.HOARE管程与MESA管程的比较</h2><ul>
+<li><p><strong>Mesa管程优于Hoare管程之处在于Mesa管程错误比较少</strong></p>
+</li>
+<li><p>在Mesa管程中，由于每个过程在收到信号后都重新检查管程变量，并且由于使用了while结构，一个进程不正确的broadcast广播或发信号notify，不会导致收到信号的程序出错</p>
+<blockquote>
+<p>收到信号的程序将检查相关的变量，如果期望的条件没有满足，它会重新继续等待</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="6-管程小结"><a href="#6-管程小结" class="headerlink" title="6.管程小结"></a>6.管程小结</h2><p><strong>管程：</strong>抽象数据类型 有一个明确定义的操作集合，通过它且只有通过它才能操纵该数据类型的实例</p>
+<p><strong>实现管程结构必须保证下面几点：</strong></p>
+<ul>
+<li>只能通过管程的某个过程才能访问资源; </li>
+<li>管程是互斥的，某个时刻只能有一个进程或线程调用管程中的过程</li>
+</ul>
+<p><strong>条件变量:</strong>为提供进程与其他进程通信或同步而引入</p>
+<blockquote>
+<p>wait/signal 或 wait/notify 或 wait/broadcast</p>
+</blockquote>
+<hr>
+<h1 id="六-PTHREAD中的同步机制"><a href="#六-PTHREAD中的同步机制" class="headerlink" title="六.PTHREAD中的同步机制"></a>六.PTHREAD中的同步机制</h1><p>Pthread解决互斥的问题：<strong>在Pthread 中使用一个互斥量，通过对互斥量提供相应的操作来保护临界区。</strong> </p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/25.png" style="zoom:35%;"></p>
+<p>Pthread解决同步问题：<strong>在Pthread 中使用条件变量，以及在条件变量上的各种操作</strong> </p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/26.png" style="zoom:35%;"></p>
+<h2 id="1-用PTHREAD解决生产者消费者问题"><a href="#1-用PTHREAD解决生产者消费者问题" class="headerlink" title="1.用PTHREAD解决生产者消费者问题"></a>1.用PTHREAD解决生产者消费者问题</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/27.png" style="zoom:30%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/28.png" style="zoom:40%;"></p>
+<h2 id="2-讨论：PTHREAD-COND-WAIT"><a href="#2-讨论：PTHREAD-COND-WAIT" class="headerlink" title="2.讨论：PTHREAD_COND_WAIT"></a>2.讨论：PTHREAD_COND_WAIT</h2><p>pthread_cond_wait的执行分解为三个主要动作: </p>
+<p><strong>1、解锁</strong></p>
+<p><strong>2、等待</strong></p>
+<blockquote>
+<p>当收到一个解除等待的信号 (pthread_cond_signal或者 pthread_cond_broad_cast)之后， pthread_cond_wait马上需要做的动作是:</p>
+</blockquote>
+<p><strong>3、上锁</strong></p>
+<h1 id="七-进程间通信机制"><a href="#七-进程间通信机制" class="headerlink" title="七.进程间通信机制"></a>七.进程间通信机制</h1><h2 id="1-为什么需要通信机制"><a href="#1-为什么需要通信机制" class="headerlink" title="1.为什么需要通信机制"></a>1.为什么需要通信机制</h2><ul>
+<li><p><strong>信号量和管程只能传递很简单的信息，不能传递大量的信息</strong> </p>
+<blockquote>
+<p> 比如要把一个大的数组传送给另外一 进程，那么信号量和管程在这一方面是做不到的。 </p>
+</blockquote>
+</li>
+<li><p><strong>管程不适合于用于多处理器的情况</strong> </p>
+</li>
+</ul>
+<p>因此在传递大量信息的时候需要引入新的通信机制，这个通信机制就是进程间通信机制。</p>
+<blockquote>
+<p>非常典型的形式就是消息传递 ，实际上就是由send和receive提供这样的原语操作。当一个进程要把消息发送给另外一个进程时就去调用send； 当另外一个进程想接收消息时就去调用receive操作。</p>
+</blockquote>
+<p>使用情况：<strong>分布式系统、基于共享内存的多处理机系统、单处理机系统。<font color="red">可以解决进程间的同步 问题、通信问题</font></strong></p>
+<h2 id="2-基本通信方式"><a href="#2-基本通信方式" class="headerlink" title="2.基本通信方式"></a>2.基本通信方式</h2><h3 id="1-消息传递"><a href="#1-消息传递" class="headerlink" title="(1).消息传递"></a>(1).消息传递</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/29.png" style="zoom:30%;"></p>
+<p><strong>发送消息：发送进程只是把消息准备好，调用send 操作，然后操作系统做相应的复制消息的内容，挂接的内容。</strong></p>
+<p><strong>接收消息：接收进程接收消息时把请求提交给操作系统，操作系统完成把消息复制到接收进程空间的工作。</strong></p>
+<p>所以操作系统要提供这样一个通信机制，来完成进程之间的信息传送。</p>
+<h4 id="用PV操作实现SEND操作"><a href="#用PV操作实现SEND操作" class="headerlink" title="用PV操作实现SEND操作"></a>用PV操作实现SEND操作</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/31.png" style="zoom:35%;"></p>
+<h2 id="2-共享内存"><a href="#2-共享内存" class="headerlink" title="2.共享内存"></a>2.共享内存</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/32.png" style="zoom:35%;"></p>
+<p>该通信模式需要解决两个问题：</p>
+<p>第一个问题：需要在物理内存里建一个大家能够共享的一块内存空间。<strong>通过相应的映射能把这个物理内存空间映射到了两个进程相应的地址空间里。</strong>  </p>
+<p>第二个问题：其实就是读者写者问题，因为共享内存不能同时去写，可以同时去读。 所以可以利用控制读写者问题的这个方法来解决互斥问题。</p>
+<h2 id="3-管道通信方式-PIPE"><a href="#3-管道通信方式-PIPE" class="headerlink" title="3.管道通信方式 PIPE"></a>3.管道通信方式 PIPE</h2><p>利用一个缓冲传输介质——内存或文件连接两个相互通信的进程。</p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/33.png" style="zoom:35%;"></p>
+<ul>
+<li><strong>用字符流方式写入读出</strong></li>
+<li><strong>先进先出顺序</strong></li>
+<li><strong>管道通信机制必须提供的协调能力</strong><ul>
+<li><strong>互斥、同步、判断对方进程是否存在</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="八-典型操作系统中的IPC机制"><a href="#八-典型操作系统中的IPC机制" class="headerlink" title="八.典型操作系统中的IPC机制"></a>八.典型操作系统中的IPC机制</h1><h2 id="1-进程同步-通信实例"><a href="#1-进程同步-通信实例" class="headerlink" title="1.进程同步/通信实例"></a>1.进程同步/通信实例</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/34.png" style="zoom:33%;"></p>
+<h2 id="2-LINUX的进程通信机制"><a href="#2-LINUX的进程通信机制" class="headerlink" title="2.LINUX的进程通信机制"></a>2.LINUX的进程通信机制</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/35.png" style="zoom:33%;"></p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/36.png" style="zoom:33%;"></p>
+<p>Linux提供了很多种工具，根据需要挑选合适的一种。</p>
+<h2 id="3-原子操作"><a href="#3-原子操作" class="headerlink" title="3.原子操作"></a>3.原子操作</h2><p>原子操作是不可分割，在执行完之前不会被其他任务或事件中断。它常用于实现资源的引用计数。</p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/37.png" style="zoom:33%;"></p>
+<p>例子：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">atomic_t</span> v = atomic_init(<span class="number">0</span>);</span><br><span class="line">atomic_set(&amp;v, <span class="number">4</span>); </span><br><span class="line">atomic_add(<span class="number">2</span>, &amp;v); </span><br><span class="line">atomic_inc(&amp;v);</span><br><span class="line">printk(“%d\n”, atomic_read(&amp;v);</span><br><span class="line"><span class="keyword">int</span> atomic_dec_and_test(<span class="keyword">atomic_t</span> *v)</span><br></pre></td></tr></table></figure></div>
+<h2 id="4-屏障"><a href="#4-屏障" class="headerlink" title="4.屏障"></a>4.屏障</h2><p><strong>屏障主要是用于对一组线程进行协调的。</strong></p>
+<p>应用场景：</p>
+<p><strong>一组线程协同完成一项任务，需要所有线程都到达一个汇合点后再一起向前推进。</strong></p>
+<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/38.png" style="zoom:33%;"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/" rel="tag"># 同步机制</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/" rel="next" title="处理器调度">
+                <i class="fa fa-chevron-left"></i> 处理器调度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/17/%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/" rel="prev" title="存储模型">
+                存储模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zybTree" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/lin-li-yike-cao/activities" target="_blank" title="ZhiHu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>ZhiHu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.schwarzeni.com/" title="Schwarzeni" target="_blank">Schwarzeni</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhoujianguo.ltd/" title="ZhouJianGuo" target="_blank">ZhouJianGuo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jzhtech.github.io/" title="jzhBetter" target="_blank">jzhBetter</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hishiro-xiao.github.io/" title="hishiro-xiao" target="_blank">hishiro-xiao</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%B9%B6%E5%8F%91%E6%89%A7%E8%A1%8C"><span class="nav-text">一.进程的并发执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%BF%9B%E7%A8%8B%E7%89%B9%E5%BE%81%E6%89%80%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">1.进程特征所带来的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%B9%B6%E5%8F%91"><span class="nav-text">(1).并发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%85%B1%E4%BA%AB"><span class="nav-text">(2).共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-text">(3).不确定性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%B8%8E%E6%97%B6%E9%97%B4%E7%9B%B8%E5%85%B3%E7%9A%84%E9%94%99%E8%AF%AF%E4%BE%8B%E5%AD%90"><span class="nav-text">2.与时间相关的错误例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%B9%B6%E5%8F%91%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E7%9A%84%E5%88%86%E6%9E%90"><span class="nav-text">(1).并发执行过程的分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%BF%9B%E7%A8%8B%E5%89%8D%E8%B6%8B%E5%9B%BE"><span class="nav-text">(2).进程前趋图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5"><span class="nav-text">二.进程互斥</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%AB%9E%E4%BA%89%E6%9D%A1%E4%BB%B6"><span class="nav-text">1.竞争条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-text">2.进程互斥的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%B8%B4%E7%95%8C%E5%8C%BA%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8E%9F%E5%88%99"><span class="nav-text">3.临界区的使用原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E7%9A%84%E6%96%B9%E6%A1%88"><span class="nav-text">4.实现进程互斥的方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%BD%AF%E4%BB%B6%E6%96%B9%E6%A1%88"><span class="nav-text">(1).软件方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%A7%A3%E6%B3%951"><span class="nav-text">软件解法1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%A7%A3%E6%B3%952"><span class="nav-text">软件解法2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%A7%A3%E6%B3%953"><span class="nav-text">软件解法3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%A7%A3%E6%B3%954%E2%80%94%E2%80%94DEKKER%E7%AE%97%E6%B3%95"><span class="nav-text">软件解法4——DEKKER算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%A7%A3%E6%B3%955%E2%80%94%E2%80%94PETERSON%E7%AE%97%E6%B3%95"><span class="nav-text">软件解法5——PETERSON算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%A1%AC%E4%BB%B6%E6%96%B9%E6%A1%88"><span class="nav-text">(2).硬件方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E8%A7%A3%E6%B3%951%E2%80%94%E2%80%94%E4%B8%AD%E6%96%AD%E5%B1%8F%E8%94%BD%E6%B3%95"><span class="nav-text">硬件解法1——中断屏蔽法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E8%A7%A3%E6%B3%952%E2%80%94%E2%80%94%E2%80%9C%E6%B5%8B%E8%AF%95%E5%B9%B6%E5%8A%A0%E9%94%81%E2%80%9D%E6%8C%87%E4%BB%A4"><span class="nav-text">硬件解法2——“测试并加锁”指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E8%A7%A3%E6%B3%953%E2%80%94%E2%80%94%E2%80%9C%E4%BA%A4%E6%8D%A2%E2%80%9D%E6%8C%87%E4%BB%A4"><span class="nav-text">硬件解法3——“交换”指令</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="nav-text">三.进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="nav-text">1.生产者与消费者问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B-%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8F%8APV%E6%93%8D%E4%BD%9C"><span class="nav-text">四.信号量及PV操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">1.基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-text">(1).信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-PV%E6%93%8D%E4%BD%9C%E5%AE%9A%E4%B9%89"><span class="nav-text">(2).PV操作定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%94%A8PV%E6%93%8D%E4%BD%9C%E8%A7%A3%E5%86%B3%E8%BF%9B%E7%A8%8B%E9%97%B4%E4%BA%92%E6%96%A5%E9%97%AE%E9%A2%98"><span class="nav-text">2.用PV操作解决进程间互斥问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="nav-text">(1).基本步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BE%8B%E5%AD%90"><span class="nav-text">(2).例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%E8%A7%A3%E5%86%B3%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="nav-text">3.用信号量解决生产者&#x2F;消费者问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%E8%A7%A3%E5%86%B3%E8%AF%BB%E8%80%85-%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98"><span class="nav-text">4.用信号量解决读者&#x2F;写者问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%AC%AC%E4%B8%80%E7%B1%BB%E8%AF%BB%E8%80%85%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98%EF%BC%9A%E8%AF%BB%E8%80%85%E4%BC%98%E5%85%88"><span class="nav-text">(1).第一类读者写者问题：读者优先</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95"><span class="nav-text">解法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Linux%E6%8F%90%E4%BE%9B%E7%9A%84%E8%AF%BB%E5%86%99%E9%94%81"><span class="nav-text">(2).Linux提供的读写锁</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94-%E7%AE%A1%E7%A8%8B-MONITOR"><span class="nav-text">五.管程 MONITOR</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%AE%A1%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">1.管程的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%95%E5%85%A5%E7%AE%A1%E7%A8%8B"><span class="nav-text">(1).为什么引入管程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%AE%A1%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">(2).管程的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%AE%A1%E7%A8%8B%E7%9A%84%E8%A6%81%E6%B1%82"><span class="nav-text">(3).管程的要求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%92%E6%96%A5"><span class="nav-text">互斥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5"><span class="nav-text">同步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">(4).遇到的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-HOARE%E7%AE%A1%E7%A8%8B"><span class="nav-text">2.HOARE管程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="nav-text">(1).基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">(2).条件变量的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%AE%A1%E7%A8%8B%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-text">3.管程的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%AE%A1%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">(1).管程的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%94%A8%E7%AE%A1%E7%A8%8B%E8%A7%A3%E5%86%B3%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="nav-text">(2).用管程解决生产者消费者问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-MESA%E7%AE%A1%E7%A8%8B"><span class="nav-text">4.MESA管程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8NOTIFY%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">(1).使用NOTIFY要注意的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-MEAS%E7%AE%A1%E7%A8%8B%EF%BC%9A%E7%94%9F%E4%BA%A7%E8%80%85%E2%80%94%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="nav-text">(2).MEAS管程：生产者—消费者问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%94%B9%E8%BF%9BNOTIFY"><span class="nav-text">(3).改进NOTIFY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%BC%95%E5%85%A5BROADCAST"><span class="nav-text">(4).引入BROADCAST</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-HOARE%E7%AE%A1%E7%A8%8B%E4%B8%8EMESA%E7%AE%A1%E7%A8%8B%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-text">5.HOARE管程与MESA管程的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E7%AE%A1%E7%A8%8B%E5%B0%8F%E7%BB%93"><span class="nav-text">6.管程小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD-PTHREAD%E4%B8%AD%E7%9A%84%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6"><span class="nav-text">六.PTHREAD中的同步机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%94%A8PTHREAD%E8%A7%A3%E5%86%B3%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="nav-text">1.用PTHREAD解决生产者消费者问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%AE%A8%E8%AE%BA%EF%BC%9APTHREAD-COND-WAIT"><span class="nav-text">2.讨论：PTHREAD_COND_WAIT</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6"><span class="nav-text">七.进程间通信机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6"><span class="nav-text">1.为什么需要通信机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%9F%BA%E6%9C%AC%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-text">2.基本通信方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92"><span class="nav-text">(1).消息传递</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8PV%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0SEND%E6%93%8D%E4%BD%9C"><span class="nav-text">用PV操作实现SEND操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98"><span class="nav-text">2.共享内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F-PIPE"><span class="nav-text">3.管道通信方式 PIPE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AB-%E5%85%B8%E5%9E%8B%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84IPC%E6%9C%BA%E5%88%B6"><span class="nav-text">八.典型操作系统中的IPC机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E9%80%9A%E4%BF%A1%E5%AE%9E%E4%BE%8B"><span class="nav-text">1.进程同步&#x2F;通信实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-LINUX%E7%9A%84%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6"><span class="nav-text">2.LINUX的进程通信机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="nav-text">3.原子操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%B1%8F%E9%9A%9C"><span class="nav-text">4.屏障</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZYBO_o</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">90.6k</span>
+  
+</div>
+
+<!--
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"left","width":200,"height":500},"mobile":{"show":true},"encrypt":{"enable":true},"log":false});</script></body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

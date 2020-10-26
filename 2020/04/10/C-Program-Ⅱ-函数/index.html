@@ -1,37 +1,1282 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/head.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/head.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/head.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/head.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZYBO_o's Blogs" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="什么是函数？函数（function）是完成特定任务的独立程序代码单元。 为什么要使用函数？首先，使用函数可以省去编写重复代码，提高效率。其次，让程序更加模块化，从而提高了程序代码的可读性，更方便后期修改、完善。如果不是自己编写函数，根本不用关心黑盒的内部行为；以这种方式看待函数有助于把注意力集中在程序的整体设计，而不是函数的实现细节上  以下面程序为例分析： 123456789101112131">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C Program Ⅱ 函数">
+<meta property="og:url" content="https://zybo_o.github.io/2020/04/10/C-Program-%E2%85%A1-%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
+<meta property="og:description" content="什么是函数？函数（function）是完成特定任务的独立程序代码单元。 为什么要使用函数？首先，使用函数可以省去编写重复代码，提高效率。其次，让程序更加模块化，从而提高了程序代码的可读性，更方便后期修改、完善。如果不是自己编写函数，根本不用关心黑盒的内部行为；以这种方式看待函数有助于把注意力集中在程序的整体设计，而不是函数的实现细节上  以下面程序为例分析： 123456789101112131">
+<meta property="og:locale">
+<meta property="og:image" content="https://zybo_o.github.io/2020/04/10/C-Program-Ⅱ-函数/3.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/04/10/C-Program-Ⅱ-函数/4.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/04/10/C-Program-Ⅱ-函数/6.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/04/10/C-Program-Ⅱ-函数/7.png">
+<meta property="article:published_time" content="2020-04-10T03:22:47.000Z">
+<meta property="article:modified_time" content="2020-04-10T09:02:02.624Z">
+<meta property="article:author" content="ZYBO_o">
+<meta property="article:tag" content="C">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zybo_o.github.io/2020/04/10/C-Program-Ⅱ-函数/3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ZYBO_o.github.io/2020/04/10/C-Program-Ⅱ-函数/"/>
+
+
+
+
+
+  <title>C Program Ⅱ 函数 | ZYBO_o's Blogs</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZYBO_o's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Follow Excellence</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-路径">
+          <a href="/top/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fire"></i> <br />
+            
+            路径
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ZYBO_o.github.io/2020/04/10/C-Program-%E2%85%A1-%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZYBO_o's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C Program Ⅱ 函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-10T11:22:47+08:00">
+                2020-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><strong>什么是函数？</strong>函数（function）是完成特定任务的独立程序代码单元。</p>
+<p><strong>为什么要使用函数？</strong>首先，使用函数可以省去编写重复代码，提高效率。其次，让程序更加模块化，从而提高了程序代码的可读性，更方便后期修改、完善。如果不是自己编写函数，根本不用关心黑盒的内部行为；以这种方式看待函数有助于把注意力集中在程序的整体设计，而不是函数的实现细节上</p>
+</blockquote>
+<p>以下面程序为例分析：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;            /* for strlen() */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NAME <span class="meta-string">"GIGATHINK, INC."</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADDRESS <span class="meta-string">"101 Megabuck Plaza"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PLACE <span class="meta-string">"Megapolis, CA 94904"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WIDTH 40</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPACE <span class="meta-string">' '</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_n_char</span><span class="params">(<span class="keyword">char</span> ch, <span class="keyword">int</span> num)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> spaces;</span><br><span class="line">    </span><br><span class="line">    show_n_char(<span class="string">'*'</span>, WIDTH);   <span class="comment">/* using constants as arguments */</span></span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">    show_n_char(SPACE, <span class="number">12</span>);    <span class="comment">/* using constants as arguments */</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, NAME);</span><br><span class="line">    spaces = (WIDTH - <span class="built_in">strlen</span>(ADDRESS)) / <span class="number">2</span>;</span><br><span class="line">    <span class="comment">/* Let the program calculate    */</span></span><br><span class="line">    <span class="comment">/* how many spaces to skip      */</span></span><br><span class="line">    show_n_char(SPACE, spaces);<span class="comment">/* use a variable as argument   */</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, ADDRESS);</span><br><span class="line">    show_n_char(SPACE, (WIDTH - <span class="built_in">strlen</span>(PLACE)) / <span class="number">2</span>);</span><br><span class="line">    <span class="comment">/* an expression as argument    */</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, PLACE);</span><br><span class="line">    show_n_char(<span class="string">'*'</span>, WIDTH);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* show_n_char() definition */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_n_char</span><span class="params">(<span class="keyword">char</span> ch, <span class="keyword">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (count = <span class="number">1</span>; count &lt;= num; count++)</span><br><span class="line">        <span class="built_in">putchar</span>(ch);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>程序在3处使用了<code>show_n_char()</code>标识符：<strong>函数原型(function prototype)</strong>告诉编译器函数<code>show_n_char()</code>的类型；<strong>函数调用(function call)</strong>表明在此处执行函数；<strong>函数定义(function definition)</strong>明确地指定了函数要做什么。</p>
+<p><strong>函数和变量一样，有多种类型。任何程序在使用函数之前都要声明该函数的类型。</strong>因此，在main()函数定义的前面</p>
+<h2 id="1-对于函数声明"><a href="#1-对于函数声明" class="headerlink" title="1.对于函数声明"></a>1.对于函数声明</h2><p>出现了下面的ANSI C风格的函数原型：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_n_char</span><span class="params">(<span class="keyword">char</span> ch, <span class="keyword">int</span> num)</span></span>;</span><br></pre></td></tr></table></figure></div>
+<p>圆括号表明<code>show_n_char()</code>是一个函数名。第1个<code>void</code>是函数类型，<code>void</code>类型表明函数没有返回值。后面的<code>char</code>,<code>int</code>（在圆括号中）表明该函数带有两个参数，一个为<code>char</code>类型，一个为<code>int</code>类型。分号表明这是在声明函数，不是定义函数。<font color="red">函数原型指明了函数的返回值类型和函数接受的参数类型。这些信息称为该函数的签名（signature）。</font></p>
+<blockquote>
+<p>程序把 <code>show_n_char()</code>原型置于<code>main()</code>的前面。当然，也可以放在 <code>main()</code>里面的声明变量处。放在哪个位置都可以。</p>
+</blockquote>
+<h2 id="2-对于函数参数"><a href="#2-对于函数参数" class="headerlink" title="2.对于函数参数"></a>2.对于函数参数</h2><p>还是以这个有ANSI C风格的函数头为例：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_n_char</span><span class="params">(<span class="keyword">char</span> ch, <span class="keyword">int</span> num)</span></span></span><br></pre></td></tr></table></figure></div>
+<p>该行告知编译器<code>show_n_char()</code>使用两个参数ch和num，ch是<code>char</code>类型，num是<code>int</code>类型。这两个变量被称为<strong>形式参数（formal argument，但是最近的标准推荐使用formal parameter）</strong>，简称<strong>形参</strong>。和定义在函数中变量一样，形式参数也是局部变量，属该函数私有。</p>
+<blockquote>
+<p>注意，ANSI C要求在每个变量前都声明其类型。也就是说，不能像普通变量声明那样使用同一类型的变量列表：void dibs(int x, y, z)　　　　 /<em> 无效的函数头 </em>/</p>
+</blockquote>
+<p>当函数接受参数时，函数原型用逗号分隔的列表指明参数的数量和类型。根据个人喜好，也可以省略变量名：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_n_char</span><span class="params">(<span class="keyword">char</span>, <span class="keyword">int</span>)</span></span>;</span><br></pre></td></tr></table></figure></div>
+<p>在函数调用中，<strong>实际参数（actual argument，简称实参）</strong>提供了ch和num的值。考虑上例中第1次调用<code>show_n_char()</code>：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show_n_char(SPACE, <span class="number">12</span>);</span><br></pre></td></tr></table></figure></div>
+<p>实际参数是空格字符和12。这两个值被赋给<code>show_n_char()</code>中相应的形式参数：变量ch和num。简而言之，<font color="red">形式参数是被调函数（called function）中的变量，实际参数是主调函数（calling function）赋给被调函数的具体值。</font></p>
+<blockquote>
+<p>1.注意 实际参数和形式参数：<strong>实际参数是出现在函数调用圆括号中的表达式。形式参数是函数定义的函数头中声明的变量。</strong></p>
+<p>2.<font color="red">为了表明函数确实没有参数，应该在圆括号中使用<code>void</code>关键字：</font></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">void</span> <span class="title">print_name</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<h2 id="3-关于return从函数中返回值"><a href="#3-关于return从函数中返回值" class="headerlink" title="3.关于return从函数中返回值"></a>3.关于return从函数中返回值</h2><p>函数的返回值可以把信息从被调函数传回主调函数。关键字<code>return</code>后面的表达式的值就是函数的返回值。</p>
+<p>问题：如果函数返回值的类型与函数声明的类型不匹配会怎样？</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>　<span class="title">what_if</span><span class="params">(<span class="keyword">int</span>　n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		<span class="keyword">double</span>　z　=　<span class="number">100.0</span>　/　(<span class="keyword">double</span>)　n;</span><br><span class="line">		<span class="keyword">return</span> z; <span class="comment">// 会发生什么？</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>实际得到的返回值相当于把函数中指定的返回值赋给与函数类型相同的变量所得到的值。因此在本例中，相当于把z的值赋给int类型的变量，然后返回int类型变量的值。例如，假设有下面的函数调用：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = what_if(<span class="number">64</span>);</span><br></pre></td></tr></table></figure></div>
+<p>虽然在what_if()函数中赋给z的值是1.5625，但是return语句返回确实int类型的值1。</p>
+<h2 id="4-查找地址：-amp-运算符"><a href="#4-查找地址：-amp-运算符" class="headerlink" title="4.查找地址：&amp;运算符"></a>4.查找地址：&amp;运算符</h2><p>指针（pointer）是 C 语言最重要的（有时也是最复杂的）概念之一，用于储存变量的地址。前面使用的<code>scanf()</code>函数中就使用地址作为参数。概括地说，如果主调函数不使用<code>return</code>返回的值，则必须通过地址才能修改主调函数中的值。一元&amp;运算符给出变量的存储地址。如果pooh是变量名，那么&amp;pooh是变量的地址。</p>
+<p>下面例子中使用了这个运算符查看不同函数中的同名变量分别储存在什么位置。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* loccheck.c  -- checks to see where variables are stored  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mikado</span><span class="params">(<span class="keyword">int</span>)</span></span>;                      <span class="comment">/* declare function  */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pooh = <span class="number">2</span>, bah = <span class="number">5</span>;             <span class="comment">/* local to main()   */</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In main(), pooh = %d and &amp;pooh = %p\n"</span>,</span><br><span class="line">           pooh, &amp;pooh);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In main(), bah = %d and &amp;bah = %p\n"</span>,</span><br><span class="line">           bah, &amp;bah);</span><br><span class="line">    mikado(pooh);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mikado</span><span class="params">(<span class="keyword">int</span> bah)</span>                   <span class="comment">/* define function   */</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pooh = <span class="number">10</span>;                     <span class="comment">/* local to mikado() */</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In mikado(), pooh = %d and &amp;pooh = %p\n"</span>,</span><br><span class="line">           pooh, &amp;pooh);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In mikado(), bah = %d and &amp;bah = %p\n"</span>,</span><br><span class="line">           bah, &amp;bah);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>运行结果：</p>
+<p><img src="//ZYBO_o.github.io/2020/04/10/C-Program-Ⅱ-函数/3.png" style="zoom:50%;"></p>
+<blockquote>
+<p>首先，两个pooh的地址不同，两个bah的地址也不同。因此，和前面介绍的一样，计算机把它们看成4个独立的变量。其次，函数调用mikado(pooh)把实际参数（main()中的pooh）的值 2 传递给形式参数（mikado()中的bah）。<strong>注意，这种传递只传递了值。涉及的两个变量（main()中的pooh和mikado()中的bah）并未改变。</strong></p>
+</blockquote>
+<h2 id="5-使用指针在函数间通信"><a href="#5-使用指针在函数间通信" class="headerlink" title="5.使用指针在函数间通信"></a>5.使用指针在函数间通信</h2><p>指针？什么是指针？从根本上看，指针（pointer）是一个值为内存地址的变量（或数据对象）。正如char类型变量的值是字符，int类型变量的值是整数，指针变量的值是地址。</p>
+<p>声明指针变量时必须指定指针所指向变量的类型，因为不同的变量类型占用不同的存储空间，一些指针操作要求知道操作对象的大小。另外，程序必须知道储存在指定地址上的数据类型。<code>long</code>和<code>float</code>可能占用相同的存储空间，但是它们储存数字却大相径庭。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * pi;　　 <span class="comment">// pi是指向int类型变量的指针</span></span><br><span class="line"><span class="keyword">char</span> * pc;　　　　<span class="comment">// pc是指向char类型变量的指针</span></span><br><span class="line"><span class="keyword">float</span> * pf, * pg; <span class="comment">// pf、pg都是指向float类型变量的指针</span></span><br></pre></td></tr></table></figure></div>
+<p>类型说明符表明了指针所指向对象的类型，星号（<em>）表明声明的变量是一个指针。int </em> pi; 声明的意思是pi是一个指针,<code>*pi</code> 是 <code>int</code>类型 </p>
+<p>pc指向的值（<em>pc）是char类型。pc本身是什么类型？我们描述它的类型是<strong>“指向char类型的指针</strong>。pc 的值是一个地址，在大部分系统内部，该地址由一个无符号整数表示。但是，不要把指针认为是整数类型。一些处理整数的操作不能用来处理指针，反之亦然。例如，可以把两个整数相乘，<em>*但是不能把两个指针相乘</em></em>。所以，指针实际上是一个新类型，不是整数类型。因此，如前所述，ANSI C专门为指针提供了%p格式的转换说明。</p>
+<p>下面例子就介绍了指针在函数间通信：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* swap2.c -- researching swap1.c */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">interchange</span><span class="params">(<span class="keyword">int</span> *u, <span class="keyword">int</span> *v)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">5</span>, y = <span class="number">10</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In main Originally x = %d and y = %d.\n"</span>, x , y);</span><br><span class="line">    interchange(&amp;x, &amp;y);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In main Now x = %d and y = %d.\n"</span>, x, y);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">interchange</span><span class="params">(<span class="keyword">int</span> *u, <span class="keyword">int</span> *v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In interchange Originally u = %d and v = %d.\n"</span>, *u, *v);</span><br><span class="line">    temp = *u;</span><br><span class="line">    *u = *v;</span><br><span class="line">    *v = temp;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In interchange Now u = %d and v = %d.\n"</span>, *u, *v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>运行结果：</p>
+<p><img src="//ZYBO_o.github.io/2020/04/10/C-Program-Ⅱ-函数/4.png" style="zoom:50%;"></p>
+<p>  该函数传递的不是x和y的值，而是它们的地址。这意味着出现在interchange()原型和定义中的形式参数u和v将把           地址作为它们的值。因此，应把它们声明为指针。</p>
+<p>在<code>interchange(int *u, int *v)</code>函数中 <code>* u = x, * v = y</code>;即 <code>u = &amp;x, v = &amp;y</code>;</p>
+<p><code>*u = *v</code>;——&gt;把 v 的地址赋值给 u; <code>*v = temp</code>;——&gt;把temp的地址赋值给v。</p>
+<p><code>u</code>和 <code>v</code> 互换了地址。</p>
+<p><strong>猜想：如果直接int * temp;是否也能改变值？</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">interchange</span><span class="params">(<span class="keyword">int</span> *u, <span class="keyword">int</span> *v)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">5</span>, y = <span class="number">10</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In main Originally x = %d and y = %d.\n"</span>, x , y);</span><br><span class="line">    interchange(&amp;x, &amp;y);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In main Now x = %d and y = %d.\n"</span>, x, y);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">interchange</span><span class="params">(<span class="keyword">int</span> * u, <span class="keyword">int</span> * v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *temp;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In interchange Originally u = %d and v = %d.\n"</span>, *u , *v);</span><br><span class="line">    temp = u;</span><br><span class="line">    u = v;</span><br><span class="line">    v = temp;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"In interchangeo Now u = %d and v = %d.\n"</span>, *u, *v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img src="//ZYBO_o.github.io/2020/04/10/C-Program-Ⅱ-函数/6.png" style="zoom:50%;"></p>
+<p>实践证明是不行的，因为定义指针temp后的交换与定义<code>int temp</code>,然后<code>interchange(int  u, int  v)</code>这样交换是一样的，都是同类型的交换。</p>
+<p><strong>对于指针与地址的实验：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="number">5</span>;</span><br><span class="line">	<span class="keyword">int</span> *p;</span><br><span class="line">	p = &amp;n;</span><br><span class="line">	<span class="keyword">int</span> temp = *p;</span><br><span class="line">	<span class="keyword">int</span> *v;</span><br><span class="line">	v = &amp;temp;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"n = %d,the loacl of n = %p\n"</span>,n,&amp;n);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"*p = %d,the loacl of p = %p\n"</span>,*p,p);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"temp = %d,the loacl of temp = %p\n"</span>,temp,&amp;temp);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"*v = %d,the loacl of v = %p\n"</span>,*v,v);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img src="//ZYBO_o.github.io/2020/04/10/C-Program-Ⅱ-函数/7.png" style="zoom:50%;"></p>
+<blockquote>
+<p>为什么temp的地址与* v的地址不一样呢，因为temp是新定义的变量，编译时给temp新分配了一个地址。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/" rel="next" title="C Program Ⅰ 字符">
+                <i class="fa fa-chevron-left"></i> C Program Ⅰ 字符
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/10/C-Program-%E2%85%A2-%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88/" rel="prev" title="C Program Ⅲ 数组与指针">
+                C Program Ⅲ 数组与指针 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zybTree" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/lin-li-yike-cao/activities" target="_blank" title="ZhiHu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>ZhiHu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.schwarzeni.com/" title="Schwarzeni" target="_blank">Schwarzeni</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhoujianguo.ltd/" title="ZhouJianGuo" target="_blank">ZhouJianGuo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jzhtech.github.io/" title="jzhBetter" target="_blank">jzhBetter</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hishiro-xiao.github.io/" title="hishiro-xiao" target="_blank">hishiro-xiao</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AF%B9%E4%BA%8E%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E"><span class="nav-text">1.对于函数声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AF%B9%E4%BA%8E%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="nav-text">2.对于函数参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B3%E4%BA%8Ereturn%E4%BB%8E%E5%87%BD%E6%95%B0%E4%B8%AD%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-text">3.关于return从函数中返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%9F%A5%E6%89%BE%E5%9C%B0%E5%9D%80%EF%BC%9A-amp-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">4.查找地址：&amp;运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E5%9C%A8%E5%87%BD%E6%95%B0%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="nav-text">5.使用指针在函数间通信</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZYBO_o</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">90.6k</span>
+  
+</div>
+
+<!--
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"left","width":200,"height":500},"mobile":{"show":true},"encrypt":{"enable":true},"log":false});</script></body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
