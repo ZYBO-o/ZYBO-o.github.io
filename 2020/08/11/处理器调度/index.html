@@ -106,33 +106,33 @@
 <meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
 <meta property="og:description" content="一.CPU调度的相关概念1.CPU调度(1).定义CPU调度的任务是控制、 协调多个进程对CPU的竞争。即按照一定的调度算法，从就绪队列中选择一个进程，然后把CPU的控制权交给被选中的进程。如果就绪队列没有其它的进程，那么系统会安排一个空闲进程(idle 进程)上 CPU 运行。 (2).系统场景CPU调度所面临的场景：  系统有N 个进程，它们就绪等待上 CPU 运行 而系统有M个 CPU，M">
 <meta property="og:locale">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/1.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/2.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/3.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/4.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/5.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/6.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/7.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/8.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/9.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/10.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/11.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/12.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/13.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/14.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/15.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/16.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/20.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/21.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/17.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/18.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/19.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/1.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/2.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/3.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/4.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/5.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/6.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/7.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/8.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/9.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/10.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/11.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/12.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/13.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/14.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/15.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/16.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/20.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/21.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/17.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/18.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/19.png">
 <meta property="article:published_time" content="2020-08-11T13:55:58.000Z">
 <meta property="article:modified_time" content="2020-08-13T01:33:57.018Z">
 <meta property="article:author" content="ZYBO_o">
 <meta property="article:tag" content="处理器调度">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zybo_o.github.io/2020/08/11/处理器调度/1.png">
+<meta name="twitter:image" content="https://zybo_o.github.io/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/1.png">
 
 
 
@@ -552,7 +552,7 @@
 </ul>
 </blockquote>
 <p>从用户角度和系统角度对调度算法的要求不一样，下图描述了性能方面的不同要求： </p>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/1.png" style="zoom:35%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/1.png" style="zoom:35%;"></p>
 <blockquote>
 <p>从上图可以看到，用户的角度和系统的角度对于调度算法有不同的要求。 而这些要求有时候是相互矛盾的。 因此在设计调度算法的时候是要在各种因素中折中权衡。</p>
 </blockquote>
@@ -613,10 +613,10 @@
 <p>有的时候需要动态优先级，比如当一个进程在就绪队列当中等待的时间很长的时候，要提升它的优先级，让它尽快有机会得到CPU去运行。</p>
 </blockquote>
 <h2 id="2-进程就绪队列组织"><a href="#2-进程就绪队列组织" class="headerlink" title="2.进程就绪队列组织"></a>2.进程就绪队列组织</h2><p><strong>按照优先级来排队 ：</strong></p>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/2.png" style="zoom:35%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/2.png" style="zoom:35%;"></p>
 <p>可以按照优先级来组织就绪队列。当创建一个新的进程的时候，根据它的优先级排不同的就绪队列，在这里设定n个就绪队列优先级，不同的优先级进入不同的就绪队列。 就绪队列 1 的优先级是最高的，当调度程序选择进程的时候，首先应该从高优先级的队列来选择进程 。如果高优先级队列没有进程了，再从次高就绪队列来选择进程。</p>
 <p><strong>另一种排队方式：</strong></p>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/3.png" style="zoom:35%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/3.png" style="zoom:35%;"></p>
 <p>所有的进程第一次创建之后都进到第一级就绪队列，随着进程的运行可能会降低某些进程的优先级。比如当一个进程分配给它的时间片用完了，那么它就会降一级，降到第二级就绪队列。 如果它经常地用完时间片，慢慢的这个进程就会降低到最后一级就绪队列。进程调度首先在第一级队列里选，说明第一级就绪队列的优先级比较高。如果这个队列是空的，那么调度就会从其他的就绪队列里头选择进程。如果进程已经进到了最后一级队列，那么它的优先级就越来越低，它被调度上 CPU 的机会就会变得很小。</p>
 <h2 id="3-占用CPU的方式—抢占与非抢占"><a href="#3-占用CPU的方式—抢占与非抢占" class="headerlink" title="3.占用CPU的方式—抢占与非抢占"></a>3.占用CPU的方式—抢占与非抢占</h2><p>指占用CPU的方式:</p>
 <ul>
@@ -640,7 +640,7 @@
 </blockquote>
 </li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/4.png" style="zoom:40%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/4.png" style="zoom:40%;"></p>
 <blockquote>
 <p>在设计调度算法时，通常会对I/O型的进程会有一些友好，希望更多的I/O型进程早一点上CPU运行。</p>
 <p>因为这些进程上CPU 之后只用了很短的一下，CPU时间就让出CPU，因为它要去做其它的输入输出操作。因此对于一般的调度程序，都会对I/O型进程更偏好一些。 </p>
@@ -689,9 +689,9 @@
 </blockquote>
 <h3 id="2-举例"><a href="#2-举例" class="headerlink" title="(2).举例"></a>(2).举例</h3><p>假设有三个进程，按照P1、P2、P3就绪。 P1进程需要运行24秒，P2和P3分别需要3秒计算。 </p>
 <p>采用先来先服务的调度算法调度：</p>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/5.png" style="zoom:34%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/5.png" style="zoom:34%;"></p>
 <p>同样还是这个例子， 改变调度的顺序：</p>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/6.png" style="zoom:34%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/6.png" style="zoom:34%;"></p>
 <blockquote>
 <p>可以看到平均周转时间降低到了13秒。 </p>
 </blockquote>
@@ -709,7 +709,7 @@
 <p>因为在一个短作业运行的过程中，可能有一个新的进程创建出来，或者一个进程从等待变成就绪，那么它剩余的时间比当前正在运行的这个进程剩余的这个运行时间还短， 就要抢占了。</p>
 </blockquote>
 <h3 id="2-举例-1"><a href="#2-举例-1" class="headerlink" title="(2).举例"></a>(2).举例</h3><p>有四个进程到达时刻不是同时到达的，有不同的时刻：</p>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/7.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/7.png" style="zoom:33%;"></p>
 <h3 id="3-优缺点"><a href="#3-优缺点" class="headerlink" title="(3).优缺点"></a>(3).优缺点</h3><p><strong>优点：</strong></p>
 <ul>
 <li>在所有进程同时可运行时，采用SJF调度算法可以得到最短的平均周转时间。</li>
@@ -724,7 +724,7 @@
 <p>基本思想是这样的： </p>
 <p><strong>调度时，首先计算每个进程的响应比R；之后，总是选择R最高的进程执行。</strong></p>
 <p>其中一种方案：</p>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/8.png" style="zoom:35%;"> </p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/8.png" style="zoom:35%;"> </p>
 <blockquote>
 <p>很明显地看到，如果处理时间短，也就是短作业，那么分母小，整个的值就大，因此响应比就大。 </p>
 <p>如果很早就绪了，在就绪队列中等的时间非常长，那等待时间就变得越来越大， 最后响应比变得非常大，被调度上 CPU。 </p>
@@ -738,7 +738,7 @@
 <li><strong>最短进程优先 (Shortest Process Next)</strong></li>
 </ul>
 <p>追求的指标主要是<strong>响应时间，公平，资源的平衡使用。</strong>最短进程优先调度算法呢短作业优先调度算法差不多，就不再介绍。</p>
-<h2 id="1-时间片轮转算法"><a href="#1-时间片轮转算法" class="headerlink" title="1.时间片轮转算法"></a>1.时间片轮转算法</h2><h3 id="1-概念-2"><a href="#1-概念-2" class="headerlink" title="(1).概念"></a>(1).概念</h3><p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/9.png" style="zoom:35%;"></p>
+<h2 id="1-时间片轮转算法"><a href="#1-时间片轮转算法" class="headerlink" title="1.时间片轮转算法"></a>1.时间片轮转算法</h2><h3 id="1-概念-2"><a href="#1-概念-2" class="headerlink" title="(1).概念"></a>(1).概念</h3><p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/9.png" style="zoom:35%;"></p>
 <p>左图看到当前正在运行的是B进程，排在它后面的是F进程。当B进程用完它的时间片之后就回到队列的末位，调度就会选择下一个进程，所以右图当前运行进程F上CPU。这就是一个时间片轮转，然后F运行完它的时间片后就继续去排队。队列里面的每一个进程都有机会轮流上CPU。</p>
 <p><strong>目标：</strong></p>
 <ul>
@@ -753,9 +753,9 @@
 <li><strong>通过了时钟中断引发轮换</strong></li>
 </ul>
 <p>以此来达到改善短作业的平均响应时间的目标。 </p>
-<h3 id="2-如何选择合适的时间片"><a href="#2-如何选择合适的时间片" class="headerlink" title="(2).如何选择合适的时间片"></a>(2).如何选择合适的时间片</h3><h4 id="如果选择的时间片太长："><a href="#如果选择的时间片太长：" class="headerlink" title="如果选择的时间片太长："></a><strong>如果选择的时间片太长：</strong></h4><p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/10.png" style="zoom:40%;"></p>
+<h3 id="2-如何选择合适的时间片"><a href="#2-如何选择合适的时间片" class="headerlink" title="(2).如何选择合适的时间片"></a>(2).如何选择合适的时间片</h3><h4 id="如果选择的时间片太长："><a href="#如果选择的时间片太长：" class="headerlink" title="如果选择的时间片太长："></a><strong>如果选择的时间片太长：</strong></h4><p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/10.png" style="zoom:40%;"></p>
 <p>上图可以看到这个进程开始运行后，给它一个时间片，在没有用完时间片的前提下就已经完成了一个响应。<strong>如果系统中绝大部分进程都不到一个时间片就可以完成响应的话，那么时间片轮转算法实际上已经退化成了一个先来先服务的这种算法。</strong>另外如果时间片过长会延长某些进程的响应时间。</p>
-<h4 id="如果选择的时间片过短："><a href="#如果选择的时间片过短：" class="headerlink" title="如果选择的时间片过短："></a><strong>如果选择的时间片过短：</strong></h4><p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/11.png" style="zoom:35%;"></p>
+<h4 id="如果选择的时间片过短："><a href="#如果选择的时间片过短：" class="headerlink" title="如果选择的时间片过短："></a><strong>如果选择的时间片过短：</strong></h4><p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/11.png" style="zoom:35%;"></p>
 <p>如果时间片太短，响应时间也会变长，<strong>频繁地去切换，那切换这个行为本身会带来开销。</strong>前面已经讲过上下文切换是有开销的，所以切换也就浪费了CPU的时间。</p>
 <h3 id="3-优缺点-1"><a href="#3-优缺点-1" class="headerlink" title="(3).优缺点"></a>(3).优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
 <li><p><strong>公平</strong> (进程轮流上CPU)</p>
@@ -771,12 +771,12 @@
 <li><p><strong>对于大小相同的进程是不利的</strong></p>
 </li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/12.png" style="zoom:30%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/12.png" style="zoom:30%;"></p>
 <h3 id="4-虚拟轮转法-VIRTUAL-RR"><a href="#4-虚拟轮转法-VIRTUAL-RR" class="headerlink" title="(4).虚拟轮转法 VIRTUAL RR"></a>(4).虚拟轮转法 VIRTUAL RR</h3><p>时间片轮转算法往往不区分I/O型进程与CPU型进程。这样会给I/O型进程带来一定的不公平。</p>
 <blockquote>
 <p>因为当一个CPU型进程被调度上CPU之后，用完它的时间片就会去重新排队，下一次再调度上CPU又用会完一个完整时间片。而I/O型进程被调度上CPU之后，运行完它的时间片，可能运行的很短就完成了它的任务，然后就去等待I/O，进入等待队列。一旦等待的结果到来，又变成一个就绪再次上 CPU，它又没有用完分配给它的时间片就结束了任务。所以CPU型的进程总是用完给它的时间片。 所以它占用了更多的 CPU 时间而I/O型进程总是用不完它的时间片，所以这个调度算法对它有些不公平。</p>
 </blockquote>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/13.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/13.png" style="zoom:33%;"></p>
 <p>上图是设计的虚拟轮转法： </p>
 <p>当一个I/O型进程让出 CPU进到等待队列，从等待队列又重新回到就绪状态的时候。不去进入原来的就绪队列，会单独为它设置一个队列，<strong>叫做辅助队列</strong>。也就是所有I/O型的进程从等待变成就绪的时会进到这个队列。调度算法在选择进程的时候首先从这个辅助队列里去选择I/O 型进程。I/O 型进程上CPU之后，又很快地放弃了CPU进入等待直到辅助队列为空。实践表明这个方案改善了这个对I/O型进程的一种不公平性。</p>
 <h2 id="2-最高优先级调度算法"><a href="#2-最高优先级调度算法" class="headerlink" title="2.最高优先级调度算法"></a>2.最高优先级调度算法</h2><h3 id="1-概念-3"><a href="#1-概念-3" class="headerlink" title="(1).概念"></a>(1).概念</h3><p>最高优先级调度算法思想比较简单，总是选择优先级最高去执行。</p>
@@ -799,7 +799,7 @@
 <p><strong>现象：</strong></p>
 <p>一个低优先级进程持有一个高优先级进程所需要的资源，使得高优先级进程等待低优先级进程运行。</p>
 <p>例子:</p>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/14.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/14.png" style="zoom:33%;"></p>
 <p><strong>影响:</strong></p>
 <ul>
 <li><strong>系统错误</strong></li>
@@ -855,13 +855,13 @@
 <p>当然也可以有不同的设计方案比如说回到原来一级就绪队列的队首。 </p>
 </blockquote>
 <p>当这个进程再度被调度上CPU时可以运行完它刚才剩余的时间片，也可以重新给它一个完整的新的时间片让它运行。因此又派生出不同的设计方案 。</p>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/15.png" style="zoom:40%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/15.png" style="zoom:40%;"></p>
 <p>上图反映了一个进程在队列里头的一些迁移活动。</p>
 <p>当创建一个新的进程时，所有的进程都进入第一级队列。</p>
 <p><strong>如果是 I/O 型的进程，</strong>那么它可能被调度上 CPU 之后很短时间就去等待I/O，<font color="red">当它从等待队列又回到就绪队列的时候，<strong>让它回到原来一级就绪队列，所以优先级没有降低，被调度上 CPU 的机会很多。</strong> </font></p>
 <p><strong>但是对于CPU 型的进程</strong>，它被调度上CPU用完了一个时间片之后就会回到下一级队列。<font color="red">如果<strong>每次都用完了它的时间片，它就会降级。</strong>可能一个CPU 型的进程就慢慢降到了优先级最低的这个队列里。</font></p>
 <p>因此可以看到这个调度算法可以慢慢地区分出来哪些进程是CPU型进程，哪些进程是I/O型进程，很显然多级反馈队列调度算法对I/O型进程更偏好一点，对CPU型进程呢不太有利。但是它也做了一些弥补，比如说优先级高的队列时间片短，而优先级低的队列时间片会很大，所以当低优先级的CPU型进程被调度上CPU之后，它可以运行更长的时间。这里也是一种平衡的结果。</p>
-<h2 id="4-各种调度算法的比较"><a href="#4-各种调度算法的比较" class="headerlink" title="4.各种调度算法的比较"></a>4.各种调度算法的比较</h2><p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/16.png" style="zoom:40%;"></p>
+<h2 id="4-各种调度算法的比较"><a href="#4-各种调度算法的比较" class="headerlink" title="4.各种调度算法的比较"></a>4.各种调度算法的比较</h2><p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/16.png" style="zoom:40%;"></p>
 <h2 id="5-多处理器调度算法需要考虑到的问题"><a href="#5-多处理器调度算法需要考虑到的问题" class="headerlink" title="5.多处理器调度算法需要考虑到的问题"></a>5.多处理器调度算法需要考虑到的问题</h2><ul>
 <li><p><strong>不仅要决定选择哪一个进程执行</strong> </p>
 <blockquote>
@@ -890,7 +890,7 @@
 <li><strong>Windows —— 基于优先级的抢占式多任务调度</strong> </li>
 <li><strong>Solaris —— 综合调度算法</strong></li>
 </ul>
-<h2 id="1-Linux调度算法的发展过程"><a href="#1-Linux调度算法的发展过程" class="headerlink" title="1.Linux调度算法的发展过程"></a>1.Linux调度算法的发展过程</h2><p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/20.png" style="zoom:30%;"></p>
+<h2 id="1-Linux调度算法的发展过程"><a href="#1-Linux调度算法的发展过程" class="headerlink" title="1.Linux调度算法的发展过程"></a>1.Linux调度算法的发展过程</h2><p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/20.png" style="zoom:30%;"></p>
 <h2 id="2-Windows线程调度"><a href="#2-Windows线程调度" class="headerlink" title="2.Windows线程调度"></a>2.Windows线程调度</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><p>由于Windows操作系统<strong>支持内核级线程</strong>，所以<strong>CPU的调度单位是线程</strong>。 </p>
 <p>Windows的线程调度采用的是<strong>基于动态优先级的，抢占式调度，同时结合了时间配额的调整</strong>。</p>
 <p>基本思想：</p>
@@ -919,7 +919,7 @@
 <p>如果这个集合改变了，比如增加了一个新的处理机在这个集合当中，那么就可以引发新的线程调度。</p>
 </blockquote>
 <h3 id="2-线程优先级"><a href="#2-线程优先级" class="headerlink" title="(2).线程优先级"></a>(2).线程优先级</h3><p>Windows把线程分成了32 个优先级分成了三类：</p>
-<p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/21.png" style="zoom:30%;"></p>
+<p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/21.png" style="zoom:30%;"></p>
 <p><strong>实时优先级的线程：</strong>一旦确定了优先级，就不会再改变了。</p>
 <p><strong>可变优先级的线程：</strong>它的优先级可以在一定的范围内提升或者是降低。 </p>
 <blockquote>
@@ -936,11 +936,11 @@
 <li><p>所以增加游戏进程的时间配额，则不会停止执行电子表格计算， 也能给游戏进程的CPU时间多一些。</p>
 </li>
 </ul>
-<h3 id="4-调度策略"><a href="#4-调度策略" class="headerlink" title="(4).调度策略"></a>(4).调度策略</h3><h4 id="主动切换"><a href="#主动切换" class="headerlink" title="主动切换"></a>主动切换</h4><p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/17.png" style="zoom:30%;"></p>
+<h3 id="4-调度策略"><a href="#4-调度策略" class="headerlink" title="(4).调度策略"></a>(4).调度策略</h3><h4 id="主动切换"><a href="#主动切换" class="headerlink" title="主动切换"></a>主动切换</h4><p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/17.png" style="zoom:30%;"></p>
 <blockquote>
 <p> 有一个正在运行的线程，优先级是20。在运行过程中，由于需要等待输入输出的结果，那么这个线程就转到了阻塞态让出了 CPU。 调度程序会去选择一个新的线程上CPU运行。</p>
 </blockquote>
-<h4 id="抢占"><a href="#抢占" class="headerlink" title="抢占"></a>抢占</h4><p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/18.png" style="zoom:30%;"></p>
+<h4 id="抢占"><a href="#抢占" class="headerlink" title="抢占"></a>抢占</h4><p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/18.png" style="zoom:30%;"></p>
 <blockquote>
 <p> 如果刚才被阻塞的线程被唤醒了，由于它的优先级高，它会去抢占CPU去运行，那么被抢占的这个线程就回到了就绪队列。</p>
 </blockquote>
@@ -951,7 +951,7 @@
 <li><p><strong>处于可变优先级的线程在被抢占时，时间配额不变，重新得到CPU后将运行剩余的时间配额</strong></p>
 </li>
 </ul>
-<h4 id="时间配额用完"><a href="#时间配额用完" class="headerlink" title="时间配额用完"></a>时间配额用完</h4><p><img src="//ZYBO_o.github.io/2020/08/11/处理器调度/19.png" style="zoom:40%;"></p>
+<h4 id="时间配额用完"><a href="#时间配额用完" class="headerlink" title="时间配额用完"></a>时间配额用完</h4><p><img src="/2020/08/11/%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/19.png" style="zoom:40%;"></p>
 <p>假设线程A的时间配额用完</p>
 <ul>
 <li>A的优先级没有降低<ul>
@@ -1273,7 +1273,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">90.6k</span>
+    <span title="Site words total count">90.8k</span>
   
 </div>
 

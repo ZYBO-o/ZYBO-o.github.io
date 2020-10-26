@@ -106,61 +106,61 @@
 <meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
 <meta property="og:description" content="一.文件与文件系统1.文件的基本概念文件是对磁盘的抽象。 所谓文件是指一组带标识(标识即为文件名) 的、在逻辑上有完整意义的信息项的序列。  信息项：构成文件内容的基本单位(单个字节， 或多个字节)，各信息项之间具有顺序关系 文件内容的意义:由文件建立者和使用者解释  要去读文件去写文件，需要定位读写指针，因此对于这样一个信息项的序列会有一个读写指针指到某一个具体的信息项。  2.设计文件系统分析">
 <meta property="og:locale">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/1.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/2.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/3.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/4.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/5.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/6.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/7.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/8.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/9.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/10.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/11.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/12.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/13.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/14.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/15.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/16.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/17.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/18.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/19.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/20.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/2·.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/21.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/22.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/23.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/24.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/25.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/26.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/27.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/28.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/29.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/31.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/30.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/32.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/33.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/34.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/35.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/36.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/37.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/38.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/40.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/41.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/42.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/43.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/44.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/45.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/46.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/47.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/48.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/文件系统/49.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/1.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/2.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/3.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/4.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/5.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/6.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/7.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/8.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/9.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/10.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/11.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/12.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/13.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/14.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/15.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/16.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/17.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/18.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/19.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/20.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/2·.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/21.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/22.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/23.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/24.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/25.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/26.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/27.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/28.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/29.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/31.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/30.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/32.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/33.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/34.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/35.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/36.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/37.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/38.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/40.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/41.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/42.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/43.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/44.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/45.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/46.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/47.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/48.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/49.png">
 <meta property="article:published_time" content="2020-08-20T10:13:11.000Z">
 <meta property="article:modified_time" content="2020-08-30T08:09:55.200Z">
 <meta property="article:author" content="ZYBO_o">
 <meta property="article:tag" content="文件系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zybo_o.github.io/2020/08/20/文件系统/1.png">
+<meta name="twitter:image" content="https://zybo_o.github.io/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/1.png">
 
 
 
@@ -486,7 +486,7 @@
 
       
         <h1 id="一-文件与文件系统"><a href="#一-文件与文件系统" class="headerlink" title="一.文件与文件系统"></a>一.文件与文件系统</h1><h2 id="1-文件的基本概念"><a href="#1-文件的基本概念" class="headerlink" title="1.文件的基本概念"></a>1.文件的基本概念</h2><p>文件是<strong>对磁盘的抽象。</strong> <strong>所谓文件是指<font color="red">一组带标识(标识即为文件名) 的、在逻辑上有完整意义的信息项的序列。</font></strong></p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/1.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/1.png" style="zoom:33%;"></p>
 <p><strong>信息项：构成文件内容的基本单位(单个字节， 或多个字节)，各信息项之间具有顺序关系</strong></p>
 <p><strong>文件内容的意义:由文件建立者和使用者解释</strong></p>
 <blockquote>
@@ -541,7 +541,7 @@
 </ul>
 </blockquote>
 <h2 id="5-文章的逻辑结构"><a href="#5-文章的逻辑结构" class="headerlink" title="5.文章的逻辑结构"></a>5.文章的逻辑结构</h2><h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><p>从用户角度看文件，由用户的访问方式确定</p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/2.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/2.png" style="zoom:33%;"></p>
 <ul>
 <li><p>a以一个字节为单位,把文件看成是一个字节的序列。这是非常典型一个流式结构文件 </p>
 </li>
@@ -582,7 +582,7 @@
 <li><strong>信息存储、传输、分配的独立单位</strong></li>
 <li><strong>存储设备划分为大小相等的物理块，统一编号</strong></li>
 </ul>
-<h2 id="2-典型的磁盘结构"><a href="#2-典型的磁盘结构" class="headerlink" title="2.典型的磁盘结构"></a>2.典型的磁盘结构</h2><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/3.png" style="zoom:40"></p>
+<h2 id="2-典型的磁盘结构"><a href="#2-典型的磁盘结构" class="headerlink" title="2.典型的磁盘结构"></a>2.典型的磁盘结构</h2><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/3.png" style="zoom:40"></p>
 <ul>
 <li><p>一块盘若干个盘片组成，每个盘片上有两个盘面 </p>
 </li>
@@ -633,11 +633,11 @@
 <li><strong>把所有空闲块链成一个链</strong> </li>
 <li><strong>扩展:成组链接法</strong></li>
 </ul>
-<h2 id="2-磁盘地址与块号的转换"><a href="#2-磁盘地址与块号的转换" class="headerlink" title="2.磁盘地址与块号的转换"></a>2.磁盘地址与块号的转换</h2><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/4.png" style="zoom:30%;"></p>
+<h2 id="2-磁盘地址与块号的转换"><a href="#2-磁盘地址与块号的转换" class="headerlink" title="2.磁盘地址与块号的转换"></a>2.磁盘地址与块号的转换</h2><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/4.png" style="zoom:30%;"></p>
 <p>位图计算公式：</p>
 <p><strong>已知字号i、位号j ：</strong>$块 号 = i × 字 长 + j$ </p>
 <p><strong>已知块号：</strong>$字 号 = [ 块 号 / 字 长 ]   位 号 = 块 号\quad mod\quad 字 长$</p>
-<h2 id="3-成组链接法设计思想"><a href="#3-成组链接法设计思想" class="headerlink" title="3.成组链接法设计思想"></a>3.成组链接法设计思想</h2><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/5.png" style="zoom:33%;"></p>
+<h2 id="3-成组链接法设计思想"><a href="#3-成组链接法设计思想" class="headerlink" title="3.成组链接法设计思想"></a>3.成组链接法设计思想</h2><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/5.png" style="zoom:33%;"></p>
 <p>在专用块里有若干个字段，第一个字段存放了第一组的空闲块的块数，所以空闲块块数现在是二十。接着的各个字段就把二十个空闲块的块号记录在了每一个字段里头。一个文件想获取一个新的空闲块就从专用块来挑选空闲块，挑选时是从下往上挑选。 如果先分配的话，一定是801这一块，然后接着分配802这一块，最后才分配820这一块。 </p>
 <h3 id="1-成组链接法—分配算法"><a href="#1-成组链接法—分配算法" class="headerlink" title="(1).成组链接法—分配算法"></a>(1).成组链接法—分配算法</h3><p>查L单元(空闲块数):</p>
 <ul>
@@ -694,7 +694,7 @@
 <li><p><strong>目录项可以是FCB，<font color="red">目录是文件控制块的有序集合</font></strong></p>
 </li>
 </ul>
-<h2 id="3-文件目录结构的演化"><a href="#3-文件目录结构的演化" class="headerlink" title="3.文件目录结构的演化"></a>3.文件目录结构的演化</h2><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/6.png" style="zoom:30%;"></p>
+<h2 id="3-文件目录结构的演化"><a href="#3-文件目录结构的演化" class="headerlink" title="3.文件目录结构的演化"></a>3.文件目录结构的演化</h2><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/6.png" style="zoom:30%;"></p>
 <h2 id="4-与目录相关的概念"><a href="#4-与目录相关的概念" class="headerlink" title="4.与目录相关的概念"></a>4.与目录相关的概念</h2><h3 id="1-一些基本概念"><a href="#1-一些基本概念" class="headerlink" title="(1).一些基本概念"></a>(1).一些基本概念</h3><ul>
 <li><p><strong>路径名(文件名)</strong></p>
 <ul>
@@ -714,7 +714,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-目录文件的关联"><a href="#2-目录文件的关联" class="headerlink" title="(2).目录文件的关联"></a>(2).目录文件的关联</h3><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/7.png" style="zoom:33%;"></p>
+<h3 id="2-目录文件的关联"><a href="#2-目录文件的关联" class="headerlink" title="(2).目录文件的关联"></a>(2).目录文件的关联</h3><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/7.png" style="zoom:33%;"></p>
 <p>这是一个根目录文件，目录文件是由若干目录项组成的，可以看到这里有ABC 三个目录项，通过这个目录项，找到目录项所对应的文件。</p>
 <hr>
 <h1 id="五-文件的物理结构"><a href="#五-文件的物理结构" class="headerlink" title="五.文件的物理结构"></a>五.文件的物理结构</h1><h2 id="1-基本概念-3"><a href="#1-基本概念-3" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p><strong>是指文件在存储介质上的存放方式。</strong></p>
@@ -726,7 +726,7 @@
 </li>
 </ul>
 <h2 id="2-顺序结构"><a href="#2-顺序结构" class="headerlink" title="2.顺序结构"></a>2.顺序结构</h2><h3 id="1-基本概念-4"><a href="#1-基本概念-4" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><p><strong>是指文件的信息<font color="red">存放在若干连续的物理块</font>中。</strong></p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/8.png" style="zoom:40%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/8.png" style="zoom:40%;"></p>
 <p>在FCB中如何记录文件地址?</p>
 <ul>
 <li><strong>文件第一块块号</strong></li>
@@ -754,7 +754,7 @@
 </li>
 </ul>
 <h2 id="2-链接结构"><a href="#2-链接结构" class="headerlink" title="2.链接结构"></a>2.链接结构</h2><h3 id="1-基本概念-5"><a href="#1-基本概念-5" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><p><strong>一个文件的信息存放在若干不连续的物理块中， 各块之间通过指针连接，前一个物理块指向下一个物理块。</strong></p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/9.png" style="zoom:40%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/9.png" style="zoom:40%;"></p>
 <p>在FCB中如何记录文件地址?</p>
 <ul>
 <li><strong>只需要知道第一块的地址即可。</strong></li>
@@ -777,7 +777,7 @@
 </li>
 </ul>
 <p><strong>链接结构的一个变形: <font color="red">文件分配表 FAT</font></strong></p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/10.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/10.png" style="zoom:33%;"></p>
 <p>把所有指针存放在一个文件中。</p>
 <ul>
 <li><p>表项的值有三种<strong>：0，下一块块号，-1</strong></p>
@@ -792,7 +792,7 @@
 </ul>
 <p>在FCB中如何记录文件地址?</p>
 <p>索引表存放在何处?</p>
-<h3 id="2-索引结构示意"><a href="#2-索引结构示意" class="headerlink" title="(2).索引结构示意"></a>(2).索引结构示意</h3><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/11.png" style="zoom:35%;"></p>
+<h3 id="2-索引结构示意"><a href="#2-索引结构示意" class="headerlink" title="(2).索引结构示意"></a>(2).索引结构示意</h3><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/11.png" style="zoom:35%;"></p>
 <p>索引表会放在某一个物理块中，这个物理块就是索引块。索引块中就存放着所分配给文件的物理块块号。</p>
 <h3 id="3-索引结构的优缺点"><a href="#3-索引结构的优缺点" class="headerlink" title="(3).索引结构的优缺点"></a>(3).索引结构的优缺点</h3><ul>
 <li><p><strong>优点</strong></p>
@@ -831,7 +831,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="5-多级索引与综合模式"><a href="#5-多级索引与综合模式" class="headerlink" title="(5).多级索引与综合模式"></a>(5).多级索引与综合模式</h3><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/12.png" style="zoom:33%;"></p>
+<h3 id="5-多级索引与综合模式"><a href="#5-多级索引与综合模式" class="headerlink" title="(5).多级索引与综合模式"></a>(5).多级索引与综合模式</h3><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/12.png" style="zoom:33%;"></p>
 <h2 id="4-UNIX的三级索引结构"><a href="#4-UNIX的三级索引结构" class="headerlink" title="4.UNIX的三级索引结构"></a>4.UNIX的三级索引结构</h2><p>UNIX文件系统采用的是多级索引结构(综合模式)</p>
 <ul>
 <li><p>每个文件的索引表有15个索引项，每项2个字节</p>
@@ -847,7 +847,7 @@
 </li>
 </ul>
 <p>试问:采用这种结构，一个文件最大可达到 ?个物理块</p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/13.png" style="zoom:30%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/13.png" style="zoom:30%;"></p>
 <hr>
 <h1 id="六-文件系统的实现"><a href="#六-文件系统的实现" class="headerlink" title="六.文件系统的实现"></a>六.文件系统的实现</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p><strong>实现文件系统需要考虑<font color="red">磁盘上</font>与<font color="red">内存中</font>的内容布局。</strong></p>
 <h3 id="1-磁盘上"><a href="#1-磁盘上" class="headerlink" title="(1).磁盘上"></a>(1).磁盘上</h3><ul>
@@ -872,7 +872,7 @@
 <li><p><strong>格式化(format)：</strong>在<strong>一个文件卷上建立文件系统</strong>，即建立并初始化用于文件分配和磁盘空闲空间管理的管理数据——元数据</p>
 </li>
 </ul>
-<h2 id="3-磁盘上的内容"><a href="#3-磁盘上的内容" class="headerlink" title="3.磁盘上的内容"></a>3.磁盘上的内容</h2><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/14.png" style="zoom:30%;"></p>
+<h2 id="3-磁盘上的内容"><a href="#3-磁盘上的内容" class="headerlink" title="3.磁盘上的内容"></a>3.磁盘上的内容</h2><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/14.png" style="zoom:30%;"></p>
 <p>存放的内容：</p>
 <ul>
 <li><p><strong>引导区</strong> </p>
@@ -891,7 +891,7 @@
 <li><p><strong>用户文件</strong></p>
 </li>
 </ul>
-<h2 id="4-磁盘上文件系统的布局"><a href="#4-磁盘上文件系统的布局" class="headerlink" title="4.磁盘上文件系统的布局"></a>4.磁盘上文件系统的布局</h2><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/15.png" style="zoom:30%;"></p>
+<h2 id="4-磁盘上文件系统的布局"><a href="#4-磁盘上文件系统的布局" class="headerlink" title="4.磁盘上文件系统的布局"></a>4.磁盘上文件系统的布局</h2><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/15.png" style="zoom:30%;"></p>
 <h2 id="5-内存中所需的数据结构——以UNIX为例"><a href="#5-内存中所需的数据结构——以UNIX为例" class="headerlink" title="5.内存中所需的数据结构——以UNIX为例"></a>5.内存中所需的数据结构——以UNIX为例</h2><ul>
 <li><strong>系统打开文件表</strong><ul>
 <li>整个系统一张</li>
@@ -899,7 +899,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/16.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/16.png" style="zoom:33%;"></p>
 <ul>
 <li><strong>用户打开文件表</strong><ul>
 <li>每个进程一个</li>
@@ -907,10 +907,10 @@
 </ul>
 </li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/17.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/17.png" style="zoom:33%;"></p>
 <hr>
 <h1 id="七-文件系统实例——UNIX"><a href="#七-文件系统实例——UNIX" class="headerlink" title="七.文件系统实例——UNIX"></a>七.文件系统实例——UNIX</h1><h2 id="1-文件目录检索"><a href="#1-文件目录检索" class="headerlink" title="1.文件目录检索"></a>1.文件目录检索</h2><p>访问一个文件时，用户通常给出一个文件名，通过使用文件名把文件的内容读入内存通常具有两个步骤：</p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/18.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/18.png" style="zoom:33%;"></p>
 <ul>
 <li><p><strong>目录检索</strong></p>
 <ul>
@@ -939,7 +939,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-示意图"><a href="#2-示意图" class="headerlink" title="(2).示意图"></a>(2).示意图</h3><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/19.png" style="zoom:33%;"></p>
+<h3 id="2-示意图"><a href="#2-示意图" class="headerlink" title="(2).示意图"></a>(2).示意图</h3><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/19.png" style="zoom:33%;"></p>
 <h3 id="3-改进后的好处"><a href="#3-改进后的好处" class="headerlink" title="(3).改进后的好处"></a>(3).改进后的好处</h3><p>例子:</p>
 <p>假设 一个FCB 占 48 个字节，物理块大小 512 字节</p>
 <ul>
@@ -974,9 +974,9 @@
 <li><p>UNIX每个文件由一个目录项、一个i节点和若干磁盘块构成。</p>
 </li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/20.png" style="zoom:33%;"></p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/2·.png" style="zoom:33%;"></p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/21.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/20.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/2·.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/21.png" style="zoom:33%;"></p>
 <hr>
 <h1 id="八-文件系统实例——FAT"><a href="#八-文件系统实例——FAT" class="headerlink" title="八.文件系统实例——FAT"></a>八.文件系统实例——FAT</h1><h2 id="1-WINDOWS—FAT16文件系统"><a href="#1-WINDOWS—FAT16文件系统" class="headerlink" title="1.WINDOWS—FAT16文件系统"></a>1.WINDOWS—FAT16文件系统</h2><ul>
 <li>簇大小：1、2、4、8、16、32或64扇区</li>
@@ -991,12 +991,12 @@
 </li>
 <li>根目录大小固定</li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/22.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/22.png" style="zoom:33%;"></p>
 <h2 id="2-FAT文件系统"><a href="#2-FAT文件系统" class="headerlink" title="2.FAT文件系统"></a>2.FAT文件系统</h2><h3 id="1-MBR"><a href="#1-MBR" class="headerlink" title="(1).MBR"></a>(1).MBR</h3><p>主引导记录通常放在0号扇区。</p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/23.png" style="zoom:33%;"></p>
-<h3 id="2-DBR"><a href="#2-DBR" class="headerlink" title="(2).DBR"></a>(2).DBR</h3><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/24.png" style="zoom:33%;"></p>
-<h2 id="3-引导扇区"><a href="#3-引导扇区" class="headerlink" title="3.引导扇区"></a>3.引导扇区</h2><h3 id="1-BIOS参数块"><a href="#1-BIOS参数块" class="headerlink" title="(1).BIOS参数块"></a>(1).BIOS参数块</h3><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/25.png" style="zoom:33%;"></p>
-<h3 id="2-扩展BIOS参数块-EBPB"><a href="#2-扩展BIOS参数块-EBPB" class="headerlink" title="(2).扩展BIOS参数块(EBPB)"></a>(2).扩展BIOS参数块(EBPB)</h3><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/26.png" style="zoom:34%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/23.png" style="zoom:33%;"></p>
+<h3 id="2-DBR"><a href="#2-DBR" class="headerlink" title="(2).DBR"></a>(2).DBR</h3><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/24.png" style="zoom:33%;"></p>
+<h2 id="3-引导扇区"><a href="#3-引导扇区" class="headerlink" title="3.引导扇区"></a>3.引导扇区</h2><h3 id="1-BIOS参数块"><a href="#1-BIOS参数块" class="headerlink" title="(1).BIOS参数块"></a>(1).BIOS参数块</h3><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/25.png" style="zoom:33%;"></p>
+<h3 id="2-扩展BIOS参数块-EBPB"><a href="#2-扩展BIOS参数块-EBPB" class="headerlink" title="(2).扩展BIOS参数块(EBPB)"></a>(2).扩展BIOS参数块(EBPB)</h3><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/26.png" style="zoom:34%;"></p>
 <h2 id="4-文件分配表FAT"><a href="#4-文件分配表FAT" class="headerlink" title="4.文件分配表FAT"></a>4.文件分配表FAT</h2><ul>
 <li><p>可以把文件分配表看成是一个整数数组，每个整数代表磁盘分区的一个簇号</p>
 </li>
@@ -1007,8 +1007,8 @@
 </li>
 <li>簇号从0开始编号，簇0和簇1是保留的</li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/27.png" style="zoom:33%;"></p>
-<h2 id="5-FAT16目录项"><a href="#5-FAT16目录项" class="headerlink" title="5.FAT16目录项"></a>5.FAT16目录项</h2><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/28.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/27.png" style="zoom:33%;"></p>
+<h2 id="5-FAT16目录项"><a href="#5-FAT16目录项" class="headerlink" title="5.FAT16目录项"></a>5.FAT16目录项</h2><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/28.png" style="zoom:33%;"></p>
 <h2 id="6-FAT32-文件系统"><a href="#6-FAT32-文件系统" class="headerlink" title="6.FAT32 文件系统"></a>6.FAT32 文件系统</h2><h3 id="1-基本概念-8"><a href="#1-基本概念-8" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><ul>
 <li>FAT32的根目录区(ROOT区)不是固定区域、固定大小，而是数据区的一部分，采用与子目录文件相同的管理方式</li>
 <li>目录项仍占32字节，但分为各种类型(包括:“.”目 录项、“..”目录项、短文件名目录项、长文件名目录项、卷标项(根目录)、已删除目录项(第一字节为0xE5)等)</li>
@@ -1016,14 +1016,14 @@
 <li>支持Unicode</li>
 <li>不支持高级容错特性，不具有内部安全特性</li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/29.png" style="zoom:33%;"></p>
-<h3 id="2-目录项"><a href="#2-目录项" class="headerlink" title="(2).目录项"></a>(2).目录项</h3><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/31.png" style="zoom:50%;"></p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/30.png" style="zoom:33%;"></p>
-<h3 id="3-一般长文件名的实现方式"><a href="#3-一般长文件名的实现方式" class="headerlink" title="(3).一般长文件名的实现方式"></a>(3).一般长文件名的实现方式</h3><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/32.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/29.png" style="zoom:33%;"></p>
+<h3 id="2-目录项"><a href="#2-目录项" class="headerlink" title="(2).目录项"></a>(2).目录项</h3><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/31.png" style="zoom:50%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/30.png" style="zoom:33%;"></p>
+<h3 id="3-一般长文件名的实现方式"><a href="#3-一般长文件名的实现方式" class="headerlink" title="(3).一般长文件名的实现方式"></a>(3).一般长文件名的实现方式</h3><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/32.png" style="zoom:33%;"></p>
 <p>FAT32——长文件名的目录项格式</p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/33.png" style="zoom:33%;"></p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/34.png" style="zoom:33%;"></p>
-<h2 id="7-Windows例子"><a href="#7-Windows例子" class="headerlink" title="7.Windows例子"></a>7.Windows例子</h2><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/35.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/33.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/34.png" style="zoom:33%;"></p>
+<h2 id="7-Windows例子"><a href="#7-Windows例子" class="headerlink" title="7.Windows例子"></a>7.Windows例子</h2><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/35.png" style="zoom:33%;"></p>
 <p>Windows为其建立了五个目录项、四个保存长文件名、一个保存压缩文件名THEQUI~1。</p>
 <hr>
 <h1 id="九-文件操作的实现"><a href="#九-文件操作的实现" class="headerlink" title="九.文件操作的实现"></a>九.文件操作的实现</h1><h2 id="1-操作的实现"><a href="#1-操作的实现" class="headerlink" title="1.操作的实现"></a>1.操作的实现</h2><h3 id="1-创建文件"><a href="#1-创建文件" class="headerlink" title="(1).创建文件"></a>(1).创建文件</h3><p><strong>建立系统与文件的联系，实质是建立文件的FCB。</strong></p>
@@ -1050,7 +1050,7 @@
 <li>为文件申请磁盘块</li>
 <li>返回</li>
 </ol>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/36.png" style="zoom:35%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/36.png" style="zoom:35%;"></p>
 <h2 id="3-文件操作——打开文件"><a href="#3-文件操作——打开文件" class="headerlink" title="3.文件操作——打开文件"></a>3.文件操作——打开文件</h2><p><strong>打开文件是为文件读写做准备。</strong></p>
 <p>给出文件路径名，获得文件句柄(file handle)或文件描述 符(file descriptor)，需将该文件的目录项读到内存</p>
 <blockquote>
@@ -1139,7 +1139,7 @@
 <li>若在写回之前，系统崩溃，则文件系统出现不一致</li>
 </ul>
 <h3 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="(2).解决方案"></a>(2).解决方案</h3><p>设计一个实用程序，当系统再次启动时，运行该 程序，检查磁盘块和目录系统。</p>
-<h2 id="4-磁盘块的一致性检查"><a href="#4-磁盘块的一致性检查" class="headerlink" title="4.磁盘块的一致性检查"></a>4.磁盘块的一致性检查</h2><p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/37.png" style="zoom:33%;"></p>
+<h2 id="4-磁盘块的一致性检查"><a href="#4-磁盘块的一致性检查" class="headerlink" title="4.磁盘块的一致性检查"></a>4.磁盘块的一致性检查</h2><p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/37.png" style="zoom:33%;"></p>
 <p>UNIX一致性检查工作过程: </p>
 <p>两张表，每块对应一个表中的计数器，初值为0</p>
 <ul>
@@ -1232,7 +1232,7 @@
 <h3 id="2-如何实现"><a href="#2-如何实现" class="headerlink" title="(2).如何实现"></a>(2).如何实现</h3><ul>
 <li>块高速缓存的组织：</li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/38.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/38.png" style="zoom:33%;"></p>
 <ul>
 <li>块高速缓存的置换(修改LRU)<ul>
 <li>该块是否不久后会再次使用</li>
@@ -1287,9 +1287,9 @@
 </li>
 </ul>
 <p>例子</p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/40.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/40.png" style="zoom:33%;"></p>
 <h2 id="4-合理分配磁盘空间"><a href="#4-合理分配磁盘空间" class="headerlink" title="4.合理分配磁盘空间"></a>4.合理分配磁盘空间</h2><p>分配磁盘块时，把有可能顺序存取的块放在一起。尽量分配在同一柱面上，从而减少磁盘臂的移动次数和距离。</p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/41.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/41.png" style="zoom:33%;"></p>
 <h2 id="5-磁盘调度"><a href="#5-磁盘调度" class="headerlink" title="5.磁盘调度"></a>5.磁盘调度</h2><p>当有多个访盘请求等待时，采用一定的策略，对这 些请求的服务顺序调整安排，从而降低平均磁盘服务时间，达到公平、高效。</p>
 <blockquote>
 <ul>
@@ -1317,7 +1317,7 @@
 <li><p>缺点：效率不高，相临两次请求可能会造成最内到最 外的柱面寻道，使磁头反复移动，增加了服务时间， 对机械也不利</p>
 </li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/42.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/42.png" style="zoom:33%;"></p>
 <h3 id="2-最短寻道时间优先-Shortest-Seek-Time-First"><a href="#2-最短寻道时间优先-Shortest-Seek-Time-First" class="headerlink" title="(2).最短寻道时间优先(Shortest Seek Time First)"></a>(2).最短寻道时间优先(Shortest Seek Time First)</h3><p>思想：优先选择距当前磁头最近的访问请求进行服务 主要考虑寻道优先</p>
 <ul>
 <li><p>优点：改善了磁盘平均服务时间</p>
@@ -1325,9 +1325,9 @@
 <li><p>缺点：造成某些访问请求长期等待得不到服务</p>
 </li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/43.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/43.png" style="zoom:33%;"></p>
 <h3 id="3-扫描算法SCAN-电梯算法"><a href="#3-扫描算法SCAN-电梯算法" class="headerlink" title="(3).扫描算法SCAN(电梯算法)"></a>(3).扫描算法SCAN(电梯算法)</h3><p>思想：当设备无访问请求时，磁头不动;当有访问请求时，磁头 按一个方向移动，在移动过程中对遇到的访问请求进行服 务，然后判断该方向上是否还有访问请求，如果有则继续 扫描;否则改变移动方向，并为经过的访问请求服务，如此反复。</p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/44.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/44.png" style="zoom:33%;"></p>
 <h3 id="4-单向扫描调度算法C-SCAN"><a href="#4-单向扫描调度算法C-SCAN" class="headerlink" title="(4).单向扫描调度算法C-SCAN"></a>(4).单向扫描调度算法C-SCAN</h3><ul>
 <li>总是从0号柱面开始向里扫描</li>
 <li><p>按柱面(磁道)位置选择访问者</p>
@@ -1371,10 +1371,10 @@
 </li>
 </ul>
 <p>例子</p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/45.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/45.png" style="zoom:33%;"></p>
 <h2 id="6-信息的优化分布"><a href="#6-信息的优化分布" class="headerlink" title="6.信息的优化分布"></a>6.信息的优化分布</h2><p><strong>记录在磁道上的排列方式也会影响输入输出操作的时间。</strong></p>
 <p>例子:处理程序要求顺序处理8个记录；磁盘旋转一周为20毫秒/周;花5毫秒对记录进行处理。</p>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/46.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/46.png" style="zoom:33%;"></p>
 <h2 id="7-记录的成组与分解"><a href="#7-记录的成组与分解" class="headerlink" title="7.记录的成组与分解"></a>7.记录的成组与分解</h2><p>记录的成组：把若干个逻辑记录合成一组存放一块的工作</p>
 <ul>
 <li><p>进行成组操作时必须使用内存缓冲区，缓冲区的 长度等于逻辑记录长度乘以成组的块因子。</p>
@@ -1408,18 +1408,18 @@
 <li><p>充分利用总线带宽，数据吞吐率提高，驱动器负载均衡</p>
 </li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/47.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/47.png" style="zoom:33%;"></p>
 <h3 id="3-RAID-1-—-镜像"><a href="#3-RAID-1-—-镜像" class="headerlink" title="(3).RAID 1 — 镜像"></a>(3).RAID 1 — 镜像</h3><ul>
 <li>最大限度保证数据安全及可恢复性</li>
 <li>所有数据同时存在于两块磁盘的相同位置 </li>
 <li>磁盘利用率50%</li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/48.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/48.png" style="zoom:33%;"></p>
 <h3 id="4-RAID-4-—-交错块奇偶校验"><a href="#4-RAID-4-—-交错块奇偶校验" class="headerlink" title="(4).RAID 4 — 交错块奇偶校验"></a>(4).RAID 4 — 交错块奇偶校验</h3><ul>
 <li>带奇偶校验</li>
 <li>以数据块为单位</li>
 </ul>
-<p><img src="//ZYBO_o.github.io/2020/08/20/文件系统/49.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/20/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/49.png" style="zoom:33%;"></p>
 <hr>
 
       
@@ -1682,7 +1682,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">90.6k</span>
+    <span title="Site words total count">90.8k</span>
   
 </div>
 

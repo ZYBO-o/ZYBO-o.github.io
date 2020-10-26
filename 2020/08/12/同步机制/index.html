@@ -106,48 +106,48 @@
 <meta property="og:site_name" content="ZYBO_o&#39;s Blogs">
 <meta property="og:description" content="一.进程的并发执行  问题的提出：这一讲的问题都是由于并发所引起的.并发是所有问题产生的基础，并发也是操作系统设计的一个基础。  1.进程特征所带来的问题(1).并发 进程的执行是间断性的。    每个进程在它的生命周期期间一会儿上CPU执行，一会儿由于某种原因暂停执行，所以每个进程的执行是间断性的    进程的相对执行速度是不可预测    进程执行的间断性使得进程的相对执行速度是不可预测的。由于">
 <meta property="og:locale">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/1.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/2.png">
-<meta property="og:image" content="https://zybo_o.github.io/Users/zhangyongbin/Blog/zybTree/source/_posts/同步机制/3.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/4.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/6.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/7.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/8.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/9.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/10.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/11.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/12.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/13.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/14.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/15.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/16.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/17.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/19.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/18.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/20.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/21.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/22.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/23.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/24.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/25.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/26.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/27.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/28.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/29.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/31.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/32.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/33.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/34.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/35.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/36.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/37.png">
-<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/同步机制/38.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/1.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/2.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/zhangyongbin/Blog/zybTree/source/_posts/同步机制/3.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/4.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/6.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/7.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/8.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/9.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/10.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/11.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/12.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/13.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/14.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/15.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/16.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/17.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/19.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/18.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/20.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/21.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/22.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/23.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/24.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/25.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/26.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/27.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/28.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/29.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/31.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/32.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/33.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/34.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/35.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/36.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/37.png">
+<meta property="og:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/38.png">
 <meta property="article:published_time" content="2020-08-12T14:54:20.000Z">
 <meta property="article:modified_time" content="2020-08-17T14:33:10.793Z">
 <meta property="article:author" content="ZYBO_o">
 <meta property="article:tag" content="同步机制">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zybo_o.github.io/2020/08/12/同步机制/1.png">
+<meta name="twitter:image" content="https://zybo_o.github.io/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/1.png">
 
 
 
@@ -500,13 +500,13 @@
 <p>进程执行的结果和它的相对执行速度是有关系的，因此在不同的执行顺序的情况下，进程的执行结果也是不确定的。</p>
 </blockquote>
 <h2 id="2-与时间相关的错误例子"><a href="#2-与时间相关的错误例子" class="headerlink" title="2.与时间相关的错误例子"></a>2.与时间相关的错误例子</h2><p>场景是 get、copy和put 三个进程并发执行：</p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/1.png" style="zoom:35%;"></p>
-<h3 id="1-并发执行过程的分析"><a href="#1-并发执行过程的分析" class="headerlink" title="(1).并发执行过程的分析"></a>(1).并发执行过程的分析</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/2.png" style="zoom:25%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/1.png" style="zoom:35%;"></p>
+<h3 id="1-并发执行过程的分析"><a href="#1-并发执行过程的分析" class="headerlink" title="(1).并发执行过程的分析"></a>(1).并发执行过程的分析</h3><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/2.png" style="zoom:25%;"></p>
 <p>假设 g,c,p 分别为 get,copy 和 put 的一次循环过程。因此从当前状态出发能得到正确的结果。 </p>
-<p><img src="/Users/zhangyongbin/Blog/zybTree/source/_posts/同步机制/3.png" style="zoom:25%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/zhangyongbin/Blog/zybTree/source/_posts/同步机制/3.png" style="zoom:25%;"></p>
 <p>所以如果不满足进程的制约关系，调度的顺序不正确，那就会带来这些错误的结果。</p>
 <h3 id="2-进程前趋图"><a href="#2-进程前趋图" class="headerlink" title="(2).进程前趋图"></a>(2).进程前趋图</h3><p>三个进程的制约关系如下：</p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/4.png" style="zoom:30%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/4.png" style="zoom:30%;"></p>
 <blockquote>
 <ul>
 <li><p>当get执行完第一个循环之后，只能够copy执行它的第一个循环。 </p>
@@ -535,7 +535,7 @@
 <p>这些程序片段，分散在不同的进程里，它们的共同的特点是对同一个共享变量进行一些操作。这一段代码，和另外一个进程的这一段代码<strong>互为临界区，互为互斥区</strong>。</p>
 </blockquote>
 <h2 id="3-临界区的使用原则"><a href="#3-临界区的使用原则" class="headerlink" title="3.临界区的使用原则"></a>3.临界区的使用原则</h2><p>如下图所示，A进程在临界区里还没有出临界区，如果B进程上CPU之后也想进临界区，应该不能够让它进去，如果B进程也进临界区，就会出现关键活动的交叉，带来前面所介绍的各种各样的错误。因此当B进程想要进临界区时，由于A进程还在临界区里，所以 B 进程只能够被阻塞。</p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/6.png" style="zoom:36%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/6.png" style="zoom:36%;"></p>
 <blockquote>
 <p> 回顾上一章优先级反转问题。 有一个低优先级的进程进入了临界区，因为它优先级比较低，有更高优先级进程就绪时就会抢占它的CPU ，可低优先级进程已经在临界区里，所以更高优先级的进程也上不了CPU运行，因为上CPU运行也进不了临界区。所以就被阻塞。</p>
 <p>而在高优先级和低优先级之间又会有中级优先级且非常耗时的一些进程在执行，使得低优先级的进程上不了CPU ，也就不能够让高优先级的进程尽快上 CPU。</p>
@@ -547,18 +547,18 @@
 <li><strong>临界区外运行的进程不得阻塞其他进程进入临界区</strong> </li>
 <li><strong>不得使进程无限期等待进入临界区</strong></li>
 </ul>
-<h2 id="4-实现进程互斥的方案"><a href="#4-实现进程互斥的方案" class="headerlink" title="4.实现进程互斥的方案"></a>4.实现进程互斥的方案</h2><h3 id="1-软件方案"><a href="#1-软件方案" class="headerlink" title="(1).软件方案"></a>(1).软件方案</h3><h4 id="软件解法1"><a href="#软件解法1" class="headerlink" title="软件解法1"></a>软件解法1</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/7.png" style="zoom:28%;"></p>
+<h2 id="4-实现进程互斥的方案"><a href="#4-实现进程互斥的方案" class="headerlink" title="4.实现进程互斥的方案"></a>4.实现进程互斥的方案</h2><h3 id="1-软件方案"><a href="#1-软件方案" class="headerlink" title="(1).软件方案"></a>(1).软件方案</h3><h4 id="软件解法1"><a href="#软件解法1" class="headerlink" title="软件解法1"></a>软件解法1</h4><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/7.png" style="zoom:28%;"></p>
 <p>假设 P先上的CPU，free的初值是 false ，所以循环结束。 </p>
 <p>如果这时进程P被切换下CPU，而上CPU的正好又是进程 Q，那么进程Q也要判断free是不是false，由于进程P还没有来得及改变它的值，因此Q检测的结果free也等于false ，继续往下执行把 free 变成 true ，然后进入了临界区。 如果Q进入临界区之后又一次被切换下去了。假设正好又是P上CPU了，把 free 变成 true ，然后进入临界区。结果在临界区里两个进程，不满足原则。这就是一个错误的解法。 </p>
 <p>解决方案： </p>
 <p><strong>把两条语句写成一个lock函数，如果把lock函数设计成一个原语</strong>，在执行过程中不容许被中断，那么这个操作就是正确的了。 </p>
-<h4 id="软件解法2"><a href="#软件解法2" class="headerlink" title="软件解法2"></a>软件解法2</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/8.png" style="zoom:28%;"></p>
+<h4 id="软件解法2"><a href="#软件解法2" class="headerlink" title="软件解法2"></a>软件解法2</h4><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/8.png" style="zoom:28%;"></p>
 <p>如果P进程想进临界区，而turn等于false ，所以它一直在等待进入临界区。可是如果Q进程始终没有进过临界区，也不想进临界区，那么 P进程就进不了临界区，尽管临界区里没有进程。也就是说，在临界区外的进程Q阻止了P进程进临界区。这也是不允许的。</p>
-<h4 id="软件解法3"><a href="#软件解法3" class="headerlink" title="软件解法3"></a>软件解法3</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/9.png" style="zoom:28%;"></p>
+<h4 id="软件解法3"><a href="#软件解法3" class="headerlink" title="软件解法3"></a>软件解法3</h4><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/9.png" style="zoom:28%;"></p>
 <p>如果当pturn设置为true之后，紧跟着qturn也是true，这就会导致两个进程都进不了临界区，都在”谦让”。而这，就是<code>After you</code>问题。</p>
-<h4 id="软件解法4——DEKKER算法"><a href="#软件解法4——DEKKER算法" class="headerlink" title="软件解法4——DEKKER算法"></a>软件解法4——DEKKER算法</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/10.png" style="zoom:28%;"></p>
+<h4 id="软件解法4——DEKKER算法"><a href="#软件解法4——DEKKER算法" class="headerlink" title="软件解法4——DEKKER算法"></a>软件解法4——DEKKER算法</h4><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/10.png" style="zoom:28%;"></p>
 <p>在解法三的基础上引入turn，让turn值来决定是哪一个进程进入临界区，但是这个算法会出现<code>忙等待 busy waiting</code>问题，浪费了时间。</p>
-<h4 id="软件解法5——PETERSON算法"><a href="#软件解法5——PETERSON算法" class="headerlink" title="软件解法5——PETERSON算法"></a>软件解法5——PETERSON算法</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/11.png" style="zoom:28%;"></p>
+<h4 id="软件解法5——PETERSON算法"><a href="#软件解法5——PETERSON算法" class="headerlink" title="软件解法5——PETERSON算法"></a>软件解法5——PETERSON算法</h4><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/11.png" style="zoom:28%;"></p>
 <p>当任何一个进程想进临界区时，它只需要调用<code>enter_region</code>函数，查看能发安全地进入临界区，如果能安全地进入临界区，那么就是相当于这个函数执行结束，可以进临界区。如果不能够安全地进入临界区，就会在这个函数当中去等待进入临界区。 </p>
 <p>调用这个函数是用进程号，当进程使用完临界区的相关资源之后，出临界区时就调用<code>leave_region</code>函数，就可以让其他的进程进入临界区。</p>
 <h3 id="2-硬件方案"><a href="#2-硬件方案" class="headerlink" title="(2).硬件方案"></a>(2).硬件方案</h3><h4 id="硬件解法1——中断屏蔽法"><a href="#硬件解法1——中断屏蔽法" class="headerlink" title="硬件解法1——中断屏蔽法"></a>硬件解法1——中断屏蔽法</h4><p>利用开关中断指令，<strong>是一条允许中断或禁止中断的指令</strong>。</p>
@@ -572,17 +572,17 @@
 </ul>
 <h4 id="硬件解法2——“测试并加锁”指令"><a href="#硬件解法2——“测试并加锁”指令" class="headerlink" title="硬件解法2——“测试并加锁”指令"></a>硬件解法2——“测试并加锁”指令</h4><p>用测试并加锁这条指令去操作， 这一条指令做了两个事情，一是先读内存单元内容，读到寄存器，然后再去写，把内存单元的内容写上某个值。</p>
 <p><strong>TSL指令：TEST AND SET LOCK</strong></p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/12.png" style="zoom:40%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/12.png" style="zoom:40%;"></p>
 <h4 id="硬件解法3——“交换”指令"><a href="#硬件解法3——“交换”指令" class="headerlink" title="硬件解法3——“交换”指令"></a>硬件解法3——“交换”指令</h4><p>交换指令的作用<strong>是把两个位置，可能是寄存器或内存单元，在一条指令结束的时把两个位置的内容进行一个交换。</strong></p>
 <p><strong>XCHG指令：EXCHANGE</strong></p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/13.png" style="zoom:40%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/13.png" style="zoom:40%;"></p>
 <hr>
 <h1 id="三-进程同步"><a href="#三-进程同步" class="headerlink" title="三.进程同步"></a>三.进程同步</h1><blockquote>
 <p>进程互斥指进程之间具有一种竞争关系，而进程同步指多个进程之间的协作关系 。</p>
 </blockquote>
 <p><strong>进程同步 (synchronization)：指系统中多个进程中发生的事件存在<font color="red">某种时序关系</font>，需要相互合作，共同 完成一项任务。</strong>具体地说，一个进程运行到某一点时， 要求另一伙伴进程为它提供消息，在未获得消息之前，该进程进入阻塞态， 获得消息后被唤醒进入就绪态。</p>
-<h2 id="1-生产者与消费者问题"><a href="#1-生产者与消费者问题" class="headerlink" title="1.生产者与消费者问题"></a>1.生产者与消费者问题</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/14.png" style="zoom:32%;"></p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/15.png" style="zoom:32%;"></p>
+<h2 id="1-生产者与消费者问题"><a href="#1-生产者与消费者问题" class="headerlink" title="1.生产者与消费者问题"></a>1.生产者与消费者问题</h2><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/14.png" style="zoom:32%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/15.png" style="zoom:32%;"></p>
 <blockquote>
 <p>来看一个场景 ：</p>
 <p>消费者判断count是否等于 0，如果在它判断count = 0还没有去调用sleep之前消费者被切换下CPU。那么这个时候count是0，假设生产者又生产了一个数据上CPU，可以看到就不断地去生产放到缓冲区，count也不等于 N ，刚才是0，现在生产者生产了一个数据加完 1 之后count就等于1。这时生产者知道count 等于 1，所以会做一个wakeup。但是由于刚才的消费者还没有sleep，所以做的这个wakeup实际上做了一个空操作，因为没有进程在睡眠，所以就继续接着执行，生产者继续生产。如果生产者被切换下CPU，消费者一上来肯定首先要做sleep，但是这个sleep的进程刚才wakeup已经做完了，所以就不会再被唤醒了。所以没有做到完全解决生产者/消费者问题。</p>
@@ -601,7 +601,7 @@
 <li><p>对信号量可以实施的操作: <strong>初始化、P和V</strong> (P、V分别 是荷兰语的test(proberen)和increment(verhogen))</p>
 </li>
 </ul>
-<h3 id="2-PV操作定义"><a href="#2-PV操作定义" class="headerlink" title="(2).PV操作定义"></a>(2).PV操作定义</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/16.png" style="zoom:34%;"></p>
+<h3 id="2-PV操作定义"><a href="#2-PV操作定义" class="headerlink" title="(2).PV操作定义"></a>(2).PV操作定义</h3><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/16.png" style="zoom:34%;"></p>
 <ul>
 <li><p>P、V操作为<strong>原语操作</strong> (primitive or atomic action)</p>
 </li>
@@ -621,7 +621,7 @@
 <li><strong>在临界区前实施 P(mutex)</strong></li>
 <li><strong>在临界区之后实施 V(mutex)</strong></li>
 </ul>
-<h3 id="2-例子"><a href="#2-例子" class="headerlink" title="(2).例子"></a>(2).例子</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/17.png" style="zoom:35%;"></p>
+<h3 id="2-例子"><a href="#2-例子" class="headerlink" title="(2).例子"></a>(2).例子</h3><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/17.png" style="zoom:35%;"></p>
 <p>假定有三个进程 P1、 P2、 P3，它们都对同一个临界资源进行相应的操作，设定了一个信号量 mutex ，初值是 1。在临界区的前和后把 P、V操作加上。</p>
 <ul>
 <li>假设P1先上CPU，它在做P操作时把 mutex减1，mutex=0 。0不小于0，所以P1进程就可以进入临界区。</li>
@@ -633,8 +633,8 @@
 <li><p>如果P2上CPU了，它就下一个就进入临界区。P操作执行完后，它接着就进临界区，当它出临界区又做一次 V 操作，mutex +1 = 0，还是小于等于 0 ，所以V操作就会把队列里等的P3进入就绪，就是这样一个过程。</p>
 </li>
 </ul>
-<h2 id="3-用信号量解决生产者-消费者问题"><a href="#3-用信号量解决生产者-消费者问题" class="headerlink" title="3.用信号量解决生产者/消费者问题"></a>3.用信号量解决生产者/消费者问题</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/19.png" style="zoom:40%;"></p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/18.png" style="zoom:35%;"></p>
+<h2 id="3-用信号量解决生产者-消费者问题"><a href="#3-用信号量解决生产者-消费者问题" class="headerlink" title="3.用信号量解决生产者/消费者问题"></a>3.用信号量解决生产者/消费者问题</h2><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/19.png" style="zoom:40%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/18.png" style="zoom:35%;"></p>
 <p>如果把消费者的P(&amp;full)和P(&amp;mutex)互换，当出现缓冲区个数为0的时候，执行P(&amp;mutex)和P(&amp;full)之后，mutex=-1，此时如果生产者执行P(&amp;emputy)和P(&amp;mutex)会<strong>出现死锁</strong>。</p>
 <p>两个V 操作的顺序可以颠倒，因为V操作只是把信号量的值加一。然后查看有无进程等在队列里，如果有就把它释放。 因此V操作不会使得调用V操作的这个进程进入等待状态，所以这两个的顺序是可以颠倒的。 颠倒的结果可能会带来其他的一些问题，比如说，临界区里头会多一点点指令，其他的进程想进临界区可能会稍微晚一点。但是代码中的是最理想的。</p>
 <h2 id="4-用信号量解决读者-写者问题"><a href="#4-用信号量解决读者-写者问题" class="headerlink" title="4.用信号量解决读者/写者问题"></a>4.用信号量解决读者/写者问题</h2><p>问题描述:</p>
@@ -664,7 +664,7 @@
 <blockquote>
 <p>写者是和其他写者是互斥的，和读者也是互斥的。 所以读者写者问题本质上是一个互斥的问题。</p>
 </blockquote>
-<h4 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/20.png" style="zoom:35%;"></p>
+<h4 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h4><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/20.png" style="zoom:35%;"></p>
 <p>第一类读者写者问题实际上是要解决的是多个读者可以同时读，因此不需要每个读者都去做P(w)或做V(w) 操作。</p>
 <p>经过分析发现第一个读者 到来时如果没有其他的读者和写者，他可以去读。它在读之前首先要把临界区保护起来，所以第一个读者做P(w)。只要前面有读者在读，那么后续来的读者都可以去读。 当所有的读者都读完就会把临界区还回来，所以最后一个读者去做V(w)操作。 </p>
 <p>在代码中的读者里引入一个计数器rc，它用来记录现在有几个读者。进来一个读者之后通过 <code>rc ＋ 1</code> 判断是不是第一个读者，如果<code>rc = 1</code>，表示是第一个读者，那就去做P(w)的工作。每个读者离开都要去 <code>rc- 1</code> ，当最后一个读者做完 <code>rc - 1</code>， rc就等于0了,最后一个读者去做V(w)操作。</p>
@@ -680,7 +680,7 @@
 <h1 id="五-管程-MONITOR"><a href="#五-管程-MONITOR" class="headerlink" title="五.管程 MONITOR"></a>五.管程 MONITOR</h1><h2 id="1-管程的基本概念"><a href="#1-管程的基本概念" class="headerlink" title="1.管程的基本概念"></a>1.管程的基本概念</h2><h3 id="1-为什么引入管程"><a href="#1-为什么引入管程" class="headerlink" title="(1).为什么引入管程"></a>(1).为什么引入管程</h3><p>信号量机制具有一些缺点，比如<strong>用信号量及PV操作解决问题的时程序编写需要很高的技巧</strong>。 如果没有合理地安排PV操作的位置，就会导致一些出错的结果比如说出现死锁等问题。 所以有人提出一种新的同步机制就是管程。 它实际上是<strong>在程序设计语言中引入的一个成分</strong>，称之为高级同步机制。</p>
 <h3 id="2-管程的定义"><a href="#2-管程的定义" class="headerlink" title="(2).管程的定义"></a>(2).管程的定义</h3><p>管程是一种<strong>特殊的模块</strong>，<strong>每个管程都有一个名字</strong>。<strong>管程主要是管理共享资源所对应的数据结构</strong>，所以管程在管理共享资源的同时也提供了在这个共享资源之上需要的各种各样的操作，也就是由一组操作的过程来组成。 </p>
 <p>示例:</p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/21.png" style="zoom:35%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/21.png" style="zoom:35%;"></p>
 <p><strong>进程与管程的关系:</strong></p>
 <p>作为进程，它只能<strong>通过调用管程给提供的各种过程来间接地来使用管程当中的数据结构</strong>。</p>
 <h3 id="3-管程的要求"><a href="#3-管程的要求" class="headerlink" title="(3).管程的要求"></a>(3).管程的要求</h3><p>作为一种同步机制，管程要解决两个问题：</p>
@@ -703,7 +703,7 @@
 <li><strong>Q等待P继续执行</strong></li>
 <li><strong>规定唤醒操作为管程中最后一个可执行 的操作</strong></li>
 </ul>
-<h2 id="2-HOARE管程"><a href="#2-HOARE管程" class="headerlink" title="2.HOARE管程"></a>2.HOARE管程</h2><h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/22.png" style="zoom:35%;"></p>
+<h2 id="2-HOARE管程"><a href="#2-HOARE管程" class="headerlink" title="2.HOARE管程"></a>2.HOARE管程</h2><h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="(1).基本概念"></a>(1).基本概念</h3><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/22.png" style="zoom:35%;"></p>
 <ul>
 <li>因为管程是互斥进入的，所以<strong>当一个进程试图进入 一个已被占用的管程时，应当在管程的入口处等待</strong><ul>
 <li>为此，管程的入口处设置一个进程等待队列，称作<strong>入口等待队列</strong></li>
@@ -735,7 +735,7 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="2-用管程解决生产者消费者问题"><a href="#2-用管程解决生产者消费者问题" class="headerlink" title="(2).用管程解决生产者消费者问题"></a>(2).用管程解决生产者消费者问题</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/23.png" style="zoom:35%;"></p>
+<h3 id="2-用管程解决生产者消费者问题"><a href="#2-用管程解决生产者消费者问题" class="headerlink" title="(2).用管程解决生产者消费者问题"></a>(2).用管程解决生产者消费者问题</h3><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/23.png" style="zoom:35%;"></p>
 <h2 id="4-MESA管程"><a href="#4-MESA管程" class="headerlink" title="4.MESA管程"></a>4.MESA管程</h2><p>引入MESA的原因：</p>
 <ul>
 <li><p>Hoare管程的一个缺点：<strong>两次额外的进程切换</strong></p>
@@ -758,7 +758,7 @@
 <li><p><strong>导致对条件变量至少多一次额外的检测</strong>(但不再有额外的进程切换)，并且对等待进程在notify 之后何时运行没有任何限制</p>
 </li>
 </ul>
-<h3 id="2-MEAS管程：生产者—消费者问题"><a href="#2-MEAS管程：生产者—消费者问题" class="headerlink" title="(2).MEAS管程：生产者—消费者问题"></a>(2).MEAS管程：生产者—消费者问题</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/24.png" style="zoom:40%;"></p>
+<h3 id="2-MEAS管程：生产者—消费者问题"><a href="#2-MEAS管程：生产者—消费者问题" class="headerlink" title="(2).MEAS管程：生产者—消费者问题"></a>(2).MEAS管程：生产者—消费者问题</h3><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/24.png" style="zoom:40%;"></p>
 <h3 id="3-改进NOTIFY"><a href="#3-改进NOTIFY" class="headerlink" title="(3).改进NOTIFY"></a>(3).改进NOTIFY</h3><ul>
 <li><p>对notify的一个很有用的改进</p>
 <ul>
@@ -804,11 +804,11 @@
 </blockquote>
 <hr>
 <h1 id="六-PTHREAD中的同步机制"><a href="#六-PTHREAD中的同步机制" class="headerlink" title="六.PTHREAD中的同步机制"></a>六.PTHREAD中的同步机制</h1><p>Pthread解决互斥的问题：<strong>在Pthread 中使用一个互斥量，通过对互斥量提供相应的操作来保护临界区。</strong> </p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/25.png" style="zoom:35%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/25.png" style="zoom:35%;"></p>
 <p>Pthread解决同步问题：<strong>在Pthread 中使用条件变量，以及在条件变量上的各种操作</strong> </p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/26.png" style="zoom:35%;"></p>
-<h2 id="1-用PTHREAD解决生产者消费者问题"><a href="#1-用PTHREAD解决生产者消费者问题" class="headerlink" title="1.用PTHREAD解决生产者消费者问题"></a>1.用PTHREAD解决生产者消费者问题</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/27.png" style="zoom:30%;"></p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/28.png" style="zoom:40%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/26.png" style="zoom:35%;"></p>
+<h2 id="1-用PTHREAD解决生产者消费者问题"><a href="#1-用PTHREAD解决生产者消费者问题" class="headerlink" title="1.用PTHREAD解决生产者消费者问题"></a>1.用PTHREAD解决生产者消费者问题</h2><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/27.png" style="zoom:30%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/28.png" style="zoom:40%;"></p>
 <h2 id="2-讨论：PTHREAD-COND-WAIT"><a href="#2-讨论：PTHREAD-COND-WAIT" class="headerlink" title="2.讨论：PTHREAD_COND_WAIT"></a>2.讨论：PTHREAD_COND_WAIT</h2><p>pthread_cond_wait的执行分解为三个主要动作: </p>
 <p><strong>1、解锁</strong></p>
 <p><strong>2、等待</strong></p>
@@ -830,17 +830,17 @@
 <p>非常典型的形式就是消息传递 ，实际上就是由send和receive提供这样的原语操作。当一个进程要把消息发送给另外一个进程时就去调用send； 当另外一个进程想接收消息时就去调用receive操作。</p>
 </blockquote>
 <p>使用情况：<strong>分布式系统、基于共享内存的多处理机系统、单处理机系统。<font color="red">可以解决进程间的同步 问题、通信问题</font></strong></p>
-<h2 id="2-基本通信方式"><a href="#2-基本通信方式" class="headerlink" title="2.基本通信方式"></a>2.基本通信方式</h2><h3 id="1-消息传递"><a href="#1-消息传递" class="headerlink" title="(1).消息传递"></a>(1).消息传递</h3><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/29.png" style="zoom:30%;"></p>
+<h2 id="2-基本通信方式"><a href="#2-基本通信方式" class="headerlink" title="2.基本通信方式"></a>2.基本通信方式</h2><h3 id="1-消息传递"><a href="#1-消息传递" class="headerlink" title="(1).消息传递"></a>(1).消息传递</h3><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/29.png" style="zoom:30%;"></p>
 <p><strong>发送消息：发送进程只是把消息准备好，调用send 操作，然后操作系统做相应的复制消息的内容，挂接的内容。</strong></p>
 <p><strong>接收消息：接收进程接收消息时把请求提交给操作系统，操作系统完成把消息复制到接收进程空间的工作。</strong></p>
 <p>所以操作系统要提供这样一个通信机制，来完成进程之间的信息传送。</p>
-<h4 id="用PV操作实现SEND操作"><a href="#用PV操作实现SEND操作" class="headerlink" title="用PV操作实现SEND操作"></a>用PV操作实现SEND操作</h4><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/31.png" style="zoom:35%;"></p>
-<h2 id="2-共享内存"><a href="#2-共享内存" class="headerlink" title="2.共享内存"></a>2.共享内存</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/32.png" style="zoom:35%;"></p>
+<h4 id="用PV操作实现SEND操作"><a href="#用PV操作实现SEND操作" class="headerlink" title="用PV操作实现SEND操作"></a>用PV操作实现SEND操作</h4><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/31.png" style="zoom:35%;"></p>
+<h2 id="2-共享内存"><a href="#2-共享内存" class="headerlink" title="2.共享内存"></a>2.共享内存</h2><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/32.png" style="zoom:35%;"></p>
 <p>该通信模式需要解决两个问题：</p>
 <p>第一个问题：需要在物理内存里建一个大家能够共享的一块内存空间。<strong>通过相应的映射能把这个物理内存空间映射到了两个进程相应的地址空间里。</strong>  </p>
 <p>第二个问题：其实就是读者写者问题，因为共享内存不能同时去写，可以同时去读。 所以可以利用控制读写者问题的这个方法来解决互斥问题。</p>
 <h2 id="3-管道通信方式-PIPE"><a href="#3-管道通信方式-PIPE" class="headerlink" title="3.管道通信方式 PIPE"></a>3.管道通信方式 PIPE</h2><p>利用一个缓冲传输介质——内存或文件连接两个相互通信的进程。</p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/33.png" style="zoom:35%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/33.png" style="zoom:35%;"></p>
 <ul>
 <li><strong>用字符流方式写入读出</strong></li>
 <li><strong>先进先出顺序</strong></li>
@@ -850,18 +850,18 @@
 </li>
 </ul>
 <hr>
-<h1 id="八-典型操作系统中的IPC机制"><a href="#八-典型操作系统中的IPC机制" class="headerlink" title="八.典型操作系统中的IPC机制"></a>八.典型操作系统中的IPC机制</h1><h2 id="1-进程同步-通信实例"><a href="#1-进程同步-通信实例" class="headerlink" title="1.进程同步/通信实例"></a>1.进程同步/通信实例</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/34.png" style="zoom:33%;"></p>
-<h2 id="2-LINUX的进程通信机制"><a href="#2-LINUX的进程通信机制" class="headerlink" title="2.LINUX的进程通信机制"></a>2.LINUX的进程通信机制</h2><p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/35.png" style="zoom:33%;"></p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/36.png" style="zoom:33%;"></p>
+<h1 id="八-典型操作系统中的IPC机制"><a href="#八-典型操作系统中的IPC机制" class="headerlink" title="八.典型操作系统中的IPC机制"></a>八.典型操作系统中的IPC机制</h1><h2 id="1-进程同步-通信实例"><a href="#1-进程同步-通信实例" class="headerlink" title="1.进程同步/通信实例"></a>1.进程同步/通信实例</h2><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/34.png" style="zoom:33%;"></p>
+<h2 id="2-LINUX的进程通信机制"><a href="#2-LINUX的进程通信机制" class="headerlink" title="2.LINUX的进程通信机制"></a>2.LINUX的进程通信机制</h2><p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/35.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/36.png" style="zoom:33%;"></p>
 <p>Linux提供了很多种工具，根据需要挑选合适的一种。</p>
 <h2 id="3-原子操作"><a href="#3-原子操作" class="headerlink" title="3.原子操作"></a>3.原子操作</h2><p>原子操作是不可分割，在执行完之前不会被其他任务或事件中断。它常用于实现资源的引用计数。</p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/37.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/37.png" style="zoom:33%;"></p>
 <p>例子：</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">atomic_t</span> v = atomic_init(<span class="number">0</span>);</span><br><span class="line">atomic_set(&amp;v, <span class="number">4</span>); </span><br><span class="line">atomic_add(<span class="number">2</span>, &amp;v); </span><br><span class="line">atomic_inc(&amp;v);</span><br><span class="line">printk(“%d\n”, atomic_read(&amp;v);</span><br><span class="line"><span class="keyword">int</span> atomic_dec_and_test(<span class="keyword">atomic_t</span> *v)</span><br></pre></td></tr></table></figure></div>
 <h2 id="4-屏障"><a href="#4-屏障" class="headerlink" title="4.屏障"></a>4.屏障</h2><p><strong>屏障主要是用于对一组线程进行协调的。</strong></p>
 <p>应用场景：</p>
 <p><strong>一组线程协同完成一项任务，需要所有线程都到达一个汇合点后再一起向前推进。</strong></p>
-<p><img src="//ZYBO_o.github.io/2020/08/12/同步机制/38.png" style="zoom:33%;"></p>
+<p><img src="/2020/08/12/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/38.png" style="zoom:33%;"></p>
 
       
     </div>
@@ -1123,7 +1123,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">90.6k</span>
+    <span title="Site words total count">90.8k</span>
   
 </div>
 
