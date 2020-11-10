@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C Program Ⅰ 字符</title>
+    <url>/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-单字符I-O-getchar-和-putchar"><a href="#1-单字符I-O-getchar-和-putchar" class="headerlink" title="1.单字符I/O : getchar() 和 putchar()"></a>1.单字符I/O : getchar() 和 putchar()</h2><blockquote>
+<p>getchar() 和 putchar ()每次只能输入和输出一个字符。</p>
+</blockquote>
+<p>ANSI C 将 <code>stdio.h</code> 头文件与getchar() 和 putchar()相关联，这就是为什么程序中将该文件包含在内的原因。而且，getchar() 和 putchar() 不是真正的函数，而是定义为预处理器宏。</p>
+<h3 id="1-getchar-与-scanf-的区分与混用"><a href="#1-getchar-与-scanf-的区分与混用" class="headerlink" title="1.getchar() 与 scanf() 的区分与混用"></a>1.getchar() 与 scanf() 的区分与混用</h3><p>在缓冲输入时需要按下Enter键，这一动作还传输一个程序必须处理的换行符。而<code>getchar()</code> 读取每个字符，包括空格，制表符和换行符；但是 <code>scanf()</code> 在在<strong>读取数字</strong>时会跳过空格，制表符和换行符。举例说明：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols);</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>运行结果：</p>
+<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/1.png" style="zoom:50%;"></p>
+<p><img src style="zoom:50%;"></p>
+<blockquote>
+<p>程序会在输入之后，没有做出其他输入响应之前就结束了，原因是紧跟在输入3之后的那个换行符。</p>
+</blockquote>
+<p><strong><code>scanf()</code>函数将该换行符留在输入队列中，与<code>scanf()</code>不同，<code>getchar()</code> 并不跳过换行符。</strong>所以在循环的下一周期，再有机会输入任何其他内容之前，这一换行符由<code>getchar()</code>读出，然后将其赋值为ch，而ch为换行符才是结束循环的条件。</p>
+<p>改善程序：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols) != <span class="number">2</span>)</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">    <span class="keyword">while</span>(getchar() != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>运行结果：</p>
+<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/2.png" style="zoom:50%;"></p>
+<blockquote>
+<p>程序跳过了一个输入周期中输入的最后一个数字与下一行开始处输入的字符之间的所有换行符和空格。</p>
+</blockquote>
+<h3 id="2-输入流和数字"><a href="#2-输入流和数字" class="headerlink" title="2.输入流和数字"></a>2.输入流和数字</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">is 28 12.4</span><br></pre></td></tr></table></figure></div>
+<p>在我们眼中，这就像是一个由字符、整数和浮点数组成的字符串。<font color="red">但是对 C程序而言，这是一个字节流。</font><strong>第1个字节是字母i的字符编码，第2个字节是字母s的字符编码，第3个字节是空格字符的字符编码，第4个字节是数字2的字符编码，等等</strong>。所以，如果get_long()函数处理这一行输入，第1个字符是非数字，那么整行输入都会被丢弃，包括其中的数字，因为这些数字只是该输入行中的其他字符：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> ((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">	<span class="built_in">putchar</span>(ch); <span class="comment">// 处理错误的输入</span></span><br></pre></td></tr></table></figure></div>
+<p>虽然输入流由字符组成，但是也可以设置<code>scanf()</code>函数把它们转换成数值。例如，考虑下面的输入：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">42</span><br></pre></td></tr></table></figure></div>
+<p>如果在<code>scanf()</code>函数中使用%c转换说明，它只会读取字符4并将其储存在char类型的变量中。如果使用%s转换说明，“它会读取字符4和字符2这两个字符，并将其储存在字符数组中。如果使用%d转换说明，<code>scanf()</code>同样会读取两个字符，但是随后会计算出它们对应的整数值：4×10+2，即42，然后将表示该整数的二进制数储存在 int 类型的变量中。如果使用%f 转换说明，<code>scanf()</code>也会读取两个字符，计算出它们对应的数值42.0，用内部的浮点表示法表示该值，并将结果储存在float类型的变量中。<br><strong>简而言之，输入由字符组成，但是<code>scanf()</code>可以把输入转换成整数值或浮点数值。使用转换说明（如%d或%f）限制了可接受输入的字符类型，而<code>getchar()</code>和使用%c的<code>scanf()</code>接受所有的字符。</strong></p>
+]]></content>
+      <categories>
+        <category>Linux C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C Program Ⅱ 函数</title>
     <url>/2020/04/10/C-Program-%E2%85%A1-%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -70,43 +107,6 @@
 <blockquote>
 <p>为什么temp的地址与* v的地址不一样呢，因为temp是新定义的变量，编译时给temp新分配了一个地址。</p>
 </blockquote>
-]]></content>
-      <categories>
-        <category>Linux C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C Program Ⅰ 字符</title>
-    <url>/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-单字符I-O-getchar-和-putchar"><a href="#1-单字符I-O-getchar-和-putchar" class="headerlink" title="1.单字符I/O : getchar() 和 putchar()"></a>1.单字符I/O : getchar() 和 putchar()</h2><blockquote>
-<p>getchar() 和 putchar ()每次只能输入和输出一个字符。</p>
-</blockquote>
-<p>ANSI C 将 <code>stdio.h</code> 头文件与getchar() 和 putchar()相关联，这就是为什么程序中将该文件包含在内的原因。而且，getchar() 和 putchar() 不是真正的函数，而是定义为预处理器宏。</p>
-<h3 id="1-getchar-与-scanf-的区分与混用"><a href="#1-getchar-与-scanf-的区分与混用" class="headerlink" title="1.getchar() 与 scanf() 的区分与混用"></a>1.getchar() 与 scanf() 的区分与混用</h3><p>在缓冲输入时需要按下Enter键，这一动作还传输一个程序必须处理的换行符。而<code>getchar()</code> 读取每个字符，包括空格，制表符和换行符；但是 <code>scanf()</code> 在在<strong>读取数字</strong>时会跳过空格，制表符和换行符。举例说明：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols);</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>运行结果：</p>
-<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/1.png" style="zoom:50%;"></p>
-<p><img src style="zoom:50%;"></p>
-<blockquote>
-<p>程序会在输入之后，没有做出其他输入响应之前就结束了，原因是紧跟在输入3之后的那个换行符。</p>
-</blockquote>
-<p><strong><code>scanf()</code>函数将该换行符留在输入队列中，与<code>scanf()</code>不同，<code>getchar()</code> 并不跳过换行符。</strong>所以在循环的下一周期，再有机会输入任何其他内容之前，这一换行符由<code>getchar()</code>读出，然后将其赋值为ch，而ch为换行符才是结束循环的条件。</p>
-<p>改善程序：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols) != <span class="number">2</span>)</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">    <span class="keyword">while</span>(getchar() != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>运行结果：</p>
-<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/2.png" style="zoom:50%;"></p>
-<blockquote>
-<p>程序跳过了一个输入周期中输入的最后一个数字与下一行开始处输入的字符之间的所有换行符和空格。</p>
-</blockquote>
-<h3 id="2-输入流和数字"><a href="#2-输入流和数字" class="headerlink" title="2.输入流和数字"></a>2.输入流和数字</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">is 28 12.4</span><br></pre></td></tr></table></figure></div>
-<p>在我们眼中，这就像是一个由字符、整数和浮点数组成的字符串。<font color="red">但是对 C程序而言，这是一个字节流。</font><strong>第1个字节是字母i的字符编码，第2个字节是字母s的字符编码，第3个字节是空格字符的字符编码，第4个字节是数字2的字符编码，等等</strong>。所以，如果get_long()函数处理这一行输入，第1个字符是非数字，那么整行输入都会被丢弃，包括其中的数字，因为这些数字只是该输入行中的其他字符：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> ((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">	<span class="built_in">putchar</span>(ch); <span class="comment">// 处理错误的输入</span></span><br></pre></td></tr></table></figure></div>
-<p>虽然输入流由字符组成，但是也可以设置<code>scanf()</code>函数把它们转换成数值。例如，考虑下面的输入：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">42</span><br></pre></td></tr></table></figure></div>
-<p>如果在<code>scanf()</code>函数中使用%c转换说明，它只会读取字符4并将其储存在char类型的变量中。如果使用%s转换说明，“它会读取字符4和字符2这两个字符，并将其储存在字符数组中。如果使用%d转换说明，<code>scanf()</code>同样会读取两个字符，但是随后会计算出它们对应的整数值：4×10+2，即42，然后将表示该整数的二进制数储存在 int 类型的变量中。如果使用%f 转换说明，<code>scanf()</code>也会读取两个字符，计算出它们对应的数值42.0，用内部的浮点表示法表示该值，并将结果储存在float类型的变量中。<br><strong>简而言之，输入由字符组成，但是<code>scanf()</code>可以把输入转换成整数值或浮点数值。使用转换说明（如%d或%f）限制了可接受输入的字符类型，而<code>getchar()</code>和使用%c的<code>scanf()</code>接受所有的字符。</strong></p>
 ]]></content>
       <categories>
         <category>Linux C</category>
@@ -201,8 +201,8 @@
       </tags>
   </entry>
   <entry>
-    <title>C Program Ⅶ 结构体和其他数据形式</title>
-    <url>/2020/04/10/C-Program-%E2%85%A6-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/</url>
+    <title>C Program Ⅷ  位操作</title>
+    <url>/2020/04/10/C-Program-%E2%85%A7-%E4%BD%8D%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       <categories>
         <category>Linux C</category>
@@ -212,8 +212,8 @@
       </tags>
   </entry>
   <entry>
-    <title>C Program Ⅷ  位操作</title>
-    <url>/2020/04/10/C-Program-%E2%85%A7-%E4%BD%8D%E6%93%8D%E4%BD%9C/</url>
+    <title>C Program Ⅶ 结构体和其他数据形式</title>
+    <url>/2020/04/10/C-Program-%E2%85%A6-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       <categories>
         <category>Linux C</category>
@@ -449,17 +449,6 @@
       </tags>
   </entry>
   <entry>
-    <title>OS Internals and Design Principles-I/O和文件</title>
-    <url>/2020/11/10/OS-Internals-and-Design-Principles-I-O%E5%92%8C%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>I/O和文件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OS Internals and Design Principles-内存</title>
     <url>/2020/11/10/OS-Internals-and-Design-Principles-%E5%86%85%E5%AD%98/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -468,6 +457,17 @@
       </categories>
       <tags>
         <tag>内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OS Internals and Design Principles-I/O和文件</title>
+    <url>/2020/11/10/OS-Internals-and-Design-Principles-I-O%E5%92%8C%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>I/O和文件</tag>
       </tags>
   </entry>
   <entry>
@@ -953,34 +953,6 @@
       </tags>
   </entry>
   <entry>
-    <title>东大一个月以来的反思</title>
-    <url>/2019/10/04/%E4%B8%9C%E5%A4%A7%E4%B8%80%E4%B8%AA%E6%9C%88%E4%BB%A5%E6%9D%A5%E7%9A%84%E5%8F%8D%E6%80%9D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1 跑步已进入瓶颈期，6km以下已经不怎么出汗。改变有氧运动为跳绳后发现10mins就能汗如雨下，搭配着来很重要。其次，不能间断超过三天，否则要浪费一天时间去重新适应。现在又办理了健身卡，今天晚上也要制定减脂增肌的健身与饮食计划，一定要在元旦之前减到65kg以下。</p>
-<hr>
-<p>2 以后就算是和老师们聚餐也要控制酒精摄入。更要学会委婉的拒绝。</p>
-<hr>
-<p>3 事实证明自己之前的胡思乱想归根结底还是闲的，让自己有计划有节奏的忙碌起来。爱情这东西命里有时终须有，命里无时也莫强求，对现在的自己而言没有那么重要。</p>
-<hr>
-<p>4 至于以后到底读不读博，就业是否留在实验室得等到寒假之后再思考，这个学期主要是找到物理层安全的价值点与兴趣点所在，多读论文。</p>
-<hr>
-<p>5 不要过于自卑，自己也没有那么弱，运气只会对努力的，有准备的人奏效，它也是实力的一种，不然自己也不会在这进修了!</p>
-<hr>
-<p>6 体态和肤质只需坚持一个季度就能改变，并不难。细细想来和当初考研异曲同工，只要稳扎稳打一年就能改变所在平台，这是回报率很高的“交易”。等到11月发了奖学金可以试着买一套护肤的保养保养，毕竟自己的皮肤也需要保护，自己的形象也很重要。</p>
-<hr>
-<p>7 年少时觉得那些大道理似乎很空，所以忘得很快。现在读的书慢慢多了，经历的慢慢丰富了，身边却很少有人那么“苦口婆心”的教导自己，很感谢随机过程老师每节课这么督促我们，仔细琢磨后觉得既兴奋有懊悔，以后要把所以空闲时间都用在学习与思考上。</p>
-<hr>
-<p>8 老师们都说如果能把高考时的拼劲放到现在，没有什么是解决不了的。不过高三时的自己并没有那么拼命，也让自己刻意忘记了那时的日子。所以自己不妨试着再找回考研时候的拼劲，时刻思考，时刻背诵。我相信自己一定会有所成的。</p>
-<hr>
-<p>9 如切如磋，如琢如磨，战战兢兢，如履薄冰。希望不负“百载文枢江左，东南辈出英豪。”的期望!</p>
-]]></content>
-      <categories>
-        <category>感悟与反思</category>
-      </categories>
-      <tags>
-        <tag>感悟与反思</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>关于方向&amp;关于C++</title>
     <url>/2020/03/01/%E5%85%B3%E4%BA%8E%E6%96%B9%E5%90%91-%E5%85%B3%E4%BA%8EC/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -989,6 +961,17 @@
       </categories>
       <tags>
         <tag>规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈工大学习—内存管理</title>
+    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>内存管理</tag>
       </tags>
   </entry>
   <entry>
@@ -1188,14 +1171,31 @@
       </tags>
   </entry>
   <entry>
-    <title>哈工大学习—内存管理</title>
-    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <title>东大一个月以来的反思</title>
+    <url>/2019/10/04/%E4%B8%9C%E5%A4%A7%E4%B8%80%E4%B8%AA%E6%9C%88%E4%BB%A5%E6%9D%A5%E7%9A%84%E5%8F%8D%E6%80%9D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1 跑步已进入瓶颈期，6km以下已经不怎么出汗。改变有氧运动为跳绳后发现10mins就能汗如雨下，搭配着来很重要。其次，不能间断超过三天，否则要浪费一天时间去重新适应。现在又办理了健身卡，今天晚上也要制定减脂增肌的健身与饮食计划，一定要在元旦之前减到65kg以下。</p>
+<hr>
+<p>2 以后就算是和老师们聚餐也要控制酒精摄入。更要学会委婉的拒绝。</p>
+<hr>
+<p>3 事实证明自己之前的胡思乱想归根结底还是闲的，让自己有计划有节奏的忙碌起来。爱情这东西命里有时终须有，命里无时也莫强求，对现在的自己而言没有那么重要。</p>
+<hr>
+<p>4 至于以后到底读不读博，就业是否留在实验室得等到寒假之后再思考，这个学期主要是找到物理层安全的价值点与兴趣点所在，多读论文。</p>
+<hr>
+<p>5 不要过于自卑，自己也没有那么弱，运气只会对努力的，有准备的人奏效，它也是实力的一种，不然自己也不会在这进修了!</p>
+<hr>
+<p>6 体态和肤质只需坚持一个季度就能改变，并不难。细细想来和当初考研异曲同工，只要稳扎稳打一年就能改变所在平台，这是回报率很高的“交易”。等到11月发了奖学金可以试着买一套护肤的保养保养，毕竟自己的皮肤也需要保护，自己的形象也很重要。</p>
+<hr>
+<p>7 年少时觉得那些大道理似乎很空，所以忘得很快。现在读的书慢慢多了，经历的慢慢丰富了，身边却很少有人那么“苦口婆心”的教导自己，很感谢随机过程老师每节课这么督促我们，仔细琢磨后觉得既兴奋有懊悔，以后要把所以空闲时间都用在学习与思考上。</p>
+<hr>
+<p>8 老师们都说如果能把高考时的拼劲放到现在，没有什么是解决不了的。不过高三时的自己并没有那么拼命，也让自己刻意忘记了那时的日子。所以自己不妨试着再找回考研时候的拼劲，时刻思考，时刻背诵。我相信自己一定会有所成的。</p>
+<hr>
+<p>9 如切如磋，如琢如磨，战战兢兢，如履薄冰。希望不负“百载文枢江左，东南辈出英豪。”的期望!</p>
+]]></content>
       <categories>
-        <category>操作系统</category>
+        <category>感悟与反思</category>
       </categories>
       <tags>
-        <tag>内存管理</tag>
+        <tag>感悟与反思</tag>
       </tags>
   </entry>
   <entry>
@@ -1475,17 +1475,6 @@
       </tags>
   </entry>
   <entry>
-    <title>数据结构Ⅲ栈和队列</title>
-    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A2%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>数据结构与算法设计</category>
-      </categories>
-      <tags>
-        <tag>栈和队列</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构Ⅳ串</title>
     <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A3%E4%B8%B2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -1494,6 +1483,17 @@
       </categories>
       <tags>
         <tag>串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构Ⅲ栈和队列</title>
+    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A2%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>数据结构与算法设计</category>
+      </categories>
+      <tags>
+        <tag>栈和队列</tag>
       </tags>
   </entry>
   <entry>
