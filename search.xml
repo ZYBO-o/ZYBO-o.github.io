@@ -168,6 +168,17 @@
       </tags>
   </entry>
   <entry>
+    <title>C Program Ⅵ 文件</title>
+    <url>/2020/04/10/C-Program-%E2%85%A5-%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Linux C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C Program Ⅴ 存储类,链接和内存管理</title>
     <url>/2020/04/10/C-Program-%E2%85%A4-%E5%AD%98%E5%82%A8%E7%B1%BB-%E9%93%BE%E6%8E%A5%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -182,17 +193,6 @@
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> * pt = &amp;entity;</span><br><span class="line"><span class="keyword">int</span> ranks[<span class="number">10</span>];</span><br></pre></td></tr></table></figure></div>
 <p>第1行声明中，<code>pt</code>是一个标识符，它指定了一个储存地址的对象。但是，表达式<code>pt</code>不是标识符，因为它不是一个名称。然而，它确实指定了一个对象，在这种情况下，它与 <code>entity</code>指定的对象相同。一般而言，那些指定对象的表达式被称为<em>左值</em>。所以，<code>entity</code>既是标识符也是左值；<code>*pt</code>既是表达式也是左值。按照这个思路，<code>ranks + 2 * entity</code>既不是标识符（不是名称），也不是左值（它不指定内存位置上的内容）。但是表达式<code>*(ranks + 2 * entity)</code>是一个左值，因为它的确指定了特定内存位置的值，即ranks数组的第7个元素。顺带一提，ranks的声明创建了一个可容纳10个int类型元素的对象，该数组的每个元素也是一个对象。</p>
 ]]></content>
-      <categories>
-        <category>Linux C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C Program Ⅵ 文件</title>
-    <url>/2020/04/10/C-Program-%E2%85%A5-%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       <categories>
         <category>Linux C</category>
       </categories>
@@ -231,6 +231,28 @@
       </categories>
       <tags>
         <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux下C链接Mysql</title>
+    <url>/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-安装数据库"><a href="#1-安装数据库" class="headerlink" title="1.安装数据库"></a>1.安装数据库</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqld-dev</span><br></pre></td></tr></table></figure></div>
+<h2 id="2-查看安装包"><a href="#2-查看安装包" class="headerlink" title="2.查看安装包"></a>2.查看安装包</h2><p>2.查看本地有没有安装mysql的开发包。命令是  ‘mysql_config —cflags —libs’如果有安装就会有一串编译选项和连接库。如果没有就自行安装 mysql-devel-<strong>*</strong>的rpm包后面是版本号。mysql开发包提供了基本操作接口。安装后头文件在/usr/include/mysql 而动态库在 /usr/lib/mysql 上。</p>
+<p><img src="/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" alt></p>
+<h2 id="3-编写C程序链接数据库"><a href="#3-编写C程序链接数据库" class="headerlink" title="3.编写C程序链接数据库"></a>3.编写C程序链接数据库</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mysql.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MYSQL *conn;</span><br><span class="line">    MYSQL_RES *res;</span><br><span class="line">    MYSQL_ROW row;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">char</span> *server = <span class="string">&quot;localhost&quot;</span>;</span><br><span class="line">   <span class="keyword">char</span> *user = <span class="string">&quot;root&quot;</span>;</span><br><span class="line">   <span class="keyword">char</span> *password = <span class="string">&quot;ZYB110929&quot;</span>; <span class="comment">/* 此处改成你的密码 */</span></span><br><span class="line">   <span class="keyword">char</span> *database = <span class="string">&quot;mysql&quot;</span>;</span><br><span class="line"></span><br><span class="line">    conn = mysql_init(<span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* Connect to database */</span></span><br><span class="line">   <span class="keyword">if</span> (!mysql_real_connect(conn, server,</span><br><span class="line">          user, password, database, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>)) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;%s\n&quot;</span>, mysql_error(conn));</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* send SQL query */</span></span><br><span class="line">   <span class="keyword">if</span> (mysql_query(conn, <span class="string">&quot;show tables&quot;</span>)) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;%s\n&quot;</span>, mysql_error(conn));</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">    res = mysql_use_result(conn);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* output table name */</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;MySQL Tables in mysql database:\n&quot;</span>);</span><br><span class="line">   <span class="keyword">while</span> ((row = mysql_fetch_row(res)) != <span class="literal">NULL</span>)</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;%s \n&quot;</span>, row[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* close connection */</span></span><br><span class="line">    mysql_free_result(res);</span><br><span class="line">    mysql_close(conn);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></div>
+<p>编译：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">gcc test.c -o test $(mysql_config --cflags) $(mysql_config --libs)</span><br></pre></td></tr></table></figure></div>
+<p><img src="/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" alt></p>
+<p>实践成功。</p>
+<p>​            </p>
+]]></content>
+      <categories>
+        <category>Linux C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>Mysql</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -424,28 +446,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux下C链接Mysql</title>
-    <url>/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-安装数据库"><a href="#1-安装数据库" class="headerlink" title="1.安装数据库"></a>1.安装数据库</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqld-dev</span><br></pre></td></tr></table></figure></div>
-<h2 id="2-查看安装包"><a href="#2-查看安装包" class="headerlink" title="2.查看安装包"></a>2.查看安装包</h2><p>2.查看本地有没有安装mysql的开发包。命令是  ‘mysql_config —cflags —libs’如果有安装就会有一串编译选项和连接库。如果没有就自行安装 mysql-devel-<strong>*</strong>的rpm包后面是版本号。mysql开发包提供了基本操作接口。安装后头文件在/usr/include/mysql 而动态库在 /usr/lib/mysql 上。</p>
-<p><img src="/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" alt></p>
-<h2 id="3-编写C程序链接数据库"><a href="#3-编写C程序链接数据库" class="headerlink" title="3.编写C程序链接数据库"></a>3.编写C程序链接数据库</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mysql.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MYSQL *conn;</span><br><span class="line">    MYSQL_RES *res;</span><br><span class="line">    MYSQL_ROW row;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">char</span> *server = <span class="string">&quot;localhost&quot;</span>;</span><br><span class="line">   <span class="keyword">char</span> *user = <span class="string">&quot;root&quot;</span>;</span><br><span class="line">   <span class="keyword">char</span> *password = <span class="string">&quot;ZYB110929&quot;</span>; <span class="comment">/* 此处改成你的密码 */</span></span><br><span class="line">   <span class="keyword">char</span> *database = <span class="string">&quot;mysql&quot;</span>;</span><br><span class="line"></span><br><span class="line">    conn = mysql_init(<span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* Connect to database */</span></span><br><span class="line">   <span class="keyword">if</span> (!mysql_real_connect(conn, server,</span><br><span class="line">          user, password, database, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>)) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;%s\n&quot;</span>, mysql_error(conn));</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* send SQL query */</span></span><br><span class="line">   <span class="keyword">if</span> (mysql_query(conn, <span class="string">&quot;show tables&quot;</span>)) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;%s\n&quot;</span>, mysql_error(conn));</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">    res = mysql_use_result(conn);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* output table name */</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;MySQL Tables in mysql database:\n&quot;</span>);</span><br><span class="line">   <span class="keyword">while</span> ((row = mysql_fetch_row(res)) != <span class="literal">NULL</span>)</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;%s \n&quot;</span>, row[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* close connection */</span></span><br><span class="line">    mysql_free_result(res);</span><br><span class="line">    mysql_close(conn);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></div>
-<p>编译：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">gcc test.c -o test $(mysql_config --cflags) $(mysql_config --libs)</span><br></pre></td></tr></table></figure></div>
-<p><img src="/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" alt></p>
-<p>实践成功。</p>
-<p>​            </p>
-]]></content>
-      <categories>
-        <category>Linux C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>Mysql</tag>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1199,6 +1199,17 @@
       </tags>
   </entry>
   <entry>
+    <title>哈工大学习—设备驱动与文件系统</title>
+    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>设备驱动与文件系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>哈工大学习—进程与线程</title>
     <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -1210,14 +1221,57 @@
       </tags>
   </entry>
   <entry>
-    <title>哈工大学习—设备驱动与文件系统</title>
-    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    <title>数据结构Ⅰ绪论</title>
+    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A0%E7%BB%AA%E8%AE%BA/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-绪论"><a href="#一-绪论" class="headerlink" title="一.绪论"></a>一.绪论</h1><h2 id="一-概念"><a href="#一-概念" class="headerlink" title="(一).概念"></a>(一).概念</h2><p><strong>1.数据：</strong>是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合。数据不仅仅包括整型、实型等数值类型，还包括字符及声音、图像、视频等非数值类型。</p>
+<blockquote>
+<p>这里说的数据，其实就是符号，而且这些符号必须具备两个前提：</p>
+<ul>
+<li>可以输入到计算机中。</li>
+<li>能被计算机程序处理。</li>
+</ul>
+</blockquote>
+<p><strong>2.数据元素：</strong>是组成数据的、有一定意义的基本单位，在计算机中通常作为整体处理。也被称为记录。</p>
+<p><strong>3.数据项：</strong>一个数据元素可以由若干个数据项组成。</p>
+<blockquote>
+<p>数据项是数据不可分割的最小单位。在数据结构中，把数据项定义为最小单位，是有助于我们更好地解决问题。</p>
+</blockquote>
+<p><strong>4.数据对象：</strong>是性质相同的数据元素的集合，是数据的子集，<strong>简称数据</strong>。</p>
+<blockquote>
+<p>性质相同，是指数据元素具有相同数量和类型的数据项。</p>
+</blockquote>
+<p><strong>5.数据结构：</strong>是相互之间存在一种或多种特定关系的数据元素的集合。</p>
+<blockquote>
+<p> 在计算机中，数据元素并不是孤立、杂乱无序的，而是具有内在联系的数据集合。数据元素之间存在的一种或多种特定关系，也就是数据的组织形式。</p>
+</blockquote>
+<p><img src="/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A0%E7%BB%AA%E8%AE%BA/1.png" style="zoom:50%;"></p>
+<h2 id="二-逻辑与物理结构"><a href="#二-逻辑与物理结构" class="headerlink" title="(二).逻辑与物理结构"></a>(二).逻辑与物理结构</h2><h3 id="1-逻辑结构"><a href="#1-逻辑结构" class="headerlink" title="1.逻辑结构"></a>1.逻辑结构</h3><blockquote>
+<p>逻辑结构：是指数据对象中数据元素之间的相互关系。其实这也是我们今后最需要关注的问题。逻辑结构分为以下四种。</p>
+</blockquote>
+<p><img src="/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A0%E7%BB%AA%E8%AE%BA/2.png" style="zoom:50%;"></p>
+<h3 id="2-物理结构"><a href="#2-物理结构" class="headerlink" title="2.物理结构"></a>2.物理结构</h3><p><strong>物理结构：</strong>是指数据的逻辑结构在计算机中的<strong>存储形式</strong>。</p>
+<blockquote>
+<p>数据是数据元素的集合，那么根据物理结构的定义，实际上就是如何把数据元素存储到计算机的存储器中。存储器主要是针对内存而言的，像硬盘、软盘、光盘等外部存储器的数据组织通常用文件结构来描述。</p>
+</blockquote>
+<p>数据元素的存储结构形式有两种：<strong>顺序存储</strong>和<strong>链式存储</strong>。</p>
+<h4 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h4><p><strong>顺序存储结构：</strong>是把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的。如下图所示。</p>
+<p><img src="/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A0%E7%BB%AA%E8%AE%BA/3.png" style="zoom:50%;"></p>
+<h4 id="链式存储"><a href="#链式存储" class="headerlink" title="链式存储"></a>链式存储</h4><p><strong>链式存储结构：</strong>是把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。数据元素的存储关系并不能反映其逻辑关系，因此<strong>需要用一个指针存放数据元素的地址</strong>，这样通过地址就可以找到相关联数据元素的位置。如下图所示。</p>
+<p><img src="/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A0%E7%BB%AA%E8%AE%BA/4.png" style="zoom:40%;"></p>
+<h2 id="三-抽象数据类型"><a href="#三-抽象数据类型" class="headerlink" title="(三).抽象数据类型"></a>(三).抽象数据类型</h2><h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h3><p><strong>数据类型：</strong>是指一组性质相同的值的集合及定义在此集合上的一些操作的总称。</p>
+<blockquote>
+<p>数据类型是按照值的不同进行划分的。在高级语言中，每个变量、常量和表达式都有各自的取值范围。类型就用来说明变量或表达式的取值范围和所能进行的操作。</p>
+</blockquote>
+<p>抽象是指抽取出事物具有的普遍性的本质。它是抽出问题的特征而忽略非本质的细节，是对具体事物的一个概括。抽象是一种思考问题的方式，它隐藏了繁杂的细节，只保留实现目标所必需的信息。</p>
+<h3 id="2-抽象数据类型"><a href="#2-抽象数据类型" class="headerlink" title="2.抽象数据类型"></a>2.抽象数据类型</h3><p><strong>抽象数据类型(Abstract Data Type，ADT)：</strong>是指一个数学模型及定义在该模型上的一组操作。抽象数据类型的定义仅取决于它的一组逻辑特性，而与其在计算机内部如何表示和实现无关。</p>
+<hr>
+<p>&lt;/br&gt;</p>
+<h1 id="二-算法"><a href="#二-算法" class="headerlink" title="二.算法"></a>二.算法</h1>]]></content>
       <categories>
-        <category>操作系统</category>
+        <category>数据结构与算法设计</category>
       </categories>
       <tags>
-        <tag>设备驱动与文件系统</tag>
+        <tag>数据结构绪论</tag>
       </tags>
   </entry>
   <entry>
@@ -1410,71 +1464,6 @@
       </tags>
   </entry>
   <entry>
-    <title>数据结构Ⅰ绪论</title>
-    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A0%E7%BB%AA%E8%AE%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-绪论"><a href="#一-绪论" class="headerlink" title="一.绪论"></a>一.绪论</h1><h2 id="一-概念"><a href="#一-概念" class="headerlink" title="(一).概念"></a>(一).概念</h2><p><strong>1.数据：</strong>是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合。数据不仅仅包括整型、实型等数值类型，还包括字符及声音、图像、视频等非数值类型。</p>
-<blockquote>
-<p>这里说的数据，其实就是符号，而且这些符号必须具备两个前提：</p>
-<ul>
-<li>可以输入到计算机中。</li>
-<li>能被计算机程序处理。</li>
-</ul>
-</blockquote>
-<p><strong>2.数据元素：</strong>是组成数据的、有一定意义的基本单位，在计算机中通常作为整体处理。也被称为记录。</p>
-<p><strong>3.数据项：</strong>一个数据元素可以由若干个数据项组成。</p>
-<blockquote>
-<p>数据项是数据不可分割的最小单位。在数据结构中，把数据项定义为最小单位，是有助于我们更好地解决问题。</p>
-</blockquote>
-<p><strong>4.数据对象：</strong>是性质相同的数据元素的集合，是数据的子集，<strong>简称数据</strong>。</p>
-<blockquote>
-<p>性质相同，是指数据元素具有相同数量和类型的数据项。</p>
-</blockquote>
-<p><strong>5.数据结构：</strong>是相互之间存在一种或多种特定关系的数据元素的集合。</p>
-<blockquote>
-<p> 在计算机中，数据元素并不是孤立、杂乱无序的，而是具有内在联系的数据集合。数据元素之间存在的一种或多种特定关系，也就是数据的组织形式。</p>
-</blockquote>
-<p><img src="/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A0%E7%BB%AA%E8%AE%BA/1.png" style="zoom:50%;"></p>
-<h2 id="二-逻辑与物理结构"><a href="#二-逻辑与物理结构" class="headerlink" title="(二).逻辑与物理结构"></a>(二).逻辑与物理结构</h2><h3 id="1-逻辑结构"><a href="#1-逻辑结构" class="headerlink" title="1.逻辑结构"></a>1.逻辑结构</h3><blockquote>
-<p>逻辑结构：是指数据对象中数据元素之间的相互关系。其实这也是我们今后最需要关注的问题。逻辑结构分为以下四种。</p>
-</blockquote>
-<p><img src="/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A0%E7%BB%AA%E8%AE%BA/2.png" style="zoom:50%;"></p>
-<h3 id="2-物理结构"><a href="#2-物理结构" class="headerlink" title="2.物理结构"></a>2.物理结构</h3><p><strong>物理结构：</strong>是指数据的逻辑结构在计算机中的<strong>存储形式</strong>。</p>
-<blockquote>
-<p>数据是数据元素的集合，那么根据物理结构的定义，实际上就是如何把数据元素存储到计算机的存储器中。存储器主要是针对内存而言的，像硬盘、软盘、光盘等外部存储器的数据组织通常用文件结构来描述。</p>
-</blockquote>
-<p>数据元素的存储结构形式有两种：<strong>顺序存储</strong>和<strong>链式存储</strong>。</p>
-<h4 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h4><p><strong>顺序存储结构：</strong>是把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的。如下图所示。</p>
-<p><img src="/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A0%E7%BB%AA%E8%AE%BA/3.png" style="zoom:50%;"></p>
-<h4 id="链式存储"><a href="#链式存储" class="headerlink" title="链式存储"></a>链式存储</h4><p><strong>链式存储结构：</strong>是把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。数据元素的存储关系并不能反映其逻辑关系，因此<strong>需要用一个指针存放数据元素的地址</strong>，这样通过地址就可以找到相关联数据元素的位置。如下图所示。</p>
-<p><img src="/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A0%E7%BB%AA%E8%AE%BA/4.png" style="zoom:40%;"></p>
-<h2 id="三-抽象数据类型"><a href="#三-抽象数据类型" class="headerlink" title="(三).抽象数据类型"></a>(三).抽象数据类型</h2><h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h3><p><strong>数据类型：</strong>是指一组性质相同的值的集合及定义在此集合上的一些操作的总称。</p>
-<blockquote>
-<p>数据类型是按照值的不同进行划分的。在高级语言中，每个变量、常量和表达式都有各自的取值范围。类型就用来说明变量或表达式的取值范围和所能进行的操作。</p>
-</blockquote>
-<p>抽象是指抽取出事物具有的普遍性的本质。它是抽出问题的特征而忽略非本质的细节，是对具体事物的一个概括。抽象是一种思考问题的方式，它隐藏了繁杂的细节，只保留实现目标所必需的信息。</p>
-<h3 id="2-抽象数据类型"><a href="#2-抽象数据类型" class="headerlink" title="2.抽象数据类型"></a>2.抽象数据类型</h3><p><strong>抽象数据类型(Abstract Data Type，ADT)：</strong>是指一个数学模型及定义在该模型上的一组操作。抽象数据类型的定义仅取决于它的一组逻辑特性，而与其在计算机内部如何表示和实现无关。</p>
-<hr>
-<p>&lt;/br&gt;</p>
-<h1 id="二-算法"><a href="#二-算法" class="headerlink" title="二.算法"></a>二.算法</h1>]]></content>
-      <categories>
-        <category>数据结构与算法设计</category>
-      </categories>
-      <tags>
-        <tag>数据结构绪论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构Ⅳ串</title>
-    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A3%E4%B8%B2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>数据结构与算法设计</category>
-      </categories>
-      <tags>
-        <tag>串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构Ⅲ栈和队列</title>
     <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A2%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -1486,25 +1475,14 @@
       </tags>
   </entry>
   <entry>
-    <title>数据结构Ⅵ图</title>
-    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A5%E5%9B%BE/</url>
+    <title>数据结构Ⅳ串</title>
+    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A3%E4%B8%B2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       <categories>
         <category>数据结构与算法设计</category>
       </categories>
       <tags>
-        <tag>图</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构Ⅶ查找</title>
-    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A6%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>数据结构与算法设计</category>
-      </categories>
-      <tags>
-        <tag>查找</tag>
+        <tag>串</tag>
       </tags>
   </entry>
   <entry>
@@ -1734,6 +1712,28 @@ display: inline-block;color: #999;padding: 2px;">
       </categories>
       <tags>
         <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构Ⅵ图</title>
+    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A5%E5%9B%BE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>数据结构与算法设计</category>
+      </categories>
+      <tags>
+        <tag>图</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构Ⅶ查找</title>
+    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A6%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>数据结构与算法设计</category>
+      </categories>
+      <tags>
+        <tag>查找</tag>
       </tags>
   </entry>
   <entry>
