@@ -190,6 +190,17 @@
       </tags>
   </entry>
   <entry>
+    <title>C Program Ⅶ 结构体和其他数据形式</title>
+    <url>/2020/04/10/C-Program-%E2%85%A6-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Linux C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C Program Ⅵ 文件</title>
     <url>/2020/04/10/C-Program-%E2%85%A5-%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -203,17 +214,6 @@
   <entry>
     <title>C Program Ⅷ  位操作</title>
     <url>/2020/04/10/C-Program-%E2%85%A7-%E4%BD%8D%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>Linux C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C Program Ⅶ 结构体和其他数据形式</title>
-    <url>/2020/04/10/C-Program-%E2%85%A6-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       <categories>
         <category>Linux C</category>
@@ -449,17 +449,6 @@
       </tags>
   </entry>
   <entry>
-    <title>OS Internals and Design Principles-内存</title>
-    <url>/2020/11/10/OS-Internals-and-Design-Principles-%E5%86%85%E5%AD%98/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>内存</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OS Internals and Design Principles-I/O和文件</title>
     <url>/2020/11/10/OS-Internals-and-Design-Principles-I-O%E5%92%8C%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -471,14 +460,14 @@
       </tags>
   </entry>
   <entry>
-    <title>OS Internals and Design Principles-操作系统概述</title>
-    <url>/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
+    <title>OS Internals and Design Principles-内存</title>
+    <url>/2020/11/10/OS-Internals-and-Design-Principles-%E5%86%85%E5%AD%98/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       <categories>
         <category>操作系统</category>
       </categories>
       <tags>
-        <tag>操作系统概述</tag>
+        <tag>内存</tag>
       </tags>
   </entry>
   <entry>
@@ -675,6 +664,34 @@
       </categories>
       <tags>
         <tag>进程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>东大一个月以来的反思</title>
+    <url>/2019/10/04/%E4%B8%9C%E5%A4%A7%E4%B8%80%E4%B8%AA%E6%9C%88%E4%BB%A5%E6%9D%A5%E7%9A%84%E5%8F%8D%E6%80%9D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1 跑步已进入瓶颈期，6km以下已经不怎么出汗。改变有氧运动为跳绳后发现10mins就能汗如雨下，搭配着来很重要。其次，不能间断超过三天，否则要浪费一天时间去重新适应。现在又办理了健身卡，今天晚上也要制定减脂增肌的健身与饮食计划，一定要在元旦之前减到65kg以下。</p>
+<hr>
+<p>2 以后就算是和老师们聚餐也要控制酒精摄入。更要学会委婉的拒绝。</p>
+<hr>
+<p>3 事实证明自己之前的胡思乱想归根结底还是闲的，让自己有计划有节奏的忙碌起来。爱情这东西命里有时终须有，命里无时也莫强求，对现在的自己而言没有那么重要。</p>
+<hr>
+<p>4 至于以后到底读不读博，就业是否留在实验室得等到寒假之后再思考，这个学期主要是找到物理层安全的价值点与兴趣点所在，多读论文。</p>
+<hr>
+<p>5 不要过于自卑，自己也没有那么弱，运气只会对努力的，有准备的人奏效，它也是实力的一种，不然自己也不会在这进修了!</p>
+<hr>
+<p>6 体态和肤质只需坚持一个季度就能改变，并不难。细细想来和当初考研异曲同工，只要稳扎稳打一年就能改变所在平台，这是回报率很高的“交易”。等到11月发了奖学金可以试着买一套护肤的保养保养，毕竟自己的皮肤也需要保护，自己的形象也很重要。</p>
+<hr>
+<p>7 年少时觉得那些大道理似乎很空，所以忘得很快。现在读的书慢慢多了，经历的慢慢丰富了，身边却很少有人那么“苦口婆心”的教导自己，很感谢随机过程老师每节课这么督促我们，仔细琢磨后觉得既兴奋有懊悔，以后要把所以空闲时间都用在学习与思考上。</p>
+<hr>
+<p>8 老师们都说如果能把高考时的拼劲放到现在，没有什么是解决不了的。不过高三时的自己并没有那么拼命，也让自己刻意忘记了那时的日子。所以自己不妨试着再找回考研时候的拼劲，时刻思考，时刻背诵。我相信自己一定会有所成的。</p>
+<hr>
+<p>9 如切如磋，如琢如磨，战战兢兢，如履薄冰。希望不负“百载文枢江左，东南辈出英豪。”的期望!</p>
+]]></content>
+      <categories>
+        <category>感悟与反思</category>
+      </categories>
+      <tags>
+        <tag>感悟与反思</tag>
       </tags>
   </entry>
   <entry>
@@ -964,17 +981,6 @@
       </tags>
   </entry>
   <entry>
-    <title>哈工大学习—内存管理</title>
-    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>内存管理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>减脂塑性规划</title>
     <url>/2019/10/18/%E5%87%8F%E8%84%82%E5%A1%91%E6%80%A7%E8%A7%84%E5%88%92/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-健身部位与动作"><a href="#一-健身部位与动作" class="headerlink" title="一.健身部位与动作"></a>一.健身部位与动作</h1><h2 id="1-胸部"><a href="#1-胸部" class="headerlink" title="1.胸部"></a>1.胸部</h2><ul>
@@ -1171,42 +1177,14 @@
       </tags>
   </entry>
   <entry>
-    <title>东大一个月以来的反思</title>
-    <url>/2019/10/04/%E4%B8%9C%E5%A4%A7%E4%B8%80%E4%B8%AA%E6%9C%88%E4%BB%A5%E6%9D%A5%E7%9A%84%E5%8F%8D%E6%80%9D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1 跑步已进入瓶颈期，6km以下已经不怎么出汗。改变有氧运动为跳绳后发现10mins就能汗如雨下，搭配着来很重要。其次，不能间断超过三天，否则要浪费一天时间去重新适应。现在又办理了健身卡，今天晚上也要制定减脂增肌的健身与饮食计划，一定要在元旦之前减到65kg以下。</p>
-<hr>
-<p>2 以后就算是和老师们聚餐也要控制酒精摄入。更要学会委婉的拒绝。</p>
-<hr>
-<p>3 事实证明自己之前的胡思乱想归根结底还是闲的，让自己有计划有节奏的忙碌起来。爱情这东西命里有时终须有，命里无时也莫强求，对现在的自己而言没有那么重要。</p>
-<hr>
-<p>4 至于以后到底读不读博，就业是否留在实验室得等到寒假之后再思考，这个学期主要是找到物理层安全的价值点与兴趣点所在，多读论文。</p>
-<hr>
-<p>5 不要过于自卑，自己也没有那么弱，运气只会对努力的，有准备的人奏效，它也是实力的一种，不然自己也不会在这进修了!</p>
-<hr>
-<p>6 体态和肤质只需坚持一个季度就能改变，并不难。细细想来和当初考研异曲同工，只要稳扎稳打一年就能改变所在平台，这是回报率很高的“交易”。等到11月发了奖学金可以试着买一套护肤的保养保养，毕竟自己的皮肤也需要保护，自己的形象也很重要。</p>
-<hr>
-<p>7 年少时觉得那些大道理似乎很空，所以忘得很快。现在读的书慢慢多了，经历的慢慢丰富了，身边却很少有人那么“苦口婆心”的教导自己，很感谢随机过程老师每节课这么督促我们，仔细琢磨后觉得既兴奋有懊悔，以后要把所以空闲时间都用在学习与思考上。</p>
-<hr>
-<p>8 老师们都说如果能把高考时的拼劲放到现在，没有什么是解决不了的。不过高三时的自己并没有那么拼命，也让自己刻意忘记了那时的日子。所以自己不妨试着再找回考研时候的拼劲，时刻思考，时刻背诵。我相信自己一定会有所成的。</p>
-<hr>
-<p>9 如切如磋，如琢如磨，战战兢兢，如履薄冰。希望不负“百载文枢江左，东南辈出英豪。”的期望!</p>
-]]></content>
-      <categories>
-        <category>感悟与反思</category>
-      </categories>
-      <tags>
-        <tag>感悟与反思</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>哈工大学习—操作系统基础</title>
-    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/</url>
+    <title>哈工大学习—内存管理</title>
+    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       <categories>
         <category>操作系统</category>
       </categories>
       <tags>
-        <tag>操作系统基础</tag>
+        <tag>内存管理</tag>
       </tags>
   </entry>
   <entry>
@@ -1218,6 +1196,17 @@
       </categories>
       <tags>
         <tag>设备驱动与文件系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈工大学习—操作系统基础</title>
+    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1475,17 +1464,6 @@
       </tags>
   </entry>
   <entry>
-    <title>数据结构Ⅳ串</title>
-    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A3%E4%B8%B2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>数据结构与算法设计</category>
-      </categories>
-      <tags>
-        <tag>串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构Ⅲ栈和队列</title>
     <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A2%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -1494,6 +1472,17 @@
       </categories>
       <tags>
         <tag>栈和队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构Ⅳ串</title>
+    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A3%E4%B8%B2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>数据结构与算法设计</category>
+      </categories>
+      <tags>
+        <tag>串</tag>
       </tags>
   </entry>
   <entry>
@@ -1756,6 +1745,232 @@ display: inline-block;color: #999;padding: 2px;">
       </categories>
       <tags>
         <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OS Internals and Design Principles-操作系统概述</title>
+    <url>/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-从通用图灵机到计算机"><a href="#一-从通用图灵机到计算机" class="headerlink" title="一.从通用图灵机到计算机"></a>一.从通用图灵机到计算机</h1><p>1946年，冯诺依曼提出<strong><font color="red">存储程序思想</font></strong>。存储程序的主要思想是<strong>将程序和数据存放到计算机内部的存储器中，计算机在程序的控制下一步一步进行处理</strong>。</p>
+<p>计算机由五大部件组成：输入设备、输出设备、存储器、运算器、控制器。</p>
+<center class="half"> 
+    <img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/1.png" style="zoom:50%;">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;color: #999;padding: 2px;">
+图1：简单的例子</div>
+</center>
+
+
+<p>基本流程：</p>
+<ul>
+<li>程序载入到存储器中</li>
+<li>用指令指针IP来指向当前需要处理的指令</li>
+<li>载入指令，形成控制逻辑，进行解释执行：把地址[100]的值赋给ax。</li>
+<li>接着IP指向下一条指令</li>
+</ul>
+<p>总结就是四个字：<strong><font color="red">取址执行。</font></strong></p>
+<h1 id="二-操作系统的开启流程"><a href="#二-操作系统的开启流程" class="headerlink" title="二.操作系统的开启流程"></a>二.操作系统的开启流程</h1><blockquote>
+<p>从打开电源开始，这神秘的黑色背后发生着什么?</p>
+<p>即打开电源后计算机要开始工作了计算机怎么工作<strong>?</strong> 这是最最基本， 也最最重要的常识。</p>
+</blockquote>
+<h2 id="1-最开始的执行"><a href="#1-最开始的执行" class="headerlink" title="1.最开始的执行"></a>1.最开始的执行</h2><p>以X86结构为例子：</p>
+<p><strong>(1) x86 PC</strong>刚开机时<strong>CPU</strong>处于实模式</p>
+<p><strong>(2)</strong>开机时，<strong>CS=0xFFFF; IP=0x0000</strong></p>
+<blockquote>
+<p>CS为段寄存器，IP为偏移</p>
+<p>和保护模式对应，实模式的寻址<strong>CS:IP(CS</strong>左移<strong>4</strong>位<strong>+IP)</strong>， 和保护模式不一样<strong>!</strong></p>
+<p>所以是先左移四位，然后加上IP，结果为0xFFFF0</p>
+</blockquote>
+<p><strong>(3)</strong>寻址<strong>0xFFFF0(ROM BIOS</strong>映射区<strong>)</strong>[Basic input output system] </p>
+<blockquote>
+<p> 这段程序固化在内存中 </p>
+</blockquote>
+<p><strong>(4)</strong> 检查<strong>RAM</strong>，键盘，显示器，软硬磁盘 </p>
+<blockquote>
+<p>先检查硬件设备</p>
+</blockquote>
+<p><strong>(5)</strong> 将磁盘<strong>0</strong>磁道<strong>0</strong>扇区读入<strong>0x7c00</strong>处</p>
+<blockquote>
+<p>读入一个扇区，即512字节，读到<strong>0x7c00</strong>处</p>
+<p><strong>0</strong>磁道<strong>0</strong>扇区是操作系统中的<strong>引导扇区。</strong></p>
+</blockquote>
+<p><strong>(6)</strong> 设置<strong>cs=0x07c0</strong>，<strong>ip=0x0000</strong></p>
+<h2 id="2-0x7c00处存放的代码"><a href="#2-0x7c00处存放的代码" class="headerlink" title="2. 0x7c00处存放的代码"></a>2. <strong>0x7c00</strong>处存放的代码</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight"><table><tr><td class="code"><pre><span class="line">BOOTSEG = 0x07c0</span><br><span class="line">INITSEG = 0x9000</span><br><span class="line">SETUPSEG = 0x9020</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.globl</span> begtext,begdata,begbss,endtext,enddata,endbss</span><br><span class="line"><span class="selector-class">.text</span> <span class="comment">//文本段</span></span><br><span class="line">begtext:</span><br><span class="line">.data //数据段</span><br><span class="line">begdata:</span><br><span class="line">.bss //未初始化数据段</span><br><span class="line">begbss:</span><br><span class="line">entry start //关键字entry告诉链接器“程序入口”</span><br><span class="line">start:</span><br><span class="line">	mov ax, <span class="number">#B</span>OOTSEG	mov ds, ax //ds = <span class="number">#B</span>OOTSEG[<span class="number">0</span>x07c0]</span><br><span class="line">  mov ax, #INITSEG	mov es, ax //es = <span class="number">0</span>x9000</span><br><span class="line">  mov cx, <span class="number">#256</span></span><br><span class="line"></span><br><span class="line">  sub si, si				sub di, di //形成段内偏移：si-si = <span class="number">0</span> , di-di = <span class="number">0</span></span><br><span class="line">	//ds 和 es 是段寄存器，加上上面的段内偏移形成地址</span><br><span class="line">	//ds 与 si 接成地址：左移四位加上<span class="number">0</span>为：<span class="number">0</span>x7c000</span><br><span class="line">	//es 与 di 接成地址：左移四位加上<span class="number">0</span>为：<span class="number">0</span>x90000</span><br><span class="line"></span><br><span class="line">  rep   movw//重复移动<span class="number">256</span>个字,即<span class="number">512</span>个字节</span><br><span class="line">	//将<span class="number">0</span>x07c0:<span class="number">0</span>x0000处的<span class="number">256</span>个字移动到<span class="number">0</span>x9000:<span class="number">0</span>x0000处，腾出空间来操作</span><br><span class="line"></span><br><span class="line">  jmpi  go, INITSEG//jmp直接跳转，jmpi间接跳转</span><br><span class="line">	//go赋给ip,INITSEG赋给cs</span><br><span class="line">	//此时INITSEG = <span class="number">90000</span>,go就是偏移的位置，距离为<span class="number">300</span></span><br><span class="line">	//跳转到<span class="number">90300</span>,也就是下面的go:</span><br><span class="line"></span><br><span class="line">go: mov ax,cs //cs=<span class="number">0</span>x9000	</span><br><span class="line">	mov ds,ax mov es,ax mov ss,ax mov sp,<span class="number">#0</span>xff00</span><br><span class="line">load_setup: //载入setup模块</span><br><span class="line">	mov dx,<span class="number">#0</span>x0000 mov cx,<span class="number">#0</span>x0002 mov bx,<span class="number">#0</span>x0200</span><br><span class="line">	mov ax,<span class="number">#0</span>x0200+SETUPLEN int <span class="number">0</span>x13 //BIOS中断</span><br><span class="line">	//<span class="number">0</span>x13是BIOS读磁盘扇区的中断:</span><br><span class="line">	//ah=<span class="number">0</span>x02-读磁盘，al= 扇区数量(SETUPLEN=<span class="number">4</span>)， ch=柱面号，cl=开始扇区， dh=磁头号，dl=驱动器号， es:bx=内存地址</span><br><span class="line">	//cl开始扇区，为cx的开始八位：<span class="number">02</span>，所以从第二个扇区开始读</span><br><span class="line">	//al= 扇区数量(SETUPLEN=<span class="number">4</span>),读入扇区的个数，低八位，也就是<span class="number">4</span>个扇区</span><br><span class="line">	jnc ok_load_setup</span><br><span class="line">	mov dx,<span class="number">#0</span>x0000</span><br><span class="line">	mov ax,<span class="number">#0</span>x0000 //复位</span><br><span class="line">	int <span class="number">0</span>x13</span><br><span class="line">	j load_setup //重读</span><br></pre></td></tr></table></figure></div>
+<center class="half"> 
+    <img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/2.png" style="zoom:50%;">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;color: #999;padding: 2px;">
+图2：启动盘读入的扇区</div>
+</center>
+
+
+
+
+<h2 id="3-读入setup模块之后的操作"><a href="#3-读入setup模块之后的操作" class="headerlink" title="3.读入setup模块之后的操作"></a>3.读入setup模块之后的操作</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight scss"><table><tr><td class="code"><pre><span class="line">Ok_load_setup: //载入setup模块</span><br><span class="line">	mov dl,<span class="number">#0</span>x00  mov ax,<span class="number">#0</span>x0800	//ah=<span class="number">8</span>获得磁盘参数</span><br><span class="line">	int <span class="number">0</span>x13      mov ch,<span class="number">#0</span>x00    mov sectors,cx</span><br><span class="line">	mov ah,<span class="number">#0</span>x03  xor bh,bh       int <span class="number">0</span>x10 //读光标</span><br><span class="line">	mov cx,<span class="number">#24</span>    mov bx,<span class="number">#0</span>x0007</span><br><span class="line">	//<span class="number">24</span>是需要输出的字符个数</span><br><span class="line"></span><br><span class="line">	mov bp,#msg1	mov ax,<span class="number">#1301</span>    int <span class="number">0</span>x10 //BIOS中断：显示字符</span><br><span class="line">	//bp需要显示的字符所在的地址</span><br><span class="line"></span><br><span class="line">	mov ax,#SYSSEG //SYSSEG=<span class="number">0</span>x1000</span><br><span class="line">	mov es,ax</span><br><span class="line">	call read_it //读入system模块</span><br><span class="line">	jmpi <span class="number">0</span>,SETUPSEG</span><br><span class="line"></span><br><span class="line">//##############<span class="number">#b</span>ootsect.s中的数据//在文件末尾###############//</span><br><span class="line">sectors: .word <span class="number">0</span> //磁道扇区数</span><br><span class="line">msg1:.byte <span class="number">13</span>,<span class="number">10</span></span><br><span class="line">		.ascii “Loading system...”</span><br><span class="line">		.byte <span class="number">13</span>,<span class="number">10</span>,<span class="number">13</span>,<span class="number">10</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="4-读入read-it"><a href="#4-读入read-it" class="headerlink" title="4.读入read_it"></a>4.读入read_it</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//read_it调用13号中断，把操作系统后面的内容读入，读入之后bootset就结束了。</span></span><br><span class="line">read_it: 	mov ax,es cmp ax,<span class="number">#E</span>NDSEG jb ok1_read</span><br><span class="line">					ret</span><br><span class="line">ok1_read:</span><br><span class="line">	mov ax,sectors</span><br><span class="line">	sub ax,sread //sread是当前磁道已读扇区数,ax未读扇区数</span><br><span class="line">	call read_track //读磁道...</span><br></pre></td></tr></table></figure></div>
+<p>bootsect操作内容就是读入操作系统然后打出开机logo。</p>
+<p>bootset退出后，需要把控制权交给下一个程序——setup</p>
+<p>交接控制权的方式就是跳转。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.org</span> 510</span><br><span class="line">	<span class="selector-class">.word</span> 0xAA55 <span class="comment">//扇区的最后两个字节</span></span><br></pre></td></tr></table></figure></div>
+<p>可以转入<strong>setup</strong>执行了，<strong>jmpi 0, SETUPSEG</strong></p>
+<blockquote>
+<p> ip = 0, cs = <strong>SETUPSEG</strong></p>
+<p> 地址为cs左移四位加上ip，然后取值执行。</p>
+<p> SETUPSEG = 9020，ip=0，所以地址为90200</p>
+</blockquote>
+<h2 id="5-setup模块"><a href="#5-setup模块" class="headerlink" title="5.setup模块"></a>5.setup模块</h2><blockquote>
+<p>setup将完成OS启动前的设置</p>
+</blockquote>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight scss"><table><tr><td class="code"><pre><span class="line">start: mov ax,#INITSEG mov ds,ax mov ah,<span class="number">#0</span>x03</span><br><span class="line">	xor bh,bh int <span class="number">0</span>x10//取光标位置dx mov [<span class="number">0</span>],dx</span><br><span class="line"></span><br><span class="line">	//<span class="number">15</span>号中断来获取内存的大小，获取的值在ax中，然后赋给<span class="number">2</span>的间接寻址，<span class="number">9000</span>+<span class="number">2</span>——&gt;<span class="number">9002</span>存扩展内存大小</span><br><span class="line">	//知道内存大小后才能更好的管理内存 </span><br><span class="line">	mov ah,<span class="number">#0</span>x88 int <span class="number">0</span>x15 mov [<span class="number">2</span>],ax ...</span><br><span class="line"></span><br><span class="line">	cli ///不允许中断</span><br><span class="line">	mov ax,<span class="number">#0</span>x0000 cld</span><br><span class="line">do_move: mov es,ax add ax,<span class="number">#0</span>x1000</span><br><span class="line">	cmp ax,<span class="number">#0</span>x9000 jz end_move</span><br><span class="line">	mov ds,ax sub di,di</span><br><span class="line">	sub si,si</span><br><span class="line">	mov cx,<span class="number">#0</span>x8000</span><br><span class="line">	rep</span><br><span class="line">	movsw</span><br><span class="line">	jmp do_move</span><br></pre></td></tr></table></figure></div>
+<p>将操作系统的代码移动到0地址处，然后应用程序的地址就一直处于操作系统往上的地址处。</p>
+<h2 id="6-保护模式下的地址翻译与中断处理"><a href="#6-保护模式下的地址翻译与中断处理" class="headerlink" title="6.保护模式下的地址翻译与中断处理"></a>6.保护模式下的地址翻译与中断处理</h2><h3 id="1-保护模式下的地址翻译"><a href="#1-保护模式下的地址翻译" class="headerlink" title="(1).保护模式下的地址翻译"></a>(1).保护模式下的地址翻译</h3><p><img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/4.png" style="zoom:50%;"></p>
+<p>cs是选择子，而不是之前的左移操作，用来作为查表索引，选择表中的表项产生基址，再和IP偏移，加上一起产生32位地址。而这个表就是gdt表。</p>
+<h3 id="2-保护模式下中断处理函数入口"><a href="#2-保护模式下中断处理函数入口" class="headerlink" title="(2).保护模式下中断处理函数入口"></a>(2).保护模式下中断处理函数入口</h3><p><img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/5.png" style="zoom:50%;"></p>
+<p>在保护模式下，中断也是通过寻找表项来进入中断函数的入口。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight scss"><table><tr><td class="code"><pre><span class="line">end_move: mov ax,#SETUPSEG mov ds,ax</span><br><span class="line">	lidt idt_48 lgdt gdt_48//设置保护模式下的中断和寻址</span><br><span class="line">idt_48:.word <span class="number">0</span> .word <span class="number">0</span>,<span class="number">0</span> //保护模式中断函数表	</span><br><span class="line">gdt_48:.word <span class="number">0</span>x800 .word <span class="number">512</span>+gdt,<span class="number">0</span>x9</span><br><span class="line"></span><br><span class="line">//初始化gdt表</span><br><span class="line">gdt: .word <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span></span><br><span class="line">	.word <span class="number">0</span>x07FF, <span class="number">0</span>x0000, <span class="number">0</span>x9A00, <span class="number">0</span>x00C0</span><br><span class="line">	.word <span class="number">0</span>x07FF, <span class="number">0</span>x0000, <span class="number">0</span>x9200, <span class="number">0</span>x00C0</span><br><span class="line">//有了这个表再配合 lgdt gdt_48 这个指令就启动了三十二位模式。</span><br></pre></td></tr></table></figure></div>
+<center class="half"> 
+    <img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/3.png" style="zoom:40%;">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;color: #999;padding: 2px;">
+图3：cr0寄存器</div>
+</center>
+
+
+
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight scss"><table><tr><td class="code"><pre><span class="line">call empty_8042 mov al,<span class="selector-id">#0xD1</span> out <span class="selector-id">#0x64</span>,al<span class="comment">//8042是键盘控制器，其输出端口P2用来控制A20地址线</span></span><br><span class="line">call empty_8042 mov al,<span class="selector-id">#0xDF</span> out <span class="selector-id">#0x60</span>,al<span class="comment">//选通A20地址线 </span></span><br><span class="line">call empty_8042 <span class="comment">//初始化8259(中断控制) 一段非常机械化的程序</span></span><br><span class="line">mov ax,<span class="selector-id">#0x0001</span> mov cr0,ax</span><br><span class="line"><span class="comment">//把1赋给ax,然后把ax赋给cr0，进入保护模式。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//这个指令就不是之前的左移相加操作，而是32位操作。</span></span><br><span class="line">jmpi 0,8</span><br></pre></td></tr></table></figure></div>
+<center class="half"> 
+    <img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/6.png" style="zoom:40%;">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;color: #999;padding: 2px;">
+图5：gdt计算</div>
+</center>
+
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.word</span> 0x07FF, 0x0000, 0x9A00, 0x00C0</span><br></pre></td></tr></table></figure></div>
+<p>从左往右分别放入段限长，段基址15，段基址23，段基址31，结果是0x0000，加上ip也等于0，所以加上为0地址,然后跳到0地址处去执行，也就是移动后的操作系统地址去执行。</p>
+<p>而system中的第一个被执行的文件就是head.s。</p>
+<h2 id="7-head-s"><a href="#7-head-s" class="headerlink" title="7.head.s"></a>7.head.s</h2><blockquote>
+<p> <strong>setup</strong>是进入保护模式，<strong>head</strong>是进入之后的初始化</p>
+</blockquote>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//进入保护模式，就是32位汇编</span></span><br><span class="line">stratup_32: movl $<span class="number">0</span>x10,%eax mov %ax,%ds mov %ax,%es</span><br><span class="line">	mov %as,%fs mov %as,%gs //指向gdt的<span class="number">0</span>x10项(数据段)</span><br><span class="line">	lss _stack_start,%esp //设置栈(系统栈)</span><br><span class="line"></span><br><span class="line">	call setup_idt//初试化idt表</span><br><span class="line">	call setup_gdt//初始化gdt表</span><br><span class="line">	xorl %eax,%eax</span><br><span class="line"><span class="number">1</span>:incl %eax</span><br><span class="line">	movl %eax,<span class="number">0</span>x000000 cmpl %eax,<span class="number">0</span>x100000</span><br><span class="line">	je <span class="number">1</span>b //<span class="number">0</span>地址处和<span class="number">1</span>M地址处相同(A20没开启)，就死循环 jmp after_page_tables //页表，什么东东?</span><br><span class="line">setup_idt: lea ignore_int,%edx</span><br><span class="line">  movl $<span class="number">0</span>x00080000,%eax  movw %dx,%ax</span><br><span class="line">	lea _idt,%edi movl %eax,(%edi)</span><br></pre></td></tr></table></figure></div>
+<h2 id="8-设置页表之后"><a href="#8-设置页表之后" class="headerlink" title="8.设置页表之后"></a>8.设置页表之后</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight scss"><table><tr><td class="code"><pre><span class="line">after_page_tables:</span><br><span class="line">	pushl $<span class="number">0</span>  pushl $<span class="number">0</span>  pushl $<span class="number">0</span>   pushl <span class="variable">$L6</span> </span><br><span class="line">	pushl $_main 	jmp set_paging</span><br><span class="line">L6: jmp L6</span><br><span class="line">setup_paging: 设置页表 ret</span><br></pre></td></tr></table></figure></div>
+<p>流程：</p>
+<ul>
+<li><strong>setup_paging</strong>执行<strong>ret</strong>后<strong>?</strong> 会执行函数<strong>main()</strong></li>
+<li>进入<strong>main()</strong>后的栈为<strong>0</strong>，<strong>0</strong>，<strong>0</strong>，<strong>L6</strong></li>
+<li><strong>main()</strong>函数的三个参数是<strong>0</strong>，<strong>0</strong>，<strong>0</strong></li>
+<li><strong>main()</strong>函数返回时进入<strong>L6</strong>，死循环</li>
+<li>但是main()函数在操作系统开启后是永远执行下去，不会返回进入L6的，不然就会进入死循环——死机。</li>
+</ul>
+<h2 id="9-进入main函数"><a href="#9-进入main函数" class="headerlink" title="9.进入main函数"></a>9.进入main函数</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在init/main.c中 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">  mem_init();</span><br><span class="line">	trap_init(); </span><br><span class="line">  blk_dev_init(); </span><br><span class="line">  chr_dev_init(); </span><br><span class="line">  tty_init(); </span><br><span class="line">  time_init(); </span><br><span class="line">  sched_init(); </span><br><span class="line">  buffer_init(); </span><br><span class="line">  hd_init(); </span><br><span class="line">  floppy_init(); </span><br><span class="line">  sti(); </span><br><span class="line">  move_to_user_mode(); </span><br><span class="line">  <span class="keyword">if</span>(!fork())&#123;init();&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><strong>main</strong>的工作就是<strong>xx_init:</strong> 内存、中断、设备、 时钟、<strong>CPU</strong>等内容的初始化<strong>…</strong></p>
+<p>看一看<strong>mem_init…</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在linux/mm/memory.c中</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mem_init</span><span class="params">(<span class="keyword">long</span> start_mem,<span class="keyword">long</span> end_mem)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i;</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;PAGING_PAGES; i++) </span><br><span class="line">    mem_map[i] = USED;</span><br><span class="line">	i = MAP_NR(start_mem); </span><br><span class="line">  end_mem -= start_mem; </span><br><span class="line">  end_mem &gt;&gt;= <span class="number">12</span>; </span><br><span class="line">  <span class="keyword">while</span>(end_mem -- &gt; <span class="number">0</span>)</span><br><span class="line">		mem_map[i++] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>就是初始化了一个称为 <strong>mem_map</strong>的数组<strong>…</strong></p>
+<p><strong>总结开机流程就是：</strong></p>
+<ul>
+<li><p><strong>bootsect读入操作系统</strong></p>
+<ul>
+<li><p>将操作系统从磁盘上读入内存</p>
+</li>
+<li><p>固化取值读入</p>
+</li>
+<li>把set up模块读入内存</li>
+<li>打印出开机logo</li>
+<li>调用13号中断，把操作系统后面的部分读入执行</li>
+</ul>
+</li>
+<li><p><strong>进入setup模块</strong></p>
+<ul>
+<li>完成OS启动前的设置</li>
+<li>进入保护模式，进行32位汇编</li>
+</ul>
+</li>
+<li><strong>进入head.s汇编</strong><ul>
+<li>传参进入main.c</li>
+</ul>
+</li>
+<li><strong>进入main函数</strong><ul>
+<li><strong>main</strong>的工作就是<strong>xx_init:</strong> 内存、中断、设备、 时钟、<strong>CPU</strong>等内容的初始化<strong>…</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="三-操作系统的接口"><a href="#三-操作系统的接口" class="headerlink" title="三.操作系统的接口"></a>三.操作系统的接口</h1><p>接口：连接上层应用与操作系统，完成信号转换和屏蔽细节的功能。</p>
+<p>用户使用计算机的方式：命令行，图形按钮，应用程序。</p>
+<h2 id="分析命令行"><a href="#分析命令行" class="headerlink" title="分析命令行"></a>分析命令行</h2><p>命令是什么：只是一段程序。</p>
+<p>具体工作流程，以一个c语言文件编译运行为例。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">  <span class="built_in">printf</span>(“ECHO:%s\n”, argv[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>然后编译运行，以下就是一段shell程序：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">gcc –o output output.c</span><br><span class="line"> ./output “hello”</span><br></pre></td></tr></table></figure></div>
+<p>具体工作原理：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> cmd[<span class="number">20</span>];</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123; <span class="comment">//不断的等待用户敲入命令</span></span><br><span class="line">    <span class="built_in">scanf</span>(“%s”, cmd);<span class="comment">//敲入之后</span></span><br><span class="line">		<span class="keyword">if</span>(!fork()) &#123;<span class="comment">//——&gt;进程管理的内容</span></span><br><span class="line">    	exec(cmd);<span class="comment">//执行敲入的命令</span></span><br><span class="line">  	&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">    	wait();<span class="comment">//等待</span></span><br><span class="line">  	&#125; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>然后申请CPU，让CPU去执行<code>printf(“ECHO:%s\n”, argv[1]);</code>这一段代码，在终端中打印出最后的结果。</p>
+<p><strong>所以可以看出，命令行就是程序，只是在程序执行的过程中增加了一些函数，通过这些函数来对计算机硬件进行使用。</strong></p>
+<h2 id="分析图形按钮"><a href="#分析图形按钮" class="headerlink" title="分析图形按钮"></a>分析图形按钮</h2><p>图形按钮是基于<strong>消息处理机制。</strong></p>
+<p><img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/12.png" style="zoom:30%;"></p>
+<ul>
+<li>点击鼠标时，通过中断进入系统内部的消息队列</li>
+<li>应用程序完成系统调用，进行GetMessage，从内核中把消息提取出来</li>
+<li>根据拿出来的是什么消息，就执行对应的函数，来完成对应的功能</li>
+<li>应用程序就是一个不断从消息队列中取消息的一个循环</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所以上层应用使用硬件就是普通的c语言数加上一些关键性的重要函数。而这些<strong>重要的函数就是操作系统接口</strong>， <font color="red">接口表现为函数调用，又由系统􏰀供，所以称为系统调用。</font></p>
+<h1 id="四-系统调用的实现"><a href="#四-系统调用的实现" class="headerlink" title="四.系统调用的实现"></a>四.系统调用的实现</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><p>为了保护用户隐私与操作系统的安全，把程序进行了隔离，分为内核程序与用户程序。进而又分了用户态/内核态，内核/用户段这些概念。</p>
+<p>区分内核态和用户态是通过一种处理器“硬件设计”完成的。其中设计了内核寄存器和用户寄存器CS，DS。CPL用来描述当前的内存段的特权级 ，DPL用来描述目标内存段的特权级。其中，0是内存态，3是用户态。</p>
+<p>当用户程序需要进入内核态执行时，硬件也提供了主动进入内核的方法。对于Intel x86，就是终端指令int。</p>
+<p><strong>系统调用的核心：</strong></p>
+<ul>
+<li>用户程序中包含一段包含<strong>int</strong>指令的代码</li>
+<li>操作系统写中断处理，获取想调程序的编号</li>
+<li>操作系统根据编号执行相应代码</li>
+</ul>
+<h2 id="2-系统调用的实现"><a href="#2-系统调用的实现" class="headerlink" title="2.系统调用的实现"></a>2.系统调用的实现</h2><p><img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/7.png" style="zoom:30%;"></p>
+<p><strong>以<code>printf</code>为例讲解系统调用的实现：</strong></p>
+<ul>
+<li><p>首先应用程序中的<code>printf</code>先调用库函数中的<code>printf</code> </p>
+</li>
+<li><p>然后库函数中的<code>printf</code>调用<code>wirte</code></p>
+<p><img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/8.png" style="zoom:30%;"></p>
+</li>
+<li><p>然后变成一段包含<code>int 0x80</code>的中断代码</p>
+<p><img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/9.png" style="zoom:30%;"></p>
+</li>
+<li><p>然后中断代码通过系统调用进入 操作系统</p>
+</li>
+</ul>
+<h2 id="3-Linux系统调用的实现细节"><a href="#3-Linux系统调用的实现细节" class="headerlink" title="3.Linux系统调用的实现细节"></a>3.Linux系统调用的实现细节</h2><p>对于上面的库函数<code>write</code>函数而言，它的实现方式是通过宏来展开成汇编代码。所以系统调用的细节就可以从宏开始说起。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在linux/include/unistd.h中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3的含义是具有3个参数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _syscall3(type,name,atype,a,btype,b,ctype,c)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//展开内容为int write(int fd, const char *buf, off_t count)</span></span><br><span class="line"><span class="function">type <span class="title">name</span><span class="params">(atype a, btype b, ctype c)</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">  <span class="keyword">long</span> __res;</span><br><span class="line">  <span class="comment">//汇编指令，核心代码只有一句：“int 0x80”</span></span><br><span class="line">  <span class="comment">//其中：  ”=a”(__res)为输出  “”(__NR_##name)为输入 ，即把_NR_write赋给eax</span></span><br><span class="line">	__asm__ volatile(“int 0x80”:”=a”(__res):””(__NR_##name), ”b”((long)(a)),”c”((long)(b)),“d”((long)(c)))); </span><br><span class="line">  <span class="keyword">if</span>(__res&gt;=<span class="number">0</span>) </span><br><span class="line">    <span class="keyword">return</span> (type)__res; </span><br><span class="line">  errno=-__res; </span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;&#125;</span><br></pre></td></tr></table></figure></div>
+<p>显然，<strong>__NR_write</strong>是系统调用号，放在<strong>eax</strong>中</p>
+<p><img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/10.png" style="zoom:30%;"></p>
+<p>通过<strong>eax</strong>的值来说明进行中断调用<code>int 0x80</code>的原因。</p>
+<h3 id="int-0x80中断的处理"><a href="#int-0x80中断的处理" class="headerlink" title="int 0x80中断的处理"></a><strong>int 0x80</strong>中断的处理</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sched_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//设置中断处理门——每一个表项，初始化gdt表，之后遇到0x80中断，就从表中取出相应的中断处理函数。</span></span><br><span class="line">  set_system_gate(<span class="number">0x80</span>, &amp;system_call);</span><br><span class="line">  <span class="comment">//system_call为中断处理函数的地址</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在linux/include/asm/system.h中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//n：中断号,addr：中断地址</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> set_system_gate(n, addr) _set_gate(&amp;idt[n],15,3,addr); <span class="comment">//idt是全局变量，中断向量表基址 </span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//上面的三赋给dpl</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _set_gate(gate_addr, type, dpl, addr) __asm__(“movw %%dx,%%ax\n\t” “movw %0,%%dx\n\t”\ “movl %%eax,%1\n\t” “movl %%edx,%2”:\ :”i”((short)(0x8000+(dpl&lt;&lt;13)+type&lt;&lt;8))),“o”(*(( \ char*)(gate_addr))),”o”(*(4+(char*)(gate_addr))),\ “d”((char*)(addr),”a”(0x00080000))</span></span><br></pre></td></tr></table></figure></div>
+<p>通过int 0x80中断将80号中断的dpl设置为3，让cpl等于3的程序能进入内核，然后通过int 0x80中断设置cpl成0，这样才能进行内核处理。</p>
+<h3 id="中断处理程序：system-call"><a href="#中断处理程序：system-call" class="headerlink" title="中断处理程序：system_call"></a>中断处理程序：system_call</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight scss"><table><tr><td class="code"><pre><span class="line">nr_system_calls=72</span><br><span class="line"><span class="selector-class">.globl</span> _system_call</span><br><span class="line">_system_call: cmpl <span class="variable">$nr_system_calls-1</span>,%eax</span><br><span class="line">	ja bad_sys_call</span><br><span class="line">	push %ds push %es push %fs</span><br><span class="line">	pushl %edx pushl %ecx pushl %ebx //调用的参数</span><br><span class="line">	movl $<span class="number">0</span>x10,%edx mov %dx,%ds mov %dx,%es //内核数据 </span><br><span class="line">	movl $<span class="number">0</span>x17,%edx mov %dx,%fs //fs可以找到用户数据 </span><br><span class="line">	call _sys_call_table(,%eax,<span class="number">4</span>) //a(,%eax,<span class="number">4</span>)=a+<span class="number">4</span>*eax </span><br><span class="line">	pushl %eax //返回值压栈，留着ret_from_sys_call时用</span><br><span class="line">	... //其他代码</span><br><span class="line">ret_from_sys_call: popl %eax, 其他pop, iret</span><br></pre></td></tr></table></figure></div>
+<h3 id="sys-call-table"><a href="#sys-call-table" class="headerlink" title="_sys_call_table"></a>_sys_call_table</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在include/linux/sys.h中</span></span><br><span class="line">fn_ptr sys_call_table[] = &#123;sys_setup, sys_exit, sys_fork, sys_read, sys_write,...&#125;;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;在include&#x2F;linux&#x2F;sched.h中</span><br><span class="line">typedef int(fn_ptr*) ();</span><br></pre></td></tr></table></figure></div>
+<p><strong>整个过程：</strong></p>
+<p><img src="/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/11.png" style="zoom:50%;"></p>
+<ul>
+<li>用户调用printf函数，首先通过库函数变成一段int 0x80代码</li>
+<li>调用int 0x80代码时，cpl和dpl都是3，这样才能从用户态转变为内核态</li>
+<li>int 0x80代码在初始化时做成了system_cal</li>
+<li>进入中断处理之后cpl变成0</li>
+<li>system_cal调用system_cal_table进行查表</li>
+<li>根据传入的系统调用号_NR_write，即ax值</li>
+<li>根据ax的值与system_call_table表确定调用内容</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统概述</tag>
       </tags>
   </entry>
   <entry>
