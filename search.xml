@@ -1,43 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C Program Ⅰ 字符</title>
-    <url>/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-单字符I-O-getchar-和-putchar"><a href="#1-单字符I-O-getchar-和-putchar" class="headerlink" title="1.单字符I/O : getchar() 和 putchar()"></a>1.单字符I/O : getchar() 和 putchar()</h2><blockquote>
-<p>getchar() 和 putchar ()每次只能输入和输出一个字符。</p>
-</blockquote>
-<p>ANSI C 将 <code>stdio.h</code> 头文件与getchar() 和 putchar()相关联，这就是为什么程序中将该文件包含在内的原因。而且，getchar() 和 putchar() 不是真正的函数，而是定义为预处理器宏。</p>
-<h3 id="1-getchar-与-scanf-的区分与混用"><a href="#1-getchar-与-scanf-的区分与混用" class="headerlink" title="1.getchar() 与 scanf() 的区分与混用"></a>1.getchar() 与 scanf() 的区分与混用</h3><p>在缓冲输入时需要按下Enter键，这一动作还传输一个程序必须处理的换行符。而<code>getchar()</code> 读取每个字符，包括空格，制表符和换行符；但是 <code>scanf()</code> 在在<strong>读取数字</strong>时会跳过空格，制表符和换行符。举例说明：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols);</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>运行结果：</p>
-<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/1.png" style="zoom:50%;"></p>
-<p><img src style="zoom:50%;"></p>
-<blockquote>
-<p>程序会在输入之后，没有做出其他输入响应之前就结束了，原因是紧跟在输入3之后的那个换行符。</p>
-</blockquote>
-<p><strong><code>scanf()</code>函数将该换行符留在输入队列中，与<code>scanf()</code>不同，<code>getchar()</code> 并不跳过换行符。</strong>所以在循环的下一周期，再有机会输入任何其他内容之前，这一换行符由<code>getchar()</code>读出，然后将其赋值为ch，而ch为换行符才是结束循环的条件。</p>
-<p>改善程序：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols) != <span class="number">2</span>)</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">    <span class="keyword">while</span>(getchar() != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>运行结果：</p>
-<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/2.png" style="zoom:50%;"></p>
-<blockquote>
-<p>程序跳过了一个输入周期中输入的最后一个数字与下一行开始处输入的字符之间的所有换行符和空格。</p>
-</blockquote>
-<h3 id="2-输入流和数字"><a href="#2-输入流和数字" class="headerlink" title="2.输入流和数字"></a>2.输入流和数字</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">is 28 12.4</span><br></pre></td></tr></table></figure></div>
-<p>在我们眼中，这就像是一个由字符、整数和浮点数组成的字符串。<font color="red">但是对 C程序而言，这是一个字节流。</font><strong>第1个字节是字母i的字符编码，第2个字节是字母s的字符编码，第3个字节是空格字符的字符编码，第4个字节是数字2的字符编码，等等</strong>。所以，如果get_long()函数处理这一行输入，第1个字符是非数字，那么整行输入都会被丢弃，包括其中的数字，因为这些数字只是该输入行中的其他字符：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> ((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">	<span class="built_in">putchar</span>(ch); <span class="comment">// 处理错误的输入</span></span><br></pre></td></tr></table></figure></div>
-<p>虽然输入流由字符组成，但是也可以设置<code>scanf()</code>函数把它们转换成数值。例如，考虑下面的输入：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">42</span><br></pre></td></tr></table></figure></div>
-<p>如果在<code>scanf()</code>函数中使用%c转换说明，它只会读取字符4并将其储存在char类型的变量中。如果使用%s转换说明，“它会读取字符4和字符2这两个字符，并将其储存在字符数组中。如果使用%d转换说明，<code>scanf()</code>同样会读取两个字符，但是随后会计算出它们对应的整数值：4×10+2，即42，然后将表示该整数的二进制数储存在 int 类型的变量中。如果使用%f 转换说明，<code>scanf()</code>也会读取两个字符，计算出它们对应的数值42.0，用内部的浮点表示法表示该值，并将结果储存在float类型的变量中。<br><strong>简而言之，输入由字符组成，但是<code>scanf()</code>可以把输入转换成整数值或浮点数值。使用转换说明（如%d或%f）限制了可接受输入的字符类型，而<code>getchar()</code>和使用%c的<code>scanf()</code>接受所有的字符。</strong></p>
-]]></content>
-      <categories>
-        <category>Linux C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C Program Ⅱ 函数</title>
     <url>/2020/04/10/C-Program-%E2%85%A1-%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -107,6 +70,43 @@
 <blockquote>
 <p>为什么temp的地址与* v的地址不一样呢，因为temp是新定义的变量，编译时给temp新分配了一个地址。</p>
 </blockquote>
+]]></content>
+      <categories>
+        <category>Linux C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C Program Ⅰ 字符</title>
+    <url>/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-单字符I-O-getchar-和-putchar"><a href="#1-单字符I-O-getchar-和-putchar" class="headerlink" title="1.单字符I/O : getchar() 和 putchar()"></a>1.单字符I/O : getchar() 和 putchar()</h2><blockquote>
+<p>getchar() 和 putchar ()每次只能输入和输出一个字符。</p>
+</blockquote>
+<p>ANSI C 将 <code>stdio.h</code> 头文件与getchar() 和 putchar()相关联，这就是为什么程序中将该文件包含在内的原因。而且，getchar() 和 putchar() 不是真正的函数，而是定义为预处理器宏。</p>
+<h3 id="1-getchar-与-scanf-的区分与混用"><a href="#1-getchar-与-scanf-的区分与混用" class="headerlink" title="1.getchar() 与 scanf() 的区分与混用"></a>1.getchar() 与 scanf() 的区分与混用</h3><p>在缓冲输入时需要按下Enter键，这一动作还传输一个程序必须处理的换行符。而<code>getchar()</code> 读取每个字符，包括空格，制表符和换行符；但是 <code>scanf()</code> 在在<strong>读取数字</strong>时会跳过空格，制表符和换行符。举例说明：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols);</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>运行结果：</p>
+<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/1.png" style="zoom:50%;"></p>
+<p><img src style="zoom:50%;"></p>
+<blockquote>
+<p>程序会在输入之后，没有做出其他输入响应之前就结束了，原因是紧跟在输入3之后的那个换行符。</p>
+</blockquote>
+<p><strong><code>scanf()</code>函数将该换行符留在输入队列中，与<code>scanf()</code>不同，<code>getchar()</code> 并不跳过换行符。</strong>所以在循环的下一周期，再有机会输入任何其他内容之前，这一换行符由<code>getchar()</code>读出，然后将其赋值为ch，而ch为换行符才是结束循环的条件。</p>
+<p>改善程序：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols) != <span class="number">2</span>)</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">    <span class="keyword">while</span>(getchar() != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>运行结果：</p>
+<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/2.png" style="zoom:50%;"></p>
+<blockquote>
+<p>程序跳过了一个输入周期中输入的最后一个数字与下一行开始处输入的字符之间的所有换行符和空格。</p>
+</blockquote>
+<h3 id="2-输入流和数字"><a href="#2-输入流和数字" class="headerlink" title="2.输入流和数字"></a>2.输入流和数字</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">is 28 12.4</span><br></pre></td></tr></table></figure></div>
+<p>在我们眼中，这就像是一个由字符、整数和浮点数组成的字符串。<font color="red">但是对 C程序而言，这是一个字节流。</font><strong>第1个字节是字母i的字符编码，第2个字节是字母s的字符编码，第3个字节是空格字符的字符编码，第4个字节是数字2的字符编码，等等</strong>。所以，如果get_long()函数处理这一行输入，第1个字符是非数字，那么整行输入都会被丢弃，包括其中的数字，因为这些数字只是该输入行中的其他字符：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> ((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">	<span class="built_in">putchar</span>(ch); <span class="comment">// 处理错误的输入</span></span><br></pre></td></tr></table></figure></div>
+<p>虽然输入流由字符组成，但是也可以设置<code>scanf()</code>函数把它们转换成数值。例如，考虑下面的输入：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">42</span><br></pre></td></tr></table></figure></div>
+<p>如果在<code>scanf()</code>函数中使用%c转换说明，它只会读取字符4并将其储存在char类型的变量中。如果使用%s转换说明，“它会读取字符4和字符2这两个字符，并将其储存在字符数组中。如果使用%d转换说明，<code>scanf()</code>同样会读取两个字符，但是随后会计算出它们对应的整数值：4×10+2，即42，然后将表示该整数的二进制数储存在 int 类型的变量中。如果使用%f 转换说明，<code>scanf()</code>也会读取两个字符，计算出它们对应的数值42.0，用内部的浮点表示法表示该值，并将结果储存在float类型的变量中。<br><strong>简而言之，输入由字符组成，但是<code>scanf()</code>可以把输入转换成整数值或浮点数值。使用转换说明（如%d或%f）限制了可接受输入的字符类型，而<code>getchar()</code>和使用%c的<code>scanf()</code>接受所有的字符。</strong></p>
 ]]></content>
       <categories>
         <category>Linux C</category>
@@ -231,29 +231,6 @@
       </categories>
       <tags>
         <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git提速代理</title>
-    <url>/2020/03/11/Git%E6%8F%90%E9%80%9F%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>因为平时在Ubuntu虚拟机上使用Git clone的时候速度特别慢，使用干脆写个代理文件进行提速。</p>
-</blockquote>
-<h2 id="梯子准备"><a href="#梯子准备" class="headerlink" title="梯子准备"></a>梯子准备</h2><p>在主机上挂个梯子，然后查看IP地址与端口(确保能使用)。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">en0: flags=8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500</span><br><span class="line">	options=400&lt;CHANNEL_IO&gt;</span><br><span class="line">	ether 38:f9:d3:8d:58:3e</span><br><span class="line">	inet6 fe80::1434:df1:87d5:7e09%en0 prefixlen 64 secured scopeid 0x6</span><br><span class="line">	inet 192.168.1.4 netmask 0xffffff00 broadcast 192.168.1.255</span><br><span class="line">	nd6 options=201&lt;PERFORMNUD,DAD&gt;</span><br><span class="line">	media: autoselect</span><br><span class="line">	status: active</span><br></pre></td></tr></table></figure></div>
-<p><img src="/2020/03/11/Git%E6%8F%90%E9%80%9F%E4%BB%A3%E7%90%86/1.png" style="zoom:50%;"></p>
-<p>我的IP与端口:192.168.1.4:7890</p>
-<h2 id="写代理文件"><a href="#写代理文件" class="headerlink" title="写代理文件"></a>写代理文件</h2><p>在Ubuntu上写代理文件，在与Desktop同一级的目录下新建.gitconfig文件并进行编辑。</p>
-<p><img src="/2020/03/11/Git%E6%8F%90%E9%80%9F%E4%BB%A3%E7%90%86/2.png" alt></p>
-<p>这样就可以加速了。实践一下。</p>
-<p><img src="/2020/03/11/Git%E6%8F%90%E9%80%9F%E4%BB%A3%E7%90%86/3.png" alt></p>
-<p>这个速度就爽多！</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -427,6 +404,29 @@
       </tags>
   </entry>
   <entry>
+    <title>Git提速代理</title>
+    <url>/2020/03/11/Git%E6%8F%90%E9%80%9F%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>因为平时在Ubuntu虚拟机上使用Git clone的时候速度特别慢，使用干脆写个代理文件进行提速。</p>
+</blockquote>
+<h2 id="梯子准备"><a href="#梯子准备" class="headerlink" title="梯子准备"></a>梯子准备</h2><p>在主机上挂个梯子，然后查看IP地址与端口(确保能使用)。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">en0: flags=8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500</span><br><span class="line">	options=400&lt;CHANNEL_IO&gt;</span><br><span class="line">	ether 38:f9:d3:8d:58:3e</span><br><span class="line">	inet6 fe80::1434:df1:87d5:7e09%en0 prefixlen 64 secured scopeid 0x6</span><br><span class="line">	inet 192.168.1.4 netmask 0xffffff00 broadcast 192.168.1.255</span><br><span class="line">	nd6 options=201&lt;PERFORMNUD,DAD&gt;</span><br><span class="line">	media: autoselect</span><br><span class="line">	status: active</span><br></pre></td></tr></table></figure></div>
+<p><img src="/2020/03/11/Git%E6%8F%90%E9%80%9F%E4%BB%A3%E7%90%86/1.png" style="zoom:50%;"></p>
+<p>我的IP与端口:192.168.1.4:7890</p>
+<h2 id="写代理文件"><a href="#写代理文件" class="headerlink" title="写代理文件"></a>写代理文件</h2><p>在Ubuntu上写代理文件，在与Desktop同一级的目录下新建.gitconfig文件并进行编辑。</p>
+<p><img src="/2020/03/11/Git%E6%8F%90%E9%80%9F%E4%BB%A3%E7%90%86/2.png" alt></p>
+<p>这样就可以加速了。实践一下。</p>
+<p><img src="/2020/03/11/Git%E6%8F%90%E9%80%9F%E4%BB%A3%E7%90%86/3.png" alt></p>
+<p>这个速度就爽多！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux下C链接Mysql</title>
     <url>/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-安装数据库"><a href="#1-安装数据库" class="headerlink" title="1.安装数据库"></a>1.安装数据库</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqld-dev</span><br></pre></td></tr></table></figure></div>
@@ -446,6 +446,235 @@
         <tag>C</tag>
         <tag>Mysql</tag>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OS Internals and Design Principles-I/O和文件</title>
+    <url>/2020/11/10/OS-Internals-and-Design-Principles-I-O%E5%92%8C%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>I/O和文件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OS Internals and Design Principles-内存</title>
+    <url>/2020/11/10/OS-Internals-and-Design-Principles-%E5%86%85%E5%AD%98/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OS Internals and Design Principles-操作系统概述</title>
+    <url>/2020/11/10/OS-Internals-and-Design-Principles-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统概述</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OS Internals and Design Principles-调度</title>
+    <url>/2020/11/10/OS-Internals-and-Design-Principles-%E8%B0%83%E5%BA%A6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>调度</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OS Internals and Design Principles-进程</title>
+    <url>/2020/11/10/OS-Internals-and-Design-Principles-%E8%BF%9B%E7%A8%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-进程描述和控制"><a href="#一-进程描述和控制" class="headerlink" title="一.进程描述和控制"></a>一.进程描述和控制</h1><h2 id="一-什么是进程"><a href="#一-什么是进程" class="headerlink" title="(一).什么是进程"></a>(一).什么是进程</h2><ul>
+<li><strong>1.为什么操作系统需要提出进程的概念</strong><ul>
+<li>有了应用程序，系统软件和资源的概念，就可以讨论操作系统怎样以一个有序的方式管理程序的执行，而执行中的程序就是进程。所以提出进程的概念来更好的管理。</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>2.什么是进程(概念)</strong><ul>
+<li>一组指令序列的执行+ 一个当前状态+相关的系统资源集</li>
+<li>进程由 程序代码+相关数据+进程控制块 组成</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>3.进程的表征元素有哪些</strong><ul>
+<li>标识符</li>
+<li>状态</li>
+<li>优先级</li>
+<li>程序计数器：下一条即将被执行的指令的地址</li>
+<li>内存指针</li>
+<li>I/O状态信息</li>
+<li>记账信息：处理器时间的总和, 使用的时钟数总和,时间限制,记账号</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>4.什么是进程控制块</strong><ul>
+<li>包含上述表征元素的数据结构，该控制块由操作系统创建和管理。</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="2-进程状态"><a href="#2-进程状态" class="headerlink" title="2.进程状态"></a>2.进程状态</h2><ul>
+<li><p><strong>1.为什么需要提出进程状态模型，以及进程状态模型发展历程</strong></p>
+<ul>
+<li><p>操作系统的基本职责是控制进程的执行，这包括交替执行的方式和给进程分配资源。而在设计控制进程的程序时吗，第一步就是描述进程所展现出的行为。<strong>所以就是为了更高的管理进程。</strong></p>
+</li>
+<li><p><strong>两状态进程模型</strong></p>
+<ul>
+<li><strong>进程的创建：</strong>1.操作系统建立用于管理该进程的数据结构。2.在内存中给它分配地址空间。通常有4个事件(新的批处理作业，交互登录，给操作系统提供一项服务，现有进程派生)导致创建一个进程。</li>
+<li><strong>进程终止：</strong>批作业中应该包含一个<strong><code>Halt</code>指令</strong>(产生中断警告操作系统进程已完成) 或 <strong>用于终止操作系统显式服务调用来终止</strong>。导致进程终止的原因很多。</li>
+<li><strong>局限性：</strong>存在这一些处于非运行状态但已经就绪等待执行的进程，而同时存在一些处于阻塞状态等待I/O操作结束的进程。所以对于使用单个排队队列，调度器不能只考虑队列中最老的进程，需要扫描整个列表，查找那些未被阻塞且在队列中时间最长的进程。</li>
+<li><strong>解决方法：</strong> 五状态进程</li>
+</ul>
+</li>
+<li><p><strong>五状态进程模型</strong></p>
+<ul>
+<li>将两状态模型中的未运行态分成：就绪和阻塞这两个状态。增加 新建态 和 退出态。</li>
+<li>操作系统分两步定义新建态：<ul>
+<li>OS执行一些必须的辅助工作，将标识符关联到进程，分配和创建管理进程所需要的所有表，这些信息存在内存中。</li>
+<li>进程本身还未进入内存，即即将需要执行的代码还不在内存，也没有给这个程序相关的数据分配空间，通常在外存磁盘中。</li>
+</ul>
+</li>
+<li>进程退出系统也分为两步：<ul>
+<li>进程终止，切换为退出态，与作业相关的表与其他信息保存在内存中。</li>
+<li>一旦其他实用程序提取了内存中关于这个进程的信息，操作系统就不再保存，该进程将从系统中删除。</li>
+</ul>
+</li>
+<li><strong>局限性：</strong>处理器处理速度比I/O要快得多，以至于内存中所有进程都在等待I/O的情况很常见，因此即使是多道程序设计，大多数时候处理器仍可能处于空闲状态。</li>
+<li><strong>解决方案：</strong>把内存中某个进程的一部分或者全部移到磁盘中。当内存中没有处于就绪态的进程时，操作系统就把被阻塞的进程换出到磁盘中的“挂起队列”，然后取出挂起队列中的另一个进程或者接受一个新进程的请求，将其纳入内存运行。</li>
+</ul>
+</li>
+<li><p><strong>引入挂起状态的进程模型</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>2.描述进程各个状态</strong><ul>
+<li>创建</li>
+<li>终止</li>
+<li>就绪</li>
+<li>阻塞</li>
+<li>运行</li>
+<li>挂起(就绪/挂起，阻塞挂起)</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="5-操作系统的执行"><a href="#5-操作系统的执行" class="headerlink" title="5.操作系统的执行"></a>5.操作系统的执行</h2><ul>
+<li><strong>1.操作系统是一个进程吗？如果是，如何控制它？</strong> <ul>
+<li><strong>无进程的内核</strong><ul>
+<li>在所有进程之外执行操作系统内核。操作系统代码是作为一个在特权模式下工作的独立实体被执行。</li>
+</ul>
+</li>
+<li><strong>在用户进程中执行</strong><ul>
+<li>在用户程序的上下文中执行所有操作系统软件。在任何时刻，操作系统管理着进程映像，每个进程映像不仅包括用户进程控制块的内容，还包括内核程序的程序，数据和栈区域。</li>
+</ul>
+</li>
+<li><strong>基于进程的操作系统</strong><ul>
+<li>把操作系统作为一组系统进程来实现。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="二-线程，对称多处理和微内核"><a href="#二-线程，对称多处理和微内核" class="headerlink" title="二.线程，对称多处理和微内核"></a>二.线程，对称多处理和微内核</h1><h2 id="一-进程和线程"><a href="#一-进程和线程" class="headerlink" title="(一).进程和线程"></a>(一).进程和线程</h2><ul>
+<li><strong>1.线程有哪些功能特性？</strong><ul>
+<li><strong>线程状态</strong><ul>
+<li>无挂起态。</li>
+</ul>
+</li>
+<li><strong>线程同步</strong><ul>
+<li>一个进程中的所有线程共享同一个地址空间和资源。所以一个线程对资源的任意修改都会影响同一个进程中其他线程的环境。所以需要同步各种线程中的活动，以便它们互不干涉且不破坏数据结构。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>2.用户级线程和内核级线程的描述</strong><ul>
+<li><strong>用户级线程：</strong><ul>
+<li>在一个纯粹的用户线程软件中，有关线程管理的所有工作都是由应用程序完成的，内核意识不到线程的存在。任何程序都可以通过使用线程库[用于用户级线程管理的一个例程包]被设计成多线程程序。</li>
+<li><strong>使用用户级线程而不是内核级线程的优点：</strong><ul>
+<li>线程切换不需要内核态特权，因此进程不需要为了线程管理而切换到内核态吗，节约了状态转换的开销。</li>
+<li>调度可以是应用程序相关的，可以做到为应用程序量身定做调度算法而不扰乱底层的操作系统调度程序。</li>
+<li>用户级线程可以在任何操作系统执行，不需要为对底层内核进行修改以支持用户级线程。</li>
+</ul>
+</li>
+<li><strong>用户级线程对于内核级线程的缺点：</strong><ul>
+<li>当用户级线程执行一个系统调用时，不仅这个线程会被阻塞，进程中所有线程都会被阻塞。</li>
+<li>在纯粹的用户级线程策略中，一个多线程应用程序不能利用多处理技术。因为内核一次只把一个进程分配给处理器，因此一个进程中只有一个线程可以执行。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>内核级线程：</strong><ul>
+<li>在一个纯粹的内核级线程软件中，有关线程管理的所有工作都是由内核完成的，应用程序部分没有进行线程管理的代码，只有一个到内核线程设施的应用程序编程接口(API)。</li>
+<li><strong>内核线程的优点：</strong><ul>
+<li>内核可以同时把同一个进程中的多个线程调度到多个处理器中。</li>
+<li>如果进程中的一个线程被阻塞，内核可以调度同一个进程中的另一个线程。</li>
+<li>内核例程自身也是可以使用多线程的。</li>
+</ul>
+</li>
+<li><strong>内核线程的缺点：</strong><ul>
+<li>在把控制从一个线程传送到同一个进程中的另一个线程时，需要到内核的状态切换。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>可以按照特定的应用程序需求来组合用户级线程和内核级线程。</strong></li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="二-对称多处理"><a href="#二-对称多处理" class="headerlink" title="(二).对称多处理"></a>(二).对称多处理</h2><ul>
+<li><strong>1.最基本的对于并行处理器系统的分类</strong><ul>
+<li><strong>单指令单数据流</strong></li>
+<li><strong>单指令多数据流</strong></li>
+<li><strong>多指令单数据流</strong></li>
+<li><strong>多指令多数据流</strong><ul>
+<li>每个处理器都有自己的专用内存——<strong>集群</strong></li>
+<li>处理器共用一个内存，通过该内存相互通信——<strong>共享内存多处理器</strong><ul>
+<li><strong>主/从</strong><ul>
+<li>内核只在指定的处理器上执行，其他处理用户程序。缺点明确：1.主处理器失效会导致整个系统失效。2.主处理器会成为性能瓶颈</li>
+</ul>
+</li>
+<li><strong>对称多处理系统</strong><ul>
+<li>内核可以在任何处理器上执行，并且通常是每个处理器从可用的进程或线程池中进行资金的调度工作。å</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>进程</tag>
       </tags>
   </entry>
   <entry>
@@ -959,6 +1188,50 @@
       </tags>
   </entry>
   <entry>
+    <title>哈工大学习—内存管理</title>
+    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>内存管理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈工大学习—操作系统基础</title>
+    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈工大学习—设备驱动与文件系统</title>
+    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>设备驱动与文件系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈工大学习—进程与线程</title>
+    <url>/2020/11/10/%E5%93%88%E5%B7%A5%E5%A4%A7%E5%AD%A6%E4%B9%A0%E2%80%94%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>进程与线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构Ⅰ绪论</title>
     <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A0%E7%BB%AA%E8%AE%BA/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-绪论"><a href="#一-绪论" class="headerlink" title="一.绪论"></a>一.绪论</h1><h2 id="一-概念"><a href="#一-概念" class="headerlink" title="(一).概念"></a>(一).概念</h2><p><strong>1.数据：</strong>是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合。数据不仅仅包括整型、实型等数值类型，还包括字符及声音、图像、视频等非数值类型。</p>
@@ -1202,17 +1475,6 @@
       </tags>
   </entry>
   <entry>
-    <title>数据结构Ⅳ串</title>
-    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A3%E4%B8%B2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>数据结构与算法设计</category>
-      </categories>
-      <tags>
-        <tag>串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构Ⅲ栈和队列</title>
     <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A2%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -1221,6 +1483,17 @@
       </categories>
       <tags>
         <tag>栈和队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构Ⅳ串</title>
+    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A3%E4%B8%B2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>数据结构与算法设计</category>
+      </categories>
+      <tags>
+        <tag>串</tag>
       </tags>
   </entry>
   <entry>
@@ -1464,17 +1737,6 @@ display: inline-block;color: #999;padding: 2px;">
       </tags>
   </entry>
   <entry>
-    <title>数据结构Ⅷ排序</title>
-    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A7-%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-冒泡排序"><a href="#一-冒泡排序" class="headerlink" title="一.冒泡排序"></a>一.冒泡排序</h1>]]></content>
-      <categories>
-        <category>数据结构与算法设计</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构Ⅶ查找</title>
     <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A6%E6%9F%A5%E6%89%BE/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -1486,51 +1748,14 @@ display: inline-block;color: #999;padding: 2px;">
       </tags>
   </entry>
   <entry>
-    <title>研究生学习历程</title>
-    <url>/2020/08/05/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="2020年9学习计划"><a href="#2020年9学习计划" class="headerlink" title="2020年9学习计划"></a>2020年9学习计划</h1><h4 id="9月第一周"><a href="#9月第一周" class="headerlink" title="9月第一周"></a>9月第一周</h4><p>也就成功进行了Debug<code>l1app</code>子项目，论文没有进展，数据结构也没有真的开始，要戒骄戒躁啊。重新规划一下吧。</p>
-<h2 id="2020年9月第二周"><a href="#2020年9月第二周" class="headerlink" title="2020年9月第二周"></a>2020年9月第二周</h2><h3 id="主要任务"><a href="#主要任务" class="headerlink" title="主要任务"></a>主要任务</h3><ul>
-<li>论文阅读<ul>
-<li>自适应矩阵完全搞懂</li>
-<li>综述论文修改+排版</li>
-<li>论文汇报</li>
-</ul>
-</li>
-<li>论文仿真<ul>
-<li>K临近算法</li>
-</ul>
-</li>
-<li>数据结构<ul>
-<li>基本概念+线性结构</li>
-</ul>
-</li>
-<li>操作系统<ul>
-<li>概述——书 + 视频</li>
-</ul>
-</li>
-<li>项目<ul>
-<li>调通 testMac 与 l1app</li>
-</ul>
-</li>
-</ul>
-<h3 id="每日任务"><a href="#每日任务" class="headerlink" title="每日任务"></a>每日任务</h3><h4 id="9月7日"><a href="#9月7日" class="headerlink" title="9月7日"></a>9月7日</h4><ul>
-<li>[x] 综述论文修改完三分之一</li>
-<li>[x] 汇报的论文完成三分之一</li>
-<li>[x] VScode Debug例子结局，能够同时在Server与Client进行调试</li>
-</ul>
-<p>明天开始晚上停止打球了，不然累了什么都不想干。坚持跳绳21天，每天5k个，看看究竟能瘦多少。</p>
-<h4 id="9月8日"><a href="#9月8日" class="headerlink" title="9月8日"></a>9月8日</h4><ul>
-<li>[x]   综述论文修改到射频增强部分</li>
-<li>[x]  汇报的论文完成三分之二</li>
-<li>[x]  数据结构完成概述笔记</li>
-<li>[x] 跳绳5k</li>
-</ul>
-]]></content>
+    <title>数据结构Ⅷ排序</title>
+    <url>/2020/04/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%85%A7-%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-冒泡排序"><a href="#一-冒泡排序" class="headerlink" title="一.冒泡排序"></a>一.冒泡排序</h1>]]></content>
       <categories>
-        <category>研究生学习</category>
+        <category>数据结构与算法设计</category>
       </categories>
       <tags>
-        <tag>规划</tag>
+        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
