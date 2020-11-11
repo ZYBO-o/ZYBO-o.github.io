@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C Program Ⅰ 字符</title>
+    <url>/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-单字符I-O-getchar-和-putchar"><a href="#1-单字符I-O-getchar-和-putchar" class="headerlink" title="1.单字符I/O : getchar() 和 putchar()"></a>1.单字符I/O : getchar() 和 putchar()</h2><blockquote>
+<p>getchar() 和 putchar ()每次只能输入和输出一个字符。</p>
+</blockquote>
+<p>ANSI C 将 <code>stdio.h</code> 头文件与getchar() 和 putchar()相关联，这就是为什么程序中将该文件包含在内的原因。而且，getchar() 和 putchar() 不是真正的函数，而是定义为预处理器宏。</p>
+<h3 id="1-getchar-与-scanf-的区分与混用"><a href="#1-getchar-与-scanf-的区分与混用" class="headerlink" title="1.getchar() 与 scanf() 的区分与混用"></a>1.getchar() 与 scanf() 的区分与混用</h3><p>在缓冲输入时需要按下Enter键，这一动作还传输一个程序必须处理的换行符。而<code>getchar()</code> 读取每个字符，包括空格，制表符和换行符；但是 <code>scanf()</code> 在在<strong>读取数字</strong>时会跳过空格，制表符和换行符。举例说明：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols);</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>运行结果：</p>
+<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/1.png" style="zoom:50%;"></p>
+<p><img src style="zoom:50%;"></p>
+<blockquote>
+<p>程序会在输入之后，没有做出其他输入响应之前就结束了，原因是紧跟在输入3之后的那个换行符。</p>
+</blockquote>
+<p><strong><code>scanf()</code>函数将该换行符留在输入队列中，与<code>scanf()</code>不同，<code>getchar()</code> 并不跳过换行符。</strong>所以在循环的下一周期，再有机会输入任何其他内容之前，这一换行符由<code>getchar()</code>读出，然后将其赋值为ch，而ch为换行符才是结束循环的条件。</p>
+<p>改善程序：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols) != <span class="number">2</span>)</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">    <span class="keyword">while</span>(getchar() != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>运行结果：</p>
+<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/2.png" style="zoom:50%;"></p>
+<blockquote>
+<p>程序跳过了一个输入周期中输入的最后一个数字与下一行开始处输入的字符之间的所有换行符和空格。</p>
+</blockquote>
+<h3 id="2-输入流和数字"><a href="#2-输入流和数字" class="headerlink" title="2.输入流和数字"></a>2.输入流和数字</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">is 28 12.4</span><br></pre></td></tr></table></figure></div>
+<p>在我们眼中，这就像是一个由字符、整数和浮点数组成的字符串。<font color="red">但是对 C程序而言，这是一个字节流。</font><strong>第1个字节是字母i的字符编码，第2个字节是字母s的字符编码，第3个字节是空格字符的字符编码，第4个字节是数字2的字符编码，等等</strong>。所以，如果get_long()函数处理这一行输入，第1个字符是非数字，那么整行输入都会被丢弃，包括其中的数字，因为这些数字只是该输入行中的其他字符：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> ((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">	<span class="built_in">putchar</span>(ch); <span class="comment">// 处理错误的输入</span></span><br></pre></td></tr></table></figure></div>
+<p>虽然输入流由字符组成，但是也可以设置<code>scanf()</code>函数把它们转换成数值。例如，考虑下面的输入：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">42</span><br></pre></td></tr></table></figure></div>
+<p>如果在<code>scanf()</code>函数中使用%c转换说明，它只会读取字符4并将其储存在char类型的变量中。如果使用%s转换说明，“它会读取字符4和字符2这两个字符，并将其储存在字符数组中。如果使用%d转换说明，<code>scanf()</code>同样会读取两个字符，但是随后会计算出它们对应的整数值：4×10+2，即42，然后将表示该整数的二进制数储存在 int 类型的变量中。如果使用%f 转换说明，<code>scanf()</code>也会读取两个字符，计算出它们对应的数值42.0，用内部的浮点表示法表示该值，并将结果储存在float类型的变量中。<br><strong>简而言之，输入由字符组成，但是<code>scanf()</code>可以把输入转换成整数值或浮点数值。使用转换说明（如%d或%f）限制了可接受输入的字符类型，而<code>getchar()</code>和使用%c的<code>scanf()</code>接受所有的字符。</strong></p>
+]]></content>
+      <categories>
+        <category>Linux C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C Program Ⅱ 函数</title>
     <url>/2020/04/10/C-Program-%E2%85%A1-%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -70,43 +107,6 @@
 <blockquote>
 <p>为什么temp的地址与* v的地址不一样呢，因为temp是新定义的变量，编译时给temp新分配了一个地址。</p>
 </blockquote>
-]]></content>
-      <categories>
-        <category>Linux C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C Program Ⅰ 字符</title>
-    <url>/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-单字符I-O-getchar-和-putchar"><a href="#1-单字符I-O-getchar-和-putchar" class="headerlink" title="1.单字符I/O : getchar() 和 putchar()"></a>1.单字符I/O : getchar() 和 putchar()</h2><blockquote>
-<p>getchar() 和 putchar ()每次只能输入和输出一个字符。</p>
-</blockquote>
-<p>ANSI C 将 <code>stdio.h</code> 头文件与getchar() 和 putchar()相关联，这就是为什么程序中将该文件包含在内的原因。而且，getchar() 和 putchar() 不是真正的函数，而是定义为预处理器宏。</p>
-<h3 id="1-getchar-与-scanf-的区分与混用"><a href="#1-getchar-与-scanf-的区分与混用" class="headerlink" title="1.getchar() 与 scanf() 的区分与混用"></a>1.getchar() 与 scanf() 的区分与混用</h3><p>在缓冲输入时需要按下Enter键，这一动作还传输一个程序必须处理的换行符。而<code>getchar()</code> 读取每个字符，包括空格，制表符和换行符；但是 <code>scanf()</code> 在在<strong>读取数字</strong>时会跳过空格，制表符和换行符。举例说明：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols);</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>运行结果：</p>
-<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/1.png" style="zoom:50%;"></p>
-<p><img src style="zoom:50%;"></p>
-<blockquote>
-<p>程序会在输入之后，没有做出其他输入响应之前就结束了，原因是紧跟在输入3之后的那个换行符。</p>
-</blockquote>
-<p><strong><code>scanf()</code>函数将该换行符留在输入队列中，与<code>scanf()</code>不同，<code>getchar()</code> 并不跳过换行符。</strong>所以在循环的下一周期，再有机会输入任何其他内容之前，这一换行符由<code>getchar()</code>读出，然后将其赋值为ch，而ch为换行符才是结束循环的条件。</p>
-<p>改善程序：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols) != <span class="number">2</span>)</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">    <span class="keyword">while</span>(getchar() != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>运行结果：</p>
-<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/2.png" style="zoom:50%;"></p>
-<blockquote>
-<p>程序跳过了一个输入周期中输入的最后一个数字与下一行开始处输入的字符之间的所有换行符和空格。</p>
-</blockquote>
-<h3 id="2-输入流和数字"><a href="#2-输入流和数字" class="headerlink" title="2.输入流和数字"></a>2.输入流和数字</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">is 28 12.4</span><br></pre></td></tr></table></figure></div>
-<p>在我们眼中，这就像是一个由字符、整数和浮点数组成的字符串。<font color="red">但是对 C程序而言，这是一个字节流。</font><strong>第1个字节是字母i的字符编码，第2个字节是字母s的字符编码，第3个字节是空格字符的字符编码，第4个字节是数字2的字符编码，等等</strong>。所以，如果get_long()函数处理这一行输入，第1个字符是非数字，那么整行输入都会被丢弃，包括其中的数字，因为这些数字只是该输入行中的其他字符：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> ((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">	<span class="built_in">putchar</span>(ch); <span class="comment">// 处理错误的输入</span></span><br></pre></td></tr></table></figure></div>
-<p>虽然输入流由字符组成，但是也可以设置<code>scanf()</code>函数把它们转换成数值。例如，考虑下面的输入：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">42</span><br></pre></td></tr></table></figure></div>
-<p>如果在<code>scanf()</code>函数中使用%c转换说明，它只会读取字符4并将其储存在char类型的变量中。如果使用%s转换说明，“它会读取字符4和字符2这两个字符，并将其储存在字符数组中。如果使用%d转换说明，<code>scanf()</code>同样会读取两个字符，但是随后会计算出它们对应的整数值：4×10+2，即42，然后将表示该整数的二进制数储存在 int 类型的变量中。如果使用%f 转换说明，<code>scanf()</code>也会读取两个字符，计算出它们对应的数值42.0，用内部的浮点表示法表示该值，并将结果储存在float类型的变量中。<br><strong>简而言之，输入由字符组成，但是<code>scanf()</code>可以把输入转换成整数值或浮点数值。使用转换说明（如%d或%f）限制了可接受输入的字符类型，而<code>getchar()</code>和使用%c的<code>scanf()</code>接受所有的字符。</strong></p>
 ]]></content>
       <categories>
         <category>Linux C</category>
@@ -190,17 +190,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C Program Ⅵ 文件</title>
-    <url>/2020/04/10/C-Program-%E2%85%A5-%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>Linux C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C Program Ⅶ 结构体和其他数据形式</title>
     <url>/2020/04/10/C-Program-%E2%85%A6-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -225,6 +214,17 @@
   <entry>
     <title>C Program Ⅸ C预处理器和C库</title>
     <url>/2020/04/10/C-Program-%E2%85%A8-C%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8%E5%92%8CC%E5%BA%93/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>Linux C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C Program Ⅵ 文件</title>
+    <url>/2020/04/10/C-Program-%E2%85%A5-%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       <categories>
         <category>Linux C</category>
@@ -404,6 +404,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux下C链接Mysql</title>
+    <url>/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-安装数据库"><a href="#1-安装数据库" class="headerlink" title="1.安装数据库"></a>1.安装数据库</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqld-dev</span><br></pre></td></tr></table></figure></div>
+<h2 id="2-查看安装包"><a href="#2-查看安装包" class="headerlink" title="2.查看安装包"></a>2.查看安装包</h2><p>2.查看本地有没有安装mysql的开发包。命令是  ‘mysql_config —cflags —libs’如果有安装就会有一串编译选项和连接库。如果没有就自行安装 mysql-devel-<strong>*</strong>的rpm包后面是版本号。mysql开发包提供了基本操作接口。安装后头文件在/usr/include/mysql 而动态库在 /usr/lib/mysql 上。</p>
+<p><img src="/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" alt></p>
+<h2 id="3-编写C程序链接数据库"><a href="#3-编写C程序链接数据库" class="headerlink" title="3.编写C程序链接数据库"></a>3.编写C程序链接数据库</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mysql.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MYSQL *conn;</span><br><span class="line">    MYSQL_RES *res;</span><br><span class="line">    MYSQL_ROW row;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">char</span> *server = <span class="string">&quot;localhost&quot;</span>;</span><br><span class="line">   <span class="keyword">char</span> *user = <span class="string">&quot;root&quot;</span>;</span><br><span class="line">   <span class="keyword">char</span> *password = <span class="string">&quot;ZYB110929&quot;</span>; <span class="comment">/* 此处改成你的密码 */</span></span><br><span class="line">   <span class="keyword">char</span> *database = <span class="string">&quot;mysql&quot;</span>;</span><br><span class="line"></span><br><span class="line">    conn = mysql_init(<span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* Connect to database */</span></span><br><span class="line">   <span class="keyword">if</span> (!mysql_real_connect(conn, server,</span><br><span class="line">          user, password, database, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>)) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;%s\n&quot;</span>, mysql_error(conn));</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* send SQL query */</span></span><br><span class="line">   <span class="keyword">if</span> (mysql_query(conn, <span class="string">&quot;show tables&quot;</span>)) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;%s\n&quot;</span>, mysql_error(conn));</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">    res = mysql_use_result(conn);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* output table name */</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;MySQL Tables in mysql database:\n&quot;</span>);</span><br><span class="line">   <span class="keyword">while</span> ((row = mysql_fetch_row(res)) != <span class="literal">NULL</span>)</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;%s \n&quot;</span>, row[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* close connection */</span></span><br><span class="line">    mysql_free_result(res);</span><br><span class="line">    mysql_close(conn);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></div>
+<p>编译：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">gcc test.c -o test $(mysql_config --cflags) $(mysql_config --libs)</span><br></pre></td></tr></table></figure></div>
+<p><img src="/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" alt></p>
+<p>实践成功。</p>
+<p>​            </p>
+]]></content>
+      <categories>
+        <category>Linux C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>Mysql</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git提速代理</title>
     <url>/2020/03/11/Git%E6%8F%90%E9%80%9F%E4%BB%A3%E7%90%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -427,39 +449,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux下C链接Mysql</title>
-    <url>/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-安装数据库"><a href="#1-安装数据库" class="headerlink" title="1.安装数据库"></a>1.安装数据库</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqld-dev</span><br></pre></td></tr></table></figure></div>
-<h2 id="2-查看安装包"><a href="#2-查看安装包" class="headerlink" title="2.查看安装包"></a>2.查看安装包</h2><p>2.查看本地有没有安装mysql的开发包。命令是  ‘mysql_config —cflags —libs’如果有安装就会有一串编译选项和连接库。如果没有就自行安装 mysql-devel-<strong>*</strong>的rpm包后面是版本号。mysql开发包提供了基本操作接口。安装后头文件在/usr/include/mysql 而动态库在 /usr/lib/mysql 上。</p>
-<p><img src="/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" alt></p>
-<h2 id="3-编写C程序链接数据库"><a href="#3-编写C程序链接数据库" class="headerlink" title="3.编写C程序链接数据库"></a>3.编写C程序链接数据库</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mysql.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MYSQL *conn;</span><br><span class="line">    MYSQL_RES *res;</span><br><span class="line">    MYSQL_ROW row;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">char</span> *server = <span class="string">&quot;localhost&quot;</span>;</span><br><span class="line">   <span class="keyword">char</span> *user = <span class="string">&quot;root&quot;</span>;</span><br><span class="line">   <span class="keyword">char</span> *password = <span class="string">&quot;ZYB110929&quot;</span>; <span class="comment">/* 此处改成你的密码 */</span></span><br><span class="line">   <span class="keyword">char</span> *database = <span class="string">&quot;mysql&quot;</span>;</span><br><span class="line"></span><br><span class="line">    conn = mysql_init(<span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* Connect to database */</span></span><br><span class="line">   <span class="keyword">if</span> (!mysql_real_connect(conn, server,</span><br><span class="line">          user, password, database, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>)) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;%s\n&quot;</span>, mysql_error(conn));</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* send SQL query */</span></span><br><span class="line">   <span class="keyword">if</span> (mysql_query(conn, <span class="string">&quot;show tables&quot;</span>)) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;%s\n&quot;</span>, mysql_error(conn));</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">    res = mysql_use_result(conn);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* output table name */</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;MySQL Tables in mysql database:\n&quot;</span>);</span><br><span class="line">   <span class="keyword">while</span> ((row = mysql_fetch_row(res)) != <span class="literal">NULL</span>)</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;%s \n&quot;</span>, row[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* close connection */</span></span><br><span class="line">    mysql_free_result(res);</span><br><span class="line">    mysql_close(conn);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></div>
-<p>编译：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">gcc test.c -o test $(mysql_config --cflags) $(mysql_config --libs)</span><br></pre></td></tr></table></figure></div>
-<p><img src="/2020/03/02/Linux%E4%B8%8BC%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" alt></p>
-<p>实践成功。</p>
-<p>​            </p>
-]]></content>
-      <categories>
-        <category>Linux C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>Mysql</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OS Internals and Design Principles-I/O和文件</title>
-    <url>/2020/11/10/OS-Internals-and-Design-Principles-I-O%E5%92%8C%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>I/O和文件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OS Internals and Design Principles-内存</title>
     <url>/2020/11/10/OS-Internals-and-Design-Principles-%E5%86%85%E5%AD%98/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -479,6 +468,17 @@
       </categories>
       <tags>
         <tag>操作系统概述</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OS Internals and Design Principles-I/O和文件</title>
+    <url>/2020/11/10/OS-Internals-and-Design-Principles-I-O%E5%92%8C%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>I/O和文件</tag>
       </tags>
   </entry>
   <entry>
@@ -999,17 +999,6 @@
       </tags>
   </entry>
   <entry>
-    <title>关于方向&amp;关于C++</title>
-    <url>/2020/03/01/%E5%85%B3%E4%BA%8E%E6%96%B9%E5%90%91-%E5%85%B3%E4%BA%8EC/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      <categories>
-        <category>就业与思考</category>
-      </categories>
-      <tags>
-        <tag>规划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>东大一个月以来的反思</title>
     <url>/2019/10/04/%E4%B8%9C%E5%A4%A7%E4%B8%80%E4%B8%AA%E6%9C%88%E4%BB%A5%E6%9D%A5%E7%9A%84%E5%8F%8D%E6%80%9D/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1 跑步已进入瓶颈期，6km以下已经不怎么出汗。改变有氧运动为跳绳后发现10mins就能汗如雨下，搭配着来很重要。其次，不能间断超过三天，否则要浪费一天时间去重新适应。现在又办理了健身卡，今天晚上也要制定减脂增肌的健身与饮食计划，一定要在元旦之前减到65kg以下。</p>
@@ -1035,6 +1024,17 @@
       </categories>
       <tags>
         <tag>感悟与反思</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于方向&amp;关于C++</title>
+    <url>/2020/03/01/%E5%85%B3%E4%BA%8E%E6%96%B9%E5%90%91-%E5%85%B3%E4%BA%8EC/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      <categories>
+        <category>就业与思考</category>
+      </categories>
+      <tags>
+        <tag>规划</tag>
       </tags>
   </entry>
   <entry>
