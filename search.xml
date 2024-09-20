@@ -1,37 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C Program Ⅰ 字符</title>
-    <url>/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-单字符I-O-getchar-和-putchar"><a href="#1-单字符I-O-getchar-和-putchar" class="headerlink" title="1.单字符I/O : getchar() 和 putchar()"></a>1.单字符I/O : getchar() 和 putchar()</h2><blockquote>
-<p>getchar() 和 putchar ()每次只能输入和输出一个字符。</p>
-</blockquote>
-<p>ANSI C 将 <code>stdio.h</code> 头文件与getchar() 和 putchar()相关联，这就是为什么程序中将该文件包含在内的原因。而且，getchar() 和 putchar() 不是真正的函数，而是定义为预处理器宏。</p>
-<h3 id="1-getchar-与-scanf-的区分与混用"><a href="#1-getchar-与-scanf-的区分与混用" class="headerlink" title="1.getchar() 与 scanf() 的区分与混用"></a>1.getchar() 与 scanf() 的区分与混用</h3><p>在缓冲输入时需要按下Enter键，这一动作还传输一个程序必须处理的换行符。而<code>getchar()</code> 读取每个字符，包括空格，制表符和换行符；但是 <code>scanf()</code> 在在<strong>读取数字</strong>时会跳过空格，制表符和换行符。举例说明：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols);</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>运行结果：</p>
-<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/1.png" style="zoom:50%;"></p>
-<p><img src style="zoom:50%;"></p>
-<blockquote>
-<p>程序会在输入之后，没有做出其他输入响应之前就结束了，原因是紧跟在输入3之后的那个换行符。</p>
-</blockquote>
-<p><strong><code>scanf()</code>函数将该换行符留在输入队列中，与<code>scanf()</code>不同，<code>getchar()</code> 并不跳过换行符。</strong>所以在循环的下一周期，再有机会输入任何其他内容之前，这一换行符由<code>getchar()</code>读出，然后将其赋值为ch，而ch为换行符才是结束循环的条件。</p>
-<p>改善程序：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr, <span class="keyword">int</span> lines, <span class="keyword">int</span> width)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ch;</span><br><span class="line">	<span class="keyword">int</span> rows,cols;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter a character and a integers:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;rows,&amp;cols) != <span class="number">2</span>)</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">		display(ch,rows,cols);</span><br><span class="line">    <span class="keyword">while</span>(getchar() != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter anthor character and a integers:\n&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Enter a newline to quit.\n &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Bye\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">char</span> cr,<span class="keyword">int</span> lines,<span class="keyword">int</span> width)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> row,col;</span><br><span class="line">		<span class="keyword">for</span>(row = <span class="number">1</span>; row &lt;= lines; row++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(col  = <span class="number">1</span>; col &lt;= width; col++)&#123;</span><br><span class="line">				<span class="built_in">putchar</span>(cr);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>运行结果：</p>
-<p><img src="/2020/04/10/C-Program-%E2%85%A0-%E5%AD%97%E7%AC%A6/2.png" style="zoom:50%;"></p>
-<blockquote>
-<p>程序跳过了一个输入周期中输入的最后一个数字与下一行开始处输入的字符之间的所有换行符和空格。</p>
-</blockquote>
-<h3 id="2-输入流和数字"><a href="#2-输入流和数字" class="headerlink" title="2.输入流和数字"></a>2.输入流和数字</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">is 28 12.4</span><br></pre></td></tr></table></figure></div>
-<p>在我们眼中，这就像是一个由字符、整数和浮点数组成的字符串。<font color="red">但是对 C程序而言，这是一个字节流。</font><strong>第1个字节是字母i的字符编码，第2个字节是字母s的字符编码，第3个字节是空格字符的字符编码，第4个字节是数字2的字符编码，等等</strong>。所以，如果get_long()函数处理这一行输入，第1个字符是非数字，那么整行输入都会被丢弃，包括其中的数字，因为这些数字只是该输入行中的其他字符：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> ((ch = getchar()) != <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">	<span class="built_in">putchar</span>(ch); <span class="comment">// 处理错误的输入</span></span><br></pre></td></tr></table></figure></div>
-<p>虽然输入流由字符组成，但是也可以设置<code>scanf()</code>函数把它们转换成数值。例如，考虑下面的输入：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">42</span><br></pre></td></tr></table></figure></div>
-<p>如果在<code>scanf()</code>函数中使用%c转换说明，它只会读取字符4并将其储存在char类型的变量中。如果使用%s转换说明，“它会读取字符4和字符2这两个字符，并将其储存在字符数组中。如果使用%d转换说明，<code>scanf()</code>同样会读取两个字符，但是随后会计算出它们对应的整数值：4×10+2，即42，然后将表示该整数的二进制数储存在 int 类型的变量中。如果使用%f 转换说明，<code>scanf()</code>也会读取两个字符，计算出它们对应的数值42.0，用内部的浮点表示法表示该值，并将结果储存在float类型的变量中。<br><strong>简而言之，输入由字符组成，但是<code>scanf()</code>可以把输入转换成整数值或浮点数值。使用转换说明（如%d或%f）限制了可接受输入的字符类型，而<code>getchar()</code>和使用%c的<code>scanf()</code>接受所有的字符。</strong></p>
-]]></content>
-  </entry>
-  <entry>
     <title>APUE基础介绍</title>
     <url>/2020/11/11/APUE%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
@@ -2274,9 +2243,117 @@ display: inline-block;color: #999;padding: 2px;">
       </tags>
   </entry>
   <entry>
-    <title>Netty学习</title>
-    <url>/2023/02/11/Netty/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-Netty-的基本介绍"><a href="#1-Netty-的基本介绍" class="headerlink" title="1.Netty 的基本介绍"></a>1.Netty 的基本介绍</h1>]]></content>
+    <title>Netty线程模型</title>
+    <url>/2023/02/18/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>Netty 的线程模型是基于 Reactor 模型改进而来的，因此需要先熟悉 Reactor 模型，帮助对于 Netty 线程模型的理解。</p>
+</blockquote>
+<h1 id="一-Reactor-模型"><a href="#一-Reactor-模型" class="headerlink" title="一. Reactor 模型"></a><strong>一. Reactor 模型</strong></h1><h2 id="1-为什么需要-Reactor-模型"><a href="#1-为什么需要-Reactor-模型" class="headerlink" title="1.为什么需要 Reactor 模型"></a><strong>1.为什么需要 Reactor 模型</strong></h2><p> 传统阻塞 IO 模型具有设计上的不足之处：</p>
+<ul>
+<li>每个连接都需要独立线程处理，当并发数大时，创建线程数多，占用资源</li>
+<li>采用阻塞IO模型，连接建立后，若当前线程没有数据可读，线程会阻塞在读操作上，造成资源浪费</li>
+</ul>
+<p>针对传统阻塞IO模型的两个问题，可以采用如下的方案：</p>
+<ul>
+<li>基于池化思想，避免为每个连接创建线程，连接完成后将业务处理交给线程池处理</li>
+<li>基于IO复用模型，多个连接共用同一个阻塞对象，不用等待所有的连接。遍历到有新数据可以处理时，操作系统会通知程序，线程跳出阻塞状态，进行业务逻辑处理</li>
+</ul>
+<h2 id="2-什么是-Reactor-模型"><a href="#2-什么是-Reactor-模型" class="headerlink" title="2.什么是 Reactor 模型"></a><strong>2.什么是 Reactor 模型</strong></h2><p>The reactor design_pattern is an event_handling pattern for handling service requests delivered concurrently to a service handler by one or more inputs. The service handler then demultiplexes the incoming requests and dispatches them synchronously to the associated request handlers.</p>
+<p>Reactor 设计模型是一种事件处理模式，用于处理通过一个或多个输入同时传递给服务处理程序的服务请求。然后，服务处理程序对传入的请求进行多路分解，并将它们同步分派给关联的请求处理程序。Reactor 模式也被称作 Dispatcher 模式。它的核心是 <strong>多路复用器</strong> ，多路复用器收到事件后会进行分发，这点是网络服务器高并发的关键。Reacotr 模型主要分为三个角色：</p>
+<ol>
+<li><strong>Reactor</strong> ：把 IO 事件分配给对应的 handler 处理</li>
+<li><strong>Acceptor</strong> ：处理客户端连接事件</li>
+<li><strong>Handler</strong> ：处理非阻塞的任务</li>
+</ol>
+<p>通过这三个角色的配合，实现了高并发的操作。而Reactor 模型分为三种：</p>
+<ol>
+<li><strong>单 Reactor 单线程</strong></li>
+<li><strong>单 Reactor 多线程</strong></li>
+<li><strong>多 Reactor 多线程</strong></li>
+</ol>
+<p>这三种模型按顺序来看理解起来复杂度不断提升，也会更接近 Netty 的线程模型，下面来分别看看这三种模型。</p>
+<h3 id="1-单-Reactor-单线程"><a href="#1-单-Reactor-单线程" class="headerlink" title="(1). 单 Reactor 单线程"></a><strong>(1). 单 Reactor 单线程</strong></h3><p>这个最好理解，只有 <strong>一个线程</strong> ，只是会把 <strong>建立连接</strong> 和 <strong>处理请求</strong> 这两种任务分发给不同的类去处理，如下图所示：</p>
+<center class="half"> 
+    <img src="/2023/02/18/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/1.PNG" width="70%">
+    <div>图1:单Reactor单线程</div>
+</center>
+
+<p>整个流程简单来讲就是：</p>
+<ol>
+<li>Reactor 通过 Selector 监听事件</li>
+<li>收到事件使用 dispatch 对事件进行分发<ul>
+<li>如果是连接事件就由 Acceptor 进行处理，处理完成会创建一个 Handler 对后续业务进行处理。</li>
+<li>后面的数据请求都会由 Handler 进行处理</li>
+</ul>
+</li>
+</ol>
+<p><strong>优点</strong></p>
+<ul>
+<li>模型简单，不会有多线程的那些问题</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>性能问题：单线程无法发挥多核 CPU 的性能</li>
+<li>可靠性问题：处理业务时往往容易出问题，当 Handler 出问题了，由于只有一个线程，整个节点也挂了</li>
+</ul>
+<h3 id="2-单-Reactor-多线程"><a href="#2-单-Reactor-多线程" class="headerlink" title="(2). 单 Reactor 多线程"></a>(2). 单 Reactor 多线程</h3><p>这个线程模型针对前面的问题作出了一定的优化，多出了处理业务的线程池，如下图所示：</p>
+<center class="half"> 
+    <img src="/2023/02/18/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/2.PNG" width="90%">
+    <div>图2:单Reactor多线程</div>
+</center>
+
+<p>前面的流程与单 Reactor 单线程是一致的，到 Handler 这一步就不一样了：</p>
+<ul>
+<li>这个模型 <strong>Handler 只负责读取数据和发送数据部分，业务处理交给了 Worker 线程</strong>，而 Worker 线程是由 Worker 线程池统一管理的。</li>
+</ul>
+<p><strong>优点</strong></p>
+<ul>
+<li>可以充分利用多核 CPU 的处理能力</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>多线程资源共享和访问处理会比较复杂，在主线程处理所有的连接、监听和响应也会出现性能瓶颈</li>
+</ul>
+<h3 id="3-主从-Reactor-多线程"><a href="#3-主从-Reactor-多线程" class="headerlink" title="(3). 主从 Reactor 多线程"></a>(3). 主从 Reactor 多线程</h3><p>主从 Reactor 多线程模型又在前面的模型基础上做了进一步优化， <strong>增加了子 Reactor</strong> ，如下图所示：</p>
+<center class="half"> 
+    <img src="/2023/02/18/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/3.png" width="80%">
+    <div>图3:多Reactor多线程</div>
+</center>
+
+<p><strong>整个流程大概可以分为以下几步</strong>：</p>
+<ul>
+<li>主线程的 <code>MainReactor</code> 负责监听连接请求，收到连接请求会由 <code>Acceptor</code> 进行处理，成功建立连接之后 <code>MainReactor</code> 会把连接分派给 <code>SubReactor</code> ，由 <code>SubReactor</code> 监听和处理数据请求；</li>
+<li><code>SubReactor</code> 监听到数据请求，会派发给 Handler 处理，Handler 只会处理读取数据和发送数据部分，中间业务处理部分也是放在线程池中完成。</li>
+</ul>
+<p><strong>优点</strong></p>
+<ul>
+<li><code>MainReactor</code> 与 <code>SubReactor</code> 职责分明，一个处理连接事件，一个处理数据请求；</li>
+<li><code>MainReactor</code> 与 <code>SubReactor</code> 交互逻辑比较简单，<code>MainReactor</code> 单向地将建立好的连接传递出去；</li>
+<li>多 Reactor 设计能在高并发场景拥有更好的性能。</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>编程复杂度较高</li>
+</ul>
+<p>主从 Reactor 多线程模式是业界非常成熟的服务器程序设计模式，在很多中间件中都使用到了这种模式，像 Nginx、Memcached、Netty 等。这种模式也被称为 1 + M + N 模式，分别代指相对少的连接线程（不一定为 1 ），多个 I/O 线程和多个业务处理线程。</p>
+<h1 id="二-Netty-线程模型"><a href="#二-Netty-线程模型" class="headerlink" title="二. Netty 线程模型"></a>二. Netty 线程模型</h1><p>Netty 线程模型是基于主从 Reactor 多线程模型优化而来的，整体架构如下图所示：</p>
+<center class="half"> 
+    <img src="/2023/02/18/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/4.png" width="100%">
+    <div>图4:Netty线程</div>
+</center>
+
+<p>Netty 的线程模型主要分为两部分，分别是 <code>BossGroup</code> 和 <code>WorkerGroup</code>，它们都分别管理一个或多个 <code>NioEventLoop</code>。每个 <code>NioEventLoop</code> 对应着一个线程，一个 <code>Selector</code>，一个 <code>Executor</code> 和一个 <code>TaskQueue</code>。<code>NioEventLoop</code> 可以理解成一个事件循环：</p>
+<ul>
+<li>当程序启动后每个 <code>NioEventLoop</code> 都会通过 <code>Executor</code> 启动一个线程，开始执行事件循环。</li>
+<li>在循环中 <code>Selector</code> 会通过 select 方法阻塞并监听就绪事件，当有事件到来时通过 <code>processSeelectedKeys</code> 方法处理 Selector 事件。</li>
+<li>之后再通过 <code>runAllTasks</code> 方法处理其他的任务。</li>
+</ul>
+<p>与前面介绍的 主从 Reactor 多线程模型类似：</p>
+<ul>
+<li><code>BossGoup</code> 负责连接事件，当建立连接之后会生成一个 <code>NioSocketChannel</code> 并注册到 <code>WorkGroup</code> 其中一个 <code>NioEventLoop</code> 的 Selector 上。</li>
+<li><code>WokerGroup</code> 中的 <code>NioEventLoop</code> 负责处理数据请求，当请求到来时会调用 <code>processSelectedKeys</code> 方法，其中的业务处理会依次经过 Pipeline 中的多个 Handler。</li>
+</ul>
+]]></content>
       <categories>
         <category>Java</category>
       </categories>
