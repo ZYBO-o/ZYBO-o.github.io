@@ -1855,7 +1855,7 @@ pre {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #053dff;
+  background: #fff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2995,4 +2995,20 @@ embed {
 pre {
   margin-bottom: unset;
   margin-top: 35px;
+}
+.code ::selection {
+  background: #2593a6;
+  color: #fff;
+}
+.code +mobile() {
+  background: #2593a6;
+  color: #fff;
+}
+.gt-container .gt-comment-content .highlight pre,
+.markdown-body pre {
+  background-color: #2d2d2d;
+}
+.gt-container .gt-comment-content .highlight ::selection {
+  background: #2593a6;
+  color: #fff;
 }
