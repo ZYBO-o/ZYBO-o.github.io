@@ -24,126 +24,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Netty线程模型</title>
-    <url>/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>Netty 的线程模型是基于 Reactor 模型改进而来的，因此需要先熟悉 Reactor 模型，帮助对于 Netty 线程模型的理解。</p>
-</blockquote>
-<h1 id="一-Reactor-模型"><a href="#一-Reactor-模型" class="headerlink" title="一. Reactor 模型"></a><strong>一. Reactor 模型</strong></h1><h2 id="1-为什么需要-Reactor-模型"><a href="#1-为什么需要-Reactor-模型" class="headerlink" title="1.为什么需要 Reactor 模型"></a><strong>1.为什么需要 Reactor 模型</strong></h2><p> 传统阻塞 IO 模型具有设计上的不足之处：</p>
-<ul>
-<li>每个连接都需要独立线程处理，当并发数大时，创建线程数多，占用资源</li>
-<li>采用阻塞IO模型，连接建立后，若当前线程没有数据可读，线程会阻塞在读操作上，造成资源浪费</li>
-</ul>
-<p>针对传统阻塞IO模型的两个问题，可以采用如下的方案：</p>
-<ul>
-<li>基于池化思想，避免为每个连接创建线程，连接完成后将业务处理交给线程池处理</li>
-<li>基于IO复用模型，多个连接共用同一个阻塞对象，不用等待所有的连接。遍历到有新数据可以处理时，操作系统会通知程序，线程跳出阻塞状态，进行业务逻辑处理</li>
-</ul>
-<h2 id="2-什么是-Reactor-模型"><a href="#2-什么是-Reactor-模型" class="headerlink" title="2.什么是 Reactor 模型"></a><strong>2.什么是 Reactor 模型</strong></h2><p>The reactor design_pattern is an event_handling pattern for handling service requests delivered concurrently to a service handler by one or more inputs. The service handler then demultiplexes the incoming requests and dispatches them synchronously to the associated request handlers.</p>
-<p>Reactor 设计模型是一种事件处理模式，用于处理通过一个或多个输入同时传递给服务处理程序的服务请求。然后，服务处理程序对传入的请求进行多路分解，并将它们同步分派给关联的请求处理程序。Reactor 模式也被称作 Dispatcher 模式。它的核心是 <strong>多路复用器</strong> ，多路复用器收到事件后会进行分发，这点是网络服务器高并发的关键。Reacotr 模型主要分为三个角色：</p>
-<ol>
-<li><strong>Reactor</strong> ：把 IO 事件分配给对应的 handler 处理</li>
-<li><strong>Acceptor</strong> ：处理客户端连接事件</li>
-<li><strong>Handler</strong> ：处理非阻塞的任务</li>
-</ol>
-<p>通过这三个角色的配合，实现了高并发的操作。而Reactor 模型分为三种：</p>
-<ol>
-<li><strong>单 Reactor 单线程</strong></li>
-<li><strong>单 Reactor 多线程</strong></li>
-<li><strong>多 Reactor 多线程</strong></li>
-</ol>
-<p>这三种模型按顺序来看理解起来复杂度不断提升，也会更接近 Netty 的线程模型，下面来分别看看这三种模型。</p>
-<h3 id="1-单-Reactor-单线程"><a href="#1-单-Reactor-单线程" class="headerlink" title="(1). 单 Reactor 单线程"></a><strong>(1). 单 Reactor 单线程</strong></h3><p>这个最好理解，只有 <strong>一个线程</strong> ，只是会把 <strong>建立连接</strong> 和 <strong>处理请求</strong> 这两种任务分发给不同的类去处理，如下图所示：</p>
-<center class="half"> 
-    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/1.PNG" width="70%">
-    <div>图1:单Reactor单线程</div>
-</center>
-
-<p>整个流程简单来讲就是：</p>
-<ol>
-<li>Reactor 通过 Selector 监听事件</li>
-<li>收到事件使用 dispatch 对事件进行分发<ul>
-<li>如果是连接事件就由 Acceptor 进行处理，处理完成会创建一个 Handler 对后续业务进行处理。</li>
-<li>后面的数据请求都会由 Handler 进行处理</li>
-</ul>
-</li>
-</ol>
-<p><strong>优点</strong></p>
-<ul>
-<li>模型简单，不会有多线程的那些问题</li>
-</ul>
-<p><strong>缺点</strong></p>
-<ul>
-<li>性能问题：单线程无法发挥多核 CPU 的性能</li>
-<li>可靠性问题：处理业务时往往容易出问题，当 Handler 出问题了，由于只有一个线程，整个节点也挂了</li>
-</ul>
-<h3 id="2-单-Reactor-多线程"><a href="#2-单-Reactor-多线程" class="headerlink" title="(2). 单 Reactor 多线程"></a>(2). 单 Reactor 多线程</h3><p>这个线程模型针对前面的问题作出了一定的优化，多出了处理业务的线程池，如下图所示：</p>
-<center class="half"> 
-    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/2.PNG" width="90%">
-    <div>图2:单Reactor多线程</div>
-</center>
-
-<p>前面的流程与单 Reactor 单线程是一致的，到 Handler 这一步就不一样了：</p>
-<ul>
-<li>这个模型 <strong>Handler 只负责读取数据和发送数据部分，业务处理交给了 Worker 线程</strong>，而 Worker 线程是由 Worker 线程池统一管理的。</li>
-</ul>
-<p><strong>优点</strong></p>
-<ul>
-<li>可以充分利用多核 CPU 的处理能力</li>
-</ul>
-<p><strong>缺点</strong></p>
-<ul>
-<li>多线程资源共享和访问处理会比较复杂，在主线程处理所有的连接、监听和响应也会出现性能瓶颈</li>
-</ul>
-<h3 id="3-主从-Reactor-多线程"><a href="#3-主从-Reactor-多线程" class="headerlink" title="(3). 主从 Reactor 多线程"></a>(3). 主从 Reactor 多线程</h3><p>主从 Reactor 多线程模型又在前面的模型基础上做了进一步优化， <strong>增加了子 Reactor</strong> ，如下图所示：</p>
-<center class="half"> 
-    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/3.png" width="80%">
-    <div>图3:多Reactor多线程</div>
-</center>
-
-<p><strong>整个流程大概可以分为以下几步</strong>：</p>
-<ul>
-<li>主线程的 <code>MainReactor</code> 负责监听连接请求，收到连接请求会由 <code>Acceptor</code> 进行处理，成功建立连接之后 <code>MainReactor</code> 会把连接分派给 <code>SubReactor</code> ，由 <code>SubReactor</code> 监听和处理数据请求；</li>
-<li><code>SubReactor</code> 监听到数据请求，会派发给 Handler 处理，Handler 只会处理读取数据和发送数据部分，中间业务处理部分也是放在线程池中完成。</li>
-</ul>
-<p><strong>优点</strong></p>
-<ul>
-<li><code>MainReactor</code> 与 <code>SubReactor</code> 职责分明，一个处理连接事件，一个处理数据请求；</li>
-<li><code>MainReactor</code> 与 <code>SubReactor</code> 交互逻辑比较简单，<code>MainReactor</code> 单向地将建立好的连接传递出去；</li>
-<li>多 Reactor 设计能在高并发场景拥有更好的性能。</li>
-</ul>
-<p><strong>缺点</strong></p>
-<ul>
-<li>编程复杂度较高</li>
-</ul>
-<p>主从 Reactor 多线程模式是业界非常成熟的服务器程序设计模式，在很多中间件中都使用到了这种模式，像 Nginx、Memcached、Netty 等。这种模式也被称为 1 + M + N 模式，分别代指相对少的连接线程（不一定为 1 ），多个 I/O 线程和多个业务处理线程。</p>
-<h1 id="二-Netty-线程模型"><a href="#二-Netty-线程模型" class="headerlink" title="二. Netty 线程模型"></a>二. Netty 线程模型</h1><p>Netty 线程模型是基于主从 Reactor 多线程模型优化而来的，整体架构如下图所示：</p>
-<center class="half"> 
-    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/4.png" width="100%">
-    <div>图4:Netty线程</div>
-</center>
-
-<p>Netty 的线程模型主要分为两部分，分别是 <code>BossGroup</code> 和 <code>WorkerGroup</code>，它们都分别管理一个或多个 <code>NioEventLoop</code>。每个 <code>NioEventLoop</code> 对应着一个线程，一个 <code>Selector</code>，一个 <code>Executor</code> 和一个 <code>TaskQueue</code>。<code>NioEventLoop</code> 可以理解成一个事件循环：</p>
-<ul>
-<li>当程序启动后每个 <code>NioEventLoop</code> 都会通过 <code>Executor</code> 启动一个线程，开始执行事件循环。</li>
-<li>在循环中 <code>Selector</code> 会通过 select 方法阻塞并监听就绪事件，当有事件到来时通过 <code>processSeelectedKeys</code> 方法处理 Selector 事件。</li>
-<li>之后再通过 <code>runAllTasks</code> 方法处理其他的任务。</li>
-</ul>
-<p>与前面介绍的 主从 Reactor 多线程模型类似：</p>
-<ul>
-<li><code>BossGoup</code> 负责连接事件，当建立连接之后会生成一个 <code>NioSocketChannel</code> 并注册到 <code>WorkGroup</code> 其中一个 <code>NioEventLoop</code> 的 Selector 上。</li>
-<li><code>WokerGroup</code> 中的 <code>NioEventLoop</code> 负责处理数据请求，当请求到来时会调用 <code>processSelectedKeys</code> 方法，其中的业务处理会依次经过 Pipeline 中的多个 Handler。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Netty</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Makefile学习</title>
     <url>/2024/11/09/Makefile%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-为什么使用Makefile"><a href="#一-为什么使用Makefile" class="headerlink" title="一.为什么使用Makefile"></a>一.为什么使用Makefile</h1><p>假设有一个如图所示的C工程：</p>
@@ -470,6 +350,126 @@
       <tags>
         <tag>Makefile</tag>
         <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Netty线程模型</title>
+    <url>/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>Netty 的线程模型是基于 Reactor 模型改进而来的，因此需要先熟悉 Reactor 模型，帮助对于 Netty 线程模型的理解。</p>
+</blockquote>
+<h1 id="一-Reactor-模型"><a href="#一-Reactor-模型" class="headerlink" title="一. Reactor 模型"></a><strong>一. Reactor 模型</strong></h1><h2 id="1-为什么需要-Reactor-模型"><a href="#1-为什么需要-Reactor-模型" class="headerlink" title="1.为什么需要 Reactor 模型"></a><strong>1.为什么需要 Reactor 模型</strong></h2><p> 传统阻塞 IO 模型具有设计上的不足之处：</p>
+<ul>
+<li>每个连接都需要独立线程处理，当并发数大时，创建线程数多，占用资源</li>
+<li>采用阻塞IO模型，连接建立后，若当前线程没有数据可读，线程会阻塞在读操作上，造成资源浪费</li>
+</ul>
+<p>针对传统阻塞IO模型的两个问题，可以采用如下的方案：</p>
+<ul>
+<li>基于池化思想，避免为每个连接创建线程，连接完成后将业务处理交给线程池处理</li>
+<li>基于IO复用模型，多个连接共用同一个阻塞对象，不用等待所有的连接。遍历到有新数据可以处理时，操作系统会通知程序，线程跳出阻塞状态，进行业务逻辑处理</li>
+</ul>
+<h2 id="2-什么是-Reactor-模型"><a href="#2-什么是-Reactor-模型" class="headerlink" title="2.什么是 Reactor 模型"></a><strong>2.什么是 Reactor 模型</strong></h2><p>The reactor design_pattern is an event_handling pattern for handling service requests delivered concurrently to a service handler by one or more inputs. The service handler then demultiplexes the incoming requests and dispatches them synchronously to the associated request handlers.</p>
+<p>Reactor 设计模型是一种事件处理模式，用于处理通过一个或多个输入同时传递给服务处理程序的服务请求。然后，服务处理程序对传入的请求进行多路分解，并将它们同步分派给关联的请求处理程序。Reactor 模式也被称作 Dispatcher 模式。它的核心是 <strong>多路复用器</strong> ，多路复用器收到事件后会进行分发，这点是网络服务器高并发的关键。Reacotr 模型主要分为三个角色：</p>
+<ol>
+<li><strong>Reactor</strong> ：把 IO 事件分配给对应的 handler 处理</li>
+<li><strong>Acceptor</strong> ：处理客户端连接事件</li>
+<li><strong>Handler</strong> ：处理非阻塞的任务</li>
+</ol>
+<p>通过这三个角色的配合，实现了高并发的操作。而Reactor 模型分为三种：</p>
+<ol>
+<li><strong>单 Reactor 单线程</strong></li>
+<li><strong>单 Reactor 多线程</strong></li>
+<li><strong>多 Reactor 多线程</strong></li>
+</ol>
+<p>这三种模型按顺序来看理解起来复杂度不断提升，也会更接近 Netty 的线程模型，下面来分别看看这三种模型。</p>
+<h3 id="1-单-Reactor-单线程"><a href="#1-单-Reactor-单线程" class="headerlink" title="(1). 单 Reactor 单线程"></a><strong>(1). 单 Reactor 单线程</strong></h3><p>这个最好理解，只有 <strong>一个线程</strong> ，只是会把 <strong>建立连接</strong> 和 <strong>处理请求</strong> 这两种任务分发给不同的类去处理，如下图所示：</p>
+<center class="half"> 
+    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/1.PNG" width="70%">
+    <div>图1:单Reactor单线程</div>
+</center>
+
+<p>整个流程简单来讲就是：</p>
+<ol>
+<li>Reactor 通过 Selector 监听事件</li>
+<li>收到事件使用 dispatch 对事件进行分发<ul>
+<li>如果是连接事件就由 Acceptor 进行处理，处理完成会创建一个 Handler 对后续业务进行处理。</li>
+<li>后面的数据请求都会由 Handler 进行处理</li>
+</ul>
+</li>
+</ol>
+<p><strong>优点</strong></p>
+<ul>
+<li>模型简单，不会有多线程的那些问题</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>性能问题：单线程无法发挥多核 CPU 的性能</li>
+<li>可靠性问题：处理业务时往往容易出问题，当 Handler 出问题了，由于只有一个线程，整个节点也挂了</li>
+</ul>
+<h3 id="2-单-Reactor-多线程"><a href="#2-单-Reactor-多线程" class="headerlink" title="(2). 单 Reactor 多线程"></a>(2). 单 Reactor 多线程</h3><p>这个线程模型针对前面的问题作出了一定的优化，多出了处理业务的线程池，如下图所示：</p>
+<center class="half"> 
+    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/2.PNG" width="90%">
+    <div>图2:单Reactor多线程</div>
+</center>
+
+<p>前面的流程与单 Reactor 单线程是一致的，到 Handler 这一步就不一样了：</p>
+<ul>
+<li>这个模型 <strong>Handler 只负责读取数据和发送数据部分，业务处理交给了 Worker 线程</strong>，而 Worker 线程是由 Worker 线程池统一管理的。</li>
+</ul>
+<p><strong>优点</strong></p>
+<ul>
+<li>可以充分利用多核 CPU 的处理能力</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>多线程资源共享和访问处理会比较复杂，在主线程处理所有的连接、监听和响应也会出现性能瓶颈</li>
+</ul>
+<h3 id="3-主从-Reactor-多线程"><a href="#3-主从-Reactor-多线程" class="headerlink" title="(3). 主从 Reactor 多线程"></a>(3). 主从 Reactor 多线程</h3><p>主从 Reactor 多线程模型又在前面的模型基础上做了进一步优化， <strong>增加了子 Reactor</strong> ，如下图所示：</p>
+<center class="half"> 
+    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/3.png" width="80%">
+    <div>图3:多Reactor多线程</div>
+</center>
+
+<p><strong>整个流程大概可以分为以下几步</strong>：</p>
+<ul>
+<li>主线程的 <code>MainReactor</code> 负责监听连接请求，收到连接请求会由 <code>Acceptor</code> 进行处理，成功建立连接之后 <code>MainReactor</code> 会把连接分派给 <code>SubReactor</code> ，由 <code>SubReactor</code> 监听和处理数据请求；</li>
+<li><code>SubReactor</code> 监听到数据请求，会派发给 Handler 处理，Handler 只会处理读取数据和发送数据部分，中间业务处理部分也是放在线程池中完成。</li>
+</ul>
+<p><strong>优点</strong></p>
+<ul>
+<li><code>MainReactor</code> 与 <code>SubReactor</code> 职责分明，一个处理连接事件，一个处理数据请求；</li>
+<li><code>MainReactor</code> 与 <code>SubReactor</code> 交互逻辑比较简单，<code>MainReactor</code> 单向地将建立好的连接传递出去；</li>
+<li>多 Reactor 设计能在高并发场景拥有更好的性能。</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>编程复杂度较高</li>
+</ul>
+<p>主从 Reactor 多线程模式是业界非常成熟的服务器程序设计模式，在很多中间件中都使用到了这种模式，像 Nginx、Memcached、Netty 等。这种模式也被称为 1 + M + N 模式，分别代指相对少的连接线程（不一定为 1 ），多个 I/O 线程和多个业务处理线程。</p>
+<h1 id="二-Netty-线程模型"><a href="#二-Netty-线程模型" class="headerlink" title="二. Netty 线程模型"></a>二. Netty 线程模型</h1><p>Netty 线程模型是基于主从 Reactor 多线程模型优化而来的，整体架构如下图所示：</p>
+<center class="half"> 
+    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/4.png" width="100%">
+    <div>图4:Netty线程</div>
+</center>
+
+<p>Netty 的线程模型主要分为两部分，分别是 <code>BossGroup</code> 和 <code>WorkerGroup</code>，它们都分别管理一个或多个 <code>NioEventLoop</code>。每个 <code>NioEventLoop</code> 对应着一个线程，一个 <code>Selector</code>，一个 <code>Executor</code> 和一个 <code>TaskQueue</code>。<code>NioEventLoop</code> 可以理解成一个事件循环：</p>
+<ul>
+<li>当程序启动后每个 <code>NioEventLoop</code> 都会通过 <code>Executor</code> 启动一个线程，开始执行事件循环。</li>
+<li>在循环中 <code>Selector</code> 会通过 select 方法阻塞并监听就绪事件，当有事件到来时通过 <code>processSeelectedKeys</code> 方法处理 Selector 事件。</li>
+<li>之后再通过 <code>runAllTasks</code> 方法处理其他的任务。</li>
+</ul>
+<p>与前面介绍的 主从 Reactor 多线程模型类似：</p>
+<ul>
+<li><code>BossGoup</code> 负责连接事件，当建立连接之后会生成一个 <code>NioSocketChannel</code> 并注册到 <code>WorkGroup</code> 其中一个 <code>NioEventLoop</code> 的 Selector 上。</li>
+<li><code>WokerGroup</code> 中的 <code>NioEventLoop</code> 负责处理数据请求，当请求到来时会调用 <code>processSelectedKeys</code> 方法，其中的业务处理会依次经过 Pipeline 中的多个 Handler。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Netty</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
