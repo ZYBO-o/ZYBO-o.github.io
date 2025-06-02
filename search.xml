@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>/2025/06/02/AndroidGuide/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/06/02/JavaGuide/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-  </entry>
-  <entry>
     <title>Git提速代理</title>
     <url>/2024/11/09/Git%E6%8F%90%E9%80%9F%E4%BB%A3%E7%90%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -31,6 +21,216 @@
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/06/02/AndroidGuide/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/06/02/JavaGuide/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>LeetCode Guide</title>
+    <url>/2025/06/02/LeetcodeGuide/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-链表问题"><a href="#一-链表问题" class="headerlink" title="一.链表问题"></a>一.链表问题</h2><h2 id="1-单链表结构"><a href="#1-单链表结构" class="headerlink" title="1.单链表结构"></a>1.单链表结构</h2><div align="center"><img src="/2025/06/02/LeetcodeGuide/List1.png" width="600px"></div>
+
+<h2 id="2-单链表创建与实现"><a href="#2-单链表创建与实现" class="headerlink" title="2.单链表创建与实现"></a>2.单链表创建与实现</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode() : value(<span class="number">0</span>), next(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    ListNode(<span class="keyword">int</span> val) : value(val), next(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    ListNode(<span class="keyword">int</span> val, ListNode node) : value(val), next(node) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建链表</span></span><br><span class="line"><span class="function">ListNode <span class="title">CreateList</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums)</span></span>;</span><br><span class="line"><span class="comment">//打印链表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintList</span><span class="params">(ListNode head)</span></span>;</span><br><span class="line"><span class="comment">//插入结点</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertNode</span><span class="params">(ListNode head, ListNode node, <span class="keyword">int</span> index)</span></span>;</span><br><span class="line"><span class="comment">//插入数据元素</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertNode</span><span class="params">(ListNode head, <span class="keyword">int</span> val, <span class="keyword">int</span> index)</span></span>;</span><br><span class="line"><span class="comment">//删除数据元素</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">DeleteNode</span><span class="params">(ListNode head, <span class="keyword">int</span> val)</span></span>;</span><br><span class="line"><span class="comment">//查找数据元素</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">FindNode</span><span class="params">(ListNode head, <span class="keyword">int</span> val)</span></span>;</span><br><span class="line"><span class="comment">//返回链表长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ListLength</span><span class="params">(ListNode head)</span></span>;</span><br><span class="line"><span class="comment">//清除链表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(ListNode head)</span></span>;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="反转链表"><a href="#反转链表" class="headerlink" title="反转链表"></a><a href="https://leetcode-cn.com/problems/reverse-linked-list/">反转链表</a></h2><blockquote>
+<p>给你单链表的头节点 <code>head</code> ，请你反转链表，并返回反转后的链表。</p>
+</blockquote>
+<p>如果再定义一个新的链表，实现链表元素的反转，其实这是对内存空间的浪费。</p>
+<p>其实只需要改变链表的next指针的指向，直接将链表反转 ，而不用重新定义一个新的链表，如图所示:</p>
+<div align="center"><img src="/2025/06/02/LeetcodeGuide/List2.png" width="600px"></div>
+
+<ul>
+<li><p>双指针方法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode currentNode = head;</span><br><span class="line">        ListNode preNode = null;</span><br><span class="line">        <span class="keyword">while</span> (currentNode != null) &#123;</span><br><span class="line">            ListNode tempNode = currentNode.next;</span><br><span class="line">            currentNode.next = preNode;</span><br><span class="line">            preNode = currentNode;</span><br><span class="line">            currentNode = tempNode;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preNode;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>递归方法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == null || head.next == null) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode newHead = reverseList(head.next);</span><br><span class="line">        head.next.next = head;</span><br><span class="line">        head.next = null;</span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="反转链表-II"><a href="#反转链表-II" class="headerlink" title="反转链表 II"></a><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/">反转链表 II</a></h2><blockquote>
+<p>给你单链表的头指针 head 和两个整数 left 和 right ，其中 left &lt;= right 。请你反转从位置 left 到位置 right 的链表节点，返回 反转后的链表 。</p>
+</blockquote>
+<ul>
+<li>定义leftnode指针和rightnode指针分别指向需要反转链表的两端结点</li>
+<li>定义pre,cur,temp指针，将left与right的链表进行反转</li>
+<li>最后反转完的链表重新指回leftnode与rightnode</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseBetween</span><span class="params">(ListNode* head, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head-&gt;next == <span class="literal">nullptr</span>) <span class="keyword">return</span> head;</span><br><span class="line">    ListNode* dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyNode-&gt;next = head;</span><br><span class="line">		<span class="comment">//定义左右结点</span></span><br><span class="line">    ListNode* leftNode = dummyNode;</span><br><span class="line">    ListNode* rightNode = head;</span><br><span class="line">		<span class="comment">//指向反转链表的；两端</span></span><br><span class="line">    <span class="keyword">while</span>(--left) </span><br><span class="line">        leftNode = leftNode-&gt;next;</span><br><span class="line">    <span class="keyword">while</span>(right--)</span><br><span class="line">        rightNode = rightNode-&gt;next;</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">//定义结点进行反转</span></span><br><span class="line">  	<span class="comment">//最开始的pre指向rightNode</span></span><br><span class="line">    ListNode* pre = rightNode ;</span><br><span class="line">    ListNode* Cur = leftNode-&gt;next;</span><br><span class="line">    ListNode* temp ;</span><br><span class="line">    <span class="keyword">while</span>(Cur != rightNode) &#123;</span><br><span class="line">      temp = Cur-&gt;next;</span><br><span class="line">      Cur-&gt;next = pre;</span><br><span class="line">      pre = Cur;</span><br><span class="line">      Cur = temp;</span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//反转完指回</span></span><br><span class="line">    leftNode-&gt;next = pre;</span><br><span class="line">    <span class="keyword">return</span> dummyNode-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="环形链表"><a href="#环形链表" class="headerlink" title="环形链表"></a><a href="https://leetcode-cn.com/problems/linked-list-cycle/">环形链表</a></h2><blockquote>
+<p>给定一个链表，判断链表中是否有环。</p>
+<p>如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。</p>
+<p>如果链表中存在环，则返回 true 。 否则，返回 false 。</p>
+</blockquote>
+<p>定义两个指针，一快一满。慢指针每次只移动一步，而快指针每次移动两步。初始时，慢指针在位置 head，而快指针在位置 head.next。这样一来，如果在移动的过程中，快指针反过来追上慢指针，就说明该链表为环形链表。否则快指针将到达链表尾部，该链表不为环形链表。</p>
+<ul>
+<li><p>快慢指针</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123;</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> boolean <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head;</span><br><span class="line">        <span class="keyword">while</span> (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            <span class="keyword">if</span> (slow == fast) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="环形链表-II"><a href="#环形链表-II" class="headerlink" title="环形链表 II"></a><a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">环形链表 II</a></h2><blockquote>
+<p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。</p>
+<p>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。注意，pos 仅仅是用于标识环的情况，并不会作为参数传递到函数中。</p>
+</blockquote>
+<p>使用两个指针，fast 和 slow，它们起始都位于链表的头部。随后，slow 指针每次向后移动一个位置，而 fast 指针向后移动两个位置。如果链表中存在环，则 fast 指针最终将再次与 slow 指针在环中相遇。</p>
+<p>当发现 slow 与 fast 相遇时，我们再额外使用一个指针 ptr。起始，它指向链表头部；随后，它和 slow 每次向后移动一个位置。最终，它们会在入环点相遇。</p>
+<ul>
+<li>快慢指针</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123;</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            <span class="keyword">if</span> (slow == fast) &#123;</span><br><span class="line">                ListNode indexNode = head;</span><br><span class="line">                <span class="keyword">while</span> (indexNode != slow) &#123;</span><br><span class="line">                    slow = slow.next;</span><br><span class="line">                    indexNode = indexNode.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> indexNode;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="回文链表"><a href="#回文链表" class="headerlink" title="回文链表"></a><a href="https://leetcode-cn.com/problems/palindrome-linked-list/">回文链表</a></h2><blockquote>
+<p>请判断一个链表是否为回文链表。</p>
+</blockquote>
+<ul>
+<li>首先找到中心结点，将链表等分为二</li>
+<li>右半链表进行反转操作</li>
+<li>左链表与反转后的右链表进行比较</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> boolean <span class="title">isPalindrome</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head.next;</span><br><span class="line">        <span class="keyword">while</span> (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        slow = reverseList(slow.next);</span><br><span class="line">        ListNode pre = slow;</span><br><span class="line">        boolean result = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span> (slow != null) &#123;</span><br><span class="line">            <span class="keyword">if</span> (slow.val != head.val) &#123;</span><br><span class="line">                result = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            head = head.next;</span><br><span class="line">        &#125;</span><br><span class="line">        reverseList(pre);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode pre = null;</span><br><span class="line">        ListNode current = head;</span><br><span class="line">        <span class="keyword">while</span> (current != null) &#123;</span><br><span class="line">            ListNode temp = current.next;</span><br><span class="line">            current.next = pre;</span><br><span class="line">            pre = current;</span><br><span class="line">            current = temp;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> pre;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="奇偶链表"><a href="#奇偶链表" class="headerlink" title="奇偶链表"></a><a href="https://leetcode-cn.com/problems/odd-even-linked-list/">奇偶链表</a></h2><blockquote>
+<p>给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。</p>
+</blockquote>
+<ul>
+<li>定义Even，Odd指针指向第一个奇偶结点，定义EvenNext结点指向第一个Odd，方便之后奇数链表指向</li>
+<li>进行遍历<ul>
+<li>Even指向Odd的next指针，然后Even进行更新</li>
+<li>Odd指向Even的next指针，然后Odd进行更新</li>
+<li>知道有一方的next为空</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">oddEvenList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!head) <span class="keyword">return</span> head;</span><br><span class="line">    ListNode* even = head;</span><br><span class="line">    ListNode* odd = head-&gt;next;</span><br><span class="line">    ListNode* evenNext = odd;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(even-&gt;next != <span class="literal">nullptr</span> &amp;&amp; odd-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        even-&gt;next = odd-&gt;next;</span><br><span class="line">        even = even-&gt;next;</span><br><span class="line">        odd-&gt;next = even-&gt;next;</span><br><span class="line">        odd = odd-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    even-&gt;next = evenNext;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="链表相交"><a href="#链表相交" class="headerlink" title="链表相交"></a><a href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/">链表相交</a></h2><blockquote>
+<p>给定两个（单向）链表，判定它们是否相交并返回交点。请注意相交的定义基于节点的引用，而不是基于节点的值。换句话说，如果一个链表的第k个节点与另一个链表的第j个节点是同一节点（引用完全相同），则这两个链表相交。</p>
+</blockquote>
+<ul>
+<li>设长链表A长度为LA，短链表长度LB；</li>
+<li>由于速度相同，则在长链表A走完LA长度时，短链表B已经反过头在A上走了LA-LB的长度，剩余要走的长度为LA-(LA-LB) = LB；</li>
+<li>之后长链表A要反过头在B上走，剩余要走的长度也是LB；</li>
+<li>也就是说目前两个链表“对齐”了。因此，接下来遇到的第一个相同节点便是两个链表的交点。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123;</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (headA == null || headB == null) &#123;</span><br><span class="line">            <span class="keyword">return</span> null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode pA = headA, pB = headB;</span><br><span class="line">        <span class="keyword">while</span> (pA != pB) &#123;</span><br><span class="line">            pA = (pA == null ? headB : pA.next);</span><br><span class="line">            pB = (pB == null ? headA : pB.next);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> pA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除链表的倒数第-N-个结点"><a href="#删除链表的倒数第-N-个结点" class="headerlink" title="删除链表的倒数第 N 个结点"></a><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/">删除链表的倒数第 N 个结点</a></h2><blockquote>
+<p>给你一个链表，删除链表的倒数第 <code>n</code> 个结点，并且返回链表的头结点。</p>
+</blockquote>
+<p>由于我们需要找到倒数第 n 个节点，因此我们可以使用两个指针 first 和 second 同时对链表进行遍历，并且 first 比 second 超前 n 个节点。当 first 遍历到链表的末尾时，second 就恰好处于倒数第 n 个节点。</p>
+<ul>
+<li><p>快慢指针</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode* dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyHead-&gt;next = head;</span><br><span class="line">    ListNode* slow = dummyHead;</span><br><span class="line">    ListNode* fast = dummyHead;</span><br><span class="line">    <span class="keyword">while</span>(n-- &amp;&amp; fast != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        fast = fast-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    fast = fast-&gt;next; <span class="comment">// fast再提前走一步，因为需要让slow指向删除节点的上一个节点</span></span><br><span class="line">    <span class="keyword">while</span> (fast != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        fast = fast-&gt;next;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    slow-&gt;next = slow-&gt;next-&gt;next;</span><br><span class="line">    <span class="keyword">return</span> dummyHead-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="重排链表"><a href="#重排链表" class="headerlink" title="重排链表"></a><a href="https://leetcode-cn.com/problems/reorder-list/">重排链表</a></h2><blockquote>
+<p>给定一个单链表 <em>L</em>：<em>L</em>0→<em>L</em>1→…→<em>L**n</em>-1→<em>L</em>n ，<br>将其重新排列后变为： <em>L</em>0→<em>L**n</em>→<em>L</em>1→<em>L**n</em>-1→<em>L</em>2→<em>L**n</em>-2→…</p>
+</blockquote>
+<p>注意到目标链表即为将原链表的左半端和反转后的右半端合并后的结果。</p>
+<p>这样我们的任务即可划分为三步：</p>
+<ul>
+<li><p>找到原链表的中点（参考「876. 链表的中间结点」）。</p>
+<ul>
+<li>我们可以使用快慢指针来 O(N)地找到链表的中间节点。</li>
+</ul>
+</li>
+<li><p>将原链表的右半端反转（参考「206. 反转链表」）。</p>
+<ul>
+<li>我们可以使用迭代法实现链表的反转。将原链表的两端合并。</li>
+</ul>
+</li>
+<li><p>因为两链表长度相差不超过 1，因此直接合并即可。</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//找到中心节点</span></span><br><span class="line">    <span class="comment">//分成两个链表</span></span><br><span class="line">    <span class="comment">//链表合成重排</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reorderList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!head) <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">       ListNode* firstNode = head;</span><br><span class="line">       ListNode* secondNode = head;</span><br><span class="line">       <span class="keyword">while</span>(secondNode != <span class="literal">nullptr</span> &amp;&amp; secondNode-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">           firstNode = firstNode-&gt;next;</span><br><span class="line">           secondNode = secondNode-&gt;next-&gt;next;</span><br><span class="line">       &#125;</span><br><span class="line">      <span class="comment">// cout &lt;&lt; firstNode-&gt;val &lt;&lt; endl;</span></span><br><span class="line">    </span><br><span class="line">        ListNode* firstEnd = firstNode;</span><br><span class="line">        ListNode* pre = firstNode;</span><br><span class="line">        ListNode* cur = firstNode-&gt;next;</span><br><span class="line">        firstNode = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">while</span>(cur) &#123;</span><br><span class="line">            ListNode* temp = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = pre;</span><br><span class="line">            pre = cur;</span><br><span class="line">            cur = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        firstEnd-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">        Merge(head, pre);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//head:1-&gt;2-&gt;3</span></span><br><span class="line">  	<span class="comment">//pre: 4-&gt;3</span></span><br><span class="line">  	<span class="comment">//所以head中的3不能使用，等到p-&gt;next = null就截止，最后补上nullptr就行</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(ListNode* head, ListNode*pre)</span> </span>&#123;</span><br><span class="line">        ListNode* p = head;</span><br><span class="line">        <span class="keyword">while</span>(p-&gt;next != <span class="literal">nullptr</span> &amp;&amp; pre != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            ListNode* temp = p-&gt;next;</span><br><span class="line">            p-&gt;next = pre;</span><br><span class="line">            pre = pre-&gt;next;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            p-&gt;next = temp;</span><br><span class="line">            p = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        p-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="分割链表"><a href="#分割链表" class="headerlink" title="分割链表"></a><a href="https://leetcode-cn.com/problems/partition-list-lcci/">分割链表</a></h2><blockquote>
+<p>编写程序以 x 为基准分割链表，使得所有小于 x 的节点排在大于或等于 x 的节点之前。如果链表中包含 x，x 只需出现在小于 x 的元素之后(如下所示)。分割元素 x 只需处于“右半部分”即可，其不需要被置于左右两部分之间。</p>
+</blockquote>
+<p>:diamond_shape_with_a_dot_inside: <strong>利用双指针来解决</strong></p>
+<p>:large_blue_diamond: left指针指向小于 x 的最后一个元素</p>
+<p>:large_blue_diamond: right指针不断遍历链表，找到小于 x 的元素，插入至 left 区域</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">partition</span><span class="params">(ListNode* head, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!head) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    ListNode* dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyNode-&gt;next = head;</span><br><span class="line">    ListNode* left = dummyNode;</span><br><span class="line">    ListNode* right = left-&gt;next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(left-&gt;next != <span class="literal">nullptr</span> &amp;&amp; left-&gt;next-&gt;val &lt; x) &#123;</span><br><span class="line">        <span class="comment">//左指针指向最后一个小于x的元素</span></span><br><span class="line">        left = left-&gt;next;   </span><br><span class="line">    &#125;     </span><br><span class="line">    <span class="comment">//右指针指向左指针右边</span></span><br><span class="line">    right = left-&gt;next;</span><br><span class="line">    <span class="keyword">while</span>(right != <span class="literal">nullptr</span> &amp;&amp; right-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(right-&gt;next-&gt;val &gt;= x)</span><br><span class="line">            right = right-&gt;next;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            ListNode* temp = right-&gt;next;</span><br><span class="line">            right-&gt;next = temp-&gt;next;</span><br><span class="line"></span><br><span class="line">            temp-&gt;next = left-&gt;next;</span><br><span class="line">            left-&gt;next = temp;</span><br><span class="line">            left = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummyNode-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="两数相加"><a href="#两数相加" class="headerlink" title="两数相加"></a><a href="https://leetcode-cn.com/problems/add-two-numbers/">两数相加</a></h2><p>:diamond_shape_with_a_dot_inside: 将长度较短的链表在末尾补零使得两个连表长度相等，再一个一个元素对其相加（考虑进位）</p>
+<ol>
+<li>获取两个链表所对应的长度</li>
+<li>在较短的链表末尾补零</li>
+<li>对齐相加考虑进位</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">    ListNode *list1 = l1;</span><br><span class="line">    ListNode *list2 = l2;</span><br><span class="line">    ListNode *dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyNode-&gt;next = list2;</span><br><span class="line">  	<span class="comment">//设定前指针是为了方便增加结点的</span></span><br><span class="line">    ListNode* pre = dummyNode;</span><br><span class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(list1 || list2 || carry) &#123;</span><br><span class="line">        <span class="keyword">int</span> n1 = list1 != <span class="literal">nullptr</span> ? list1-&gt;val : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n2 = list2 != <span class="literal">nullptr</span> ? list2-&gt;val : <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; n1 &lt;&lt; n2 &lt;&lt; endl;</span></span><br><span class="line">        <span class="keyword">if</span>(list2 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            ListNode* node = <span class="keyword">new</span> ListNode((n1 + n2 + carry) % <span class="number">10</span>);</span><br><span class="line">            pre-&gt;next = node;</span><br><span class="line">            node-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">            pre = node;</span><br><span class="line">        &#125; <span class="keyword">else</span> </span><br><span class="line">            list2-&gt;val = (n1 + n2 + carry) % <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>((n1 + n2 + carry) &gt; <span class="number">9</span>)</span><br><span class="line">            carry = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            carry = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(list1)</span><br><span class="line">            list1 = list1-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(list2) &#123;</span><br><span class="line">            list2 = list2-&gt;next;</span><br><span class="line">            pre = pre-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/">合并两个有序链表</a></h2><p>:diamond_shape_with_a_dot_inside: 将链表2插入到链表1上</p>
+<ul>
+<li>定义list1,list2指针指向l1与l2的头结点，pre指向list1的上一个结点(为了好插入)</li>
+<li><p>在遍历结点都不为空的情况下进行比较</p>
+<ul>
+<li>如果list1 &lt;= list2，list1继续迭代</li>
+<li>如果list1 &gt; list2，则将list2结点插入到list1前面</li>
+</ul>
+</li>
+<li><p>遍历结束后，有一个不为空</p>
+<ul>
+<li>list1不为空则不用管</li>
+<li>list2不为空，将list2后面的结点直接移到list1后面</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode list1, ListNode list2)</span> </span>&#123;</span><br><span class="line">        ListNode dum = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line">        ListNode currentNode = dum;</span><br><span class="line">        <span class="keyword">while</span> (list1 != null &amp;&amp; list2 != null) &#123;</span><br><span class="line">            <span class="keyword">if</span> (list1.val &lt; list2.val) &#123;</span><br><span class="line">                currentNode.next = list1;</span><br><span class="line">                list1 = list1.next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                currentNode.next = list2;</span><br><span class="line">                list2 = list2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            currentNode = currentNode.next;</span><br><span class="line">        &#125;</span><br><span class="line">        currentNode.next = (list1 != null ? list1 : list2);</span><br><span class="line">        <span class="keyword">return</span> dum.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="large-orange-diamond-两两交换链表中的节点"><a href="#large-orange-diamond-两两交换链表中的节点" class="headerlink" title=":large_orange_diamond: 两两交换链表中的节点"></a>:large_orange_diamond: <a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/">两两交换链表中的节点</a></h2><blockquote>
+<p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
+<p><strong>你不能只是单纯的改变节点内部的值</strong>，而是需要实际的进行节点交换。</p>
+</blockquote>
+<div align="center"><img src="/2025/06/02/LeetcodeGuide/List3.png" width="800px"></div>
+
+<ul>
+<li>创建哑结点 dummyHead，令 dummyHead.next = head。令 temp 表示当前到达的节点，初始时 temp = dummyHead。每次需要交换 temp 后面的两个节点。</li>
+<li>如果 temp 的后面没有节点或者只有一个节点，则没有更多的节点需要交换，因此结束交换。否则，获得 temp 后面的两个节点 node1 和 node2，通过更新节点的指针关系实现两两交换节点。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">swapPairs</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!head) <span class="keyword">return</span> head;</span><br><span class="line">    ListNode* dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyNode-&gt;next = head;</span><br><span class="line">    ListNode* Pre = dummyNode;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(Pre-&gt;next != <span class="literal">nullptr</span> &amp;&amp; Pre-&gt;next-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        ListNode* node1 = Pre-&gt;next;</span><br><span class="line">        ListNode* node2 = Pre-&gt;next-&gt;next;</span><br><span class="line">				<span class="comment">//进行交换 </span></span><br><span class="line">        Pre-&gt;next = node2;</span><br><span class="line">        node1-&gt;next = node2-&gt;next;</span><br><span class="line">        node2-&gt;next = node1;</span><br><span class="line">        Pre = node1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummyNode-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="large-orange-diamond-删除排序链表中的重复元素-II"><a href="#large-orange-diamond-删除排序链表中的重复元素-II" class="headerlink" title=":large_orange_diamond: 删除排序链表中的重复元素 II"></a>:large_orange_diamond: <a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/">删除排序链表中的重复元素 II</a></h2><blockquote>
+<p>存在一个按升序排列的链表，给你这个链表的头节点 <code>head</code> ，请你删除链表中所有存在数字重复情况的节点，只保留原始链表中 <strong>没有重复出现</strong> 的数字。</p>
+</blockquote>
+<ul>
+<li><strong>一边遍历、一边统计相邻节点的值是否相等，如果值相等就继续后移找到值不等的位置，然后删除值相等的这个区间</strong>。</li>
+<li>设置 Pre 与 Cur指针，比较Pre-&gt;next 与 Cur-&gt;next 的值，如果相等，则删除Cur-&gt;next的值，这样会出现第一个相等的值删不掉</li>
+<li>解决上述问题，可以设置flag标志，只要有相等就让flag=1，这样最后剩下的元素也能被删除，之后再重新设置为0</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">deleteDuplicates</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!head) <span class="keyword">return</span> head;</span><br><span class="line">    ListNode* dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyNode-&gt;next = head;</span><br><span class="line">    ListNode* Cur = head;</span><br><span class="line">    ListNode* Pre = dummyNode;</span><br><span class="line">    <span class="comment">//设置标志</span></span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(Cur != <span class="literal">nullptr</span> &amp;&amp; Cur-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(Cur-&gt;next != <span class="literal">nullptr</span> &amp;&amp; Pre-&gt;next-&gt;val == Cur-&gt;next-&gt;val ) &#123;</span><br><span class="line">            ListNode* temp = Cur-&gt;next;</span><br><span class="line">            Cur-&gt;next = temp-&gt;next;</span><br><span class="line">            <span class="keyword">delete</span> temp;</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">        &#125; </span><br><span class="line">            </span><br><span class="line">        <span class="comment">//删除最后一个相等的值</span></span><br><span class="line">        <span class="keyword">if</span>(flag) &#123;</span><br><span class="line">            ListNode* temp = Cur;</span><br><span class="line">            Cur = Cur-&gt;next;</span><br><span class="line">            Pre-&gt;next = Cur;</span><br><span class="line">            <span class="keyword">delete</span> temp;</span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Cur = Cur-&gt;next;</span><br><span class="line">            Pre = Pre-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummyNode-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="diamond-shape-with-a-dot-inside-复制带随机指针的链表"><a href="#diamond-shape-with-a-dot-inside-复制带随机指针的链表" class="headerlink" title=":diamond_shape_with_a_dot_inside: 复制带随机指针的链表"></a>:diamond_shape_with_a_dot_inside: <a href="https://leetcode-cn.com/problems/copy-list-with-random-pointer/">复制带随机指针的链表</a></h2><blockquote>
+<p>请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，还有一个 random 指针指向链表中的任意节点或者 null。</p>
+</blockquote>
+<div align="center"><img src="/2025/06/02/LeetcodeGuide/List4.png" width="800px"></div>
+
+<p>:large_orange_diamond: 利用哈希表的查询特点，考虑构建 原链表节点 和 新链表对应节点 的键值对映射关系，再遍历构建新链表各节点的 next 和 random 引用指向即可。</p>
+<p>算法流程：</p>
+<ol>
+<li>若头节点 head 为空节点，直接返回 null ；</li>
+<li>初始化： 哈希表 dic ， 节点 cur 指向头节点；</li>
+<li>复制链表：<ul>
+<li>建立新节点，并向 dic 添加键值对 (原 cur 节点, 新 cur 节点） ；</li>
+<li>cur 遍历至原链表下一节点；</li>
+</ul>
+</li>
+<li><p>构建新链表的引用指向：</p>
+<ul>
+<li>构建新节点的 next 和 random 引用指向；</li>
+<li>cur 遍历至原链表下一节点；</li>
+</ul>
+</li>
+<li><p>返回值： 新链表的头节点 dic[cur] ；</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">Node* <span class="title">copyRandomList</span><span class="params">(Node* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    Node* cur = head;</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;Node*, Node*&gt; <span class="built_in">map</span>;</span><br><span class="line">    <span class="comment">// 3. 复制各节点，并建立 “原节点 -&gt; 新节点” 的 Map 映射</span></span><br><span class="line">    <span class="keyword">while</span>(cur != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">map</span>[cur] = <span class="keyword">new</span> Node(cur-&gt;val);</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    cur = head;</span><br><span class="line">    <span class="comment">// 4. 构建新链表的 next 和 random 指向</span></span><br><span class="line">    <span class="keyword">while</span>(cur != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">map</span>[cur]-&gt;next = <span class="built_in">map</span>[cur-&gt;next];</span><br><span class="line">        <span class="built_in">map</span>[cur]-&gt;random = <span class="built_in">map</span>[cur-&gt;random];</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 5. 返回新链表的头节点</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">map</span>[head];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="diamond-shape-with-a-dot-inside-LRU-缓存机制"><a href="#diamond-shape-with-a-dot-inside-LRU-缓存机制" class="headerlink" title=":diamond_shape_with_a_dot_inside: LRU 缓存机制"></a>:diamond_shape_with_a_dot_inside: <a href="https://leetcode-cn.com/problems/lru-cache/">LRU 缓存机制</a></h2><p>[题解](</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -363,126 +563,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Netty线程模型</title>
-    <url>/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>Netty 的线程模型是基于 Reactor 模型改进而来的，因此需要先熟悉 Reactor 模型，帮助对于 Netty 线程模型的理解。</p>
-</blockquote>
-<h1 id="一-Reactor-模型"><a href="#一-Reactor-模型" class="headerlink" title="一. Reactor 模型"></a><strong>一. Reactor 模型</strong></h1><h2 id="1-为什么需要-Reactor-模型"><a href="#1-为什么需要-Reactor-模型" class="headerlink" title="1.为什么需要 Reactor 模型"></a><strong>1.为什么需要 Reactor 模型</strong></h2><p> 传统阻塞 IO 模型具有设计上的不足之处：</p>
-<ul>
-<li>每个连接都需要独立线程处理，当并发数大时，创建线程数多，占用资源</li>
-<li>采用阻塞IO模型，连接建立后，若当前线程没有数据可读，线程会阻塞在读操作上，造成资源浪费</li>
-</ul>
-<p>针对传统阻塞IO模型的两个问题，可以采用如下的方案：</p>
-<ul>
-<li>基于池化思想，避免为每个连接创建线程，连接完成后将业务处理交给线程池处理</li>
-<li>基于IO复用模型，多个连接共用同一个阻塞对象，不用等待所有的连接。遍历到有新数据可以处理时，操作系统会通知程序，线程跳出阻塞状态，进行业务逻辑处理</li>
-</ul>
-<h2 id="2-什么是-Reactor-模型"><a href="#2-什么是-Reactor-模型" class="headerlink" title="2.什么是 Reactor 模型"></a><strong>2.什么是 Reactor 模型</strong></h2><p>The reactor design_pattern is an event_handling pattern for handling service requests delivered concurrently to a service handler by one or more inputs. The service handler then demultiplexes the incoming requests and dispatches them synchronously to the associated request handlers.</p>
-<p>Reactor 设计模型是一种事件处理模式，用于处理通过一个或多个输入同时传递给服务处理程序的服务请求。然后，服务处理程序对传入的请求进行多路分解，并将它们同步分派给关联的请求处理程序。Reactor 模式也被称作 Dispatcher 模式。它的核心是 <strong>多路复用器</strong> ，多路复用器收到事件后会进行分发，这点是网络服务器高并发的关键。Reacotr 模型主要分为三个角色：</p>
-<ol>
-<li><strong>Reactor</strong> ：把 IO 事件分配给对应的 handler 处理</li>
-<li><strong>Acceptor</strong> ：处理客户端连接事件</li>
-<li><strong>Handler</strong> ：处理非阻塞的任务</li>
-</ol>
-<p>通过这三个角色的配合，实现了高并发的操作。而Reactor 模型分为三种：</p>
-<ol>
-<li><strong>单 Reactor 单线程</strong></li>
-<li><strong>单 Reactor 多线程</strong></li>
-<li><strong>多 Reactor 多线程</strong></li>
-</ol>
-<p>这三种模型按顺序来看理解起来复杂度不断提升，也会更接近 Netty 的线程模型，下面来分别看看这三种模型。</p>
-<h3 id="1-单-Reactor-单线程"><a href="#1-单-Reactor-单线程" class="headerlink" title="(1). 单 Reactor 单线程"></a><strong>(1). 单 Reactor 单线程</strong></h3><p>这个最好理解，只有 <strong>一个线程</strong> ，只是会把 <strong>建立连接</strong> 和 <strong>处理请求</strong> 这两种任务分发给不同的类去处理，如下图所示：</p>
-<center class="half"> 
-    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/1.PNG" width="70%">
-    <div>图1:单Reactor单线程</div>
-</center>
-
-<p>整个流程简单来讲就是：</p>
-<ol>
-<li>Reactor 通过 Selector 监听事件</li>
-<li>收到事件使用 dispatch 对事件进行分发<ul>
-<li>如果是连接事件就由 Acceptor 进行处理，处理完成会创建一个 Handler 对后续业务进行处理。</li>
-<li>后面的数据请求都会由 Handler 进行处理</li>
-</ul>
-</li>
-</ol>
-<p><strong>优点</strong></p>
-<ul>
-<li>模型简单，不会有多线程的那些问题</li>
-</ul>
-<p><strong>缺点</strong></p>
-<ul>
-<li>性能问题：单线程无法发挥多核 CPU 的性能</li>
-<li>可靠性问题：处理业务时往往容易出问题，当 Handler 出问题了，由于只有一个线程，整个节点也挂了</li>
-</ul>
-<h3 id="2-单-Reactor-多线程"><a href="#2-单-Reactor-多线程" class="headerlink" title="(2). 单 Reactor 多线程"></a>(2). 单 Reactor 多线程</h3><p>这个线程模型针对前面的问题作出了一定的优化，多出了处理业务的线程池，如下图所示：</p>
-<center class="half"> 
-    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/2.PNG" width="90%">
-    <div>图2:单Reactor多线程</div>
-</center>
-
-<p>前面的流程与单 Reactor 单线程是一致的，到 Handler 这一步就不一样了：</p>
-<ul>
-<li>这个模型 <strong>Handler 只负责读取数据和发送数据部分，业务处理交给了 Worker 线程</strong>，而 Worker 线程是由 Worker 线程池统一管理的。</li>
-</ul>
-<p><strong>优点</strong></p>
-<ul>
-<li>可以充分利用多核 CPU 的处理能力</li>
-</ul>
-<p><strong>缺点</strong></p>
-<ul>
-<li>多线程资源共享和访问处理会比较复杂，在主线程处理所有的连接、监听和响应也会出现性能瓶颈</li>
-</ul>
-<h3 id="3-主从-Reactor-多线程"><a href="#3-主从-Reactor-多线程" class="headerlink" title="(3). 主从 Reactor 多线程"></a>(3). 主从 Reactor 多线程</h3><p>主从 Reactor 多线程模型又在前面的模型基础上做了进一步优化， <strong>增加了子 Reactor</strong> ，如下图所示：</p>
-<center class="half"> 
-    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/3.png" width="80%">
-    <div>图3:多Reactor多线程</div>
-</center>
-
-<p><strong>整个流程大概可以分为以下几步</strong>：</p>
-<ul>
-<li>主线程的 <code>MainReactor</code> 负责监听连接请求，收到连接请求会由 <code>Acceptor</code> 进行处理，成功建立连接之后 <code>MainReactor</code> 会把连接分派给 <code>SubReactor</code> ，由 <code>SubReactor</code> 监听和处理数据请求；</li>
-<li><code>SubReactor</code> 监听到数据请求，会派发给 Handler 处理，Handler 只会处理读取数据和发送数据部分，中间业务处理部分也是放在线程池中完成。</li>
-</ul>
-<p><strong>优点</strong></p>
-<ul>
-<li><code>MainReactor</code> 与 <code>SubReactor</code> 职责分明，一个处理连接事件，一个处理数据请求；</li>
-<li><code>MainReactor</code> 与 <code>SubReactor</code> 交互逻辑比较简单，<code>MainReactor</code> 单向地将建立好的连接传递出去；</li>
-<li>多 Reactor 设计能在高并发场景拥有更好的性能。</li>
-</ul>
-<p><strong>缺点</strong></p>
-<ul>
-<li>编程复杂度较高</li>
-</ul>
-<p>主从 Reactor 多线程模式是业界非常成熟的服务器程序设计模式，在很多中间件中都使用到了这种模式，像 Nginx、Memcached、Netty 等。这种模式也被称为 1 + M + N 模式，分别代指相对少的连接线程（不一定为 1 ），多个 I/O 线程和多个业务处理线程。</p>
-<h1 id="二-Netty-线程模型"><a href="#二-Netty-线程模型" class="headerlink" title="二. Netty 线程模型"></a>二. Netty 线程模型</h1><p>Netty 线程模型是基于主从 Reactor 多线程模型优化而来的，整体架构如下图所示：</p>
-<center class="half"> 
-    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/4.png" width="100%">
-    <div>图4:Netty线程</div>
-</center>
-
-<p>Netty 的线程模型主要分为两部分，分别是 <code>BossGroup</code> 和 <code>WorkerGroup</code>，它们都分别管理一个或多个 <code>NioEventLoop</code>。每个 <code>NioEventLoop</code> 对应着一个线程，一个 <code>Selector</code>，一个 <code>Executor</code> 和一个 <code>TaskQueue</code>。<code>NioEventLoop</code> 可以理解成一个事件循环：</p>
-<ul>
-<li>当程序启动后每个 <code>NioEventLoop</code> 都会通过 <code>Executor</code> 启动一个线程，开始执行事件循环。</li>
-<li>在循环中 <code>Selector</code> 会通过 select 方法阻塞并监听就绪事件，当有事件到来时通过 <code>processSeelectedKeys</code> 方法处理 Selector 事件。</li>
-<li>之后再通过 <code>runAllTasks</code> 方法处理其他的任务。</li>
-</ul>
-<p>与前面介绍的 主从 Reactor 多线程模型类似：</p>
-<ul>
-<li><code>BossGoup</code> 负责连接事件，当建立连接之后会生成一个 <code>NioSocketChannel</code> 并注册到 <code>WorkGroup</code> 其中一个 <code>NioEventLoop</code> 的 Selector 上。</li>
-<li><code>WokerGroup</code> 中的 <code>NioEventLoop</code> 负责处理数据请求，当请求到来时会调用 <code>processSelectedKeys</code> 方法，其中的业务处理会依次经过 Pipeline 中的多个 Handler。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Netty</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>gdb学习</title>
     <url>/2024/11/09/gdb%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-GDB-的基本介绍"><a href="#1-GDB-的基本介绍" class="headerlink" title="1.GDB 的基本介绍"></a>1.GDB 的基本介绍</h1><p>GDB, 是 <code>The GNU Project Debugger</code> 的缩写, 是 Linux 下功能全面的调试工具。GDB 支持断点、单步执行、打印变量、观察变量、查看寄存器、查看堆栈等调试手段。在 Linux 环境软件开发中，GDB 是主要的调试工具，用来调试 C 和 C++ 程序。</p>
@@ -776,203 +856,123 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode Guide</title>
-    <url>/2025/06/02/LeetcodeGuide/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-链表问题"><a href="#一-链表问题" class="headerlink" title="一.链表问题"></a>一.链表问题</h2><h2 id="1-单链表结构"><a href="#1-单链表结构" class="headerlink" title="1.单链表结构"></a>1.单链表结构</h2><div align="center"><img src="/2025/06/02/LeetcodeGuide/List1.png" width="600px"></div>
-
-<h2 id="2-单链表创建与实现"><a href="#2-单链表创建与实现" class="headerlink" title="2.单链表创建与实现"></a>2.单链表创建与实现</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode() : value(<span class="number">0</span>), next(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    ListNode(<span class="keyword">int</span> val) : value(val), next(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    ListNode(<span class="keyword">int</span> val, ListNode node) : value(val), next(node) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建链表</span></span><br><span class="line"><span class="function">ListNode <span class="title">CreateList</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums)</span></span>;</span><br><span class="line"><span class="comment">//打印链表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintList</span><span class="params">(ListNode head)</span></span>;</span><br><span class="line"><span class="comment">//插入结点</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertNode</span><span class="params">(ListNode head, ListNode node, <span class="keyword">int</span> index)</span></span>;</span><br><span class="line"><span class="comment">//插入数据元素</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertNode</span><span class="params">(ListNode head, <span class="keyword">int</span> val, <span class="keyword">int</span> index)</span></span>;</span><br><span class="line"><span class="comment">//删除数据元素</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">DeleteNode</span><span class="params">(ListNode head, <span class="keyword">int</span> val)</span></span>;</span><br><span class="line"><span class="comment">//查找数据元素</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">FindNode</span><span class="params">(ListNode head, <span class="keyword">int</span> val)</span></span>;</span><br><span class="line"><span class="comment">//返回链表长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ListLength</span><span class="params">(ListNode head)</span></span>;</span><br><span class="line"><span class="comment">//清除链表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(ListNode head)</span></span>;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="3-LeetCode-题"><a href="#3-LeetCode-题" class="headerlink" title="3. LeetCode 题"></a>3. LeetCode 题</h2><h3 id="反转链表"><a href="#反转链表" class="headerlink" title="反转链表"></a><a href="https://leetcode-cn.com/problems/reverse-linked-list/">反转链表</a></h3><blockquote>
-<p>给你单链表的头节点 <code>head</code> ，请你反转链表，并返回反转后的链表。</p>
+    <title>Netty线程模型</title>
+    <url>/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>Netty 的线程模型是基于 Reactor 模型改进而来的，因此需要先熟悉 Reactor 模型，帮助对于 Netty 线程模型的理解。</p>
 </blockquote>
-<p>如果再定义一个新的链表，实现链表元素的反转，其实这是对内存空间的浪费。</p>
-<p>其实只需要改变链表的next指针的指向，直接将链表反转 ，而不用重新定义一个新的链表，如图所示:</p>
-<div align="center"><img src="/2025/06/02/LeetcodeGuide/List2.png" width="600px"></div>
-
+<h1 id="一-Reactor-模型"><a href="#一-Reactor-模型" class="headerlink" title="一. Reactor 模型"></a><strong>一. Reactor 模型</strong></h1><h2 id="1-为什么需要-Reactor-模型"><a href="#1-为什么需要-Reactor-模型" class="headerlink" title="1.为什么需要 Reactor 模型"></a><strong>1.为什么需要 Reactor 模型</strong></h2><p> 传统阻塞 IO 模型具有设计上的不足之处：</p>
 <ul>
-<li><p>双指针方法：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode currentNode = head;</span><br><span class="line">        ListNode preNode = null;</span><br><span class="line">        <span class="keyword">while</span> (currentNode != null) &#123;</span><br><span class="line">            ListNode tempNode = currentNode.next;</span><br><span class="line">            currentNode.next = preNode;</span><br><span class="line">            preNode = currentNode;</span><br><span class="line">            currentNode = tempNode;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> preNode;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>递归方法：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == null || head.next == null) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode newHead = reverseList(head.next);</span><br><span class="line">        head.next.next = head;</span><br><span class="line">        head.next = null;</span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>每个连接都需要独立线程处理，当并发数大时，创建线程数多，占用资源</li>
+<li>采用阻塞IO模型，连接建立后，若当前线程没有数据可读，线程会阻塞在读操作上，造成资源浪费</li>
 </ul>
-<h3 id="反转链表-II"><a href="#反转链表-II" class="headerlink" title="反转链表 II"></a><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/">反转链表 II</a></h3><blockquote>
-<p>给你单链表的头指针 head 和两个整数 left 和 right ，其中 left &lt;= right 。请你反转从位置 left 到位置 right 的链表节点，返回 反转后的链表 。</p>
-</blockquote>
+<p>针对传统阻塞IO模型的两个问题，可以采用如下的方案：</p>
 <ul>
-<li>定义leftnode指针和rightnode指针分别指向需要反转链表的两端结点</li>
-<li>定义pre,cur,temp指针，将left与right的链表进行反转</li>
-<li>最后反转完的链表重新指回leftnode与rightnode</li>
+<li>基于池化思想，避免为每个连接创建线程，连接完成后将业务处理交给线程池处理</li>
+<li>基于IO复用模型，多个连接共用同一个阻塞对象，不用等待所有的连接。遍历到有新数据可以处理时，操作系统会通知程序，线程跳出阻塞状态，进行业务逻辑处理</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseBetween</span><span class="params">(ListNode* head, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head-&gt;next == <span class="literal">nullptr</span>) <span class="keyword">return</span> head;</span><br><span class="line">    ListNode* dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyNode-&gt;next = head;</span><br><span class="line">		<span class="comment">//定义左右结点</span></span><br><span class="line">    ListNode* leftNode = dummyNode;</span><br><span class="line">    ListNode* rightNode = head;</span><br><span class="line">		<span class="comment">//指向反转链表的；两端</span></span><br><span class="line">    <span class="keyword">while</span>(--left) </span><br><span class="line">        leftNode = leftNode-&gt;next;</span><br><span class="line">    <span class="keyword">while</span>(right--)</span><br><span class="line">        rightNode = rightNode-&gt;next;</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">//定义结点进行反转</span></span><br><span class="line">  	<span class="comment">//最开始的pre指向rightNode</span></span><br><span class="line">    ListNode* pre = rightNode ;</span><br><span class="line">    ListNode* Cur = leftNode-&gt;next;</span><br><span class="line">    ListNode* temp ;</span><br><span class="line">    <span class="keyword">while</span>(Cur != rightNode) &#123;</span><br><span class="line">      temp = Cur-&gt;next;</span><br><span class="line">      Cur-&gt;next = pre;</span><br><span class="line">      pre = Cur;</span><br><span class="line">      Cur = temp;</span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//反转完指回</span></span><br><span class="line">    leftNode-&gt;next = pre;</span><br><span class="line">    <span class="keyword">return</span> dummyNode-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="环形链表"><a href="#环形链表" class="headerlink" title="环形链表"></a><a href="https://leetcode-cn.com/problems/linked-list-cycle/">环形链表</a></h3><blockquote>
-<p>给定一个链表，判断链表中是否有环。</p>
-<p>如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。</p>
-<p>如果链表中存在环，则返回 true 。 否则，返回 false 。</p>
-</blockquote>
-<p>定义两个指针，一快一满。慢指针每次只移动一步，而快指针每次移动两步。初始时，慢指针在位置 head，而快指针在位置 head.next。这样一来，如果在移动的过程中，快指针反过来追上慢指针，就说明该链表为环形链表。否则快指针将到达链表尾部，该链表不为环形链表。</p>
-<ul>
-<li><p>快慢指针</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123;</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> boolean <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head;</span><br><span class="line">        <span class="keyword">while</span> (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            <span class="keyword">if</span> (slow == fast) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="环形链表-II"><a href="#环形链表-II" class="headerlink" title="环形链表 II"></a><a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">环形链表 II</a></h3><blockquote>
-<p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。</p>
-<p>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。注意，pos 仅仅是用于标识环的情况，并不会作为参数传递到函数中。</p>
-</blockquote>
-<p>使用两个指针，fast 和 slow，它们起始都位于链表的头部。随后，slow 指针每次向后移动一个位置，而 fast 指针向后移动两个位置。如果链表中存在环，则 fast 指针最终将再次与 slow 指针在环中相遇。</p>
-<p>当发现 slow 与 fast 相遇时，我们再额外使用一个指针 ptr。起始，它指向链表头部；随后，它和 slow 每次向后移动一个位置。最终，它们会在入环点相遇。</p>
-<ul>
-<li>快慢指针</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123;</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            <span class="keyword">if</span> (slow == fast) &#123;</span><br><span class="line">                ListNode indexNode = head;</span><br><span class="line">                <span class="keyword">while</span> (indexNode != slow) &#123;</span><br><span class="line">                    slow = slow.next;</span><br><span class="line">                    indexNode = indexNode.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> indexNode;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="回文链表"><a href="#回文链表" class="headerlink" title="回文链表"></a><a href="https://leetcode-cn.com/problems/palindrome-linked-list/">回文链表</a></h3><blockquote>
-<p>请判断一个链表是否为回文链表。</p>
-</blockquote>
-<ul>
-<li>首先找到中心结点，将链表等分为二</li>
-<li>右半链表进行反转操作</li>
-<li>左链表与反转后的右链表进行比较</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> boolean <span class="title">isPalindrome</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head.next;</span><br><span class="line">        <span class="keyword">while</span> (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        slow = reverseList(slow.next);</span><br><span class="line">        ListNode pre = slow;</span><br><span class="line">        boolean result = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span> (slow != null) &#123;</span><br><span class="line">            <span class="keyword">if</span> (slow.val != head.val) &#123;</span><br><span class="line">                result = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            head = head.next;</span><br><span class="line">        &#125;</span><br><span class="line">        reverseList(pre);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode pre = null;</span><br><span class="line">        ListNode current = head;</span><br><span class="line">        <span class="keyword">while</span> (current != null) &#123;</span><br><span class="line">            ListNode temp = current.next;</span><br><span class="line">            current.next = pre;</span><br><span class="line">            pre = current;</span><br><span class="line">            current = temp;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> pre;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="奇偶链表"><a href="#奇偶链表" class="headerlink" title="奇偶链表"></a><a href="https://leetcode-cn.com/problems/odd-even-linked-list/">奇偶链表</a></h3><blockquote>
-<p>给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。</p>
-</blockquote>
-<ul>
-<li>定义Even，Odd指针指向第一个奇偶结点，定义EvenNext结点指向第一个Odd，方便之后奇数链表指向</li>
-<li>进行遍历<ul>
-<li>Even指向Odd的next指针，然后Even进行更新</li>
-<li>Odd指向Even的next指针，然后Odd进行更新</li>
-<li>知道有一方的next为空</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">oddEvenList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!head) <span class="keyword">return</span> head;</span><br><span class="line">    ListNode* even = head;</span><br><span class="line">    ListNode* odd = head-&gt;next;</span><br><span class="line">    ListNode* evenNext = odd;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(even-&gt;next != <span class="literal">nullptr</span> &amp;&amp; odd-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        even-&gt;next = odd-&gt;next;</span><br><span class="line">        even = even-&gt;next;</span><br><span class="line">        odd-&gt;next = even-&gt;next;</span><br><span class="line">        odd = odd-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    even-&gt;next = evenNext;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="链表相交"><a href="#链表相交" class="headerlink" title="链表相交"></a><a href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/">链表相交</a></h3><blockquote>
-<p>给定两个（单向）链表，判定它们是否相交并返回交点。请注意相交的定义基于节点的引用，而不是基于节点的值。换句话说，如果一个链表的第k个节点与另一个链表的第j个节点是同一节点（引用完全相同），则这两个链表相交。</p>
-</blockquote>
-<ul>
-<li>设长链表A长度为LA，短链表长度LB；</li>
-<li>由于速度相同，则在长链表A走完LA长度时，短链表B已经反过头在A上走了LA-LB的长度，剩余要走的长度为LA-(LA-LB) = LB；</li>
-<li>之后长链表A要反过头在B上走，剩余要走的长度也是LB；</li>
-<li>也就是说目前两个链表“对齐”了。因此，接下来遇到的第一个相同节点便是两个链表的交点。</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123;</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (headA == null || headB == null) &#123;</span><br><span class="line">            <span class="keyword">return</span> null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode pA = headA, pB = headB;</span><br><span class="line">        <span class="keyword">while</span> (pA != pB) &#123;</span><br><span class="line">            pA = (pA == null ? headB : pA.next);</span><br><span class="line">            pB = (pB == null ? headA : pB.next);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> pA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="删除链表的倒数第-N-个结点"><a href="#删除链表的倒数第-N-个结点" class="headerlink" title="删除链表的倒数第 N 个结点"></a><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/">删除链表的倒数第 N 个结点</a></h3><blockquote>
-<p>给你一个链表，删除链表的倒数第 <code>n</code> 个结点，并且返回链表的头结点。</p>
-</blockquote>
-<p>由于我们需要找到倒数第 n 个节点，因此我们可以使用两个指针 first 和 second 同时对链表进行遍历，并且 first 比 second 超前 n 个节点。当 first 遍历到链表的末尾时，second 就恰好处于倒数第 n 个节点。</p>
-<ul>
-<li><p>快慢指针</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode* dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyHead-&gt;next = head;</span><br><span class="line">    ListNode* slow = dummyHead;</span><br><span class="line">    ListNode* fast = dummyHead;</span><br><span class="line">    <span class="keyword">while</span>(n-- &amp;&amp; fast != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        fast = fast-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    fast = fast-&gt;next; <span class="comment">// fast再提前走一步，因为需要让slow指向删除节点的上一个节点</span></span><br><span class="line">    <span class="keyword">while</span> (fast != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        fast = fast-&gt;next;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    slow-&gt;next = slow-&gt;next-&gt;next;</span><br><span class="line">    <span class="keyword">return</span> dummyHead-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="重排链表"><a href="#重排链表" class="headerlink" title="重排链表"></a><a href="https://leetcode-cn.com/problems/reorder-list/">重排链表</a></h3><blockquote>
-<p>给定一个单链表 <em>L</em>：<em>L</em>0→<em>L</em>1→…→<em>L**n</em>-1→<em>L</em>n ，<br>将其重新排列后变为： <em>L</em>0→<em>L**n</em>→<em>L</em>1→<em>L**n</em>-1→<em>L</em>2→<em>L**n</em>-2→…</p>
-</blockquote>
-<p>注意到目标链表即为将原链表的左半端和反转后的右半端合并后的结果。</p>
-<p>这样我们的任务即可划分为三步：</p>
-<ul>
-<li><p>找到原链表的中点（参考「876. 链表的中间结点」）。</p>
-<ul>
-<li>我们可以使用快慢指针来 O(N)地找到链表的中间节点。</li>
-</ul>
-</li>
-<li><p>将原链表的右半端反转（参考「206. 反转链表」）。</p>
-<ul>
-<li>我们可以使用迭代法实现链表的反转。将原链表的两端合并。</li>
-</ul>
-</li>
-<li><p>因为两链表长度相差不超过 1，因此直接合并即可。</p>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//找到中心节点</span></span><br><span class="line">    <span class="comment">//分成两个链表</span></span><br><span class="line">    <span class="comment">//链表合成重排</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reorderList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!head) <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">       ListNode* firstNode = head;</span><br><span class="line">       ListNode* secondNode = head;</span><br><span class="line">       <span class="keyword">while</span>(secondNode != <span class="literal">nullptr</span> &amp;&amp; secondNode-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">           firstNode = firstNode-&gt;next;</span><br><span class="line">           secondNode = secondNode-&gt;next-&gt;next;</span><br><span class="line">       &#125;</span><br><span class="line">      <span class="comment">// cout &lt;&lt; firstNode-&gt;val &lt;&lt; endl;</span></span><br><span class="line">    </span><br><span class="line">        ListNode* firstEnd = firstNode;</span><br><span class="line">        ListNode* pre = firstNode;</span><br><span class="line">        ListNode* cur = firstNode-&gt;next;</span><br><span class="line">        firstNode = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">while</span>(cur) &#123;</span><br><span class="line">            ListNode* temp = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = pre;</span><br><span class="line">            pre = cur;</span><br><span class="line">            cur = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        firstEnd-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">        Merge(head, pre);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//head:1-&gt;2-&gt;3</span></span><br><span class="line">  	<span class="comment">//pre: 4-&gt;3</span></span><br><span class="line">  	<span class="comment">//所以head中的3不能使用，等到p-&gt;next = null就截止，最后补上nullptr就行</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(ListNode* head, ListNode*pre)</span> </span>&#123;</span><br><span class="line">        ListNode* p = head;</span><br><span class="line">        <span class="keyword">while</span>(p-&gt;next != <span class="literal">nullptr</span> &amp;&amp; pre != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            ListNode* temp = p-&gt;next;</span><br><span class="line">            p-&gt;next = pre;</span><br><span class="line">            pre = pre-&gt;next;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            p-&gt;next = temp;</span><br><span class="line">            p = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        p-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="分割链表"><a href="#分割链表" class="headerlink" title="分割链表"></a><a href="https://leetcode-cn.com/problems/partition-list-lcci/">分割链表</a></h3><blockquote>
-<p>编写程序以 x 为基准分割链表，使得所有小于 x 的节点排在大于或等于 x 的节点之前。如果链表中包含 x，x 只需出现在小于 x 的元素之后(如下所示)。分割元素 x 只需处于“右半部分”即可，其不需要被置于左右两部分之间。</p>
-</blockquote>
-<p>:diamond_shape_with_a_dot_inside: <strong>利用双指针来解决</strong></p>
-<p>:large_blue_diamond: left指针指向小于 x 的最后一个元素</p>
-<p>:large_blue_diamond: right指针不断遍历链表，找到小于 x 的元素，插入至 left 区域</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">partition</span><span class="params">(ListNode* head, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!head) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    ListNode* dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyNode-&gt;next = head;</span><br><span class="line">    ListNode* left = dummyNode;</span><br><span class="line">    ListNode* right = left-&gt;next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(left-&gt;next != <span class="literal">nullptr</span> &amp;&amp; left-&gt;next-&gt;val &lt; x) &#123;</span><br><span class="line">        <span class="comment">//左指针指向最后一个小于x的元素</span></span><br><span class="line">        left = left-&gt;next;   </span><br><span class="line">    &#125;     </span><br><span class="line">    <span class="comment">//右指针指向左指针右边</span></span><br><span class="line">    right = left-&gt;next;</span><br><span class="line">    <span class="keyword">while</span>(right != <span class="literal">nullptr</span> &amp;&amp; right-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(right-&gt;next-&gt;val &gt;= x)</span><br><span class="line">            right = right-&gt;next;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            ListNode* temp = right-&gt;next;</span><br><span class="line">            right-&gt;next = temp-&gt;next;</span><br><span class="line"></span><br><span class="line">            temp-&gt;next = left-&gt;next;</span><br><span class="line">            left-&gt;next = temp;</span><br><span class="line">            left = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummyNode-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="两数相加"><a href="#两数相加" class="headerlink" title="两数相加"></a><a href="https://leetcode-cn.com/problems/add-two-numbers/">两数相加</a></h3><p>:diamond_shape_with_a_dot_inside: 将长度较短的链表在末尾补零使得两个连表长度相等，再一个一个元素对其相加（考虑进位）</p>
+<h2 id="2-什么是-Reactor-模型"><a href="#2-什么是-Reactor-模型" class="headerlink" title="2.什么是 Reactor 模型"></a><strong>2.什么是 Reactor 模型</strong></h2><p>The reactor design_pattern is an event_handling pattern for handling service requests delivered concurrently to a service handler by one or more inputs. The service handler then demultiplexes the incoming requests and dispatches them synchronously to the associated request handlers.</p>
+<p>Reactor 设计模型是一种事件处理模式，用于处理通过一个或多个输入同时传递给服务处理程序的服务请求。然后，服务处理程序对传入的请求进行多路分解，并将它们同步分派给关联的请求处理程序。Reactor 模式也被称作 Dispatcher 模式。它的核心是 <strong>多路复用器</strong> ，多路复用器收到事件后会进行分发，这点是网络服务器高并发的关键。Reacotr 模型主要分为三个角色：</p>
 <ol>
-<li>获取两个链表所对应的长度</li>
-<li>在较短的链表末尾补零</li>
-<li>对齐相加考虑进位</li>
+<li><strong>Reactor</strong> ：把 IO 事件分配给对应的 handler 处理</li>
+<li><strong>Acceptor</strong> ：处理客户端连接事件</li>
+<li><strong>Handler</strong> ：处理非阻塞的任务</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">    ListNode *list1 = l1;</span><br><span class="line">    ListNode *list2 = l2;</span><br><span class="line">    ListNode *dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyNode-&gt;next = list2;</span><br><span class="line">  	<span class="comment">//设定前指针是为了方便增加结点的</span></span><br><span class="line">    ListNode* pre = dummyNode;</span><br><span class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(list1 || list2 || carry) &#123;</span><br><span class="line">        <span class="keyword">int</span> n1 = list1 != <span class="literal">nullptr</span> ? list1-&gt;val : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n2 = list2 != <span class="literal">nullptr</span> ? list2-&gt;val : <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; n1 &lt;&lt; n2 &lt;&lt; endl;</span></span><br><span class="line">        <span class="keyword">if</span>(list2 == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            ListNode* node = <span class="keyword">new</span> ListNode((n1 + n2 + carry) % <span class="number">10</span>);</span><br><span class="line">            pre-&gt;next = node;</span><br><span class="line">            node-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">            pre = node;</span><br><span class="line">        &#125; <span class="keyword">else</span> </span><br><span class="line">            list2-&gt;val = (n1 + n2 + carry) % <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>((n1 + n2 + carry) &gt; <span class="number">9</span>)</span><br><span class="line">            carry = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            carry = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(list1)</span><br><span class="line">            list1 = list1-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(list2) &#123;</span><br><span class="line">            list2 = list2-&gt;next;</span><br><span class="line">            pre = pre-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/">合并两个有序链表</a></h3><p>:diamond_shape_with_a_dot_inside: 将链表2插入到链表1上</p>
-<ul>
-<li>定义list1,list2指针指向l1与l2的头结点，pre指向list1的上一个结点(为了好插入)</li>
-<li><p>在遍历结点都不为空的情况下进行比较</p>
-<ul>
-<li>如果list1 &lt;= list2，list1继续迭代</li>
-<li>如果list1 &gt; list2，则将list2结点插入到list1前面</li>
-</ul>
-</li>
-<li><p>遍历结束后，有一个不为空</p>
-<ul>
-<li>list1不为空则不用管</li>
-<li>list2不为空，将list2后面的结点直接移到list1后面</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode list1, ListNode list2)</span> </span>&#123;</span><br><span class="line">        ListNode dum = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line">        ListNode currentNode = dum;</span><br><span class="line">        <span class="keyword">while</span> (list1 != null &amp;&amp; list2 != null) &#123;</span><br><span class="line">            <span class="keyword">if</span> (list1.val &lt; list2.val) &#123;</span><br><span class="line">                currentNode.next = list1;</span><br><span class="line">                list1 = list1.next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                currentNode.next = list2;</span><br><span class="line">                list2 = list2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            currentNode = currentNode.next;</span><br><span class="line">        &#125;</span><br><span class="line">        currentNode.next = (list1 != null ? list1 : list2);</span><br><span class="line">        <span class="keyword">return</span> dum.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="large-orange-diamond-两两交换链表中的节点"><a href="#large-orange-diamond-两两交换链表中的节点" class="headerlink" title=":large_orange_diamond: 两两交换链表中的节点"></a>:large_orange_diamond: <a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/">两两交换链表中的节点</a></h3><blockquote>
-<p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
-<p><strong>你不能只是单纯的改变节点内部的值</strong>，而是需要实际的进行节点交换。</p>
-</blockquote>
-<div align="center"><img src="/2025/06/02/LeetcodeGuide/List3.png" width="800px"></div>
-
-<ul>
-<li>创建哑结点 dummyHead，令 dummyHead.next = head。令 temp 表示当前到达的节点，初始时 temp = dummyHead。每次需要交换 temp 后面的两个节点。</li>
-<li>如果 temp 的后面没有节点或者只有一个节点，则没有更多的节点需要交换，因此结束交换。否则，获得 temp 后面的两个节点 node1 和 node2，通过更新节点的指针关系实现两两交换节点。</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">swapPairs</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!head) <span class="keyword">return</span> head;</span><br><span class="line">    ListNode* dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyNode-&gt;next = head;</span><br><span class="line">    ListNode* Pre = dummyNode;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(Pre-&gt;next != <span class="literal">nullptr</span> &amp;&amp; Pre-&gt;next-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        ListNode* node1 = Pre-&gt;next;</span><br><span class="line">        ListNode* node2 = Pre-&gt;next-&gt;next;</span><br><span class="line">				<span class="comment">//进行交换 </span></span><br><span class="line">        Pre-&gt;next = node2;</span><br><span class="line">        node1-&gt;next = node2-&gt;next;</span><br><span class="line">        node2-&gt;next = node1;</span><br><span class="line">        Pre = node1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummyNode-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="large-orange-diamond-删除排序链表中的重复元素-II"><a href="#large-orange-diamond-删除排序链表中的重复元素-II" class="headerlink" title=":large_orange_diamond: 删除排序链表中的重复元素 II"></a>:large_orange_diamond: <a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/">删除排序链表中的重复元素 II</a></h3><blockquote>
-<p>存在一个按升序排列的链表，给你这个链表的头节点 <code>head</code> ，请你删除链表中所有存在数字重复情况的节点，只保留原始链表中 <strong>没有重复出现</strong> 的数字。</p>
-</blockquote>
-<ul>
-<li><strong>一边遍历、一边统计相邻节点的值是否相等，如果值相等就继续后移找到值不等的位置，然后删除值相等的这个区间</strong>。</li>
-<li>设置 Pre 与 Cur指针，比较Pre-&gt;next 与 Cur-&gt;next 的值，如果相等，则删除Cur-&gt;next的值，这样会出现第一个相等的值删不掉</li>
-<li>解决上述问题，可以设置flag标志，只要有相等就让flag=1，这样最后剩下的元素也能被删除，之后再重新设置为0</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">deleteDuplicates</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!head) <span class="keyword">return</span> head;</span><br><span class="line">    ListNode* dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    dummyNode-&gt;next = head;</span><br><span class="line">    ListNode* Cur = head;</span><br><span class="line">    ListNode* Pre = dummyNode;</span><br><span class="line">    <span class="comment">//设置标志</span></span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(Cur != <span class="literal">nullptr</span> &amp;&amp; Cur-&gt;next != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(Cur-&gt;next != <span class="literal">nullptr</span> &amp;&amp; Pre-&gt;next-&gt;val == Cur-&gt;next-&gt;val ) &#123;</span><br><span class="line">            ListNode* temp = Cur-&gt;next;</span><br><span class="line">            Cur-&gt;next = temp-&gt;next;</span><br><span class="line">            <span class="keyword">delete</span> temp;</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">        &#125; </span><br><span class="line">            </span><br><span class="line">        <span class="comment">//删除最后一个相等的值</span></span><br><span class="line">        <span class="keyword">if</span>(flag) &#123;</span><br><span class="line">            ListNode* temp = Cur;</span><br><span class="line">            Cur = Cur-&gt;next;</span><br><span class="line">            Pre-&gt;next = Cur;</span><br><span class="line">            <span class="keyword">delete</span> temp;</span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Cur = Cur-&gt;next;</span><br><span class="line">            Pre = Pre-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummyNode-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="diamond-shape-with-a-dot-inside-复制带随机指针的链表"><a href="#diamond-shape-with-a-dot-inside-复制带随机指针的链表" class="headerlink" title=":diamond_shape_with_a_dot_inside: 复制带随机指针的链表"></a>:diamond_shape_with_a_dot_inside: <a href="https://leetcode-cn.com/problems/copy-list-with-random-pointer/">复制带随机指针的链表</a></h3><blockquote>
-<p>请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，还有一个 random 指针指向链表中的任意节点或者 null。</p>
-</blockquote>
-<div align="center"><img src="/2025/06/02/LeetcodeGuide/List4.png" width="800px"></div>
-
-<p>:large_orange_diamond: 利用哈希表的查询特点，考虑构建 原链表节点 和 新链表对应节点 的键值对映射关系，再遍历构建新链表各节点的 next 和 random 引用指向即可。</p>
-<p>算法流程：</p>
+<p>通过这三个角色的配合，实现了高并发的操作。而Reactor 模型分为三种：</p>
 <ol>
-<li>若头节点 head 为空节点，直接返回 null ；</li>
-<li>初始化： 哈希表 dic ， 节点 cur 指向头节点；</li>
-<li>复制链表：<ul>
-<li>建立新节点，并向 dic 添加键值对 (原 cur 节点, 新 cur 节点） ；</li>
-<li>cur 遍历至原链表下一节点；</li>
+<li><strong>单 Reactor 单线程</strong></li>
+<li><strong>单 Reactor 多线程</strong></li>
+<li><strong>多 Reactor 多线程</strong></li>
+</ol>
+<p>这三种模型按顺序来看理解起来复杂度不断提升，也会更接近 Netty 的线程模型，下面来分别看看这三种模型。</p>
+<h3 id="1-单-Reactor-单线程"><a href="#1-单-Reactor-单线程" class="headerlink" title="(1). 单 Reactor 单线程"></a><strong>(1). 单 Reactor 单线程</strong></h3><p>这个最好理解，只有 <strong>一个线程</strong> ，只是会把 <strong>建立连接</strong> 和 <strong>处理请求</strong> 这两种任务分发给不同的类去处理，如下图所示：</p>
+<center class="half"> 
+    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/1.PNG" width="70%">
+    <div>图1:单Reactor单线程</div>
+</center>
+
+<p>整个流程简单来讲就是：</p>
+<ol>
+<li>Reactor 通过 Selector 监听事件</li>
+<li>收到事件使用 dispatch 对事件进行分发<ul>
+<li>如果是连接事件就由 Acceptor 进行处理，处理完成会创建一个 Handler 对后续业务进行处理。</li>
+<li>后面的数据请求都会由 Handler 进行处理</li>
 </ul>
-</li>
-<li><p>构建新链表的引用指向：</p>
-<ul>
-<li>构建新节点的 next 和 random 引用指向；</li>
-<li>cur 遍历至原链表下一节点；</li>
-</ul>
-</li>
-<li><p>返回值： 新链表的头节点 dic[cur] ；</p>
 </li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">Node* <span class="title">copyRandomList</span><span class="params">(Node* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    Node* cur = head;</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;Node*, Node*&gt; <span class="built_in">map</span>;</span><br><span class="line">    <span class="comment">// 3. 复制各节点，并建立 “原节点 -&gt; 新节点” 的 Map 映射</span></span><br><span class="line">    <span class="keyword">while</span>(cur != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">map</span>[cur] = <span class="keyword">new</span> Node(cur-&gt;val);</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    cur = head;</span><br><span class="line">    <span class="comment">// 4. 构建新链表的 next 和 random 指向</span></span><br><span class="line">    <span class="keyword">while</span>(cur != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">map</span>[cur]-&gt;next = <span class="built_in">map</span>[cur-&gt;next];</span><br><span class="line">        <span class="built_in">map</span>[cur]-&gt;random = <span class="built_in">map</span>[cur-&gt;random];</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 5. 返回新链表的头节点</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">map</span>[head];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="diamond-shape-with-a-dot-inside-LRU-缓存机制"><a href="#diamond-shape-with-a-dot-inside-LRU-缓存机制" class="headerlink" title=":diamond_shape_with_a_dot_inside: LRU 缓存机制"></a>:diamond_shape_with_a_dot_inside: <a href="https://leetcode-cn.com/problems/lru-cache/">LRU 缓存机制</a></h3><p>[题解](</p>
+<p><strong>优点</strong></p>
+<ul>
+<li>模型简单，不会有多线程的那些问题</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>性能问题：单线程无法发挥多核 CPU 的性能</li>
+<li>可靠性问题：处理业务时往往容易出问题，当 Handler 出问题了，由于只有一个线程，整个节点也挂了</li>
+</ul>
+<h3 id="2-单-Reactor-多线程"><a href="#2-单-Reactor-多线程" class="headerlink" title="(2). 单 Reactor 多线程"></a>(2). 单 Reactor 多线程</h3><p>这个线程模型针对前面的问题作出了一定的优化，多出了处理业务的线程池，如下图所示：</p>
+<center class="half"> 
+    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/2.PNG" width="90%">
+    <div>图2:单Reactor多线程</div>
+</center>
+
+<p>前面的流程与单 Reactor 单线程是一致的，到 Handler 这一步就不一样了：</p>
+<ul>
+<li>这个模型 <strong>Handler 只负责读取数据和发送数据部分，业务处理交给了 Worker 线程</strong>，而 Worker 线程是由 Worker 线程池统一管理的。</li>
+</ul>
+<p><strong>优点</strong></p>
+<ul>
+<li>可以充分利用多核 CPU 的处理能力</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>多线程资源共享和访问处理会比较复杂，在主线程处理所有的连接、监听和响应也会出现性能瓶颈</li>
+</ul>
+<h3 id="3-主从-Reactor-多线程"><a href="#3-主从-Reactor-多线程" class="headerlink" title="(3). 主从 Reactor 多线程"></a>(3). 主从 Reactor 多线程</h3><p>主从 Reactor 多线程模型又在前面的模型基础上做了进一步优化， <strong>增加了子 Reactor</strong> ，如下图所示：</p>
+<center class="half"> 
+    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/3.png" width="80%">
+    <div>图3:多Reactor多线程</div>
+</center>
+
+<p><strong>整个流程大概可以分为以下几步</strong>：</p>
+<ul>
+<li>主线程的 <code>MainReactor</code> 负责监听连接请求，收到连接请求会由 <code>Acceptor</code> 进行处理，成功建立连接之后 <code>MainReactor</code> 会把连接分派给 <code>SubReactor</code> ，由 <code>SubReactor</code> 监听和处理数据请求；</li>
+<li><code>SubReactor</code> 监听到数据请求，会派发给 Handler 处理，Handler 只会处理读取数据和发送数据部分，中间业务处理部分也是放在线程池中完成。</li>
+</ul>
+<p><strong>优点</strong></p>
+<ul>
+<li><code>MainReactor</code> 与 <code>SubReactor</code> 职责分明，一个处理连接事件，一个处理数据请求；</li>
+<li><code>MainReactor</code> 与 <code>SubReactor</code> 交互逻辑比较简单，<code>MainReactor</code> 单向地将建立好的连接传递出去；</li>
+<li>多 Reactor 设计能在高并发场景拥有更好的性能。</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>编程复杂度较高</li>
+</ul>
+<p>主从 Reactor 多线程模式是业界非常成熟的服务器程序设计模式，在很多中间件中都使用到了这种模式，像 Nginx、Memcached、Netty 等。这种模式也被称为 1 + M + N 模式，分别代指相对少的连接线程（不一定为 1 ），多个 I/O 线程和多个业务处理线程。</p>
+<h1 id="二-Netty-线程模型"><a href="#二-Netty-线程模型" class="headerlink" title="二. Netty 线程模型"></a>二. Netty 线程模型</h1><p>Netty 线程模型是基于主从 Reactor 多线程模型优化而来的，整体架构如下图所示：</p>
+<center class="half"> 
+    <img src="/2024/11/10/Netty-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/4.png" width="100%">
+    <div>图4:Netty线程</div>
+</center>
+
+<p>Netty 的线程模型主要分为两部分，分别是 <code>BossGroup</code> 和 <code>WorkerGroup</code>，它们都分别管理一个或多个 <code>NioEventLoop</code>。每个 <code>NioEventLoop</code> 对应着一个线程，一个 <code>Selector</code>，一个 <code>Executor</code> 和一个 <code>TaskQueue</code>。<code>NioEventLoop</code> 可以理解成一个事件循环：</p>
+<ul>
+<li>当程序启动后每个 <code>NioEventLoop</code> 都会通过 <code>Executor</code> 启动一个线程，开始执行事件循环。</li>
+<li>在循环中 <code>Selector</code> 会通过 select 方法阻塞并监听就绪事件，当有事件到来时通过 <code>processSeelectedKeys</code> 方法处理 Selector 事件。</li>
+<li>之后再通过 <code>runAllTasks</code> 方法处理其他的任务。</li>
+</ul>
+<p>与前面介绍的 主从 Reactor 多线程模型类似：</p>
+<ul>
+<li><code>BossGoup</code> 负责连接事件，当建立连接之后会生成一个 <code>NioSocketChannel</code> 并注册到 <code>WorkGroup</code> 其中一个 <code>NioEventLoop</code> 的 Selector 上。</li>
+<li><code>WokerGroup</code> 中的 <code>NioEventLoop</code> 负责处理数据请求，当请求到来时会调用 <code>processSelectedKeys</code> 方法，其中的业务处理会依次经过 Pipeline 中的多个 Handler。</li>
+</ul>
 ]]></content>
       <categories>
-        <category>LeetCode</category>
+        <category>Java</category>
       </categories>
       <tags>
-        <tag>LeetCode</tag>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
+        <tag>Netty</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
 </search>
