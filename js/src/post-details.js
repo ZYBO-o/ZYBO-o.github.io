@@ -73,6 +73,8 @@ $(document).ready(function () {
   $('.post-toc a').on('click', function (e) {
     e.preventDefault();
     var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+     // 添加下面这行代码, 重新解析 URL
+    targetSelector = decodeURI(this.getAttribute('href')) 	// 需要添加的代码加在75行左右	
     var offset = $(targetSelector).offset().top;
 
     hasVelocity ?
